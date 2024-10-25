@@ -6,6 +6,7 @@ export const NoticeHeader = styled.header`
   display: flex;
   justify-content: space-between;
   padding: 1rem;
+  border-bottom: 1px solid #ccc;
 
   .header__icon {
     transition: color 0.3s ease;
