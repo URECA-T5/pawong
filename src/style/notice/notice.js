@@ -1,5 +1,10 @@
 import styled from 'styled-components';
 
+const boxShadow = `
+  rgba(136, 165, 191, 0.48) 6px 2px 16px 0px, 
+  rgba(255, 255, 255, 0.8) -6px -2px 16px 0px
+`;
+
 export const NoticeHeader = styled.header`
   width: 100%;
   height: 52px;
@@ -21,30 +26,58 @@ export const NoticeHeader = styled.header`
 `;
 
 export const NoticeBody = styled.div`
+  flex: 1;
   .notice__title {
     display: flex;
     justify-content: center;
     margin-top: 3rem;
   }
+
   .notice__section {
-    padding: 3rem 3rem;
+    margin: 2rem;
+    background-color: #ffffff;
+    padding: 3rem;
+    border-radius: 16px;
+    box-shadow: ${boxShadow}; /* Box shadow 변수 사용 */
+    transition: transform 0.3s ease; /* 호버 시 확대 효과를 위한 변환 설정 */
+
+    &:hover {
+      transform: scale(1.02); /* 살짝 확대 */
+    }
   }
+  .notice__section img {
+    display: flex;
+    margin-left: 20rem;
+  }
+
   .notice__list {
     padding: 2rem 1rem;
   }
+
   .notice__list p {
     margin-bottom: 1rem;
     transition:
       color 0.3s ease,
       background-color 0.3s ease;
   }
+
   .notice__list p:hover,
   .notice__list p:focus {
     color: #007bff;
     outline: none;
     cursor: pointer;
   }
+
   .notice__changes {
-    padding: 3rem 3rem;
+    margin: 2rem;
+    background-color: #ffffff;
+    padding: 3rem;
+    border-radius: 16px;
+    box-shadow: ${boxShadow}; /* Box shadow 변수 사용 */
+    transition: transform 0.3s ease; /* 호버 시 확대 효과를 위한 변환 설정 */
+
+    &:hover {
+      transform: scale(1.02); /* 살짝 확대 */
+    }
   }
 `;

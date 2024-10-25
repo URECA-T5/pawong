@@ -67,6 +67,7 @@ export const MainContainer = styled.div`
   width: 600px;
   background-color: #f3f3f6;
   min-height: 100vh;
+  position: relative;
 `;
 export const Content = styled.div`
   padding: 0 20px;

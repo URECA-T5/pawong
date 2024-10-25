@@ -19,7 +19,7 @@ const Login = () => {
         <LoginBody>
           <h4 className="login__h4">반려동물 1등 플랫폼</h4>
           <p className="login__p">모든 반려동물의 행복을 바라며</p>
-          <h1 className="login__h1">포옹</h1>
+          <h1 className="login__h1 extraBold">포옹</h1>
           <div className="img__section">
             <img
               src="/asset/login/Login_Img.svg"

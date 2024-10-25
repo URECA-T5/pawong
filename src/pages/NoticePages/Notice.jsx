@@ -15,7 +15,7 @@ const Notice = () => {
         </NoticeHeader>
         <NoticeBody>
           <div className="notice__title">
-            <h1>포옹</h1>
+            <h1 className="extraBold">포옹</h1>
           </div>
 
           <div className="notice__section">
@@ -25,6 +25,11 @@ const Notice = () => {
               <p className="bold">🦴 포옹 서비스 점검안내</p>
               <p className="bold">🦴 포옹 배송 안내</p>
             </div>
+            <img
+              src="../asset/notice/dogIcon.png"
+              alt="로그인 메인이미지"
+              className="notice__img"
+            />
           </div>
 
           <div className="notice__changes">
