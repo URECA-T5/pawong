@@ -18,7 +18,7 @@ export const NoticeHeader = styled.header`
 
     &:hover,
     &:focus {
-      color: #007bff;
+      color: #5850fe;
       outline: none;
       cursor: pointer;
     }
@@ -38,11 +38,11 @@ export const NoticeBody = styled.div`
     background-color: #ffffff;
     padding: 3rem;
     border-radius: 16px;
-    box-shadow: ${boxShadow}; /* Box shadow 변수 사용 */
-    transition: transform 0.3s ease; /* 호버 시 확대 효과를 위한 변환 설정 */
+    box-shadow: ${boxShadow};
+    transition: transform 0.3s ease;
 
     &:hover {
-      transform: scale(1.02); /* 살짝 확대 */
+      transform: scale(1.02);
     }
   }
   .notice__section img {
@@ -63,7 +63,7 @@ export const NoticeBody = styled.div`
 
   .notice__list p:hover,
   .notice__list p:focus {
-    color: #007bff;
+    color: #5850fe;
     outline: none;
     cursor: pointer;
   }
@@ -73,11 +73,11 @@ export const NoticeBody = styled.div`
     background-color: #ffffff;
     padding: 3rem;
     border-radius: 16px;
-    box-shadow: ${boxShadow}; /* Box shadow 변수 사용 */
-    transition: transform 0.3s ease; /* 호버 시 확대 효과를 위한 변환 설정 */
+    box-shadow: ${boxShadow};
+    transition: transform 0.3s ease;
 
     &:hover {
-      transform: scale(1.02); /* 살짝 확대 */
+      transform: scale(1.02);
     }
   }
 `;
