@@ -3,6 +3,7 @@ import DefaultLayout from '../layout/DefaultLayout';
 import Home from '../pages/Home';
 import Login from '../pages/Login';
 import Menu from '../pages/Menu';
+import Notice from '../pages/NoticePages/Notice';
 
 const routes = [
   {
@@ -16,6 +17,10 @@ const routes = [
   {
     path: '/menu',
     element: <Menu />,
+  },
+  {
+    path: '/notice',
+    element: <Notice />,
   },
 ];
 
