@@ -3,6 +3,7 @@ import DefaultLayout from '../layout/DefaultLayout';
 import Home from '../pages/Home';
 import Login from '../pages/Login';
 import Menu from '../pages/Menu';
+import Notice from '../pages/NoticePages/Notice';
 const routes = [
   {
     path: '/',
@@ -15,6 +16,10 @@ const routes = [
   {
     path: '/menu', // menu 경로 추가
     element: <Menu />,
+  },
+  {
+    path: '/notice',
+    element: <Notice />,
   },
 ];
 
