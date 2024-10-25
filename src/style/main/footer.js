@@ -4,7 +4,7 @@ export const MainFooter = styled.footer`
   width: 100%;
   padding: 0 1.5rem;
   font-size: 0.7rem;
-  margin: 2rem 0;
+  margin-bottom: 5rem;
   h2 {
     margin-bottom: 1rem;
   }
