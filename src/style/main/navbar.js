@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Navbar = styled.section`
   width: 100%;
   height: 53px;
-  position: sticky;
+  position: fixed;
   align-items: center;
   bottom: 0;
   left: 0;
