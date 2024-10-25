@@ -1,14 +1,11 @@
-// Home.js
 import React from 'react';
 import GlobalStyle, { MainContainer } from '../style/global/global';
 import { LoginHeader, LoginBody } from '../style/login/login';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHouse } from '@fortawesome/free-solid-svg-icons';
-import GoogleLoginButton from '../components/common/GoogleLoginButton';
-import { GoogleOAuthProvider } from '@react-oauth/google';
+import GoogleLoginButton from '../components/auth/GoogleLoginButton';
 
 const Login = () => {
-  const CLIENT_ID = process.env.REACT_APP_GOOGLE_API_KEY;
   return (
     <>
       <GlobalStyle />
@@ -35,14 +32,8 @@ const Login = () => {
           </div>
 
           <div className="loginBtn__section">
-            <GoogleOAuthProvider clientId={CLIENT_ID}>
-              {' '}
-              {}
-              <GoogleLoginButton />
-            </GoogleOAuthProvider>
+            <GoogleLoginButton />
           </div>
-
-          <footer></footer>
         </LoginBody>
       </MainContainer>
     </>
