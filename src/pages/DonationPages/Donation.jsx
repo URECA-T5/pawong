@@ -1,8 +1,8 @@
 import React from 'react';
-import DonationMenu from '../components/donation/DonationMenu';
-import DonationList from '../components/donation/DonationList';
-import GlobalStyle, { MainContainer } from '../style/global/global';
-import { DonationHeader } from '../style/donation/donation';
+import DonationMenu from '../../components/donation/DonationMenu';
+import DonationList from '../../components/donation/DonationList';
+import GlobalStyle, { MainContainer } from '../../style/global/global';
+import { DonationHeader } from '../../style/donation/donation';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft, faHouse } from '@fortawesome/free-solid-svg-icons';
 
