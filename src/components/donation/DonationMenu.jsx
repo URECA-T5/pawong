@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { MenuArea, MenuBtn } from '../../style/donation/donation';
 
 const DonationMenu = () => {
-  // 메뉴 버튼 클릭 이벤트 색 변수
   const [colors, setColors] = useState({
     defaultBgColor: '#F3F3F6',
     defaultFontColor: '#6D6E71',

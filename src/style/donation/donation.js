@@ -11,14 +11,12 @@ export const ItemContainer = styled.div`
 
   transition: transform 0.3s ease;
 
-  // 클릭시 커서 효과가 안보이게 설정
   caret-color: transparent;
 
   &:hover {
     transform: scale(1.02);
   }
 
-  // 후원상품 정보 영역
   .item__info {
     display: flex;
     flex-direction: column;
@@ -26,25 +24,21 @@ export const ItemContainer = styled.div`
     justify-content: center;
   }
 
-  // 브랜드
   .item__brand {
     font-size: 11px;
     font-weight: bold;
     color: #6d6e71;
   }
 
-  // 제품 이름
   .item__title {
     font-size: 11px;
   }
 
-  // 제품 가격
   .item__price {
     font-size: 12px;
     font-weight: bold;
   }
 
-  // 인기 메세지
   .item__message {
     position: absolute;
     left: 0.5rem;
@@ -61,7 +55,6 @@ export const ItemContainer = styled.div`
   }
 `;
 
-// 후원상품 이미지 영역
 export const ItemImageArea = styled.img`
   width: 274px;
   height: 274px;
@@ -70,11 +63,9 @@ export const ItemImageArea = styled.img`
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  // 클릭시 커서 효과가 안보이게 설정
   caret-color: transparent;
 `;
 
-// 헤더 영역
 export const DonationHeader = styled.header`
   width: 100%;
   height: 52px;
@@ -83,7 +74,6 @@ export const DonationHeader = styled.header`
   padding: 1rem;
   background-color: white;
 
-  // 클릭시 커서 효과가 안보이게 설정
   caret-color: transparent;
 
   .header__icon {
@@ -98,7 +88,6 @@ export const DonationHeader = styled.header`
   }
 `;
 
-// 메뉴바 버튼
 export const MenuBtn = styled.div`
   display: flex;
   flex-direction: column;
@@ -107,21 +96,16 @@ export const MenuBtn = styled.div`
   width: 59px;
   height: 23px;
   border-radius: 15px;
-  // [배경색] 선택: E3ECFF, 해제: F3F3F6
   background-color: ${(props) => props.$bgcolor};
 
-  // [폰트색] 선택: 5850FE, 해제: 6D6E71
   color: ${(props) => props.$fontcolor};
   font-size: 16px;
 
-  // [폰트 굵기] 선택: bold, 해제: normal
-  font-weight: ${(props) => props.fontWeight};
+  font-weight: ${(props) => props.$fontWeight};
 
-  // 클릭시 커서 효과가 안보이게 설정
   caret-color: transparent;
 `;
 
-// 메뉴바 영역
 export const MenuArea = styled.div`
   width: 600px;
   height: 59px;
@@ -133,7 +117,6 @@ export const MenuArea = styled.div`
   background-color: white;
 `;
 
-// 후원 리스트 목록
 export const ListContainer = styled.div`
   display: grid;
   justify-items: center;

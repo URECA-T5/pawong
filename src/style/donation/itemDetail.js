@@ -6,20 +6,16 @@ export const ImageContainer = styled.div`
   padding: 1rem;
 `;
 
-// 배경색 흰색으로 변경
 export const WhiteContainer = styled(MainContainer)`
   background-color: white;
 `;
 
-// 제품 정보 컨테이너
 export const BodyContainer = styled.div`
   padding: 0.5rem;
   font-size: 15px;
   font-weight: normal;
-  // 클릭시 커서 효과가 안보이게 설정
   caret-color: transparent;
 
-  // 카테고리 박스
   .item__category {
     width: 53px;
     height: 25px;
@@ -32,7 +28,6 @@ export const BodyContainer = styled.div`
     align-items: center;
   }
 
-  // 메세지 박스
   .item__message {
     width: 90px;
     height: 30px;
@@ -50,24 +45,20 @@ export const BodyContainer = styled.div`
     padding: 0.4rem;
   }
 
-  // 제품명
   .item__title {
     font-size: 20px;
   }
 
-  // 제품 리뷰+가격 영역
   .item__row {
     display: flex;
     flex-direction: row;
   }
 
-  // 제품 가격
   .item__price {
     font-size: 20px;
     padding: 0rem 1rem;
   }
 
-  // 구분선
   .item__split {
     width: 100%;
     height: 5px;
@@ -81,7 +72,6 @@ export const BodyContainer = styled.div`
   }
 `;
 
-// 상세페이지 하단
 export const BottomContainer = styled.div`
   height: 120px;
   display: flex;
@@ -95,7 +85,6 @@ export const BottomContainer = styled.div`
   bottom: 0px;
   background-color: white;
 
-  // 공유하기 버튼
   .btn__share {
     width: 50px;
     height: 45px;
@@ -103,7 +92,6 @@ export const BottomContainer = styled.div`
     background-color: #e3ecff;
   }
 
-  // 구매하기 버튼
   .btn__buy {
     width: 480px;
     height: 45px;
