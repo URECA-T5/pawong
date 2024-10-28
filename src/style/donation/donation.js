@@ -108,10 +108,10 @@ export const MenuBtn = styled.div`
   height: 23px;
   border-radius: 15px;
   // [배경색] 선택: E3ECFF, 해제: F3F3F6
-  background-color: ${(props) => props.bgcolor};
+  background-color: ${(props) => props.$bgcolor};
 
   // [폰트색] 선택: 5850FE, 해제: 6D6E71
-  color: ${(props) => props.fontcolor};
+  color: ${(props) => props.$fontcolor};
   font-size: 16px;
 
   // [폰트 굵기] 선택: bold, 해제: normal

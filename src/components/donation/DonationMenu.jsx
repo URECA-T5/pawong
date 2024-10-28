@@ -23,13 +23,13 @@ const DonationMenu = () => {
           <MenuBtn
             key={id + index}
             id={id}
-            bgcolor={
+            $bgcolor={
               category === id ? colors.selectBgColor : colors.defaultBgColor
             }
-            fontcolor={
+            $fontcolor={
               category === id ? colors.selectFontColor : colors.defaultFontColor
             }
-            fontWeight={category === id ? 'bold' : 'normal'}
+            $fontWeight={category === id ? 'bold' : 'normal'}
             onClick={() => setCategory(id)}
           >
             {title}
