@@ -9,7 +9,6 @@ export const LoginHeader = styled.header`
 `;
 
 export const LoginBody = styled.div`
-  /* LoginBody 내부의 h4 태그에 대한 스타일 */
   .login__h4 {
     color: #5850fe;
     display: flex;

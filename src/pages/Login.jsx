@@ -2,7 +2,9 @@ import React from 'react';
 import { LoginHeader, LoginBody } from '../style/login/login';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHouse } from '@fortawesome/free-solid-svg-icons';
-import GoogleLoginButton from '../components/auth/GoogleLoginButton';
+import SocialLoginBtn from '../components/auth/SocialLoginBtn';
+import { SOCIAL_LOGIN_PROVIDER } from '../config/socialLogin';
+import mainImg from '../asset/login/Login_Img.svg';
 
 const Login = () => {
   return (
@@ -15,11 +17,7 @@ const Login = () => {
         <p className="login__p">모든 반려동물의 행복을 바라며</p>
         <h1 className="login__h1 extraBold">포옹</h1>
         <div className="img__section">
-          <img
-            src="/asset/login/Login_Img.svg"
-            alt="로그인 메인이미지"
-            className="login__img"
-          />
+          <img src={mainImg} alt="로그인 메인이미지" className="login__img" />
         </div>
 
         <div className="line__section">
@@ -29,7 +27,17 @@ const Login = () => {
         </div>
 
         <div className="loginBtn__section">
-          <GoogleLoginButton />
+          {Object.entries(SOCIAL_LOGIN_PROVIDER).map(
+            ([key, { img, url, css }]) => (
+              <SocialLoginBtn
+                key={key}
+                provider={key}
+                img={img}
+                url={url}
+                css={css}
+              />
+            ),
+          )}
         </div>
       </LoginBody>
     </>
