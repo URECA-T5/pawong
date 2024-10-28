@@ -3,9 +3,10 @@ import DefaultLayout from '../layout/DefaultLayout';
 import Login from '../pages/Login';
 import Menu from '../pages/Menu';
 import Main from '../pages/Main';
-import Notice from '../pages/NoticePages/Notice';
+import Notice from '../pages/Notice/Notice';
 import Donation from '../pages/DonationPages/Donation';
 import DonationItemDetail from '../pages/DonationPages/DonationItemDetail';
+import CommonSense from '../pages/Notice/CommonSense';
 const routes = [
   {
     path: '/',
@@ -30,6 +31,10 @@ const routes = [
   {
     path: '/donation_item',
     element: <DonationItemDetail />,
+  },
+  {
+    path: '/common-sense',
+    element: <CommonSense />,
   },
 ];
 
