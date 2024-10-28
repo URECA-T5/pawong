@@ -1,5 +1,5 @@
 import React from 'react';
-import { BottomContainer } from '../../style/donation/donation-item-detail';
+import { BottomContainer } from '../../style/donation/itemDetail';
 
 const ItemDetailBottom = () => {
   return (

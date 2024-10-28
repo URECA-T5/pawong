@@ -1,5 +1,5 @@
 import React from 'react';
-import { BodyContainer } from '../../style/donation/donation-item-detail';
+import { BodyContainer } from '../../style/donation/itemDetail';
 
 const ItemDetailBody = () => {
   return (

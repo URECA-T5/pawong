@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft, faHouse } from '@fortawesome/free-solid-svg-icons';
 import { DonationHeader } from '../../style/donation/donation';
 import ImageSlide from '../../components/donation/ImageSlide';
-import { WhiteContainer } from '../../style/donation/donation-item-detail';
+import { WhiteContainer } from '../../style/donation/itemDetail';
 import ItemDetailBody from '../../components/donation/ItemDetailBody';
 import ItemDetailBottom from '../../components/donation/ItemDetailBottom';
 
