@@ -1,10 +1,11 @@
-// Content.jsx
 import React, { useState } from 'react';
 import {
   ButtonGroup,
   Button,
   ContentSection,
 } from '../../style/notice/content';
+import FaqAccordion from './FaqArcodion';
+import { faqData } from '../../data/faqData';
 
 function Content() {
   const [selected, setSelected] = useState('start');
@@ -31,6 +32,10 @@ function Content() {
           종료
         </Button>
       </ButtonGroup>
+
+      <div className="faq__section">
+        <FaqAccordion data={faqData[selected]} />
+      </div>
     </ContentSection>
   );
 }

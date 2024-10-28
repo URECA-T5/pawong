@@ -5,6 +5,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHouse, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { SenseBody } from '../../style/notice/commonSense';
 import Content from '../../components/notice/Content';
+import { Link } from 'react-router-dom';
+
 function CommonSense() {
   return (
     <>
@@ -12,7 +14,11 @@ function CommonSense() {
       <MainContainer>
         <NoticeHeader>
           <FontAwesomeIcon icon={faArrowLeft} className="header__icon" />
-          <FontAwesomeIcon icon={faHouse} className="header__icon" />
+          <Link to="/">
+            {' '}
+            {}
+            <FontAwesomeIcon icon={faHouse} className="header__icon home" />
+          </Link>
         </NoticeHeader>
         <SenseBody>
           <div className="img__section">

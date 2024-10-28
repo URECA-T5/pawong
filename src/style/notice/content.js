@@ -1,10 +1,11 @@
-// ContentStyles.js
 import styled from 'styled-components';
 
 export const ContentSection = styled.div`
-  padding: 2rem;
-  margin-top: 2rem;
+  margin-top: 1rem;
   width: 100%;
+  .faq__section {
+    margin-top: 2rem;
+  }
 `;
 
 export const ButtonGroup = styled.div`
