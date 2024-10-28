@@ -6,6 +6,7 @@ import Main from '../pages/Main';
 import Notice from '../pages/Notice/Notice';
 import Donation from '../pages/DonationPages/Donation';
 import DonationItemDetail from '../pages/DonationPages/DonationItemDetail';
+import CareDiary from '../pages/CareDiary';
 import CommonSense from '../pages/Notice/CommonSense';
 const routes = [
   {
@@ -36,6 +37,7 @@ const routes = [
     path: '/common-sense',
     element: <CommonSense />,
   },
+  { path: '/diary', element: <CareDiary /> },
 ];
 
 const router = createBrowserRouter([
