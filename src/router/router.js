@@ -6,6 +6,7 @@ import Main from '../pages/Main';
 import Notice from '../pages/NoticePages/Notice';
 import Donation from '../pages/DonationPages/Donation';
 import DonationItemDetail from '../pages/DonationPages/DonationItemDetail';
+import CareDiary from '../pages/CareDiary';
 const routes = [
   {
     path: '/',
@@ -31,6 +32,7 @@ const routes = [
     path: '/donation_item',
     element: <DonationItemDetail />,
   },
+  { path: '/diary', element: <CareDiary /> },
 ];
 
 const router = createBrowserRouter([
