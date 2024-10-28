@@ -47,7 +47,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   .regular {
-    font-family: 'Pretendard-Regular'; 
+    font-family: 'Pretendard-Regular', sans-serif; 
     font-weight: 400;
   }
 
@@ -71,7 +71,6 @@ export const MainContainer = styled.div`
 `;
 export const Content = styled.div`
   padding: 0 20px;
-  background-color: white;
 `;
 
 export default GlobalStyle;
