@@ -11,7 +11,7 @@ export const MainHeader = styled.header`
   z-index: 1000;
   display: flex;
   justify-content: space-between;
-  padding: 1rem 20px;
+  padding: 1.25rem;
   background-color: white;
   font-size: 1.2rem;
   a {
@@ -19,11 +19,17 @@ export const MainHeader = styled.header`
     color: #000000;
     cursor: pointer;
   }
+  p {
+    cursor: pointer;
+  }
+`;
+
+export const MainSection = styled.section`
+  margin: 1.25rem;
 `;
 
 export const MainSliderContainer = styled.section`
   width: 100%;
-  overflow: hidden;
 `;
 
 export const MainSlideImage = styled.img`
@@ -40,7 +46,7 @@ export const MainBtnDiv = styled.section`
   height: 120px;
   background-color: white;
   border-radius: 16px;
-  margin: 1.3rem 0;
+  margin: 1.25rem 0;
   div {
     display: flex;
     gap: 3rem;
@@ -62,6 +68,13 @@ export const MainBtnDiv = styled.section`
   }
 `;
 
+export const MainBadgeImg = styled.img`
+  width: 100%;
+  height: 100px;
+  border-radius: 16px;
+  margin-bottom: 1rem;
+`;
+
 export const MainSenseDiv = styled.section`
   width: 100%;
   height: ${({ height }) => height}px;
@@ -71,7 +84,7 @@ export const MainSenseDiv = styled.section`
   align-items: center;
   border-radius: 16px;
   transition: height 0.2s ease;
-  margin-bottom: 1rem;
+  margin-bottom: 1.25rem;
   h4 {
     text-align: left;
     margin: 1rem 0;
@@ -82,13 +95,18 @@ export const MainSenseDiv = styled.section`
     color: #5850fe;
   }
 `;
+export const MainPawongImg = styled.img`
+  width: 100%;
+  height: 160px;
+  border-radius: 16px;
+`;
 
 export const MainDiaryDiv = styled.section`
   width: 100%;
   height: 350px;
   background-color: white;
   border-radius: 16px;
-  margin: 1rem 0;
+  margin: 1.25rem 0;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -123,7 +141,7 @@ export const MainDiaryDiv = styled.section`
     text-align: left;
     font-size: 0.93rem;
   }
-  .moveBtn {
+  .main__moveDiaryBtn {
     width: 8rem;
     height: 1.4rem;
     border: 0;
@@ -135,6 +153,7 @@ export const MainDiaryDiv = styled.section`
     right: 35%;
     position: absolute;
     font-size: 0.7rem;
+    cursor: pointer;
   }
 `;
 
@@ -143,7 +162,7 @@ export const MainNoticeDiv = styled.section`
   height: 290px;
   background-color: white;
   border-radius: 16px;
-  margin: 1rem 0;
+  margin: 1.25rem 0;
   position: relative;
   display: flex;
   flex-direction: column;

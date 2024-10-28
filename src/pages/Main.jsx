@@ -1,10 +1,13 @@
 import GlobalStyle, { Content, MainContainer } from '../style/global/global';
 import { useNavigate } from 'react-router-dom';
 import {
+  MainBadgeImg,
   MainBtnDiv,
   MainDiaryDiv,
   MainHeader,
   MainNoticeDiv,
+  MainPawongImg,
+  MainSection,
   MainSenseDiv,
   MainSlideImage,
   MainSliderContainer,
@@ -32,7 +35,7 @@ const Main = () => {
     dots: false,
     fade: true,
     infinite: true,
-    speed: 500,
+    speed: 400,
     slidesToShow: 1,
     slidesToScroll: 1,
     waitForAnimate: false,
@@ -47,11 +50,12 @@ const Main = () => {
       <MainContainer>
         <MainHeader className="extraBold">
           <a href="/">포옹</a>
-          <FontAwesomeIcon
-            style={{ cursor: 'pointer' }}
-            onClick={() => handleClick('/login')}
-            icon={faCircleUser}
-          />
+          <p>
+            <FontAwesomeIcon
+              onClick={() => handleClick('/login')}
+              icon={faCircleUser}
+            />
+          </p>
         </MainHeader>
         <MainSliderContainer>
           <Slider {...settings}>
@@ -67,34 +71,34 @@ const Main = () => {
             </div>
           </Slider>
         </MainSliderContainer>
-        <Content className="regular">
+        <MainSection className="regular">
           <MainBtnDiv>
             <div>
               <button onClick={() => handleClick('/dog')}>
-                <img src={'/asset/main/doglist.svg'} alt="임보강아지 목록" />
+                <img
+                  src={'/asset/main/doglist.svg'}
+                  alt="임보강아지목록아이콘"
+                />
                 <span className="regular">임보강아지 목록</span>
               </button>
               <button onClick={() => handleClick('/diary/upload')}>
-                <img src={'/asset/main/diaryupload.svg'} alt="임보일지 작성" />
+                <img
+                  src={'/asset/main/diaryupload.svg'}
+                  alt="임보일지작성아이콘"
+                />
                 <span className="regular">임보일지 작성</span>
               </button>
               <button onClick={() => handleClick('/favorites')}>
-                <img src={'/asset/main/favorites.svg'} alt="즐겨찾기" />
+                <img src={'/asset/main/favorites.svg'} alt="즐겨찾기아이콘" />
                 <span className="regular">즐겨찾기</span>
               </button>
               <button onClick={() => handleClick('/notice')}>
-                <img src={'/asset/main/notice.svg'} alt="공지사항" />
+                <img src={'/asset/main/notice.svg'} alt="공지사항아이콘" />
                 <span className="regular">공지사항</span>
               </button>
             </div>
           </MainBtnDiv>
-          <img
-            style={{
-              width: '100%',
-              height: '100px',
-              borderRadius: '16px',
-              marginBottom: '1rem',
-            }}
+          <MainBadgeImg
             src={'/asset/main/banner1.svg'}
             alt="포옹에서 확인해드려요"
           />
@@ -149,22 +153,16 @@ const Main = () => {
               </li>
             </ul>
             <button
-              className="moveBtn regular"
+              className="main__moveDiaryBtn regular"
               onClick={() => handleClick('/doglist')}
             >
-              <span>임보일지 더 보기</span>
-              <FontAwesomeIcon icon={faAngleRight} />
+              <span>임보일지 더 보기 </span>
+              <span>
+                <FontAwesomeIcon icon={faAngleRight} />
+              </span>
             </button>
           </MainDiaryDiv>
-          <img
-            style={{
-              width: '100%',
-              height: '160px',
-              borderRadius: '16px',
-            }}
-            src={'/asset/main/banner2.svg'}
-            alt="Pawyong"
-          />
+          <MainPawongImg src={'/asset/main/banner2.svg'} alt="Pawyong" />
           <MainNoticeDiv>
             <h4>포옹 소식</h4>
             <ul>
@@ -189,7 +187,7 @@ const Main = () => {
             </ul>
             <img src={'/asset/notice/dogIcon.png'} alt="포옹소식" />
           </MainNoticeDiv>
-        </Content>
+        </MainSection>
         <Footer />
         <Nav />
       </MainContainer>
