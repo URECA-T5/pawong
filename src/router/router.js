@@ -8,6 +8,7 @@ import Donation from '../pages/DonationPages/Donation';
 import DonationItemDetail from '../pages/DonationPages/DonationItemDetail';
 import CareDiary from '../pages/CareDiary';
 import CommonSense from '../pages/Notice/CommonSense';
+
 const routes = [
   {
     path: '/',
