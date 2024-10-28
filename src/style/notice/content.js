@@ -18,7 +18,7 @@ export const ButtonGroup = styled.div`
 
 export const Button = styled.button`
   background-color: ${({ isSelected }) => (isSelected ? '#6c63ff' : 'white')};
-  color: ${({ isSelected }) => (isSelected ? 'white' : '#666')};
+  color: ${({ isSelected }) => (isSelected ? 'white' : '#6D6E71')};
   border: none;
   padding: 1rem;
   font-size: 1rem;
