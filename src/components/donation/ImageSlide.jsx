@@ -4,7 +4,7 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { ImageContainer } from '../../style/donation/itemDetail';
 
-const ImageSlide = () => {
+const ImageSlide = ({ src_list }) => {
   var settings = {
     dots: true,
     lazyLoad: true,
@@ -17,18 +17,11 @@ const ImageSlide = () => {
   return (
     <ImageContainer>
       <Slider {...settings}>
-        <img
-          src="https://sitem.ssgcdn.com/15/52/01/item/1000030015215_i2_1200.jpg"
-          alt=""
-        />
-        <img
-          src="https://sitem.ssgcdn.com/15/52/01/item/1000030015215_i3_1200.jpg"
-          alt=""
-        />
-        <img
-          src="https://sitem.ssgcdn.com/15/52/01/item/1000030015215_i4_1200.jpg"
-          alt=""
-        />
+        {src_list.map((src, index) => {
+          return (
+            <img key={index + src} src={src} alt="" className="image__item" />
+          );
+        })}
       </Slider>
     </ImageContainer>
   );

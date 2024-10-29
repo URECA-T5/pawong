@@ -104,6 +104,7 @@ export const MenuBtn = styled.div`
   font-weight: ${(props) => props.$fontWeight};
 
   caret-color: transparent;
+  cursor: pointer;
 `;
 
 export const MenuArea = styled.div`
