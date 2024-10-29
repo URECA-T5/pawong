@@ -1,3 +1,4 @@
+// CommonSense.jsx
 import React from 'react';
 import GlobalStyle, { MainContainer } from '../../style/global/global';
 import { NoticeHeader } from '../../style/notice/notice';
@@ -6,17 +7,20 @@ import { faHouse, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { SenseBody } from '../../style/notice/commonSense';
 import Content from '../../components/notice/Content';
 import { Link } from 'react-router-dom';
+import styled from 'styled-components';
+
+const WhiteBackgroundContainer = styled(MainContainer)`
+  background-color: #ffffff;
+`;
 
 function CommonSense() {
   return (
     <>
       <GlobalStyle />
-      <MainContainer>
+      <WhiteBackgroundContainer>
         <NoticeHeader>
           <FontAwesomeIcon icon={faArrowLeft} className="header__icon" />
           <Link to="/">
-            {' '}
-            {}
             <FontAwesomeIcon icon={faHouse} className="header__icon home" />
           </Link>
         </NoticeHeader>
@@ -30,7 +34,7 @@ function CommonSense() {
           </div>
           <Content />
         </SenseBody>
-      </MainContainer>
+      </WhiteBackgroundContainer>
     </>
   );
 }

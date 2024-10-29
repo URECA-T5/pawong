@@ -1,6 +1,6 @@
 import { createBrowserRouter } from 'react-router-dom';
 import DefaultLayout from '../layout/DefaultLayout';
-import Login from '../pages/Login';
+import Login from '../pages/Login/Login';
 import Menu from '../pages/Menu';
 import Main from '../pages/Main';
 import Notice from '../pages/Notice/Notice';
