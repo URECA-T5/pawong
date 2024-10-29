@@ -1,10 +1,19 @@
 import React from 'react';
+<<<<<<< HEAD:src/pages/Login.jsx
 import { LoginHeader, LoginBody } from '../style/login/login';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHouse } from '@fortawesome/free-solid-svg-icons';
 import SocialLoginBtn from '../components/auth/SocialLoginBtn';
 import { SOCIAL_LOGIN_PROVIDER } from '../config/socialLogin';
 import mainImg from '../asset/login/Login_Img.svg';
+=======
+import GlobalStyle, { MainContainer } from '../../style/global/global';
+import { LoginHeader, LoginBody } from '../../style/login/login';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHouse } from '@fortawesome/free-solid-svg-icons';
+import GoogleLoginButton from '../../components/common/GoogleLoginButton';
+import { GoogleOAuthProvider } from '@react-oauth/google';
+>>>>>>> ac6203aa335e8b2cf97e4628937f57a34786ccc6:src/pages/Login/Login.jsx
 
 const Login = () => {
   return (
