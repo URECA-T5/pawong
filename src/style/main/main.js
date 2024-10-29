@@ -1,5 +1,16 @@
 import styled from 'styled-components';
 
+const colors = {
+  dark_gray: '#6D6E71',
+  gray: '#CCCCCC',
+  light_gray: '#E3E3E3',
+  pastel_gray: '#F3F3F6',
+  light_blue: '#E3ECFF',
+  pastel_blue: '#5850FE',
+  black: '#000000',
+  white: '#FFFFFF',
+};
+
 export const MainHeader = styled.header`
   width: 100%;
   height: 52px;
@@ -12,11 +23,11 @@ export const MainHeader = styled.header`
   display: flex;
   justify-content: space-between;
   padding: 1.25rem;
-  background-color: white;
+  background-color: ${colors.white};
   font-size: 1.2rem;
   a {
     text-decoration: none;
-    color: #000000;
+    color: ${colors.black};
     cursor: pointer;
   }
   p {
@@ -60,7 +71,7 @@ export const MainBtnDiv = styled.section`
     cursor: pointer;
   }
   button:hover {
-    color: #5850fe;
+    color: ${colors.pastel_blue};
   }
   img {
     width: 70px;
@@ -80,7 +91,7 @@ export const MainSenseDiv = styled.section`
   height: ${({ height }) => height}px;
   display: flex;
   flex-direction: column;
-  background-color: white;
+  background-color: ${colors.white};
   align-items: center;
   border-radius: 16px;
   transition: height 0.2s ease;
@@ -92,7 +103,7 @@ export const MainSenseDiv = styled.section`
     margin: 1.5rem 0 1.2rem 3.5rem;
   }
   h4 > span {
-    color: #5850fe;
+    color: ${colors.pastel_blue};
   }
 `;
 export const MainPawongImg = styled.img`
@@ -104,7 +115,7 @@ export const MainPawongImg = styled.img`
 export const MainDiaryDiv = styled.section`
   width: 100%;
   height: 350px;
-  background-color: white;
+  background-color: ${colors.white};
   border-radius: 16px;
   margin: 1.25rem 0;
   position: relative;
@@ -116,13 +127,13 @@ export const MainDiaryDiv = styled.section`
   }
   a {
     text-decoration: none;
-    color: #6d6e71;
+    color: ${colors.dark_gray};
     cursor: pointer;
   }
   button {
     border: 0;
-    background-color: #e3ecff;
-    color: #5850fe;
+    background-color: ${colors.light_blue};
+    color: ${colors.pastel_blue};
     width: 80px;
     height: 25px;
     margin: 0.3rem 1.5rem 0 0;
@@ -134,8 +145,8 @@ export const MainDiaryDiv = styled.section`
     height: 40px;
     margin: 0.2rem 0 0.1rem 3rem;
     list-style-type: none;
-    border-bottom: 1px solid #f3f3f6;
-    color: #6d6e71;
+    border-bottom: 1px solid ${colors.pastel_gray};
+    color: ${colors.dark_gray};
   }
   li {
     text-align: left;
@@ -146,8 +157,8 @@ export const MainDiaryDiv = styled.section`
     height: 1.4rem;
     border: 0;
     border-radius: 0;
-    background-color: #f3f3f6;
-    color: #6d6e71;
+    background-color: ${colors.pastel_gray};
+    color: ${colors.dark_gray};
     bottom: 1.7rem;
     left: 35%;
     right: 35%;
@@ -160,7 +171,7 @@ export const MainDiaryDiv = styled.section`
 export const MainNoticeDiv = styled.section`
   width: 100%;
   height: 290px;
-  background-color: white;
+  background-color: ${colors.white};
   border-radius: 16px;
   margin: 1.25rem 0;
   position: relative;
@@ -172,8 +183,8 @@ export const MainNoticeDiv = styled.section`
   }
   button {
     border: 0;
-    background-color: #e3ecff;
-    color: #5850fe;
+    background-color: ${colors.light_blue};
+    color: ${colors.pastel_blue};
     width: 20px;
     height: 20px;
     margin-right: 1.5rem;
@@ -182,15 +193,15 @@ export const MainNoticeDiv = styled.section`
   a {
     text-decoration: none;
     cursor: pointer;
-    color: #6d6e71;
+    color: ${colors.dark_gray};
   }
   ul {
     width: 450px;
     height: 40px;
     margin-left: 3rem;
     list-style-type: none;
-    border-bottom: 1px solid #f3f3f6;
-    color: #6d6e71;
+    border-bottom: 1px solid ${colors.pastel_gray};
+    color: ${colors.dark_gray};
   }
   li {
     text-align: left;
