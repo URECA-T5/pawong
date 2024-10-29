@@ -1,5 +1,4 @@
-// Home.js
-import React from 'react';
+import React, { useState } from 'react';
 import GlobalStyle, { MainContainer } from '../../style/global/global';
 import { LoginHeader, LoginBody } from '../../style/login/login';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -36,12 +35,13 @@ const Login = () => {
 
           <div className="loginBtn__section">
             <GoogleOAuthProvider clientId={CLIENT_ID}>
-              {' '}
-              {}
               <GoogleLoginButton />
             </GoogleOAuthProvider>
           </div>
 
+          <div className="pawong__login">
+            <button className="register__btn">포옹 회원가입</button>
+          </div>
           <footer></footer>
         </LoginBody>
       </MainContainer>

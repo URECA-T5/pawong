@@ -9,6 +9,7 @@ export const LoginHeader = styled.header`
 `;
 
 export const LoginBody = styled.div`
+  position: relative;
   /* LoginBody 내부의 h4 태그에 대한 스타일 */
   .login__h4 {
     color: #5850fe;
@@ -32,7 +33,7 @@ export const LoginBody = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 220px;
+    height: 15rem;
   }
   .login__img {
     max-width: 100%;
@@ -50,7 +51,7 @@ export const LoginBody = styled.div`
     flex: 1;
     height: 1px;
     background-color: #ccc;
-    margin: 0 10px;
+    margin: 0 1rem;
   }
 
   .sns-login-text {
@@ -60,5 +61,19 @@ export const LoginBody = styled.div`
   .loginBtn__section {
     display: flex;
     justify-content: center;
+  }
+  .pawong__login {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+    color: #b3b3b3;
+    gap: 1rem;
+  }
+  .register__btn {
+    border: none;
+  }
+  .pawong__login button:hover {
+    color: #5850fe;
+    cursor: pointer;
   }
 `;

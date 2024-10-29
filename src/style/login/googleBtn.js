@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 const GoogleButton = styled.button`
-  width: 50px;
-  height: 50px;
+  width: 4rem;
+  height: 4rem;
   border-radius: 50%;
   border: none;
   background-color: white;
@@ -17,8 +17,8 @@ const GoogleButton = styled.button`
   }
 
   img {
-    width: 20px;
-    height: 20px;
+    width: 1.25rem;
+    height: 1.25rem;
   }
 `;
 
