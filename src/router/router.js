@@ -8,6 +8,7 @@ import Donation from '../pages/DonationPages/Donation';
 import DonationItemDetail from '../pages/DonationPages/DonationItemDetail';
 import CareDiary from '../pages/CareDiary';
 import CommonSense from '../pages/Notice/CommonSense';
+import DonationRecord from '../pages/DonationRecord';
 
 const routes = [
   {
@@ -39,6 +40,10 @@ const routes = [
     element: <CommonSense />,
   },
   { path: '/diary', element: <CareDiary /> },
+  {
+    path: '/donationRecord',
+    element: <DonationRecord />,
+  },
 ];
 
 const router = createBrowserRouter([
