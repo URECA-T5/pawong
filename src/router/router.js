@@ -8,6 +8,7 @@ import CareDiary from '../pages/CareDiary';
 import Donation from '../pages/Donation/Donation';
 import DonationItemDetail from '../pages/Donation/DonationItemDetail';
 import CommonSense from '../pages/Notice/CommonSense';
+import Payment from '../pages/Payment/Payment';
 
 const routes = [
   {
@@ -31,7 +32,7 @@ const routes = [
     element: <Donation />,
   },
   {
-    path: '/donation_item',
+    path: '/donation_item', // 상세 정보 ID 추가 예정
     element: <DonationItemDetail />,
   },
   {
@@ -39,6 +40,10 @@ const routes = [
     element: <CommonSense />,
   },
   { path: '/diary', element: <CareDiary /> },
+  {
+    path: '/payment',
+    element: <Payment />,
+  },
 ];
 
 const router = createBrowserRouter([
