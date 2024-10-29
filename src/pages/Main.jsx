@@ -1,4 +1,4 @@
-import GlobalStyle, { Content, MainContainer } from '../style/global/global';
+import GlobalStyle, { MainContainer } from '../style/global/global';
 import { useNavigate } from 'react-router-dom';
 import {
   MainBadgeImg,
