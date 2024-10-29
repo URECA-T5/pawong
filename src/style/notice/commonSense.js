@@ -19,7 +19,7 @@ export const SenseBody = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 2rem;
+    margin-bottom: 2rem;
     width: 100%;
     text-align: center;
   }

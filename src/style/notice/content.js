@@ -18,6 +18,13 @@ export const ButtonGroup = styled.div`
 `;
 
 export const Button = styled.button`
+  @font-face {
+    font-family: 'Pretendard-Bold';
+    src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Bold.woff')
+      format('woff');
+    font-weight: 700;
+    font-style: normal;
+  }
   background-color: ${({ isSelected }) => (isSelected ? '#6c63ff' : 'white')};
   color: ${({ isSelected }) => (isSelected ? 'white' : '#6D6E71')};
   border: none;
@@ -25,6 +32,7 @@ export const Button = styled.button`
   font-size: 1rem;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  font-family: 'Pretendard-Bold';
 
   &:not(:last-child) {
     border-right: 1px solid #b3b3b3;
