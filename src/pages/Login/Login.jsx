@@ -1,10 +1,10 @@
 // Home.js
 import React from 'react';
-import GlobalStyle, { MainContainer } from '../style/global/global';
-import { LoginHeader, LoginBody } from '../style/login/login';
+import GlobalStyle, { MainContainer } from '../../style/global/global';
+import { LoginHeader, LoginBody } from '../../style/login/login';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHouse } from '@fortawesome/free-solid-svg-icons';
-import GoogleLoginButton from '../components/common/GoogleLoginButton';
+import GoogleLoginButton from '../../components/common/GoogleLoginButton';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 
 const Login = () => {
