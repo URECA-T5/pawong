@@ -25,13 +25,13 @@ export const WhiteContainer = styled(MainContainer)`
 
 export const BodyContainer = styled.div`
   padding: 0.5rem;
-  font-size: 15px;
+  font-size: 1rem;
   font-weight: normal;
   caret-color: transparent;
 
   .item__category {
-    width: 53px;
-    height: 25px;
+    width: 3.3rem;
+    height: 1.5rem;
     margin-bottom: 0.5rem;
     border-radius: 16px;
     background-color: ${colors.light_blue};
@@ -42,8 +42,8 @@ export const BodyContainer = styled.div`
   }
 
   .item__message {
-    width: 90px;
-    height: 30px;
+    width: 5.6rem;
+    height: 1.8rem;
     margin-bottom: 0.5rem;
     border-radius: 16px;
     color: ${colors.pastel_gray};
@@ -59,7 +59,7 @@ export const BodyContainer = styled.div`
   }
 
   .item__title {
-    font-size: 20px;
+    font-size: 1.3rem;
   }
 
   .item__row {
@@ -68,13 +68,13 @@ export const BodyContainer = styled.div`
   }
 
   .item__price {
-    font-size: 20px;
+    font-size: 1.3rem;
     padding: 0rem 1rem;
   }
 
   .item__split {
     width: 100%;
-    height: 5px;
+    height: 0.3rem;
     margin: 0.4rem 0;
     background-color: ${colors.pastel_gray};
   }
@@ -86,7 +86,7 @@ export const BodyContainer = styled.div`
 `;
 
 export const BottomContainer = styled.div`
-  height: 120px;
+  height: 7.5rem;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -99,8 +99,8 @@ export const BottomContainer = styled.div`
   background-color: white;
 
   .btn__share {
-    width: 50px;
-    height: 45px;
+    width: 3.1rem;
+    height: 2.8rem;
     font-size: 1.2rem;
     border-radius: 8px;
     display: flex;
@@ -114,8 +114,8 @@ export const BottomContainer = styled.div`
   }
 
   .btn__buy {
-    width: 480px;
-    height: 45px;
+    width: 30rem;
+    height: 2.8rem;
     border: none;
     border-radius: 8px;
     background-color: ${colors.pastel_blue};
@@ -155,8 +155,8 @@ export const BottomModalContainer = styled.dialog`
     align-items: center;
     border-radius: 16px;
     font-size: 1rem;
-    width: 530px;
-    height: 100px;
+    width: 33.1rem;
+    height: 6.3rem;
     padding: 1.6rem 1.4rem;
     margin-bottom: 1.3rem;
     background-color: ${colors.pastel_gray};
@@ -176,8 +176,8 @@ export const BottomModalContainer = styled.dialog`
     font-weight: bold;
     font-size: 1rem;
     gap: 1rem;
-    width: 83px;
-    height: 20px;
+    width: 5.2rem;
+    height: 1.3rem;
   }
 
   .modal__title {
@@ -189,8 +189,8 @@ export const BottomModalContainer = styled.dialog`
   }
 
   .modal__toggleBtn {
-    width: 20px;
-    height: 20px;
+    width: 1.4rem;
+    height: 1.4rem;
     border: none;
     border-radius: 50%;
     justify-content: center;
@@ -216,7 +216,7 @@ export const BottomModalContainer = styled.dialog`
   .modal__buyBtn {
     background-color: ${colors.pastel_blue};
     width: 100%;
-    height: 45px;
+    height: 2.8rem;
     font-size: 1rem;
     border: none;
     border-radius: 8px;
@@ -230,12 +230,40 @@ export const BottomModalContainer = styled.dialog`
 
   @keyframes modal-show {
     from {
-      opacity: 0.9;
+      opacity: 0.95;
       transform: translateY(100%);
     }
     to {
       opacity: 1;
       transform: translateY(0);
     }
+  }
+`;
+
+export const ToggleBtn = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  color: ${colors.dark_gray};
+  font-weight: bold;
+  font-size: 1rem;
+  gap: 1rem;
+  width: 5.2rem;
+  height: 1.3rem;
+
+  .modal__price {
+    color: ${colors.light_gray};
+  }
+
+  .modal__toggleBtn {
+    width: 1.4rem;
+    height: 1.4rem;
+    border: none;
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+    background-color: ${colors.light_blue};
+    color: ${colors.pastel_blue};
+    cursor: pointer;
   }
 `;
