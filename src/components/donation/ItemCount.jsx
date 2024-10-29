@@ -6,14 +6,7 @@ const ItemCount = ({ modalRef, title, price }) => {
   const [totalPrice, setTotalPrice] = useState(cnt.current * price);
 
   const handleCnt = (e) => {
-    if (e.target.id == 'btn__minus') {
-      if (cnt.current > 0) {
-        cnt.current -= 1;
-      }
-    } else {
-      cnt.current += 1;
-    }
-
+    cnt.current += e.target.id === 'btn__minus' && cnt.current > 0 ? -1 : 1;
     setTotalPrice(cnt.current * price);
   };
 
