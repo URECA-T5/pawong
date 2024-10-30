@@ -22,7 +22,7 @@ const ItemPrice = ({ item }) => {
             {(item.cnt * item.price).toLocaleString('ko-KR')}원
           </p>
         </div>
-        <button className="payment__start">결제하기</button>
+        <button className="payment__start bold">결제하기</button>
       </ItemTotalPriceArea>
     </>
   );
