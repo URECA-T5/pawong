@@ -43,7 +43,7 @@ export const Section = styled.section`
   }
 `;
 
-export const ImgContainer = styled.div`
+export const ImageContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
