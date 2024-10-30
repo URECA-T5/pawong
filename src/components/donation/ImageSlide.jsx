@@ -19,7 +19,12 @@ const ImageSlide = ({ src_list }) => {
       <Slider {...settings}>
         {src_list.map((src, index) => {
           return (
-            <img key={index + src} src={src} alt="" className="image__item" />
+            <img
+              key={index + src}
+              src={src}
+              alt="no images"
+              className="image__item"
+            />
           );
         })}
       </Slider>
