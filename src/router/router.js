@@ -17,11 +17,11 @@ const routes = [
     element: <Main />,
   },
   {
-    path: '/login', // login 경로 추가
+    path: '/login',
     element: <Login />,
   },
   {
-    path: '/menu', // menu 경로 추가
+    path: '/menu',
     element: <Menu />,
   },
   {
@@ -33,7 +33,7 @@ const routes = [
     element: <Donation />,
   },
   {
-    path: '/donation_item', // 상세 정보 ID 추가 예정
+    path: '/donation_item',
     element: <DonationItemDetail />,
   },
   {
