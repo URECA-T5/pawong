@@ -8,6 +8,7 @@ import CareDiary from '../pages/CareDiary';
 import Donation from '../pages/Donation/Donation';
 import DonationItemDetail from '../pages/Donation/DonationItemDetail';
 import CommonSense from '../pages/Notice/CommonSense';
+import DonationRecord from '../pages/DonationRecord';
 import Payment from '../pages/Payment/Payment';
 
 const routes = [
@@ -40,6 +41,10 @@ const routes = [
     element: <CommonSense />,
   },
   { path: '/diary', element: <CareDiary /> },
+  {
+    path: '/donationRecord',
+    element: <DonationRecord />,
+  },
   {
     path: '/payment',
     element: <Payment />,

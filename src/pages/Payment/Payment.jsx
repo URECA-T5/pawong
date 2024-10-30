@@ -1,12 +1,15 @@
 import React from 'react';
 import GlobalStyle, { MainContainer } from '../../style/global/global';
+import PaymentBody from '../../components/payment/PaymentBody';
+import PaymentHeader from '../../components/payment/PaymentHeader';
 
 const Payment = () => {
   return (
     <>
       <GlobalStyle />
       <MainContainer>
-        <h1 className="extraBold">Payment Page Init</h1>
+        <PaymentHeader />
+        <PaymentBody />
       </MainContainer>
     </>
   );
