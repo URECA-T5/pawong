@@ -59,8 +59,11 @@ const GlobalStyle = createGlobalStyle`
 
   #root {
     display: flex;
-    justify-content: center;
-    width: 600px;
+    justify-content: center; 
+    width: 100%; 
+    min-height: 100vh; 
+    margin: 0; 
+    padding: 0; 
   }
 `;
 
