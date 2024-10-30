@@ -11,12 +11,14 @@ import GoogleLoginButton from '../../components/common/GoogleLoginButton';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-const WhiteBackgroundContainer = styled(MainContainer)`
-  background-color: #ffffff;
-`;
+import LoginModal from '../../components/login/LoginModal';
 
 const Login = () => {
   const CLIENT_ID = process.env.REACT_APP_GOOGLE_API_KEY;
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
   return (
     <>
       <GlobalStyle />
@@ -37,7 +39,6 @@ const Login = () => {
               className="login__img"
             />
           </div>
-
           <div className="register__section">
             <p className="bold">회원이 아니신가요? 우리 함께해요</p>
             <Link to="/register">
@@ -46,22 +47,20 @@ const Login = () => {
               </button>
             </Link>
           </div>
-
           <div className="line__section">
             <hr className="line" />
             <span className="sns-login-text">SNS 로그인</span>
             <hr className="line" />
           </div>
-
           <div className="loginBtn__section">
             <GoogleOAuthProvider clientId={CLIENT_ID}>
               <GoogleLoginButton />
             </GoogleOAuthProvider>
-            <button className="pawong__loginImg">
+            <button className="pawong__loginImg" onClick={openModal}>
               <FontAwesomeIcon icon={faPaw} />
             </button>
           </div>
-
+          {isModalOpen && <LoginModal onClose={closeModal} />}
           <footer></footer>
         </LoginBody>
       </MainContainer>
