@@ -9,7 +9,6 @@ import Donation from '../pages/Donation/Donation';
 import DonationItemDetail from '../pages/Donation/DonationItemDetail';
 import CommonSense from '../pages/Notice/CommonSense';
 import Register from '../pages/Register/Register';
-import DonationRecord from '../pages/DonationRecord';
 import DonationRecord from '../pages/record/DonationRecord';
 import FosterRecord from '../pages/record/FosterRecord';
 
