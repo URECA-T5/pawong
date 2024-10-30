@@ -3,9 +3,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHouse } from '@fortawesome/free-solid-svg-icons';
 import { faBell } from '@fortawesome/free-regular-svg-icons';
 import { diaryStore } from '../../stores/diaryStore';
-import { Dialog } from '../../components/modal/Dialog';
+import { Dialog } from './Dialog';
 import { InputField } from './InputField';
 import { useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 import {
   Header,
   ImgContainer,
@@ -17,6 +19,11 @@ import {
 function CareDiary() {
   const { openModal, selectedTag, formData, setFormData } = diaryStore();
   const fileInputRef = useRef(null);
+  const navigate = useNavigate();
+
+  const handleClick = (path) => {
+    navigate(path);
+  };
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
@@ -58,8 +65,12 @@ function CareDiary() {
       <MainContainer>
         <Header>
           <p className="extraBold">일지작성</p>
-          <FontAwesomeIcon icon={faBell} className="icon icon_bell" />
-          <FontAwesomeIcon icon={faHouse} className="icon icon_home" />
+          <FontAwesomeIcon icon={faBell} className="header__icon" />
+          <FontAwesomeIcon
+            icon={faHouse}
+            className="header__icon"
+            onClick={() => handleClick('/')}
+          />
         </Header>
 
         <Section>

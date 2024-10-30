@@ -9,7 +9,7 @@ const colors = {
 
 export const Header = styled.header`
   width: 100%;
-  height: 52px;
+  height: 3.25rem;
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -21,8 +21,9 @@ export const Header = styled.header`
     flex: 0.5;
   }
 
-  .icon {
+  .header__icon {
     margin-left: 0.625rem;
+    cursor: pointer;
   }
 `;
 
@@ -58,8 +59,8 @@ export const ImgContainer = styled.div`
 
   .img__upload img {
     object-fit: contain;
-    max-width: 500px;
-    max-height: 300px;
+    max-width: 31.25rem;
+    max-height: 18.75rem;
   }
 
   .button__upload {
@@ -87,7 +88,7 @@ export const InputContainer = styled.div`
   }
 
   input {
-    height: 45px;
+    height: 2.82rem;
     padding: 0.5rem;
     border: 1px solid ${colors.placeholder};
     border-radius: 1rem;
@@ -104,7 +105,7 @@ export const InputContainer = styled.div`
   textarea {
     border: 1px solid ${colors.placeholder};
     border-radius: 1rem;
-    height: 160px;
+    height: 10rem;
     padding: 0.5rem;
     resize: none;
   }
@@ -118,7 +119,7 @@ export const InputContainer = styled.div`
   .modal__button {
     font-family: 'Pretendard-Regular', sans-serif;
     font-weight: 400;
-    height: 45px;
+    height: 2.82rem;
     padding: 0.5rem;
     margin: 0.25rem;
     border: 1px solid ${colors.placeholder};
@@ -130,8 +131,8 @@ export const InputContainer = styled.div`
 `;
 
 export const Button = styled.button`
-  width: 213px;
-  height: 52px;
+  width: 13.4rem;
+  height: 3.25rem;
   padding: 0.625rem;
   font-size: 1.25rem;
   margin: 0.625rem;

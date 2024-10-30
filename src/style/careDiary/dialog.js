@@ -23,9 +23,9 @@ export const Overlay = styled.div`
 
 export const DialogContainer = styled.div`
   background: white;
-  padding: 20px;
-  border-radius: 5px;
-  width: 500px;
+  padding: 1.25rem;
+  border-radius: 0.32rem;
+  width: 31.3rem;
   border-radius: 1rem;
   text-align: center;
   display: flex;
@@ -56,9 +56,9 @@ export const TagButton = styled.button`
   font-size: 1.2rem;
   border: none;
   border-radius: 1rem;
-  width: 190px;
+  width: 11.8rem;
   margin: 0.625rem;
-  height: 50px;
+  height: 3.12rem;
   cursor: pointer;
   flex: 0 0 15%;
   color: ${(props) => (props.$isSelected ? colors.point : colors.darkGray)};
@@ -67,8 +67,8 @@ export const TagButton = styled.button`
 `;
 
 export const Button = styled.button`
-  width: 213px;
-  height: 52px;
+  width: 13.4rem;
+  height: 3.25rem;
   padding: 0.625rem;
   font-size: 1.25rem;
   margin: 0.625rem;

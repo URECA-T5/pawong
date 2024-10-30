@@ -36,6 +36,7 @@ function Menu() {
       imgSrc: '/asset/menu/crown_icon.svg',
       alt: '등록된 이미지가 없습니다.(Image not available)',
       text: '임시보호 상식',
+      onClick: () => navigate('/common-sense'),
     },
     {
       imgSrc: '/asset/menu/love_icon.svg',
@@ -109,7 +110,7 @@ function Menu() {
             ></Profile_Img>
           </div>
           <Profile_User onClick={handleLoginClick} title="login">
-            포옹에<span className="text_color"> 로그인</span>해주세요
+            포옹에<span className="text_color"> 로그인 </span>해주세요
           </Profile_User>
           <FontAwesomeIcon icon={faAngleRight} />
         </Login_Box>
