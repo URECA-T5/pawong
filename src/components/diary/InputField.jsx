@@ -1,13 +1,6 @@
 import { diaryStore } from '../../stores/diaryStore';
-
-export const InputField = ({
-  label,
-  type,
-  placeholder,
-  maxLength,
-  name,
-  required,
-}) => {
+import { RequiredStar } from '../../style/careDiary/careDiary';
+export const InputField = ({ label, type, placeholder, maxLength, name }) => {
   const { formData, setFormData } = diaryStore();
 
   const handleChange = (e) => {
@@ -16,7 +9,12 @@ export const InputField = ({
 
   return (
     <div>
-      <p className="input__title">{label}</p>
+      <p className="input__title">
+        {label}
+        {name === 'title' && formData[name] === '' && (
+          <RequiredStar>*</RequiredStar>
+        )}
+      </p>
       {type === 'textarea' ? (
         <textarea
           maxLength={maxLength}
@@ -31,7 +29,6 @@ export const InputField = ({
           placeholder={placeholder}
           value={formData[name]}
           onChange={handleChange}
-          required={required}
         />
       )}
     </div>

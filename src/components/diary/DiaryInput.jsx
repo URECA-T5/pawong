@@ -1,4 +1,3 @@
-import React from 'react';
 import { diaryStore } from '../../stores/diaryStore';
 import { InputField } from './InputField';
 import { InputContainer, TagButton } from '../../style/careDiary/careDiary';
@@ -36,8 +35,8 @@ const DiaryInput = () => {
       <InputField
         className="input__title"
         type={'input'}
-        label={'제목 *'}
-        placeholder={'제목을 입력해주세요'}
+        label={'제목'}
+        placeholder={'제목을 입력해주세요 (필수입력)'}
         name={'title'}
         required={true}
         maxLength={20}

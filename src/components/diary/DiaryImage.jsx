@@ -46,6 +46,7 @@ const DiaryImage = () => {
         </button>
       ) : (
         <button
+          type="button"
           className="button__upload"
           onClick={() => fileInputRef.current.click()}
         >

@@ -143,8 +143,8 @@ export const TagButton = styled.button`
   font-weight: 700;
   border: none;
   border-radius: 1rem;
-  width: 3.3rem;
-  height: 1.5rem;
+  width: 3.5rem;
+  height: 1.7rem;
   margin: 0 0.3rem;
   justify-content: center;
   align-items: center;
@@ -152,4 +152,10 @@ export const TagButton = styled.button`
   color: ${(props) => (props.$selected ? colors.point : colors.darkGray)};
   background-color: ${(props) =>
     props.$selected ? colors.skyBackground : colors.defaultBackground};
+`;
+
+export const RequiredStar = styled.span`
+  color: ${colors.point};
+  margin-left: 0.2rem;
+  font-size: 1.2rem;
 `;

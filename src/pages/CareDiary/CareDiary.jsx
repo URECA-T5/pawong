@@ -18,6 +18,7 @@ const CareDiary = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     const updatedFormData = {
       ...formData,
       tag: selectedTag,
@@ -57,7 +58,12 @@ const CareDiary = () => {
               <Button className="bold" $cancel={true} onClick={onCancleClick}>
                 취소
               </Button>
-              <Button className="bold" $cancel={false} type="submit">
+              <Button
+                className="bold"
+                $cancel={false}
+                type="submit"
+                disabled={!formData.title}
+              >
                 등록
               </Button>
             </div>
