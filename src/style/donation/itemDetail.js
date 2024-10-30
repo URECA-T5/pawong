@@ -1,9 +1,22 @@
 import styled from 'styled-components';
 import { MainContainer } from '../global/global';
 
+const colors = {
+  dark_gray: '#6D6E71',
+  light_gray: '#B3B3B3',
+  pastel_gray: '#F3F3F6',
+  light_blue: '#E3ECFF',
+  pastel_blue: '#5850FE',
+};
+
 export const ImageContainer = styled.div`
   width: 100%;
   padding: 1rem;
+  caret-color: transparent;
+
+  .image__item {
+    height: 100%;
+  }
 `;
 
 export const WhiteContainer = styled(MainContainer)`
@@ -12,16 +25,16 @@ export const WhiteContainer = styled(MainContainer)`
 
 export const BodyContainer = styled.div`
   padding: 0.5rem;
-  font-size: 15px;
+  font-size: 1rem;
   font-weight: normal;
   caret-color: transparent;
 
   .item__category {
-    width: 53px;
-    height: 25px;
+    width: 3.3rem;
+    height: 1.5rem;
     margin-bottom: 0.5rem;
     border-radius: 16px;
-    background-color: #e3ecff;
+    background-color: ${colors.light_blue};
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -29,12 +42,12 @@ export const BodyContainer = styled.div`
   }
 
   .item__message {
-    width: 90px;
-    height: 30px;
+    width: 5.6rem;
+    height: 1.8rem;
     margin-bottom: 0.5rem;
     border-radius: 16px;
-    color: #f3f3f6;
-    background-color: #5850fe;
+    color: ${colors.pastel_gray};
+    background-color: ${colors.pastel_blue};
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -46,7 +59,7 @@ export const BodyContainer = styled.div`
   }
 
   .item__title {
-    font-size: 20px;
+    font-size: 1.3rem;
   }
 
   .item__row {
@@ -55,15 +68,15 @@ export const BodyContainer = styled.div`
   }
 
   .item__price {
-    font-size: 20px;
+    font-size: 1.3rem;
     padding: 0rem 1rem;
   }
 
   .item__split {
     width: 100%;
-    height: 5px;
+    height: 0.3rem;
     margin: 0.4rem 0;
-    background-color: #f3f3f6;
+    background-color: ${colors.pastel_gray};
   }
 
   .item__description {
@@ -73,7 +86,7 @@ export const BodyContainer = styled.div`
 `;
 
 export const BottomContainer = styled.div`
-  height: 120px;
+  height: 7.5rem;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -86,22 +99,171 @@ export const BottomContainer = styled.div`
   background-color: white;
 
   .btn__share {
-    width: 50px;
-    height: 45px;
+    width: 3.1rem;
+    height: 2.8rem;
+    font-size: 1.2rem;
     border-radius: 8px;
-    background-color: #e3ecff;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: ${colors.light_blue};
+    color: ${colors.pastel_blue};
+
+    cursor: pointer;
   }
 
   .btn__buy {
-    width: 480px;
-    height: 45px;
+    width: 30rem;
+    height: 2.8rem;
+    border: none;
     border-radius: 8px;
-    background-color: #5850fe;
-    color: #e3ecff;
+    background-color: ${colors.pastel_blue};
+    color: ${colors.light_blue};
 
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    cursor: pointer;
+  }
+`;
+
+export const BottomModalContainer = styled.dialog`
+  position: fixed;
+  border: none;
+  padding: 2.2rem;
+  margin-top: calc(100vh - 300px);
+  margin-left: calc(50% - 17.5rem);
+  animation: modal-show 0.5s;
+  border-radius: 16px 16px 0 0;
+  width: 37.5rem;
+  height: 18.75rem;
+  overflow: hidden;
+  caret-color: transparent;
+  inset: 0;
+
+  .modal__dialog::backdrop {
+    background-color: #ffffff;
+  }
+
+  .modal__infoContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 16px;
+    font-size: 1rem;
+    width: 33.1rem;
+    height: 6.3rem;
+    padding: 1.6rem 1.4rem;
+    margin-bottom: 1.3rem;
+    background-color: ${colors.pastel_gray};
+  }
+
+  .modal__infoLeft {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .modal__infoRight {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    color: ${colors.dark_gray};
+    font-weight: bold;
+    font-size: 1rem;
+    gap: 1rem;
+    width: 5.2rem;
+    height: 1.3rem;
+  }
+
+  .modal__title {
+    color: ${colors.dark_gray};
+  }
+
+  .modal__price {
+    color: ${colors.light_gray};
+  }
+
+  .modal__toggleBtn {
+    width: 1.4rem;
+    height: 1.4rem;
+    border: none;
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+    background-color: ${colors.light_blue};
+    color: ${colors.pastel_blue};
+    cursor: pointer;
+  }
+
+  .modal__total {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0.2rem;
+    margin-bottom: 2rem;
+    font-size: 1.2rem;
+  }
+
+  .modal__totalPrice {
+    color: ${colors.pastel_blue};
+  }
+
+  .modal__buyBtn {
+    background-color: ${colors.pastel_blue};
+    width: 100%;
+    height: 2.8rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  @keyframes modal-show {
+    from {
+      opacity: 0.95;
+      transform: translateY(100%);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+`;
+
+export const ToggleBtn = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  color: ${colors.dark_gray};
+  font-weight: bold;
+  font-size: 1rem;
+  gap: 1rem;
+  width: 5.2rem;
+  height: 1.3rem;
+
+  .modal__price {
+    color: ${colors.light_gray};
+  }
+
+  .modal__toggleBtn {
+    width: 1.4rem;
+    height: 1.4rem;
+    border: none;
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+    background-color: ${colors.light_blue};
+    color: ${colors.pastel_blue};
+    cursor: pointer;
   }
 `;

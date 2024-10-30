@@ -17,7 +17,7 @@ export const Navbar = styled.section`
     gap: 4.5rem;
     align-items: center;
     height: 100%;
-    padding: 1rem 1rem;
+    padding: 1.25rem;
   }
   FontAwesomeIcon {
     font-size: 1.3rem;
