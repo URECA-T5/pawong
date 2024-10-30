@@ -6,6 +6,7 @@ export const diaryStore = create((set) => ({
     title: '',
     location: '',
     story: '',
+    image: null,
   },
   selectedTag: '',
   isModalOpen: false,

@@ -5,6 +5,7 @@ import { faBell } from '@fortawesome/free-regular-svg-icons';
 import { diaryStore } from '../../stores/diaryStore';
 import { Dialog } from '../../components/modal/Dialog';
 import { InputField } from './InputField';
+import { useRef } from 'react';
 import {
   Header,
   ImgContainer,
@@ -15,13 +16,31 @@ import {
 
 function CareDiary() {
   const { openModal, selectedTag, formData, setFormData } = diaryStore();
+  const fileInputRef = useRef(null);
+
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const imageUrl = URL.createObjectURL(file);
+      setFormData('image', imageUrl);
+    }
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const updatedFormData = {
       ...formData,
       tag: selectedTag,
+      image: formData.image,
     };
     console.log(updatedFormData);
+  };
+
+  const handleImgCancel = () => {
+    setFormData('image', '');
+    if (fileInputRef.current) {
+      fileInputRef.current.value = '';
+    }
   };
 
   const onCancleClick = (e) => {
@@ -30,6 +49,7 @@ function CareDiary() {
     setFormData('title', '');
     setFormData('location', '');
     setFormData('story', '');
+    setFormData('image', '');
   };
 
   return (
@@ -45,10 +65,35 @@ function CareDiary() {
         <Section>
           <form onSubmit={handleSubmit}>
             <ImgContainer>
-              <img
-                src="/asset/register/registerImg_icon.svg"
-                alt="프로필 이미지를 등록해주세요"
+              <input
+                className="img__input"
+                type="file"
+                accept=".jpg,.jpeg,.png"
+                onChange={handleImageChange}
+                ref={fileInputRef}
               />
+              <div className="img__upload">
+                <img
+                  src={
+                    formData.image
+                      ? formData.image
+                      : '/asset/register/registerImg_icon.svg'
+                  }
+                  alt="프로필 이미지를 등록해주세요"
+                />
+              </div>
+              {formData.image ? (
+                <button className="button__upload" onClick={handleImgCancel}>
+                  삭제
+                </button>
+              ) : (
+                <button
+                  className="button__upload"
+                  onClick={() => fileInputRef.current.click()}
+                >
+                  이미지선택
+                </button>
+              )}
             </ImgContainer>
             <h4 className="bold">임시보호 일지를 작성해주세요</h4>
             <InputContainer>

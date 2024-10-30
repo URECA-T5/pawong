@@ -1,4 +1,4 @@
-import styled, { withTheme } from 'styled-components';
+import styled from 'styled-components';
 
 const colors = {
   placeholder: '#cccccc',
@@ -43,13 +43,35 @@ export const Section = styled.section`
 
 export const ImgContainer = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-
   height: 340px;
   border: 1px solid ${colors.placeholder};
   border-radius: 1rem;
   margin-bottom: 1.25rem;
+  padding: 1rem;
+
+  .img__input {
+    display: none;
+  }
+
+  .img__upload img {
+    object-fit: contain;
+    max-width: 500px;
+    max-height: 300px;
+  }
+
+  .button__upload {
+    border: none;
+    border-radius: 1rem;
+    color: ${colors.darkGray};
+    cursor: pointer;
+    justify-content: center;
+    background-color: ${colors.skyBackground};
+    font-size: 0.6rem;
+    padding: 0.5rem;
+  }
 `;
 
 export const InputContainer = styled.div`
@@ -73,6 +95,10 @@ export const InputContainer = styled.div`
 
   .input__title {
     margin: 0.25rem;
+  }
+
+  input:invalid:required {
+    background-image: linear-gradient(to right, white, #e3ecff);
   }
 
   textarea {
@@ -114,6 +140,7 @@ export const Button = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
   color: ${(props) => (props.$cancel ? colors.point : 'white')};
   background-color: ${(props) =>
     props.$cancel ? colors.skyBackground : colors.point};

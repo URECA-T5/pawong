@@ -22,12 +22,12 @@ export const Dialog = () => {
     '#정보공유',
   ];
   const handleTagClick = (tag) => {
-    setSelectedTag(tag); // 태그 선택 시 상태 업데이트
+    setSelectedTag(tag);
   };
 
   const handleSubmit = () => {
-    console.log(selectedTag); // 선택된 태그를 콘솔에 출력
-    closeModal(); // 모달 닫기
+    console.log(selectedTag);
+    closeModal();
   };
 
   if (!isModalOpen) return null;
