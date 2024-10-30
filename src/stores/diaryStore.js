@@ -20,7 +20,5 @@ export const diaryStore = create((set) => ({
     })),
   setSelectedTag: (tag) => set({ selectedTag: tag }),
   setToggleModal: () => set((state) => ({ isModalOpen: !state.isModalOpen })),
-  openModal: () => set({ isModalOpen: true }),
-  closeModal: () => set({ isModalOpen: false }),
 }));
 export default diaryStore;

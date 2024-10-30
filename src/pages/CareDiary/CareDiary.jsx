@@ -3,23 +3,30 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHouse } from '@fortawesome/free-solid-svg-icons';
 import { faBell } from '@fortawesome/free-regular-svg-icons';
 import { diaryStore } from '../../stores/diaryStore';
-import { Dialog } from './Dialog';
-import { InputField } from './InputField';
+import { InputField } from '../../components/diary/InputField';
 import { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-
 import {
   Header,
   ImgContainer,
   InputContainer,
   Section,
   Button,
+  TagButton,
 } from '../../style/careDiary/careDiary';
 
 function CareDiary() {
-  const { openModal, selectedTag, formData, setFormData } = diaryStore();
+  const { selectedTag, setSelectedTag, formData, setFormData } = diaryStore();
   const fileInputRef = useRef(null);
   const navigate = useNavigate();
+
+  const tags = [
+    { id: 1, name: '오산완' },
+    { id: 2, name: '일상' },
+    { id: 3, name: '병원' },
+    { id: 4, name: '먹방' },
+    { id: 5, name: '미용' },
+  ];
 
   const handleClick = (path) => {
     navigate(path);
@@ -31,6 +38,10 @@ function CareDiary() {
       const imageUrl = URL.createObjectURL(file);
       setFormData('image', imageUrl);
     }
+  };
+
+  const handleTagButtonClick = (tag) => {
+    setSelectedTag(tag === selectedTag ? '' : tag);
   };
 
   const handleSubmit = (e) => {
@@ -72,7 +83,6 @@ function CareDiary() {
             onClick={() => handleClick('/')}
           />
         </Header>
-
         <Section>
           <form onSubmit={handleSubmit}>
             <ImgContainer>
@@ -102,23 +112,29 @@ function CareDiary() {
                   className="button__upload"
                   onClick={() => fileInputRef.current.click()}
                 >
-                  이미지선택
+                  사진선택
                 </button>
               )}
             </ImgContainer>
             <h4 className="bold">임시보호 일지를 작성해주세요</h4>
             <InputContainer>
+              <p className="input__title">주제</p>
               <div className="tag__container">
-                <p className="input__title">태그</p>
-                <button className="modal__button" onClick={openModal}>
-                  {selectedTag || '태그를 선택하세요 (클릭)'}
-                </button>
-                <Dialog />
+                {tags.map((tag) => (
+                  <TagButton
+                    key={tag.id}
+                    $selected={selectedTag === tag.name}
+                    onClick={() => handleTagButtonClick(tag.name)}
+                  >
+                    {tag.name}
+                  </TagButton>
+                ))}
               </div>
+
               <InputField
                 className="input__title"
                 type={'input'}
-                label={'제목'}
+                label={'제목 *'}
                 placeholder={'제목을 입력해주세요'}
                 name={'title'}
                 required={true}

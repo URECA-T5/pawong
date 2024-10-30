@@ -5,6 +5,7 @@ const colors = {
   point: '#5850fe',
   skyBackground: '#e3ecff',
   darkGray: '#6d6e71',
+  defaultBackground: '#f3f3f6',
 };
 
 export const Header = styled.header`
@@ -47,7 +48,7 @@ export const ImgContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 340px;
+  height: 22rem;
   border: 1px solid ${colors.placeholder};
   border-radius: 1rem;
   margin-bottom: 1.25rem;
@@ -92,14 +93,14 @@ export const InputContainer = styled.div`
     padding: 0.5rem;
     border: 1px solid ${colors.placeholder};
     border-radius: 1rem;
+    outline-color: ${colors.point};
   }
 
   .input__title {
-    margin: 0.25rem;
-  }
-
-  input:invalid:required {
-    background-image: linear-gradient(to right, white, #e3ecff);
+    margin: 0.5rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
   }
 
   textarea {
@@ -108,25 +109,15 @@ export const InputContainer = styled.div`
     height: 10rem;
     padding: 0.5rem;
     resize: none;
+    outline-color: ${colors.point};
   }
 
   .tag__container {
     margin-bottom: 0.625rem;
-    font-family: 'Pretendard-Regular', sans-serif;
-    font-weight: 400;
-  }
-
-  .modal__button {
-    font-family: 'Pretendard-Regular', sans-serif;
-    font-weight: 400;
-    height: 2.82rem;
-    padding: 0.5rem;
-    margin: 0.25rem;
-    border: 1px solid ${colors.placeholder};
-    border-radius: 1rem;
-    text-align: start;
-    color: ${colors.darkGray};
-    background-color: white;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: start;
   }
 `;
 
@@ -145,4 +136,20 @@ export const Button = styled.button`
   color: ${(props) => (props.$cancel ? colors.point : 'white')};
   background-color: ${(props) =>
     props.$cancel ? colors.skyBackground : colors.point};
+`;
+
+export const TagButton = styled.button`
+  font-family: 'Pretendard-Bold', sans-serif;
+  font-weight: 700;
+  border: none;
+  border-radius: 1rem;
+  width: 3.3rem;
+  height: 1.5rem;
+  margin: 0 0.3rem;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  color: ${(props) => (props.$selected ? colors.point : colors.darkGray)};
+  background-color: ${(props) =>
+    props.$selected ? colors.skyBackground : colors.defaultBackground};
 `;
