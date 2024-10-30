@@ -18,7 +18,9 @@ const Login = () => {
       <GlobalStyle />
       <MainContainer>
         <LoginHeader>
-          <FontAwesomeIcon icon={faHouse} />
+          <Link to="/">
+            <FontAwesomeIcon icon={faHouse} />
+          </Link>
         </LoginHeader>
         <LoginBody>
           <h4 className="login__h4">반려동물 1등 플랫폼</h4>

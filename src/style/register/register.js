@@ -101,6 +101,7 @@ export const InputSection = styled.div`
 
   input:focus {
     border-bottom-color: ${mainPurple};
+    color: black;
   }
 
   .dupCheck__btn {
