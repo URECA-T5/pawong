@@ -109,7 +109,7 @@ function Menu() {
             ></Profile_Img>
           </div>
           <Profile_User onClick={handleLoginClick} title="login">
-            포옹에<span className="text_color">로그인</span>해주세요
+            포옹에<span className="text_color"> 로그인</span>해주세요
           </Profile_User>
           <FontAwesomeIcon icon={faAngleRight} />
         </Login_Box>

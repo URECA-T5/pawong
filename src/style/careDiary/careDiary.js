@@ -1,7 +1,10 @@
-import styled from 'styled-components';
+import styled, { withTheme } from 'styled-components';
 
 const colors = {
   placeholder: '#cccccc',
+  point: '#5850fe',
+  skyBackground: '#e3ecff',
+  darkGray: '#6d6e71',
 };
 
 export const Header = styled.header`
@@ -30,6 +33,12 @@ export const Section = styled.section`
   border: 1px white;
   border-radius: 1rem;
   gap: 0.625rem;
+
+  .button__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 `;
 
 export const ImgContainer = styled.div`
@@ -62,7 +71,7 @@ export const InputContainer = styled.div`
     border-radius: 1rem;
   }
 
-  .input_Content {
+  .input__title {
     margin: 0.25rem;
   }
 
@@ -73,4 +82,39 @@ export const InputContainer = styled.div`
     padding: 0.5rem;
     resize: none;
   }
+
+  .tag__container {
+    margin-bottom: 0.625rem;
+    font-family: 'Pretendard-Regular', sans-serif;
+    font-weight: 400;
+  }
+
+  .modal__button {
+    font-family: 'Pretendard-Regular', sans-serif;
+    font-weight: 400;
+    height: 45px;
+    padding: 0.5rem;
+    margin: 0.25rem;
+    border: 1px solid ${colors.placeholder};
+    border-radius: 1rem;
+    text-align: start;
+    color: ${colors.darkGray};
+    background-color: white;
+  }
+`;
+
+export const Button = styled.button`
+  width: 213px;
+  height: 52px;
+  padding: 0.625rem;
+  font-size: 1.25rem;
+  margin: 0.625rem;
+  border: none;
+  border-radius: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: ${(props) => (props.$cancel ? colors.point : 'white')};
+  background-color: ${(props) =>
+    props.$cancel ? colors.skyBackground : colors.point};
 `;

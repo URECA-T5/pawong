@@ -6,7 +6,7 @@ import Main from '../pages/Main';
 import Notice from '../pages/Notice/Notice';
 import Donation from '../pages/DonationPages/Donation';
 import DonationItemDetail from '../pages/DonationPages/DonationItemDetail';
-import CareDiary from '../pages/CareDiary';
+import CareDiary from '../pages/CareDiary/CareDiary';
 import CommonSense from '../pages/Notice/CommonSense';
 
 const routes = [
