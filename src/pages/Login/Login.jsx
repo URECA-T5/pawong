@@ -2,9 +2,14 @@ import React, { useState } from 'react';
 import GlobalStyle, { MainContainer } from '../../style/global/global';
 import { LoginHeader, LoginBody } from '../../style/login/login';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHouse } from '@fortawesome/free-solid-svg-icons';
+import { faHouse, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import GoogleLoginButton from '../../components/common/GoogleLoginButton';
 import { GoogleOAuthProvider } from '@react-oauth/google';
+import styled from 'styled-components';
+
+const WhiteBackgroundContainer = styled(MainContainer)`
+  background-color: #ffffff;
+`;
 
 const Login = () => {
   const CLIENT_ID = process.env.REACT_APP_GOOGLE_API_KEY;
@@ -25,6 +30,13 @@ const Login = () => {
               alt="로그인 메인이미지"
               className="login__img"
             />
+          </div>
+
+          <div className="register__section">
+            <p className="bold">회원이 아니신가요? 우리 함께해요</p>
+            <button>
+              <FontAwesomeIcon icon={faArrowRight} />
+            </button>
           </div>
 
           <div className="line__section">

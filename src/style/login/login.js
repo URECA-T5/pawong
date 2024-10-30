@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+const mainPurple = '#5850fe';
+
 export const LoginHeader = styled.header`
   width: 100%;
   height: 52px;
@@ -10,9 +12,8 @@ export const LoginHeader = styled.header`
 
 export const LoginBody = styled.div`
   position: relative;
-  /* LoginBody 내부의 h4 태그에 대한 스타일 */
   .login__h4 {
-    color: #5850fe;
+    color: ${mainPurple};
     display: flex;
     justify-content: center;
     margin-top: 5rem;
@@ -73,7 +74,26 @@ export const LoginBody = styled.div`
     border: none;
   }
   .pawong__login button:hover {
-    color: #5850fe;
+    color: ${mainPurple};
     cursor: pointer;
+  }
+  .register__section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #5850fe;
+    gap: 0.5rem;
+  }
+  .register__section button {
+    width: 3rem;
+    height: 3rem;
+    color: ${mainPurple};
+    background-color: #e3ecff;
+    border: none;
+    border-radius: 100%;
+    cursor: pointer;
+  }
+  .register__section button:hover {
+    border: 1px solid ${mainPurple};
   }
 `;
