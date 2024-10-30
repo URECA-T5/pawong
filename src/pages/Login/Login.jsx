@@ -6,7 +6,7 @@ import { faHouse, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import GoogleLoginButton from '../../components/common/GoogleLoginButton';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import styled from 'styled-components';
-
+import { Link } from 'react-router-dom';
 const WhiteBackgroundContainer = styled(MainContainer)`
   background-color: #ffffff;
 `;
@@ -34,9 +34,11 @@ const Login = () => {
 
           <div className="register__section">
             <p className="bold">회원이 아니신가요? 우리 함께해요</p>
-            <button>
-              <FontAwesomeIcon icon={faArrowRight} />
-            </button>
+            <Link to="/register">
+              <button>
+                <FontAwesomeIcon icon={faArrowRight} />
+              </button>
+            </Link>
           </div>
 
           <div className="line__section">
@@ -51,9 +53,6 @@ const Login = () => {
             </GoogleOAuthProvider>
           </div>
 
-          <div className="pawong__login">
-            <button className="register__btn">포옹 회원가입</button>
-          </div>
           <footer></footer>
         </LoginBody>
       </MainContainer>
