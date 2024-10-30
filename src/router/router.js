@@ -8,6 +8,8 @@ import CareDiary from '../pages/CareDiary';
 import Donation from '../pages/Donation/Donation';
 import DonationItemDetail from '../pages/Donation/DonationItemDetail';
 import CommonSense from '../pages/Notice/CommonSense';
+import Register from '../pages/Register/Register';
+import DonationRecord from '../pages/DonationRecord';
 import DonationRecord from '../pages/record/DonationRecord';
 import FosterRecord from '../pages/record/FosterRecord';
 
@@ -41,6 +43,10 @@ const routes = [
     element: <CommonSense />,
   },
   { path: '/diary', element: <CareDiary /> },
+  {
+    path: '/register',
+    element: <Register />,
+  },
   {
     path: '/donation-record',
     element: <DonationRecord />,
