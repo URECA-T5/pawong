@@ -1,6 +1,6 @@
 import {
   faBars,
-  faHome,
+  faHouse,
   faPaw,
   faPencil,
 } from '@fortawesome/free-solid-svg-icons';
@@ -15,26 +15,23 @@ const Nav = () => {
     navigate(path);
   };
 
+  const navItems = [
+    { path: '/', icon: faHouse, label: '홈' },
+    { path: '/pawong', icon: faPaw, label: '포옹 기록' },
+    { path: '/dog/upload', icon: faPencil, label: '임보동물 등록' },
+    { path: '/menu', icon: faBars, label: '메뉴' },
+  ];
+
   return (
     <>
       <Navbar>
         <div>
-          <button onClick={() => handleClick('/')}>
-            <FontAwesomeIcon icon={faHome} />
-            <span className="regular">홈</span>
-          </button>
-          <button onClick={() => handleClick('/pawong')}>
-            <FontAwesomeIcon icon={faPaw} />
-            <span className="regular">포옹 기록</span>
-          </button>
-          <button onClick={() => handleClick('/dog/upload')}>
-            <FontAwesomeIcon icon={faPencil} />
-            <span className="regular">임보동물 등록</span>
-          </button>
-          <button onClick={() => handleClick('/menu')}>
-            <FontAwesomeIcon icon={faBars} />
-            <span className="regular">메뉴</span>
-          </button>
+          {navItems.map((item) => (
+            <button key={item.path} onClick={() => handleClick(item.path)}>
+              <FontAwesomeIcon icon={item.icon} />
+              <span className="regular">{item.label}</span>
+            </button>
+          ))}
         </div>
       </Navbar>
     </>
