@@ -62,21 +62,28 @@ export const LoginBody = styled.div`
   .loginBtn__section {
     display: flex;
     justify-content: center;
-  }
-  .pawong__login {
-    margin-top: 2rem;
-    display: flex;
-    justify-content: center;
-    color: #b3b3b3;
     gap: 1rem;
+  }
+  .pawong__loginImg {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    border: none;
+    background-color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1rem;
+  }
+  .pawong__loginImg:hover {
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); /* hover 시 box-shadow 변경 */
   }
   .register__btn {
     border: none;
   }
-  .pawong__login button:hover {
-    color: ${mainPurple};
-    cursor: pointer;
-  }
+
   .register__section {
     display: flex;
     flex-direction: column;

@@ -2,7 +2,11 @@ import React, { useState } from 'react';
 import GlobalStyle, { MainContainer } from '../../style/global/global';
 import { LoginHeader, LoginBody } from '../../style/login/login';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHouse, faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import {
+  faHouse,
+  faArrowRight,
+  faPaw,
+} from '@fortawesome/free-solid-svg-icons';
 import GoogleLoginButton from '../../components/common/GoogleLoginButton';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import styled from 'styled-components';
@@ -53,6 +57,9 @@ const Login = () => {
             <GoogleOAuthProvider clientId={CLIENT_ID}>
               <GoogleLoginButton />
             </GoogleOAuthProvider>
+            <button className="pawong__loginImg">
+              <FontAwesomeIcon icon={faPaw} />
+            </button>
           </div>
 
           <footer></footer>
