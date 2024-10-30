@@ -10,7 +10,6 @@ import { faAngleLeft, faHouse } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
 import DonationSent from '../components/record/DonationSent';
 import DonationReceived from '../components/record/DonationReceived';
-import DonationRecordNull from '../components/record/DonationRecordNull';
 
 const DonationRecord = () => {
   const navigate = useNavigate();
