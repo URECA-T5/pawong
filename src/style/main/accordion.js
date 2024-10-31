@@ -19,9 +19,9 @@ export const AccordionDiv = styled.div`
     background-color: ${colors.light_blue};
     text-align: left;
     border-radius: 10px;
-    border-bottom-left-radius: ${({ $isActive }) => ($isActive ? '0' : '16px')};
+    border-bottom-left-radius: ${({ $isActive }) => ($isActive ? '0' : '1rem')};
     border-bottom-right-radius: ${({ $isActive }) =>
-      $isActive ? '0' : '16px'};
+      $isActive ? '0' : '1rem'};
     cursor: pointer;
   }
   span {
@@ -37,8 +37,8 @@ export const AccordionDiv = styled.div`
     height: 175px;
     padding: 0 2.5rem 1rem;
     background-color: ${colors.light_blue};
-    border-bottom-left-radius: 16px;
-    border-bottom-right-radius: 16px;
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
     margin-bottom: 1rem;
     transition: max-height 0.3s ease;
     overflow: hidden;

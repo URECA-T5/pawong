@@ -34,7 +34,7 @@ export const DonationReceivedSection = styled.section`
   img {
     width: 140px;
     height: 140px;
-    border-radius: 16px;
+    border-radius: 1rem;
   }
   img:hover {
     border: 2.5px solid ${colors.pastel_blue};
@@ -43,7 +43,7 @@ export const DonationReceivedSection = styled.section`
     width: 140px;
     height: 140px;
     border: 0;
-    border-radius: 16px;
+    border-radius: 1rem;
     cursor: pointer;
   }
 `;
@@ -87,7 +87,7 @@ export const DonationReceivedInfo = styled.div`
     width: 40px;
     height: 25px;
     border: 0;
-    border-radius: 16px;
+    border-radius: 1rem;
     background-color: ${colors.pastel_gray};
     font-size: 0.8rem;
     margin: 0.8rem 0.1rem;

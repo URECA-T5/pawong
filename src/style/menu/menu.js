@@ -48,7 +48,7 @@ export const Login_Box = styled.div`
 `;
 
 export const Profile_User = styled.p`
-  display: flex;
+  display: block;
   flex: 1;
   justify-content: flex-start;
   align-items: center;

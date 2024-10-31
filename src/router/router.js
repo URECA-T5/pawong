@@ -4,12 +4,13 @@ import Home from '../pages/Home';
 import Login from '../pages/Auth/Login/Login';
 import Menu from '../pages/Menu';
 import Notice from '../pages/Notice/Notice';
-import CareDiary from '../pages/CareDiary';
+import CareDiary from '../pages/CareDiary/CareDiary';
 import Donation from '../pages/Donation/Donation';
 import DonationItemDetail from '../pages/Donation/DonationItemDetail';
 import CommonSense from '../pages/Notice/CommonSense';
 import Register from '../pages/Auth/Register/Register';
 import DonationRecord from '../pages/DonationRecord';
+import FosterRecord from '../pages/record/FosterRecord';
 
 const routes = [
   {
@@ -46,8 +47,12 @@ const routes = [
     element: <Register />,
   },
   {
-    path: '/donationRecord',
+    path: '/donation-record',
     element: <DonationRecord />,
+  },
+  {
+    path: '/foster-record',
+    element: <FosterRecord />,
   },
 ];
 
