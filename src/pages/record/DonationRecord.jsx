@@ -1,16 +1,15 @@
 import { useEffect } from 'react';
-import { DonationRecordTabStore } from '../stores/recordStore';
-import GlobalStyle, { MainContainer } from '../style/global/global';
-import { DRHeader, DRTabList } from '../style/record/donationRecord';
+import { DonationRecordTabStore } from '../../stores/recordStore';
+import GlobalStyle, { MainContainer } from '../../style/global/global';
+import { DRHeader, DRTabList } from '../../style/record/donationRecord';
 import { AnimatePresence } from 'framer-motion';
-import DonationRecordTabButton from '../components/record/DonationRecordTabButton';
-import DonationRecordContent from '../components/record/DonationRecordContent';
+import DonationRecordTabButton from '../../components/record/DonationRecordTabButton';
+import DonationRecordContent from '../../components/record/DonationRecordContent';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleLeft, faHouse } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
-import DonationSent from '../components/record/DonationSent';
-import DonationReceived from '../components/record/DonationReceived';
-import DonationRecordNull from '../components/record/DonationRecordNull';
+import DonationSent from '../../components/record/DonationSent';
+import DonationReceived from '../../components/record/DonationReceived';
 
 const DonationRecord = () => {
   const navigate = useNavigate();
