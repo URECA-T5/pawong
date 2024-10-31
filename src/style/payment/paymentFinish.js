@@ -86,7 +86,7 @@ export const MessageBody = styled.div`
 `;
 
 export const BottomBanner = styled.div`
-  position: absolute;
+  position: relative;
   bottom: 1.6rem;
   margin-top: 5.56rem;
   padding: 0 0.9rem;
