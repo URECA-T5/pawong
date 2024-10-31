@@ -57,7 +57,7 @@ export const DonationSentInfo = styled.div`
     width: 40px;
     height: 25px;
     border: 0;
-    border-radius: 16px;
+    border-radius: 1rem;
     background-color: ${colors.pastel_gray};
     font-size: 0.8rem;
     margin: 0.8rem 0.1rem;
