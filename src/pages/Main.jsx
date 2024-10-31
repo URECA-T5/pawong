@@ -1,4 +1,4 @@
-import GlobalStyle, { MainContainer } from '../style/global/global';
+import GlobalStyle, { Content, MainContainer } from '../style/global/global';
 import { useNavigate } from 'react-router-dom';
 import {
   MainBadgeImg,
@@ -26,7 +26,7 @@ import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
 
 const Main = () => {
   const navigate = useNavigate();
-  const [sectionHeight, setSectionHeight] = useState(280);
+  const [sectionHeight, setSectionHeight] = useState(17.5);
   const handleClick = (path) => {
     navigate(path);
   };
@@ -48,8 +48,10 @@ const Main = () => {
     <>
       <GlobalStyle />
       <MainContainer>
-        <MainHeader className="extraBold">
-          <a href="/">포옹</a>
+        <MainHeader>
+          <p className="extraBold">
+            <a href="/">포옹</a>
+          </p>
           <p>
             <FontAwesomeIcon
               onClick={() => handleClick('/login')}
@@ -187,9 +189,9 @@ const Main = () => {
             </ul>
             <img src={'/asset/notice/dogIcon.png'} alt="포옹소식" />
           </MainNoticeDiv>
+          <Footer />
+          <Nav />
         </MainSection>
-        <Footer />
-        <Nav />
       </MainContainer>
     </>
   );

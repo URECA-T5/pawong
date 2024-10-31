@@ -13,7 +13,7 @@ const colors = {
 
 export const MainHeader = styled.header`
   width: 100%;
-  height: 52px;
+  height: 3.25rem;
   position: sticky;
   align-items: center;
   top: 0;
@@ -36,16 +36,18 @@ export const MainHeader = styled.header`
 `;
 
 export const MainSection = styled.section`
-  margin: 1.25rem;
+  padding: 1rem;
 `;
 
 export const MainSliderContainer = styled.section`
-  width: 100%;
+  width: 37.438rem;
+  box-sizing: border-box;
 `;
 
 export const MainSlideImage = styled.img`
-  width: 100%;
-  height: 280px;
+  width: 37.438rem;
+  height: 17.5rem;
+  box-sizing: border-box;
   cursor: pointer;
 `;
 
@@ -54,10 +56,10 @@ export const MainBtnDiv = styled.section`
   justify-content: center;
   align-items: center;
   text-align: center;
-  height: 120px;
+  height: 7.5rem;
   background-color: white;
   border-radius: 1rem;
-  margin: 1.25rem 0;
+  margin-bottom: 1.25rem;
   div {
     display: flex;
     gap: 3rem;
@@ -74,21 +76,21 @@ export const MainBtnDiv = styled.section`
     color: ${colors.pastel_blue};
   }
   img {
-    width: 70px;
-    height: 70px;
+    width: 4.375rem;
+    height: 4.375rem;
   }
 `;
 
 export const MainBadgeImg = styled.img`
   width: 100%;
-  height: 100px;
+  height: 6.25rem;
   border-radius: 1rem;
-  margin-bottom: 1rem;
+  margin-bottom: 1.25rem;
 `;
 
 export const MainSenseDiv = styled.section`
   width: 100%;
-  height: ${({ height }) => height}px;
+  height: ${({ height }) => height}rem;
   display: flex;
   flex-direction: column;
   background-color: ${colors.white};
@@ -108,16 +110,16 @@ export const MainSenseDiv = styled.section`
 `;
 export const MainPawongImg = styled.img`
   width: 100%;
-  height: 160px;
+  height: 10rem;
   border-radius: 1rem;
 `;
 
 export const MainDiaryDiv = styled.section`
   width: 100%;
-  height: 350px;
+  height: 21.875rem;
   background-color: ${colors.white};
   border-radius: 1rem;
-  margin: 1.25rem 0;
+  margin: 1.4rem 0;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -134,18 +136,18 @@ export const MainDiaryDiv = styled.section`
     border: 0;
     background-color: ${colors.light_blue};
     color: ${colors.pastel_blue};
-    width: 80px;
-    height: 25px;
+    width: 5rem;
+    height: 1.563rem;
     margin: 0.3rem 1.5rem 0 0;
-    border-radius: 10px;
+    border-radius: 0.625rem;
     text-align: center;
   }
   ul {
-    width: 450px;
-    height: 40px;
+    width: 28.125rem;
+    height: 2.5rem;
     margin: 0.2rem 0 0.1rem 3rem;
     list-style-type: none;
-    border-bottom: 1px solid ${colors.pastel_gray};
+    border-bottom: 0.063rem solid ${colors.pastel_gray};
     color: ${colors.dark_gray};
   }
   li {
@@ -170,7 +172,7 @@ export const MainDiaryDiv = styled.section`
 
 export const MainNoticeDiv = styled.section`
   width: 100%;
-  height: 290px;
+  height: 18.125rem;
   background-color: ${colors.white};
   border-radius: 1rem;
   margin: 1.25rem 0;
@@ -185,10 +187,10 @@ export const MainNoticeDiv = styled.section`
     border: 0;
     background-color: ${colors.light_blue};
     color: ${colors.pastel_blue};
-    width: 20px;
-    height: 20px;
+    width: 1.25rem;
+    height: 1.25rem;
     margin-right: 1.5rem;
-    border-radius: 5px;
+    border-radius: 0.313rem;
   }
   a {
     text-decoration: none;
@@ -196,11 +198,11 @@ export const MainNoticeDiv = styled.section`
     color: ${colors.dark_gray};
   }
   ul {
-    width: 450px;
-    height: 40px;
+    width: 28.125rem;
+    height: 2.5rem;
     margin-left: 3rem;
     list-style-type: none;
-    border-bottom: 1px solid ${colors.pastel_gray};
+    border-bottom: 0.063rem solid ${colors.pastel_gray};
     color: ${colors.dark_gray};
   }
   li {
@@ -210,8 +212,8 @@ export const MainNoticeDiv = styled.section`
     font-size: 0.93rem;
   }
   img {
-    width: 115px;
-    height: 75px;
+    width: 7.188rem;
+    height: 4.688rem;
     right: 1rem;
     bottom: 1rem;
     position: absolute;

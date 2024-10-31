@@ -11,6 +11,7 @@ import CommonSense from '../pages/Notice/CommonSense';
 import Register from '../pages/Register/Register';
 import DonationRecord from '../pages/record/DonationRecord';
 import FosterRecord from '../pages/record/FosterRecord';
+import Delivery from '../pages/Delivery/Delivery';
 import Payment from '../pages/Payment/Payment';
 import PaymentFinish from '../pages/Payment/PaymentFinish';
 
@@ -55,6 +56,10 @@ const routes = [
   {
     path: '/foster-record',
     element: <FosterRecord />,
+  },
+  {
+    path: '/delivery',
+    element: <Delivery />,
   },
   {
     path: '/payment',

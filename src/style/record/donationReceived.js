@@ -32,16 +32,16 @@ export const DonationReceivedSection = styled.section`
   gap: 4rem;
   margin-bottom: 3.5rem;
   img {
-    width: 140px;
-    height: 140px;
+    width: 8.75rem;
+    height: 8.75rem;
     border-radius: 1rem;
   }
   img:hover {
-    border: 2.5px solid ${colors.pastel_blue};
+    border: 0.156rem solid ${colors.pastel_blue};
   }
   .DonationReceived__btn {
-    width: 140px;
-    height: 140px;
+    width: 8.75rem;
+    height: 8.75rem;
     border: 0;
     border-radius: 1rem;
     cursor: pointer;
@@ -51,7 +51,7 @@ export const DonationReceivedSection = styled.section`
 export const DonationReceivedInfo = styled.div`
   width: 70%;
   margin: 0 auto;
-  border-top: 1px solid ${colors.gray};
+  border-top: 0.063rem solid ${colors.gray};
   text-align: left;
   font-size: 0.9rem;
   color: ${colors.dark_gray};
@@ -67,7 +67,7 @@ export const DonationReceivedInfo = styled.div`
 
   .DonationReceived__border {
     font-size: 0.8rem;
-    border-bottom: 1px solid ${colors.light_gray};
+    border-bottom: 0.063rem solid ${colors.light_gray};
   }
 
   .DonationReceived__prd {
@@ -84,8 +84,8 @@ export const DonationReceivedInfo = styled.div`
   }
 
   .DonationReceived__btn {
-    width: 40px;
-    height: 25px;
+    width: 2.5rem;
+    height: 1.563rem;
     border: 0;
     border-radius: 1rem;
     background-color: ${colors.pastel_gray};
@@ -100,8 +100,8 @@ export const DonationReceivedInfo = styled.div`
   }
 
   .DonationReceived__img {
-    width: 46px;
-    height: 46px;
+    width: 2.875rem;
+    height: 2.875rem;
     padding-top: 0.3rem;
   }
 `;

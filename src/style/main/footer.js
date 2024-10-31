@@ -32,7 +32,7 @@ export const MainFooter = styled.footer`
     color: ${colors.footer_gray};
   }
   td {
-    padding: 1px 1px;
+    padding: 0.063rem 0.063rem;
   }
   summary::-webkit-details-marker {
     display: none;
