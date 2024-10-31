@@ -11,6 +11,8 @@ import CommonSense from '../pages/Notice/CommonSense';
 import Register from '../pages/Register/Register';
 import DonationRecord from '../pages/record/DonationRecord';
 import FosterRecord from '../pages/record/FosterRecord';
+import Payment from '../pages/Payment/Payment';
+import PaymentFinish from '../pages/Payment/PaymentFinish';
 
 const routes = [
   {
@@ -18,11 +20,11 @@ const routes = [
     element: <Main />,
   },
   {
-    path: '/login', // login 경로 추가
+    path: '/login',
     element: <Login />,
   },
   {
-    path: '/menu', // menu 경로 추가
+    path: '/menu',
     element: <Menu />,
   },
   {
@@ -53,6 +55,14 @@ const routes = [
   {
     path: '/foster-record',
     element: <FosterRecord />,
+  },
+  {
+    path: '/payment',
+    element: <Payment />,
+  },
+  {
+    path: '/payment_finish',
+    element: <PaymentFinish />,
   },
 ];
 
