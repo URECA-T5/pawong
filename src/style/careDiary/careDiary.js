@@ -96,6 +96,13 @@ export const InputContainer = styled.div`
     outline-color: ${colors.point};
   }
 
+  input::placeholder,
+  textarea::placeholder {
+    font-family: 'Pretendard-Regular', sans-serif;
+    font-weight: 400;
+    color: ${colors.darkGray};
+  }
+
   .input__title {
     margin: 0.5rem;
     display: flex;
