@@ -56,7 +56,7 @@ export const MainBtnDiv = styled.section`
   text-align: center;
   height: 120px;
   background-color: white;
-  border-radius: 16px;
+  border-radius: 1rem;
   margin: 1.25rem 0;
   div {
     display: flex;
@@ -82,7 +82,7 @@ export const MainBtnDiv = styled.section`
 export const MainBadgeImg = styled.img`
   width: 100%;
   height: 100px;
-  border-radius: 16px;
+  border-radius: 1rem;
   margin-bottom: 1rem;
 `;
 
@@ -93,7 +93,7 @@ export const MainSenseDiv = styled.section`
   flex-direction: column;
   background-color: ${colors.white};
   align-items: center;
-  border-radius: 16px;
+  border-radius: 1rem;
   transition: height 0.2s ease;
   margin-bottom: 1.25rem;
   h4 {
@@ -109,14 +109,14 @@ export const MainSenseDiv = styled.section`
 export const MainPawongImg = styled.img`
   width: 100%;
   height: 160px;
-  border-radius: 16px;
+  border-radius: 1rem;
 `;
 
 export const MainDiaryDiv = styled.section`
   width: 100%;
   height: 350px;
   background-color: ${colors.white};
-  border-radius: 16px;
+  border-radius: 1rem;
   margin: 1.25rem 0;
   position: relative;
   display: flex;
@@ -172,7 +172,7 @@ export const MainNoticeDiv = styled.section`
   width: 100%;
   height: 290px;
   background-color: ${colors.white};
-  border-radius: 16px;
+  border-radius: 1rem;
   margin: 1.25rem 0;
   position: relative;
   display: flex;

@@ -52,7 +52,7 @@ export const FRSection = styled.section`
     align-items: center;
     width: 90%;
     height: 42px;
-    border-radius: 16px;
+    border-radius: 1rem;
     color: ${colors.pastel_blue};
     background-color: ${colors.light_blue};
     margin-bottom: 2rem;
