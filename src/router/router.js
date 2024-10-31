@@ -13,6 +13,7 @@ import DonationRecord from '../pages/record/DonationRecord';
 import FosterRecord from '../pages/record/FosterRecord';
 import Payment from '../pages/Payment/Payment';
 import PaymentFinish from '../pages/Payment/PaymentFinish';
+import PersonalDiary from '../pages/CareDiary/PersonalDiary';
 
 const routes = [
   {
@@ -63,6 +64,10 @@ const routes = [
   {
     path: '/payment_finish',
     element: <PaymentFinish />,
+  },
+  {
+    path: '/personal-diary',
+    element: <PersonalDiary />,
   },
 ];
 

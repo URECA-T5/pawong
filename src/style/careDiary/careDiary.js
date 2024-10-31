@@ -16,15 +16,20 @@ export const Header = styled.header`
   justify-content: flex-end;
   padding: 1.25rem;
   background-color: white;
+  font-size: 1.2rem;
 
   .extraBold {
-    font-size: 1rem;
     flex: 0.5;
   }
 
   .header__icon {
     margin-left: 0.625rem;
-    cursor: pointer;
+    &:hover,
+    &:focus {
+      color: ${colors.point};
+      outline: none;
+      cursor: pointer;
+    }
   }
 `;
 
@@ -148,6 +153,7 @@ export const Button = styled.button`
 export const TagButton = styled.button`
   font-family: 'Pretendard-Bold', sans-serif;
   font-weight: 700;
+  font-size: 1rem;
   border: none;
   border-radius: 1rem;
   width: 3.5rem;
