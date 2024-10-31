@@ -9,7 +9,7 @@ import DiaryImage from '../../components/diary/DiaryImage';
 import DiaryInput from '../../components/diary/DiaryInput';
 
 const CareDiary = () => {
-  const { selectedTag, formData, setFormData } = diaryStore();
+  const { selectedTag, setSelectedTag, formData, setFormData } = diaryStore();
   const navigate = useNavigate();
 
   const handleClick = (path) => {
@@ -18,7 +18,6 @@ const CareDiary = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     const updatedFormData = {
       ...formData,
       tag: selectedTag,
@@ -27,13 +26,10 @@ const CareDiary = () => {
     console.log(updatedFormData);
   };
 
-  const onCancleClick = (e) => {
+  const onCancelClick = (e) => {
     e.preventDefault();
-    setFormData('tag', '');
-    setFormData('title', '');
-    setFormData('location', '');
-    setFormData('story', '');
-    setFormData('image', '');
+    setFormData({ tag: '', title: '', location: '', story: '', image: '' });
+    setSelectedTag('');
   };
 
   return (
@@ -55,7 +51,7 @@ const CareDiary = () => {
             <h4 className="bold">임시보호 일지를 작성해주세요</h4>
             <DiaryInput />
             <div className="button__container">
-              <Button className="bold" $cancel={true} onClick={onCancleClick}>
+              <Button className="bold" $cancel={true} onClick={onCancelClick}>
                 취소
               </Button>
               <Button
@@ -73,5 +69,4 @@ const CareDiary = () => {
     </>
   );
 };
-
 export default CareDiary;

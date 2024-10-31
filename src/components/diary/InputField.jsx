@@ -4,7 +4,7 @@ export const InputField = ({ label, type, placeholder, maxLength, name }) => {
   const { formData, setFormData } = diaryStore();
 
   const handleChange = (e) => {
-    setFormData(name, e.target.value);
+    setFormData({ ...formData, [name]: e.target.value });
   };
 
   return (

@@ -10,12 +10,12 @@ const DiaryImage = () => {
     const file = e.target.files[0];
     if (file) {
       const imageUrl = URL.createObjectURL(file);
-      setFormData('image', imageUrl);
+      setFormData({ ...formData, image: imageUrl });
     }
   };
 
   const handleImgCancel = () => {
-    setFormData('image', '');
+    setFormData({ ...formData, image: null });
     if (fileInputRef.current) {
       fileInputRef.current.value = '';
     }

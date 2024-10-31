@@ -10,11 +10,10 @@ export const diaryStore = create((set) => ({
   },
   selectedTag: '',
 
-  setFormData: (name, value) =>
-    set((state) => ({
+  setFormData: (newFormData) =>
+    set(() => ({
       formData: {
-        ...state.formData,
-        [name]: value,
+        ...newFormData,
       },
     })),
   setSelectedTag: (tag) => set({ selectedTag: tag }),
