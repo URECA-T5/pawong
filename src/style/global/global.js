@@ -38,7 +38,7 @@ const GlobalStyle = createGlobalStyle`
     overflow-y: scroll;
   }
 
-  h1, h2, h3, h4, h5, h6, p {
+  h1, h2, h3, h4, h5, h6, p, button {
     font-family: 'Pretendard-Regular', sans-serif; 
   }
 
