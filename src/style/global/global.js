@@ -33,6 +33,7 @@ const GlobalStyle = createGlobalStyle`
     width: 100%;
     margin: 0 auto;
     padding: 0 20px;
+    overflow-y: scroll;
   }
 
   h1, h2, h3, h4, h5, h6, p {
@@ -56,8 +57,11 @@ const GlobalStyle = createGlobalStyle`
 
   #root {
     display: flex;
-    justify-content: center;
-    width: 600px;
+    justify-content: center; 
+    width: 100%; 
+    min-height: 100vh; 
+    margin: 0; 
+    padding: 0; 
   }
 `;
 

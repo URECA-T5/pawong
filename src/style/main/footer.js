@@ -1,5 +1,16 @@
 import styled from 'styled-components';
 
+const colors = {
+  dark_gray: '#6D6E71',
+  gray: '#CCCCCC',
+  light_gray: '#E3E3E3',
+  pastel_gray: '#F3F3F6',
+  footer_gray: '#B3B3B3',
+  light_blue: '#E3ECFF',
+  pastel_blue: '#5850FE',
+  black: '#000000',
+};
+
 export const MainFooter = styled.footer`
   width: 100%;
   padding: 0 1.5rem;
@@ -10,15 +21,15 @@ export const MainFooter = styled.footer`
   }
   a {
     text-decoration: none;
-    color: #6d6e71;
+    color: ${colors.dark_gray};
   }
   span {
-    color: #6d6e71;
+    color: ${colors.dark_gray};
   }
   table {
     margin-top: 0.2rem;
     width: 65%;
-    color: #b3b3b3;
+    color: ${colors.footer_gray};
   }
   td {
     padding: 1px 1px;

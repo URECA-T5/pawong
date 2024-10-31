@@ -1,10 +1,11 @@
 import styled from 'styled-components';
 
 const SocialBtn = styled.button`
-  width: 50px;
-  height: 50px;
+  width: 4rem;
+  height: 4rem;
   border-radius: 50%;
   border: none;
+  background-color: white;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   display: flex;
   align-items: center;
