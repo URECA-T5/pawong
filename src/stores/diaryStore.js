@@ -6,18 +6,16 @@ export const diaryStore = create((set) => ({
     title: '',
     location: '',
     story: '',
+    image: null,
   },
   selectedTag: '',
-  isModalOpen: false,
 
-  setFormData: (name, value) =>
-    set((state) => ({
+  setFormData: (newFormData) =>
+    set(() => ({
       formData: {
-        ...state.formData,
-        [name]: value,
+        ...newFormData,
       },
     })),
   setSelectedTag: (tag) => set({ selectedTag: tag }),
-  setToggleModal: () => set((state) => ({ isModalOpen: !state.isModalOpen })),
 }));
 export default diaryStore;

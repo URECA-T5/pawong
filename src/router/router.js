@@ -4,7 +4,7 @@ import Login from '../pages/Login/Login';
 import Menu from '../pages/Menu';
 import Main from '../pages/Main';
 import Notice from '../pages/Notice/Notice';
-import CareDiary from '../pages/CareDiary';
+import CareDiary from '../pages/CareDiary/CareDiary';
 import Donation from '../pages/Donation/Donation';
 import DonationItemDetail from '../pages/Donation/DonationItemDetail';
 import CommonSense from '../pages/Notice/CommonSense';
