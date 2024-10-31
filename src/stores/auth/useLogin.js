@@ -4,7 +4,6 @@ import { login } from '../../api/auth/auth';
 const useLoginStore = create((set) => ({
   error: null,
   message: null,
-  isLoading: false,
   login: async (data) => {
     set({ isLoading: true, error: null, message: null });
     try {
@@ -14,9 +13,11 @@ const useLoginStore = create((set) => ({
       set({ error: error.response.data.message, isLoading: false });
     }
   },
+  setEmail: (email) => set({ email }),
+  setPassword: (password) => set({ password }),
 }));
 
 export const useLogin = () => {
-  const { error, message, isLoading, login } = useLoginStore();
-  return { error, message, isLoading, login };
+  const { error, message, login, setEmail, setPassword } = useLoginStore();
+  return { error, message, login, setEmail, setPassword };
 };
