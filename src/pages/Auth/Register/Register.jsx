@@ -1,18 +1,17 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHouse, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import {
   RegisterBody,
   RegisterHeader,
   InputSection,
-} from '../../style/register/register';
-import { useSignup } from '../../stores/auth/useSignup';
+} from '../../../style/register/register';
+import { useSignup } from '../../../stores/auth/useSignup';
 
 function Register() {
-  const { signup, error, message, setEmail, setPassword, setName } =
-    useSignup();
-
+  const { signup, setEmail, setPassword, setName } = useSignup();
+  const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = {
@@ -20,7 +19,10 @@ function Register() {
       password: e.target.input__password.value,
       name: e.target.input__name.value,
     };
-    await signup(formData);
+    await signup(formData).then(() => {
+      alert('회원가입에 성공했습니다!');
+      navigate('/login');
+    });
   };
 
   return (
@@ -102,14 +104,14 @@ function Register() {
             </div>
           </InputSection>
           <div className="btn__section">
-            <button className="bold cancle__btn">취소</button>
+            <button className="bold cancle__btn" type="button">
+              취소
+            </button>
             <button className="bold regist__btn" type="submit">
               등록
             </button>
           </div>
         </section>
-        {error && <p className="error">{error}</p>}
-        {message && <p className="success">{message}</p>}
       </RegisterBody>
     </>
   );

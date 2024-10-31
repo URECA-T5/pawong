@@ -5,7 +5,9 @@ import {
   CloseButton,
 } from '../../style/login/modal';
 import { useLogin } from '../../stores/auth/useLogin';
+import { useNavigate } from 'react-router-dom';
 const LoginModal = ({ onClose }) => {
+  const navigate = useNavigate();
   const { error, message, login, setEmail, setPassword } = useLogin();
 
   const handleOverlayClick = (e) => {
@@ -18,7 +20,10 @@ const LoginModal = ({ onClose }) => {
       email: e.target.input__id.value,
       password: e.target.input__password.value,
     };
-    await login(formData);
+    await login(formData).then(() => {
+      alert('반갑습니다!');
+      navigate('/');
+    });
   };
 
   return (

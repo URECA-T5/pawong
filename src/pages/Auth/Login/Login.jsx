@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
-import { LoginHeader, LoginBody } from '../../style/login/login';
+import { LoginHeader, LoginBody } from '../../../style/login/login';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import SocialLoginBtn from '../../components/auth/SocialLoginBtn';
-import { SOCIAL_LOGIN_PROVIDER } from '../../config/socialLogin';
+import SocialLoginBtn from '../../../components/auth/SocialLoginBtn';
+import { SOCIAL_LOGIN_PROVIDER } from '../../../config/socialLogin';
 import {
   faHouse,
   faArrowRight,
   faPaw,
 } from '@fortawesome/free-solid-svg-icons';
-import mainImg from '../../asset/login/Login_Img.svg';
+import mainImg from '../../../asset/login/Login_Img.svg';
 import { Link } from 'react-router-dom';
-import LoginModal from '../../components/login/LoginModal';
+import LoginModal from '../../../components/login/LoginModal';
 
 const Login = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);

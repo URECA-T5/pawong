@@ -1,5 +1,5 @@
 import request from '../axios';
-import { LOGIN, REFRESH_TOKEN, SIGNUP } from '../constant/api';
+import { LOCAL_LOGIN, REFRESH_TOKEN, SIGNUP } from '../constant/api';
 
 export const signup = async (data) => {
   try {
@@ -10,9 +10,9 @@ export const signup = async (data) => {
   }
 };
 
-export const login = async (data) => {
+export const localLogin = async (data) => {
   try {
-    const response = await request.post(LOGIN, data);
+    const response = await request.post(LOCAL_LOGIN, data);
     const { accessToken, refreshToken } = response.data;
     localStorage.setItem('accessToken', accessToken);
     localStorage.setItem('refreshToken', refreshToken);

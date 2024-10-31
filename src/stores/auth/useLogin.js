@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { login } from '../../api/auth/auth';
+import { localLogin } from '../../api/auth/auth';
 
 const useLoginStore = create((set) => ({
   error: null,
@@ -7,7 +7,7 @@ const useLoginStore = create((set) => ({
   login: async (data) => {
     set({ isLoading: true, error: null, message: null });
     try {
-      const response = await login(data);
+      const response = await localLogin(data);
       set({ message: response.data.message, isLoading: false });
     } catch (error) {
       set({ error: error.response.data.message, isLoading: false });
@@ -18,6 +18,6 @@ const useLoginStore = create((set) => ({
 }));
 
 export const useLogin = () => {
-  const { error, message, login, setEmail, setPassword } = useLoginStore();
-  return { error, message, login, setEmail, setPassword };
+  const { login, setEmail, setPassword } = useLoginStore();
+  return { login, setEmail, setPassword };
 };

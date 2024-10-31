@@ -5,7 +5,6 @@ const useSignupStore = create((set) => ({
   error: null,
   message: null,
   signup: async (data) => {
-    set({ error: null, message: null });
     try {
       const response = await signup(data);
       set({ message: response.data.message });
@@ -19,7 +18,6 @@ const useSignupStore = create((set) => ({
 }));
 
 export const useSignup = () => {
-  const { error, message, signup, setEmail, setPassword, setName } =
-    useSignupStore();
-  return { error, message, signup, setEmail, setPassword, setName };
+  const { signup, setEmail, setPassword, setName } = useSignupStore();
+  return { signup, setEmail, setPassword, setName };
 };

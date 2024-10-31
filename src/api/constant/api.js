@@ -1,3 +1,3 @@
 export const SIGNUP = '/auth/signup';
-export const LOGIN = '/auth/login';
+export const LOCAL_LOGIN = '/auth/localLogin';
 export const REFRESH_TOKEN = '/auth/refreshToken';
