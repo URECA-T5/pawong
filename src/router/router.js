@@ -8,8 +8,11 @@ import CareDiary from '../pages/CareDiary';
 import Donation from '../pages/Donation/Donation';
 import DonationItemDetail from '../pages/Donation/DonationItemDetail';
 import CommonSense from '../pages/Notice/CommonSense';
-import DonationRecord from '../pages/DonationRecord';
+import Register from '../pages/Register/Register';
+import DonationRecord from '../pages/record/DonationRecord';
+import FosterRecord from '../pages/record/FosterRecord';
 import Payment from '../pages/Payment/Payment';
+import PaymentFinish from '../pages/Payment/PaymentFinish';
 
 const routes = [
   {
@@ -42,12 +45,24 @@ const routes = [
   },
   { path: '/diary', element: <CareDiary /> },
   {
-    path: '/donationRecord',
+    path: '/register',
+    element: <Register />,
+  },
+  {
+    path: '/donation-record',
     element: <DonationRecord />,
+  },
+  {
+    path: '/foster-record',
+    element: <FosterRecord />,
   },
   {
     path: '/payment',
     element: <Payment />,
+  },
+  {
+    path: '/payment_finish',
+    element: <PaymentFinish />,
   },
 ];
 

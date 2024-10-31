@@ -7,11 +7,11 @@ const ItemPrice = ({ item }) => {
       <ItemPriceArea>
         <p className="bold">구매 정보</p>
         <div className="payment__divRow">
-          <p className="text__darkGray regular">상품금액</p>
+          <p className="text__darkGrey regular">상품금액</p>
           <p className="bold">{item.price.toLocaleString('ko-KR')}원</p>
         </div>
         <div className="payment__divRow">
-          <p className="text__darkgray regular">수량</p>
+          <p className="text__darkGrey regular">수량</p>
           <p className="bold">{item.cnt}개</p>
         </div>
       </ItemPriceArea>

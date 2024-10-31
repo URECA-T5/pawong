@@ -71,3 +71,11 @@ export const DRBtnDiv = styled.div`
     cursor: pointer;
   }
 `;
+
+export const DRNullDiv = styled.section`
+  img {
+    width: 100%;
+    height: 190px;
+    margin-bottom: 1rem;
+  }
+`;

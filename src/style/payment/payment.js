@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
 const colors = {
-  dark_gray: '#6D6E71',
-  light_gray: '#B3B3B3',
-  pastel_gray: '#F3F3F6',
+  dark_grey: '#6D6E71',
+  light_grey: '#B3B3B3',
+  pastel_grey: '#F3F3F6',
   light_blue: '#E3ECFF',
   pastel_blue: '#5850FE',
 };
@@ -89,7 +89,7 @@ export const ItemInfoArea = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  border-bottom: 1px solid ${colors.dark_gray};
+  border-bottom: 1px solid ${colors.dark_grey};
 
   .item__img {
     height: 100%;
@@ -114,13 +114,13 @@ export const ItemInfoArea = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    color: ${colors.dark_gray};
-    background-color: ${colors.pastel_gray};
+    color: ${colors.dark_grey};
+    background-color: ${colors.pastel_grey};
   }
 
   .item__title {
     padding: 0.2rem;
-    color: ${colors.dark_gray};
+    color: ${colors.dark_grey};
   }
 
   .item__price {
@@ -135,10 +135,10 @@ export const ItemPriceArea = styled.div`
   flex-direction: column;
   padding-top: 0.8rem;
   font-size: 1.4rem;
-  border-bottom: 1px solid ${colors.dark_gray};
+  border-bottom: 1px solid ${colors.dark_grey};
 
-  .text__darkGray {
-    color: ${colors.dark_gray};
+  .text__darkGrey {
+    color: ${colors.dark_grey};
   }
 
   .payment__divRow {
