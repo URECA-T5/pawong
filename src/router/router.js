@@ -9,16 +9,17 @@ import Donation from '../pages/Donation/Donation';
 import DonationItemDetail from '../pages/Donation/DonationItemDetail';
 import CommonSense from '../pages/Notice/CommonSense';
 import Register from '../pages/Auth/Register/Register';
-import DonationRecord from '../pages/DonationRecord';
 import FosterRecord from '../pages/record/FosterRecord';
 import Delivery from '../pages/Delivery/Delivery';
 import Payment from '../pages/Payment/Payment';
 import PaymentFinish from '../pages/Payment/PaymentFinish';
+import DonationRecord from '../pages/record/DonationRecord';
+import Main from '../pages/Main';
 
 const routes = [
   {
     path: '/',
-    element: <Home />,
+    element: <Main />,
   },
   {
     path: '/login',

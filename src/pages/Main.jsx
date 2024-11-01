@@ -187,7 +187,7 @@ const Main = () => {
                 <span className="regular">포옹 배송 안내</span>
               </li>
             </ul>
-            <img src={'/asset/notice/dogIcon.png'} alt="포옹소식" />
+            <img src={'/asset/main/dogIcon.png'} alt="포옹소식" />
           </MainNoticeDiv>
           <Footer />
           <Nav />
