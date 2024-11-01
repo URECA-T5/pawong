@@ -8,7 +8,7 @@ function DefaultFav() {
     <>
       <PetHeader>
         <div className="pet__header">
-          <p className="regular">현재 임보 중인 동물들</p>
+          <p className="regular">즐겨찾기</p>
         </div>
       </PetHeader>
       <PetBody>

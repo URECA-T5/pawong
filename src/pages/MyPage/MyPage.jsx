@@ -12,6 +12,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import UserProfile from '../../components/mypage/UserProfile';
 import DefaultPet from '../../components/mypage/DefaultPet';
 import DefaultFav from '../../components/mypage/DefaultFav';
+import UserHistory from '../../components/mypage/UserHistory';
 function MyPage() {
   return (
     <>
@@ -30,7 +31,9 @@ function MyPage() {
         <MyFavorites>
           <DefaultFav />
         </MyFavorites>
-        <MyHistory></MyHistory>
+        <MyHistory>
+          <UserHistory />
+        </MyHistory>
       </MainSection>
     </>
   );
