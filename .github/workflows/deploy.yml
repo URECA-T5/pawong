@@ -54,7 +54,7 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/jmdb
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/test
 
 	  # 마지막으로 ssh로 인스턴스에 연결하여 이미지를 Pull하고 컨테이너를 재시작한다.
       - name: Pull and restart Docker Container
@@ -64,6 +64,6 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USER }}
           script: |
-            docker pull ${{ secrets.DOCKERHUB_USERNAME }}/jmdb
+            docker pull ${{ secrets.DOCKERHUB_USERNAME }}/test
             docker stop jmdb
-            docker run -d --rm --name jmdb -p 80:80 ${{ secrets.DOCKERHUB_USERNAME }}/jmdb
+            docker run -d --rm --name jmdb -p 80:80 ${{ secrets.DOCKERHUB_USERNAME }}/test
