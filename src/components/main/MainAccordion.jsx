@@ -27,11 +27,11 @@ const MainAccordion = ({ setSectionHeight }) => {
     );
     setShowList(updatedList);
     const totalHeight = updatedList.reduce((acc, item) => {
-      const itemHeight = item.show ? 55 + 3 : 0;
-      return acc + itemHeight + (item.show ? 120 : 0);
+      const itemHeight = item.show ? 3.438 + 0.188 : 0;
+      return acc + itemHeight + (item.show ? 7.5 : 0);
     }, 0);
 
-    setSectionHeight(280 + totalHeight);
+    setSectionHeight(17.5 + totalHeight);
   };
 
   const getCard = (item, index) => {
