@@ -12,6 +12,9 @@ import { faAngleLeft, faHouse } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
 import AddressStore from '../../stores/deliveryStore';
 
+const DAUM_POSTCODE_SCRIPT_SRC =
+  'https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js';
+
 const Delivery = () => {
   const navigate = useNavigate();
   const [error, setError] = useState('');
@@ -20,10 +23,17 @@ const Delivery = () => {
   };
 
   useEffect(() => {
-    const script = document.createElement('script');
-    script.src =
-      'https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js';
-    document.head.appendChild(script);
+    if (!document.querySelector(`script[src="${DAUM_POSTCODE_SCRIPT_SRC}"]`)) {
+      const script = document.createElement('script');
+      script.src = DAUM_POSTCODE_SCRIPT_SRC;
+      document.head.appendChild(script);
+
+      return () => {
+        if (document.head.contains(script)) {
+          document.head.removeChild(script);
+        }
+      };
+    }
   }, []);
 
   const {
@@ -81,20 +91,29 @@ const Delivery = () => {
   };
 
   const dogs = {
-    src: '/asset/record/sample.png',
+    url: '/asset/record/sample.png',
     alt: '이미지를 사용할 수 없습니다',
     pet_id: '1',
     name: '포동이',
   };
 
   const donations = {
-    src: '/asset/record/samplebob.png',
+    url: '/asset/record/samplebob.png',
     category: '강아지',
     company: '펫생각',
     name: 'PROBEST 5kg',
     price: 20000,
     cnt: 1,
   };
+
+  function formatPrice(price) {
+    return new Intl.NumberFormat('ko-KR', {
+      style: 'currency',
+      currency: 'KRW',
+    })
+      .format(price)
+      .replace('₩', '');
+  }
 
   return (
     <>
@@ -116,7 +135,7 @@ const Delivery = () => {
           />
         </DeliveryHeader>
         <DeliveryMsgDiv className="regular">
-          <img src={dogs.src} alt="no profile img" />
+          <img src={dogs.url} alt="no profile img" />
           <div>
             <p>
               <span className="delivery__pointColor bold">{dogs.name}</span>
@@ -128,12 +147,14 @@ const Delivery = () => {
         <DeliveryItemSection>
           <p className="delivery__Title bold">후원 상품</p>
           <DeliveryItemInfo>
-            <img src={donations.src} alt="no item img" />
+            <img src={donations.url} alt="no item img" />
             <div>
               <button className="bold">{donations.company}</button>
               <p className="delivery__colorSize bold">{donations.name}</p>
               <p className="delivery__pointColor">수량 : {donations.cnt}개</p>
-              <p className="delivery__colorSize bold">{donations.price}원</p>
+              <p className="delivery__colorSize bold">
+                {formatPrice(donations.price)}원
+              </p>
             </div>
           </DeliveryItemInfo>
           <div className="delivery__Line"></div>
