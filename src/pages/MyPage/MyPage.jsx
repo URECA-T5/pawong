@@ -11,6 +11,7 @@ import { faHouse, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import UserProfile from '../../components/mypage/UserProfile';
 import DefaultPet from '../../components/mypage/DefaultPet';
+import DefaultFav from '../../components/mypage/DefaultFav';
 function MyPage() {
   return (
     <>
@@ -26,7 +27,9 @@ function MyPage() {
         <MyPetSection>
           <DefaultPet />
         </MyPetSection>
-        <MyFavorites>{/* 즐겨찾기 컴포넌트 */}</MyFavorites>
+        <MyFavorites>
+          <DefaultFav />
+        </MyFavorites>
         <MyHistory></MyHistory>
       </MainSection>
     </>
