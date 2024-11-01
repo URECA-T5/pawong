@@ -1,8 +1,8 @@
-import { DonationRecordTabStore } from '../../stores/recordStore';
+import { DonationHistoryTabStore } from '../../stores/historyStore';
 import { motion } from 'framer-motion';
 
-const DonationRecordContent = ({ tabName, children }) => {
-  const { selectedTab } = DonationRecordTabStore();
+const DonationHistoryContent = ({ tabName, children }) => {
+  const { selectedTab } = DonationHistoryTabStore();
   const { direction } = selectedTab;
 
   const contentVariants = {
@@ -25,4 +25,4 @@ const DonationRecordContent = ({ tabName, children }) => {
   );
 };
 
-export default DonationRecordContent;
+export default DonationHistoryContent;

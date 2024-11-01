@@ -1,11 +1,11 @@
 import React from 'react';
+import { DonationReceivedStore } from '../../stores/historyStore';
+import { useNavigate } from 'react-router-dom';
 import {
   DonationReceivedDiv,
   DonationReceivedInfo,
   DonationReceivedSection,
-} from '../../style/record/donationReceived';
-import { DonationReceivedStore } from '../../stores/recordStore';
-import { useNavigate } from 'react-router-dom';
+} from '../../style/history/donationReceived';
 
 const DonationReceived = () => {
   const navigate = useNavigate();
@@ -15,13 +15,13 @@ const DonationReceived = () => {
   const { selectedDog, setSelectedDog } = DonationReceivedStore();
   const dogs = [
     {
-      imgSrc: '/asset/record/sample.png',
+      imgSrc: '/asset/history/sample.png',
       alt: '이미지를 사용할 수 없습니다',
       pet_id: '1',
       name: '포동이',
     },
     {
-      imgSrc: '/asset/record/sample2.png',
+      imgSrc: '/asset/history/sample2.png',
       alt: '이미지를 사용할 수 없습니다',
       pet_id: '2',
       name: '포옹이',
@@ -30,21 +30,21 @@ const DonationReceived = () => {
 
   const donations = [
     {
-      imgSrc: '/asset/record/samplebob.png',
+      imgSrc: '/asset/history/samplebob.png',
       pet_id: '1',
       name: 'PROBEST 5kg',
       amount: '20000',
       date: '24.10.28',
     },
     {
-      imgSrc: '/asset/record/samplebob.png',
+      imgSrc: '/asset/history/samplebob.png',
       pet_id: '2',
       name: 'PROBEST 3kg',
       amount: '50000',
       date: '24.10.03',
     },
     {
-      imgSrc: '/asset/record/samplebob2.png',
+      imgSrc: '/asset/history/samplebob2.png',
       pet_id: '2',
       name: '잘먹잘싸 2kg',
       amount: '50000',
@@ -112,7 +112,7 @@ const DonationReceived = () => {
     return (
       <>
         <DonationReceivedDiv>
-          <img src={'/asset/record/donation.svg'} alt="받은후원내역" />
+          <img src={'/asset/history/donation.svg'} alt="받은후원내역" />
           <h4 className="regular">
             <span className="DonationReceived__span">구름이형</span>님이
           </h4>
@@ -130,7 +130,7 @@ const DonationReceived = () => {
   return (
     <>
       <DonationReceivedDiv>
-        <img src={'/asset/record/donation.svg'} alt="받은후원내역" />
+        <img src={'/asset/history/donation.svg'} alt="받은후원내역" />
         <h4 className="regular">
           <span className="DonationReceived__span">구름이형</span>님이
         </h4>

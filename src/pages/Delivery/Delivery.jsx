@@ -91,14 +91,14 @@ const Delivery = () => {
   };
 
   const dogs = {
-    url: '/asset/record/sample.png',
+    url: '/asset/history/sample.png',
     alt: '이미지를 사용할 수 없습니다',
     pet_id: '1',
     name: '포동이',
   };
 
   const donations = {
-    url: '/asset/record/samplebob.png',
+    url: '/asset/history/samplebob.png',
     category: '강아지',
     company: '펫생각',
     name: 'PROBEST 5kg',
@@ -121,7 +121,7 @@ const Delivery = () => {
       <MainContainer>
         <DeliveryHeader>
           <FontAwesomeIcon
-            onClick={() => handleClick('/donation-record')}
+            onClick={() => handleClick('/donation-history')}
             icon={faAngleLeft}
             className="Delivery__pointer"
           />
