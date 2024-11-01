@@ -15,6 +15,7 @@ import Payment from '../pages/Payment/Payment';
 import PaymentFinish from '../pages/Payment/PaymentFinish';
 import DonationRecord from '../pages/record/DonationRecord';
 import Main from '../pages/Main';
+import MyPage from '../pages/MyPage/MyPage';
 
 const routes = [
   {
@@ -69,6 +70,10 @@ const routes = [
   {
     path: '/payment_finish',
     element: <PaymentFinish />,
+  },
+  {
+    path: '/mypage',
+    element: <MyPage />,
   },
 ];
 
