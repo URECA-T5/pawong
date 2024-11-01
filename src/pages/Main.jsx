@@ -1,4 +1,4 @@
-import GlobalStyle, { Content, MainContainer } from '../style/global/global';
+import GlobalStyle, { MainContainer } from '../style/global/global';
 import { useNavigate } from 'react-router-dom';
 import {
   MainBadgeImg,
@@ -83,7 +83,7 @@ const Main = () => {
                 />
                 <span className="regular">임보강아지 목록</span>
               </button>
-              <button onClick={() => handleClick('/diary/upload')}>
+              <button onClick={() => handleClick('/diary')}>
                 <img
                   src={'/asset/main/diaryupload.svg'}
                   alt="임보일지작성아이콘"
@@ -156,7 +156,7 @@ const Main = () => {
             </ul>
             <button
               className="main__moveDiaryBtn regular"
-              onClick={() => handleClick('/doglist')}
+              onClick={() => handleClick('/diary-list')}
             >
               <span>임보일지 더 보기 </span>
               <span>

@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 
-export const DonationRecordTabStore = create((set) => ({
+export const DonationHistoryTabStore = create((set) => ({
   selectedTab: { tabName: '1', tabIndex: 0, direction: 1 },
   initializeTab: (tabName, tabIndex) =>
     set({ selectedTab: { tabName, tabIndex, direction: 1 } }),

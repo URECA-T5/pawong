@@ -1,10 +1,10 @@
 import JSConfetti from 'js-confetti';
 import { useNavigate } from 'react-router-dom';
-import { DRBtnDiv, DRNullDiv } from '../../style/record/donationRecord';
+import { DHBtnDiv, DHNullDiv } from '../../style/history/donationHistory';
 
 const jsConfetti = new JSConfetti();
 
-const DonationRecordNull = () => {
+const DonationHistoryNull = () => {
   const navigate = useNavigate();
   const handleBtnClick = () => {
     jsConfetti
@@ -18,17 +18,20 @@ const DonationRecordNull = () => {
 
   return (
     <>
-      <DRNullDiv className="regular">
-        <img src={'/asset/record/donationNull.svg'} alt="후원이 처음이시군요" />
-        <DRBtnDiv>
+      <DHNullDiv className="regular">
+        <img
+          src={'/asset/history/donationNull.svg'}
+          alt="후원이 처음이시군요"
+        />
+        <DHBtnDiv>
           <p>후원이 처음이시군요!</p>
           <button className="bold" onClick={handleBtnClick}>
             후원 하러가기
           </button>
-        </DRBtnDiv>
-      </DRNullDiv>
+        </DHBtnDiv>
+      </DHNullDiv>
     </>
   );
 };
 
-export default DonationRecordNull;
+export default DonationHistoryNull;
