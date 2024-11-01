@@ -3,6 +3,7 @@ import GlobalStyle, { MainContainer } from '../../style/global/global';
 import { NoticeHeader, NoticeBody } from '../../style/notice/notice';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHouse, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import dogImg from '../../asset/notice/dogIcon.png';
 
 const Notice = () => {
   return (
@@ -25,11 +26,7 @@ const Notice = () => {
               <p className="bold">🦴 포옹 서비스 점검안내</p>
               <p className="bold">🦴 포옹 배송 안내</p>
             </div>
-            <img
-              src="../asset/notice/dogIcon.png"
-              alt="로그인 메인이미지"
-              className="notice__img"
-            />
+            <img src={dogImg} alt="로그인 메인이미지" className="notice__img" />
           </div>
 
           <div className="notice__changes">
