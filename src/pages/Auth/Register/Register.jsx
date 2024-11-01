@@ -91,13 +91,13 @@ function Register() {
                 id="input__CheckPwd"
                 className="regular"
               />
-              <label htmlFor="input__name" className="regular">
-                이름
+              <label htmlFor="input__nickName" className="regular">
+                닉네임
               </label>
               <input
                 type="text"
                 placeholder="닉네임을 입력해주세요"
-                id="input__name"
+                id="input__nickName"
                 className="regular"
                 onChange={(e) => setName(e.target.value)}
               />

@@ -34,7 +34,7 @@ const LoginModal = ({ onClose }) => {
         <form onSubmit={handleSubmit}>
           <div className="input__section">
             <label htmlFor="input__id" className="regular">
-              🐶 아이디
+              아이디
             </label>
             <div className="input__container">
               <input
@@ -47,7 +47,7 @@ const LoginModal = ({ onClose }) => {
             </div>
 
             <label htmlFor="input__password" className="regular">
-              ⭐ 비밀번호
+              비밀번호
             </label>
             <div className="input__container">
               <input
