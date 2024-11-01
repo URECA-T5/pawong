@@ -15,6 +15,7 @@ import PaymentFinish from '../pages/Payment/PaymentFinish';
 import FosterHistory from '../pages/History/FosterHistory';
 import Main from '../pages/Main';
 import PersonalDiary from '../pages/CareDiary/PersonalDiary';
+import CareStory from '../pages/CareDiary/CareStory';
 
 const routes = [
   {
@@ -74,6 +75,8 @@ const routes = [
     path: '/personal-diary',
     element: <PersonalDiary />,
   },
+
+  { path: '/care-story', element: <CareStory /> },
 ];
 
 const router = createBrowserRouter([
