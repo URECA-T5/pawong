@@ -34,7 +34,7 @@ export const LoginBody = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 15rem;
+    height: 220px;
   }
   .login__img {
     max-width: 100%;
@@ -52,7 +52,7 @@ export const LoginBody = styled.div`
     flex: 1;
     height: 1px;
     background-color: #ccc;
-    margin: 0 1rem;
+    margin: 0 10px;
   }
 
   .sns-login-text {
