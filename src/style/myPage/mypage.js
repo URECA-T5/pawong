@@ -15,14 +15,16 @@ export const MainSection = styled.main`
   padding: 2rem;
   width: 100%;
   height: 100vh;
+  border-radius: 1rem;
 `;
 
 export const ProfileSection = styled.section`
   margin-top: 4rem;
   padding: 2rem;
   width: 100%;
-  height: 3.4rem;
+  height: 5rem;
   background-color: white;
+  border-radius: 1rem;
 `;
 
 export const MyPetSection = styled.section`
@@ -31,6 +33,7 @@ export const MyPetSection = styled.section`
   width: 100%;
   height: auto;
   background-color: white;
+  border-radius: 1rem;
 `;
 
 export const MyFavorites = styled.section`
@@ -39,6 +42,7 @@ export const MyFavorites = styled.section`
   width: 100%;
   height: auto;
   background-color: white;
+  border-radius: 1rem;
 `;
 
 export const MyHistory = styled.section`
@@ -47,4 +51,5 @@ export const MyHistory = styled.section`
   margin-top: 2rem;
   padding: 2rem;
   background-color: white;
+  border-radius: 1rem;
 `;

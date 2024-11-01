@@ -9,7 +9,8 @@ import {
 } from '../../style/myPage/mypage';
 import { faHouse, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
+import UserProfile from '../../components/mypage/UserProfile';
+import DefaultPet from '../../components/mypage/DefaultPet';
 function MyPage() {
   return (
     <>
@@ -19,8 +20,12 @@ function MyPage() {
         <FontAwesomeIcon icon={faHouse} className="header__icon" />
       </MyPageHeader>
       <MainSection>
-        <ProfileSection>{/* profile 컴포넌트 */}</ProfileSection>
-        <MyPetSection>{/* MyPet컴포넌트 */}</MyPetSection>
+        <ProfileSection>
+          <UserProfile />
+        </ProfileSection>
+        <MyPetSection>
+          <DefaultPet />
+        </MyPetSection>
         <MyFavorites>{/* 즐겨찾기 컴포넌트 */}</MyFavorites>
         <MyHistory></MyHistory>
       </MainSection>
