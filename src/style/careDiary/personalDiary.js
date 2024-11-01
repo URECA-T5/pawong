@@ -59,7 +59,7 @@ export const Section = styled.section`
     cursor: pointer;
   }
 
-  img {
+  .board__profile--user--img {
     margin-right: 0.625rem;
   }
 
