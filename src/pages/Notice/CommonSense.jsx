@@ -8,6 +8,7 @@ import { SenseBody } from '../../style/notice/commonSense';
 import Content from '../../components/notice/Content';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import senseImg from '../../asset/notice/senseImg.svg';
 
 const WhiteBackgroundContainer = styled(MainContainer)`
   background-color: #ffffff;
@@ -26,7 +27,7 @@ function CommonSense() {
         </NoticeHeader>
         <SenseBody>
           <div className="img__section">
-            <img src="../asset/notice/senseImg.svg" alt="메인 이미지" />
+            <img src={senseImg} alt="메인 이미지" />
           </div>
           <div className="title__section">
             <h2 className="bold">임시보호에 관해 궁금한 것들을</h2>

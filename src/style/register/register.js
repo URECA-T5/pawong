@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 const mainPurple = '#5850fe';
+const deleteGray = '#CCCCCC';
 export const RegisterBody = styled.form`
   padding: 1.5rem;
   .img__section {
@@ -50,6 +51,41 @@ export const RegisterBody = styled.form`
   .cancle__btn {
     background-color: #e3ecff;
     color: ${mainPurple};
+  }
+`;
+
+export const ProfileImageContainer = styled.div`
+  position: relative;
+  display: inline-block;
+
+  .profile__image {
+    width: 5.5rem;
+    height: 5.5rem;
+    border-radius: 100%;
+    border: 1px solid ${deleteGray};
+  }
+
+  .delete-button {
+    position: absolute;
+    top: 0rem;
+    right: 0rem;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    background-color: ${deleteGray};
+    color: white;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    font-size: 0.8rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+
+    &:hover {
+      background-color: #4740e6;
+    }
   }
 `;
 
