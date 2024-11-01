@@ -36,7 +36,6 @@ function Register() {
 
   const handleImageDelete = (e) => {
     e.preventDefault();
-    e.stopPropagation();
     setProfileImage(null);
     setProfileImage(null);
     document.getElementById('fileInput').value = '';
