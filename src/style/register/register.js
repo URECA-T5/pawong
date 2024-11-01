@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 const mainPurple = '#5850fe';
-export const RegisterBody = styled.div`
+export const RegisterBody = styled.form`
   padding: 1.5rem;
   .img__section {
     margin-top: 4rem;

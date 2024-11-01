@@ -1,5 +1,4 @@
 import GlobalStyle, { MainContainer } from '../style/global/global';
-import { Content } from '../style/global/global';
 import { Navbar } from '../style/main/navbar';
 import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
