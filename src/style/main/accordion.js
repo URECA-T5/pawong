@@ -13,12 +13,12 @@ const colors = {
 export const AccordionDiv = styled.div`
   margin-bottom: 1rem;
   button {
-    width: 510px;
-    height: 55px;
+    width: 31.875rem;
+    height: 3.438rem;
     border: 0;
     background-color: ${colors.light_blue};
     text-align: left;
-    border-radius: 10px;
+    border-radius: 0.625rem;
     border-bottom-left-radius: ${({ $isActive }) => ($isActive ? '0' : '1rem')};
     border-bottom-right-radius: ${({ $isActive }) =>
       $isActive ? '0' : '1rem'};
@@ -33,8 +33,8 @@ export const AccordionDiv = styled.div`
     color: ${colors.dark_gray};
   }
   div {
-    width: 510px;
-    height: 175px;
+    width: 31.875rem;
+    height: 10.938rem;
     padding: 0 2.5rem 1rem;
     background-color: ${colors.light_blue};
     border-bottom-left-radius: 1rem;
