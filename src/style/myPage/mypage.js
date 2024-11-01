@@ -19,7 +19,6 @@ export const MainSection = styled.main`
 `;
 
 export const ProfileSection = styled.section`
-  margin-top: 4rem;
   padding: 2rem;
   width: 100%;
   height: 5rem;

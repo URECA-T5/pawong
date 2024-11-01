@@ -37,3 +37,25 @@ export const PetBody = styled.main`
     color: #5850fe;
   }
 `;
+
+export const HistoryBody = styled.main`
+  padding: 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  .history__list img {
+    width: 3rem;
+  }
+  .history__list span {
+    cursor: pointer;
+  }
+  .history__list span:hover {
+    color: #5850fe;
+  }
+  .history__list {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    gap: 1rem;
+  }
+`;
