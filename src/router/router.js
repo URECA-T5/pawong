@@ -14,6 +14,7 @@ import Payment from '../pages/Payment/Payment';
 import PaymentFinish from '../pages/Payment/PaymentFinish';
 import FosterHistory from '../pages/History/FosterHistory';
 import Main from '../pages/Main';
+import PersonalDiary from '../pages/CareDiary/PersonalDiary';
 
 const routes = [
   {
@@ -68,6 +69,10 @@ const routes = [
   {
     path: '/payment_finish',
     element: <PaymentFinish />,
+  },
+  {
+    path: '/personal-diary',
+    element: <PersonalDiary />,
   },
 ];
 
