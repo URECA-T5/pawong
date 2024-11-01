@@ -2,14 +2,14 @@ import React from 'react';
 import {
   DonationSentDiv,
   DonationSentInfo,
-} from '../../style/record/donationSent';
-import DonationRecordNull from './DonationRecordNull';
+} from '../../style/history/donationSent';
+import DonationHistoryNull from './DonationHistoryNull';
 
 const DonationSent = () => {
   const donations = [
     {
       user_id: 'a123',
-      imgSrc: '/asset/record/samplebob.png',
+      imgSrc: '/asset/history/samplebob.png',
       pet_id: '1',
       name: 'PROBEST 5kg',
       amount: '50000',
@@ -17,7 +17,7 @@ const DonationSent = () => {
     },
     {
       user_id: 'a123',
-      imgSrc: '/asset/record/samplebob.png',
+      imgSrc: '/asset/history/samplebob.png',
       pet_id: '2',
       name: 'PROBEST 5kg',
       amount: '50000',
@@ -25,7 +25,7 @@ const DonationSent = () => {
     },
     {
       user_id: 'a123',
-      imgSrc: '/asset/record/samplebob2.png',
+      imgSrc: '/asset/history/samplebob2.png',
       pet_id: '1',
       name: '잘먹잘싸 5kg',
       amount: '20000',
@@ -33,7 +33,7 @@ const DonationSent = () => {
     },
     {
       user_id: 'a333',
-      imgSrc: '/asset/record/samplebob2.png',
+      imgSrc: '/asset/history/samplebob2.png',
       pet_id: '2',
       name: 'PROBEST 3kg',
       amount: '30000',
@@ -107,7 +107,7 @@ const DonationSent = () => {
       {aggregatedData.length > 0 ? (
         <>
           <DonationSentDiv>
-            <img src={'/asset/record/donation.svg'} alt="보낸후원내역" />
+            <img src={'/asset/history/donation.svg'} alt="보낸후원내역" />
             <h4 className="regular">
               <span className="DonationSent__span">구름이형</span>님이
             </h4>
@@ -116,7 +116,7 @@ const DonationSent = () => {
           <DonationSentInfo>{ListDonations()}</DonationSentInfo>
         </>
       ) : (
-        <DonationRecordNull />
+        <DonationHistoryNull />
       )}
     </>
   );
