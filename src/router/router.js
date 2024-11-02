@@ -15,6 +15,7 @@ import PaymentFinish from '../pages/Payment/PaymentFinish';
 import FosterHistory from '../pages/History/FosterHistory';
 import Main from '../pages/Main';
 import PersonalDiary from '../pages/CareDiary/PersonalDiary';
+import CareDiaryList from '../pages/CareDiary/CareDiaryList';
 
 const routes = [
   {
@@ -46,6 +47,7 @@ const routes = [
     element: <CommonSense />,
   },
   { path: '/diary', element: <CareDiary /> },
+  { path: '/diary-list', element: <CareDiaryList /> },
   {
     path: '/register',
     element: <Register />,
