@@ -58,7 +58,6 @@ export const DiaryListBtn = styled.button`
     props.selected ? `${colors.light_blue}` : `${colors.pastel_gray}`};
   color: ${(props) =>
     props.selected ? `${colors.pastel_blue}` : `${colors.dark_gray}`};
-  font-weight: ${(props) => (props.selected ? '700' : '400')};
   cursor: pointer;
 `;
 
@@ -81,6 +80,9 @@ export const DiaryListContentDiv = styled.div`
   a {
     text-decoration: none;
     color: ${colors.dark_gray};
+  }
+  a:hover {
+    color: ${colors.pastel_blue};
   }
   .diaryList__contentTag {
     width: 4.1rem;
