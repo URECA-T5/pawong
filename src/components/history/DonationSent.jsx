@@ -69,33 +69,33 @@ const DonationSent = () => {
   }, []);
 
   const ListDonations = () => (
-    <table className="DonationSent__table regular">
+    <table className="donationSent__table regular">
       {aggregatedData.map((item, index) => (
         <tbody key={index}>
           <>
             <tr>
-              <td className="DonationSent__size">최근 후원</td>
+              <td className="donationSent__size">최근 후원</td>
               <td
                 rowSpan="2"
-                className="DonationSent__border DonationSent__center"
+                className="donationSent__border donationSent__center"
               >
-                <img className="DonationSent__img" src={item.src} alt="사료" />
+                <img className="donationSent__img" src={item.src} alt="사료" />
               </td>
-              <td className="bold DonationSent__prd">{item.name}</td>
+              <td className="bold donationSent__prd">{item.name}</td>
               <td
                 rowSpan="2"
-                className="DonationSent__border DonationSent__center"
+                className="donationSent__border donationSent__center"
               >
-                <button className="DonationSent__btn bold">
+                <button className="donationSent__btn bold">
                   {item.count}회
                 </button>
               </td>
             </tr>
             <tr>
-              <td className="DonationSent__size DonationSent__border">
+              <td className="donationSent__size donationSent__border">
                 {item.latestDate}
               </td>
-              <td className="DonationSent__border">{item.totalAmount}</td>
+              <td className="donationSent__border">{item.totalAmount}</td>
             </tr>
           </>
         </tbody>
@@ -109,7 +109,7 @@ const DonationSent = () => {
           <DonationSentDiv>
             <img src={'/asset/history/donation.svg'} alt="보낸후원내역" />
             <h4 className="regular">
-              <span className="DonationSent__span">구름이형</span>님이
+              <span className="donationSent__span">구름이형</span>님이
             </h4>
             <h4 className="regular">최근 후원해주신 내역이에요!</h4>
           </DonationSentDiv>

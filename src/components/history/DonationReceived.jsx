@@ -55,7 +55,7 @@ const DonationReceived = () => {
   const ListDogsButton = () =>
     dogs.map((dog) => (
       <button
-        className="DonationReceived__btn"
+        className="donationReceived__btn"
         key={dog.pet_id}
         onClick={() => setSelectedDog(dog)}
       >
@@ -66,31 +66,31 @@ const DonationReceived = () => {
 
   const ListDonations = (selectedDonations) =>
     selectedDonations.length > 0 ? (
-      <table className="DonationReceived__table regular">
+      <table className="donationReceived__table regular">
         {selectedDonations.map((donations, index) => (
           <tbody key={index}>
             <tr>
-              <td className="DonationReceived__border DonationReceived__padding">
+              <td className="donationReceived__border donationReceived__padding">
                 날짜
               </td>
               <td
                 rowSpan="2"
-                className="DonationReceived__border DonationReceived__center"
+                className="donationReceived__border donationReceived__center"
               >
                 <img
-                  className="DonationReceived__img"
+                  className="donationReceived__img"
                   src={donations.imgSrc}
                   alt="사료"
                 />
               </td>
-              <td className="bold DonationReceived__prd">{donations.name}</td>
+              <td className="bold donationReceived__prd">{donations.name}</td>
               <td
                 rowSpan="2"
-                className="DonationReceived__border DonationReceived__center"
+                className="donationReceived__border donationReceived__center"
               >
-                <button className="DonationReceived__btn bold">거절</button>
+                <button className="donationReceived__btn bold">거절</button>
                 <button
-                  className="DonationReceived__btn bold"
+                  className="donationReceived__btn bold"
                   onClick={() => handleClick('/delivery')}
                 >
                   받기
@@ -98,8 +98,8 @@ const DonationReceived = () => {
               </td>
             </tr>
             <tr>
-              <td className="DonationReceived__border">{donations.date}</td>
-              <td className="DonationReceived__border">{donations.amount}</td>
+              <td className="donationReceived__border">{donations.date}</td>
+              <td className="donationReceived__border">{donations.amount}</td>
             </tr>
           </tbody>
         ))}
@@ -114,7 +114,7 @@ const DonationReceived = () => {
         <DonationReceivedDiv>
           <img src={'/asset/history/donation.svg'} alt="받은후원내역" />
           <h4 className="regular">
-            <span className="DonationReceived__span">구름이형</span>님이
+            <span className="donationReceived__span">구름이형</span>님이
           </h4>
           <h4 className="regular">받은 후원 내역이에요!</h4>
         </DonationReceivedDiv>
@@ -132,13 +132,13 @@ const DonationReceived = () => {
       <DonationReceivedDiv>
         <img src={'/asset/history/donation.svg'} alt="받은후원내역" />
         <h4 className="regular">
-          <span className="DonationReceived__span">구름이형</span>님이
+          <span className="donationReceived__span">구름이형</span>님이
         </h4>
         <h4 className="regular">받은 후원 내역이에요!</h4>
       </DonationReceivedDiv>
       <DonationReceivedSection>{ListDogsButton()}</DonationReceivedSection>
       <DonationReceivedInfo>
-        <p className="DonationReceived__mt">
+        <p className="donationReceived__mt">
           <span className="bold">{selectedDog.name}</span>에게 전달된
           후원물품이에요!
         </p>
