@@ -15,6 +15,7 @@ import PaymentFinish from '../pages/Payment/PaymentFinish';
 import FosterHistory from '../pages/History/FosterHistory';
 import Main from '../pages/Main';
 import PersonalDiary from '../pages/CareDiary/PersonalDiary';
+import Admin from '../pages/Admin/Admin';
 
 const routes = [
   {
@@ -73,6 +74,10 @@ const routes = [
   {
     path: '/personal-diary',
     element: <PersonalDiary />,
+  },
+  {
+    path: '/admin',
+    element: <Admin />,
   },
 ];
 
