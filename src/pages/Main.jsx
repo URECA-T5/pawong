@@ -26,7 +26,7 @@ import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
 
 const Main = () => {
   const navigate = useNavigate();
-  const [sectionHeight, setSectionHeight] = useState(280);
+  const [sectionHeight, setSectionHeight] = useState(17.5);
   const handleClick = (path) => {
     navigate(path);
   };
@@ -48,8 +48,10 @@ const Main = () => {
     <>
       <GlobalStyle />
       <MainContainer>
-        <MainHeader className="extraBold">
-          <a href="/">포옹</a>
+        <MainHeader>
+          <p className="extraBold">
+            <a href="/">포옹</a>
+          </p>
           <p>
             <FontAwesomeIcon
               onClick={() => handleClick('/login')}
@@ -81,7 +83,7 @@ const Main = () => {
                 />
                 <span className="regular">임보강아지 목록</span>
               </button>
-              <button onClick={() => handleClick('/diary/upload')}>
+              <button onClick={() => handleClick('/diary')}>
                 <img
                   src={'/asset/main/diaryupload.svg'}
                   alt="임보일지작성아이콘"
@@ -154,7 +156,7 @@ const Main = () => {
             </ul>
             <button
               className="main__moveDiaryBtn regular"
-              onClick={() => handleClick('/doglist')}
+              onClick={() => handleClick('/diary-list')}
             >
               <span>임보일지 더 보기 </span>
               <span>
@@ -185,11 +187,11 @@ const Main = () => {
                 <span className="regular">포옹 배송 안내</span>
               </li>
             </ul>
-            <img src={'/asset/notice/dogIcon.png'} alt="포옹소식" />
+            <img src={'/asset/main/dogIcon.png'} alt="포옹소식" />
           </MainNoticeDiv>
+          <Footer />
+          <Nav />
         </MainSection>
-        <Footer />
-        <Nav />
       </MainContainer>
     </>
   );

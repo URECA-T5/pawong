@@ -9,24 +9,25 @@ const colors = {
   light_blue: '#E3ECFF',
   pastel_blue: '#5850FE',
   black: '#000000',
+  white: '#ffffff',
 };
 
-export const DRHeader = styled.header`
+export const DHHeader = styled.header`
   width: 100%;
-  height: 52px;
+  height: 3.25rem;
   align-items: center;
   display: flex;
   justify-content: space-between;
-  padding: 1rem 20px;
-  background-color: white;
-  border-bottom: 1px solid ${colors.light_gray};
+  padding: 1.25rem;
+  background-color: ${colors.white};
+  border-bottom: 0.063rem solid ${colors.light_gray};
   font-size: 1.2rem;
   .donationRecord__style {
     cursor: pointer;
   }
 `;
 
-export const DRTabBtn = styled(motion.button)`
+export const DHTabBtn = styled(motion.button)`
   margin: 2.5rem 0 3rem 0;
   width: 40%;
   position: relative;
@@ -38,23 +39,23 @@ export const DRTabBtn = styled(motion.button)`
   font-size: 1rem;
 `;
 
-export const DRTabIndicator = styled(motion.div)`
+export const DHTabIndicator = styled(motion.div)`
   position: absolute;
-  bottom: -5px;
+  bottom: -0.313rem;
   left: 0;
-  height: 1px;
+  height: 0.063rem;
   background-color: ${colors.black};
   width: 100%;
 `;
 
-export const DRTabList = styled.div`
+export const DHTabList = styled.div`
   display: flex;
   gap: 1.2rem;
   justify-content: center;
   position: relative;
 `;
 
-export const DRBtnDiv = styled.div`
+export const DHBtnDiv = styled.div`
   text-align: center;
   p {
     margin-bottom: 1rem;
@@ -64,7 +65,7 @@ export const DRBtnDiv = styled.div`
     width: 8rem;
     height: 1.9rem;
     font-size: 0.9rem;
-    border-radius: 11px;
+    border-radius: 0.688rem;
     border: 0;
     background-color: ${colors.light_blue};
     color: ${colors.pastel_blue};
@@ -72,10 +73,10 @@ export const DRBtnDiv = styled.div`
   }
 `;
 
-export const DRNullDiv = styled.section`
+export const DHNullDiv = styled.section`
   img {
     width: 100%;
-    height: 190px;
+    height: 11.875rem;
     margin-bottom: 1rem;
   }
 `;

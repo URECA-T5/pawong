@@ -26,7 +26,7 @@ export const DonationSentDiv = styled.div`
 export const DonationSentInfo = styled.div`
   width: 70%;
   margin: 0 auto;
-  border-top: 1px solid ${colors.gray};
+  border-top: 0.063rem solid ${colors.gray};
   text-align: left;
   font-size: 0.9rem;
   color: ${colors.dark_gray};
@@ -54,8 +54,8 @@ export const DonationSentInfo = styled.div`
   }
 
   .DonationSent__btn {
-    width: 40px;
-    height: 25px;
+    width: 2.5rem;
+    height: 1.563rem;
     border: 0;
     border-radius: 1rem;
     background-color: ${colors.pastel_gray};
@@ -66,7 +66,7 @@ export const DonationSentInfo = styled.div`
   }
 
   .DonationSent__border {
-    border-bottom: 1px solid ${colors.light_gray};
+    border-bottom: 0.063rem solid ${colors.light_gray};
     padding-bottom: 0.3rem;
   }
 
@@ -75,8 +75,8 @@ export const DonationSentInfo = styled.div`
   }
 
   .DonationSent__img {
-    width: 46px;
-    height: 46px;
+    width: 2.875rem;
+    height: 2.875rem;
     padding-top: 0.3rem;
   }
 `;

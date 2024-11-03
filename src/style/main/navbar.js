@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Navbar = styled.section`
   width: 100%;
-  height: 53px;
+  height: 3.313rem;
   position: fixed;
   align-items: center;
   bottom: 0;
@@ -27,7 +27,7 @@ export const Navbar = styled.section`
     align-items: center;
     flex-direction: column;
     justify-content: center;
-    width: 84px;
+    width: 5.25rem;
     border: 0;
     background-color: transparent;
     cursor: pointer;
@@ -37,7 +37,7 @@ export const Navbar = styled.section`
   }
   button > span {
     font-size: 0.8rem;
-    margin-top: 5px;
+    margin-top: 0.313rem;
   }
   button > svg {
     font-size: 1.4rem;

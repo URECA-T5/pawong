@@ -1,22 +1,22 @@
 import { useEffect } from 'react';
-import { DonationRecordTabStore } from '../../stores/recordStore';
 import GlobalStyle, { MainContainer } from '../../style/global/global';
-import { DRHeader, DRTabList } from '../../style/record/donationRecord';
 import { AnimatePresence } from 'framer-motion';
-import DonationRecordTabButton from '../../components/record/DonationRecordTabButton';
-import DonationRecordContent from '../../components/record/DonationRecordContent';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleLeft, faHouse } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
-import DonationSent from '../../components/record/DonationSent';
-import DonationReceived from '../../components/record/DonationReceived';
+import DonationSent from '../../components/history/DonationSent';
+import DonationReceived from '../../components/history/DonationReceived';
+import { DHHeader, DHTabList } from '../../style/history/donationHistory';
+import DonationHistoryContent from '../../components/history/DonationHistoryContent';
+import { DonationHistoryTabStore } from '../../stores/historyStore';
+import DonationHistoryTabButton from '../../components/history/DonationHistoryTabButton';
 
-const DonationRecord = () => {
+const DonationHistory = () => {
   const navigate = useNavigate();
   const handleClick = (path) => {
     navigate(path);
   };
-  const { selectedTab, initializeTab } = DonationRecordTabStore();
+  const { selectedTab, initializeTab } = DonationHistoryTabStore();
   useEffect(() => {
     initializeTab('1', 0);
   }, []);
@@ -25,7 +25,7 @@ const DonationRecord = () => {
     <>
       <GlobalStyle />
       <MainContainer style={{ backgroundColor: 'white' }}>
-        <DRHeader className="extraBold">
+        <DHHeader className="extraBold">
           <FontAwesomeIcon
             className="donationRecord__style"
             onClick={() => handleClick('/mypage')}
@@ -39,26 +39,26 @@ const DonationRecord = () => {
             onClick={() => handleClick('/')}
             icon={faHouse}
           />
-        </DRHeader>
-        <DRTabList>
-          <DonationRecordTabButton tabName="1">
+        </DHHeader>
+        <DHTabList>
+          <DonationHistoryTabButton tabName="1">
             💞 보낸 후원 내역
-          </DonationRecordTabButton>
-          <DonationRecordTabButton tabName="2">
+          </DonationHistoryTabButton>
+          <DonationHistoryTabButton tabName="2">
             🐶 받은 후원 내역
-          </DonationRecordTabButton>
-        </DRTabList>
+          </DonationHistoryTabButton>
+        </DHTabList>
         <AnimatePresence initial={false} custom={selectedTab.direction}>
-          <DonationRecordContent key="tab1" tabName="1">
+          <DonationHistoryContent key="tab1" tabName="1">
             <DonationSent />
-          </DonationRecordContent>
-          <DonationRecordContent key="tab2" tabName="2">
+          </DonationHistoryContent>
+          <DonationHistoryContent key="tab2" tabName="2">
             <DonationReceived />
-          </DonationRecordContent>
+          </DonationHistoryContent>
         </AnimatePresence>
       </MainContainer>
     </>
   );
 };
 
-export default DonationRecord;
+export default DonationHistory;
