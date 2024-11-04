@@ -18,11 +18,21 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import Slider from 'react-slick';
 import { useState } from 'react';
-
 import Footer from '../components/main/Footer';
 import MainAccordion from '../components/main/MainAccordion';
 import Nav from '../components/common/Nav';
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
+import { dummy_data } from '../components/diary/dummy_data';
+
+const getRecentList = (dummy_data) => {
+  return dummy_data.reduce((acc, data) => {
+    const { category, date } = data;
+    if (!acc[category] || new Date(date) > new Date(acc[category].date)) {
+      acc[category] = data;
+    }
+    return acc;
+  }, {});
+};
 
 const Main = () => {
   const navigate = useNavigate();
@@ -43,6 +53,8 @@ const Main = () => {
     autoplaySpeed: 3000,
     arrows: false,
   };
+
+  const recentList = getRecentList(dummy_data);
 
   return (
     <>
@@ -76,12 +88,12 @@ const Main = () => {
         <MainSection className="regular">
           <MainBtnDiv>
             <div>
-              <button onClick={() => handleClick('/dog')}>
+              <button onClick={() => handleClick('/pet-list')}>
                 <img
                   src={'/asset/main/doglist.svg'}
-                  alt="임보강아지목록아이콘"
+                  alt="임보동물 목록아이콘"
                 />
-                <span className="regular">임보강아지 목록</span>
+                <span className="regular">임보동물 목록</span>
               </button>
               <button onClick={() => handleClick('/diary')}>
                 <img
@@ -106,7 +118,7 @@ const Main = () => {
           />
           <MainSenseDiv height={sectionHeight}>
             <h4 className="bold">
-              임보 생활에 도움이 되는 포옹 <span>상식</span>
+              임보 생활에 도움이 되는 포옹 <span>조언</span>
             </h4>
             <MainAccordion setSectionHeight={setSectionHeight} />
           </MainSenseDiv>
@@ -114,51 +126,21 @@ const Main = () => {
             <h4 className="bold">
               와글와글 <span>임보일지</span>
             </h4>
-            <ul>
-              <li>
-                <button className="regular">#일상</button>
-                <a className="regular" href="/">
-                  날씨가 너무 좋네요
-                </a>
-              </li>
-            </ul>
-            <ul>
-              <li>
-                <button className="regular">#모임</button>
-                <a className="regular" href="/">
-                  강아지 숲에서 대형견 모임을 진행했어요
-                </a>
-              </li>
-            </ul>
-            <ul>
-              <li>
-                <button className="regular">#오산완</button>
-                <a className="regular" href="/">
-                  오늘 오전 산책 무사히 끝냄~!
-                </a>
-              </li>
-            </ul>
-            <ul>
-              <li>
-                <button className="regular">#먹방</button>
-                <a className="regular" href="/">
-                  사료를 바꿨더니 몸무게가 1kg나 쪘어요...
-                </a>
-              </li>
-            </ul>
-            <ul>
-              <li>
-                <button className="regular">#미용</button>
-                <a className="regular" href="/">
-                  오랜만에 곰돌이 재등장
-                </a>
-              </li>
-            </ul>
+            {Object.values(recentList).map((data) => (
+              <ul key={data.id}>
+                <li>
+                  <button className="regular">{data.category}</button>
+                  <a className="regular" href="/">
+                    {data.title}
+                  </a>
+                </li>
+              </ul>
+            ))}
             <button
               className="main__moveDiaryBtn regular"
               onClick={() => handleClick('/diary-list')}
             >
-              <span>임보일지 더 보기 </span>
+              <span>임보일지 모아보기 </span>
               <span>
                 <FontAwesomeIcon icon={faAngleRight} />
               </span>
@@ -166,7 +148,9 @@ const Main = () => {
           </MainDiaryDiv>
           <MainPawongImg src={'/asset/main/banner2.svg'} alt="Pawyong" />
           <MainNoticeDiv>
-            <h4>포옹 소식</h4>
+            <h4>
+              포옹 <span className="main__noticeTitle">소식</span>
+            </h4>
             <ul>
               <li>
                 <button className="bold">1</button>
