@@ -14,7 +14,7 @@ export const petUploadStore = create((set) => ({
   bread: null,
   gender: null,
   isNeutered: null,
-  vaccination: null,
+  vaccination: [],
 
   setFormData: (newFormData) =>
     set(() => ({

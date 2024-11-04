@@ -28,8 +28,14 @@ const SelectVaccination = () => {
           return (
             <TagButton
               key={index}
-              $isClicked={vaccination === data ? true : false}
-              onClick={() => setVaccination(vaccination === data ? null : data)}
+              $isClicked={vaccination.includes(data) ? true : false}
+              onClick={() =>
+                setVaccination(
+                  vaccination.includes(data)
+                    ? vaccination.filter((val) => val !== data)
+                    : [...vaccination, data],
+                )
+              }
               className="bold"
             >
               {data}
@@ -43,9 +49,13 @@ const SelectVaccination = () => {
             return (
               <TagButton
                 key={index}
-                $isClicked={vaccination === data ? true : false}
+                $isClicked={vaccination.includes(data) ? true : false}
                 onClick={() =>
-                  setVaccination(vaccination === data ? null : data)
+                  setVaccination(
+                    vaccination.includes(data)
+                      ? vaccination.filter((val) => val !== data)
+                      : [...vaccination, data],
+                  )
                 }
                 className="bold"
               >
