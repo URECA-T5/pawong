@@ -3,7 +3,15 @@ import styled from 'styled-components';
 export const PetHeader = styled.header`
   .pet__header {
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
+  }
+  .edit__btn {
+    width: 3.4rem;
+    height: 1.2rem;
+    border-radius: 1rem;
+    border: none;
+    color: #6d6e71;
+    cursor: pointer;
   }
 `;
 export const PetBody = styled.main`

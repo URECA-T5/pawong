@@ -13,6 +13,8 @@ import UserProfile from '../../components/mypage/Login/UserProfile';
 import DefaultPet from '../../components/mypage/DefaultPet';
 import DefaultFav from '../../components/mypage/DefaultFav';
 import UserHistory from '../../components/mypage/UserHistory';
+import UserPet from '../../components/mypage/Login/UserPet';
+
 function MyPage() {
   return (
     <>
@@ -26,7 +28,8 @@ function MyPage() {
           <UserProfile />
         </ProfileSection>
         <MyPetSection>
-          <DefaultPet />
+          {/* <DefaultPet /> */}
+          <UserPet />
         </MyPetSection>
         <MyFavorites>
           <DefaultFav />
