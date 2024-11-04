@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { TagButton } from '../../../style/care/upload/petUpload';
-import { petUploadStore } from '../../../stores/petUploadStore';
+import { petUploadStore } from '../../../stores/care/upload/petUploadStore';
 import AddBottomModal from './AddBottomModal';
 
 const button_list = [

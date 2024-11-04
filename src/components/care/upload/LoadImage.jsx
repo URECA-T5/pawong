@@ -3,7 +3,7 @@ import {
   ImageContainer,
   SelectedImage,
 } from '../../../style/care/upload/petUpload';
-import { petUploadStore } from '../../../stores/petUploadStore';
+import { petUploadStore } from '../../../stores/care/upload/petUploadStore';
 
 const DiaryImage = () => {
   const { formData, setFormData } = petUploadStore();
