@@ -17,6 +17,7 @@ import CareList from '../pages/Care/List/CareList';
 import FosterHistory from '../pages/History/FosterHistory';
 import Main from '../pages/Main';
 import PersonalDiary from '../pages/CareDiary/PersonalDiary';
+import CareDiaryFeed from '../pages/CareDiary/CareDiaryFeed';
 import PetUpload from '../pages/Care/Upload/PetUpload';
 import CareDiaryList from '../pages/CareDiary/CareDiaryList';
 import MyPage from '../pages/MyPage/MyPage';
@@ -80,6 +81,8 @@ const routes = [
     path: '/personal-diary',
     element: <PersonalDiary />,
   },
+
+  { path: '/diary-feed', element: <CareDiaryFeed /> },
   {
     path: '/care-list',
     element: <CareList />,

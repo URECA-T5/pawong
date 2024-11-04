@@ -45,7 +45,7 @@ const Main = () => {
     dots: false,
     fade: true,
     infinite: true,
-    speed: 400,
+    speed: 300,
     slidesToShow: 1,
     slidesToScroll: 1,
     waitForAnimate: false,
@@ -73,6 +73,9 @@ const Main = () => {
         </MainHeader>
         <MainSliderContainer>
           <Slider {...settings}>
+            <div>
+              <MainSlideImage src={'/asset/main/carousel.jpg'} alt="1" />
+            </div>
             <div>
               <MainSlideImage
                 onClick={() => handleClick('/doglist')}
