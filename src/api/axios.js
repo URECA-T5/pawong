@@ -3,9 +3,6 @@ import { refreshToken } from './auth/auth';
 
 const request = axios.create({
   baseURL: 'http://3.23.104.89:8080',
-  headers: {
-    'Content-Type': 'application/json',
-  },
 });
 
 request.interceptors.request.use((config) => {
