@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { MenuArea, MenuBtn } from '../../style/donation/donation';
 
-const DonationMenu = () => {
+const DonationMenu = ({ category, setCategory }) => {
   const [colors, setColors] = useState({
     defaultBgColor: '#F3F3F6',
     defaultFontColor: '#6D6E71',
@@ -9,14 +9,12 @@ const DonationMenu = () => {
     selectFontColor: '#5850FE',
   });
 
-  const [category, setCategory] = useState('all');
-
   return (
     <MenuArea>
       {[
-        { id: 'all', title: '전체' },
-        { id: 'puppy', title: '강아지' },
-        { id: 'cat', title: '고양이' },
+        { id: '전체', title: '전체' },
+        { id: '강아지', title: '강아지' },
+        { id: '고양이', title: '고양이' },
       ].map(({ id, title }, index) => {
         return (
           <MenuBtn

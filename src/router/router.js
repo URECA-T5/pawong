@@ -12,9 +12,12 @@ import DonationHistory from '../pages/History/DonationHistory';
 import Delivery from '../pages/Delivery/Delivery';
 import Payment from '../pages/Payment/Payment';
 import PaymentFinish from '../pages/Payment/PaymentFinish';
+import { path } from 'framer-motion/client';
+import CareList from '../pages/Care/List/CareList';
 import FosterHistory from '../pages/History/FosterHistory';
 import Main from '../pages/Main';
 import PersonalDiary from '../pages/CareDiary/PersonalDiary';
+import PetUpload from '../pages/Care/Upload/PetUpload';
 
 const routes = [
   {
@@ -38,7 +41,7 @@ const routes = [
     element: <Donation />,
   },
   {
-    path: '/donation_item',
+    path: '/donation-item',
     element: <DonationItemDetail />,
   },
   {
@@ -67,12 +70,20 @@ const routes = [
     element: <Payment />,
   },
   {
-    path: '/payment_finish',
+    path: '/payment-finish',
     element: <PaymentFinish />,
   },
   {
     path: '/personal-diary',
     element: <PersonalDiary />,
+  },
+  {
+    path: '/care-list',
+    element: <CareList />,
+  },
+  {
+    path: '/pet-upload',
+    element: <PetUpload />,
   },
 ];
 
