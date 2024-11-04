@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 
-export const UserPetBody = styled.main``;
+export const UserPetBody = styled.main`
+  margin-top: 0.8rem;
+  max-height: 15rem;
+  overflow-y: auto;
+`;
 
 export const PetContainer = styled.div`
   border: none;
