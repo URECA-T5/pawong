@@ -68,6 +68,15 @@ const DonationSent = () => {
     return acc;
   }, []);
 
+  function formatPrice(price) {
+    return new Intl.NumberFormat('ko-KR', {
+      style: 'currency',
+      currency: 'KRW',
+    })
+      .format(price)
+      .replace('₩', '');
+  }
+
   const ListDonations = () => (
     <table className="donationSent__table regular">
       {aggregatedData.map((item, index) => (
@@ -95,7 +104,9 @@ const DonationSent = () => {
               <td className="donationSent__size donationSent__border">
                 {item.latestDate}
               </td>
-              <td className="donationSent__border">{item.totalAmount}</td>
+              <td className="donationSent__border">
+                {formatPrice(item.totalAmount)}
+              </td>
             </tr>
           </>
         </tbody>

@@ -64,6 +64,15 @@ const DonationReceived = () => {
       </button>
     ));
 
+  function formatPrice(price) {
+    return new Intl.NumberFormat('ko-KR', {
+      style: 'currency',
+      currency: 'KRW',
+    })
+      .format(price)
+      .replace('₩', '');
+  }
+
   const ListDonations = (selectedDonations) =>
     selectedDonations.length > 0 ? (
       <table className="donationReceived__table regular">
@@ -99,7 +108,9 @@ const DonationReceived = () => {
             </tr>
             <tr>
               <td className="donationReceived__border">{donations.date}</td>
-              <td className="donationReceived__border">{donations.amount}</td>
+              <td className="donationReceived__border">
+                {formatPrice(donations.amount)}
+              </td>
             </tr>
           </tbody>
         ))}
