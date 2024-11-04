@@ -18,7 +18,7 @@ export const DonationSentDiv = styled.div`
     width: 15%;
     margin-bottom: 0.5rem;
   }
-  .DonationSent__span {
+  .donationSent__span {
     color: ${colors.pastel_blue};
   }
 `;
@@ -34,26 +34,26 @@ export const DonationSentInfo = styled.div`
   p {
     margin-top: 0.5rem;
   }
-  .DonationSent__mt {
+  .donationSent__mt {
     margin-top: 0.5rem;
   }
 
-  .DonationSent__size {
+  .donationSent__size {
     font-size: 0.8rem;
     padding: 0.15rem 0.2rem 0 0.2rem;
   }
 
-  .DonationSent__prd {
+  .donationSent__prd {
     padding-top: 0.25rem;
     color: ${colors.black};
   }
 
-  .DonationSent__table {
+  .donationSent__table {
     width: 100%;
     background-color: ${colors.light_blue};
   }
 
-  .DonationSent__btn {
+  .donationSent__btn {
     width: 2.5rem;
     height: 1.563rem;
     border: 0;
@@ -65,16 +65,16 @@ export const DonationSentInfo = styled.div`
     cursor: pointer;
   }
 
-  .DonationSent__border {
+  .donationSent__border {
     border-bottom: 0.063rem solid ${colors.light_gray};
     padding-bottom: 0.3rem;
   }
 
-  .DonationSent__center {
+  .donationSent__center {
     text-align: center;
   }
 
-  .DonationSent__img {
+  .donationSent__img {
     width: 2.875rem;
     height: 2.875rem;
     padding-top: 0.3rem;

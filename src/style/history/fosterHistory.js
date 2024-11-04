@@ -11,7 +11,7 @@ const colors = {
   white: '#ffffff',
 };
 
-export const FRHeader = styled.header`
+export const FHHeader = styled.header`
   width: 100%;
   height: 3.25rem;
   align-items: center;
@@ -21,12 +21,12 @@ export const FRHeader = styled.header`
   background-color: ${colors.white};
   font-size: 1.2rem;
   border-bottom: 0.063rem solid ${colors.light_gray};
-  .fosterRecord__style {
+  .fosterHistory__style {
     cursor: pointer;
   }
 `;
 
-export const FRNullSection = styled.section`
+export const FHNullSection = styled.section`
   margin-top: 4rem;
   text-align: center;
   font-size: 1.15rem;
@@ -37,7 +37,7 @@ export const FRNullSection = styled.section`
   }
 `;
 
-export const FRSection = styled.section`
+export const FHSection = styled.section`
   margin-top: 2rem;
   display: flex;
   justify-content: center;
@@ -47,7 +47,7 @@ export const FRSection = styled.section`
   img {
     width: 20%;
   }
-  .FR__div {
+  .fosterHistory__div {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -60,17 +60,17 @@ export const FRSection = styled.section`
   }
 `;
 
-export const FRCardDiv = styled.div`
+export const FHCardDiv = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 5%;
-  .FR__CardSection {
+  background-color: ${colors.white};
+  .fosterHistory__CardSection {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem;
   }
-  .FR__card {
+  .fosterHistory__card {
     border: 0;
     display: flex;
     flex-direction: column;

@@ -1,11 +1,11 @@
 import React from 'react';
+import { DonationReceivedStore } from '../../stores/historyStore';
+import { useNavigate } from 'react-router-dom';
 import {
   DonationReceivedDiv,
   DonationReceivedInfo,
   DonationReceivedSection,
-} from '../../style/record/donationReceived';
-import { DonationReceivedStore } from '../../stores/recordStore';
-import { useNavigate } from 'react-router-dom';
+} from '../../style/history/donationReceived';
 
 const DonationReceived = () => {
   const navigate = useNavigate();
@@ -15,13 +15,13 @@ const DonationReceived = () => {
   const { selectedDog, setSelectedDog } = DonationReceivedStore();
   const dogs = [
     {
-      imgSrc: '/asset/record/sample.png',
+      imgSrc: '/asset/history/sample.png',
       alt: '이미지를 사용할 수 없습니다',
       pet_id: '1',
       name: '포동이',
     },
     {
-      imgSrc: '/asset/record/sample2.png',
+      imgSrc: '/asset/history/sample2.png',
       alt: '이미지를 사용할 수 없습니다',
       pet_id: '2',
       name: '포옹이',
@@ -30,21 +30,21 @@ const DonationReceived = () => {
 
   const donations = [
     {
-      imgSrc: '/asset/record/samplebob.png',
+      imgSrc: '/asset/history/samplebob.png',
       pet_id: '1',
       name: 'PROBEST 5kg',
       amount: '20000',
       date: '24.10.28',
     },
     {
-      imgSrc: '/asset/record/samplebob.png',
+      imgSrc: '/asset/history/samplebob.png',
       pet_id: '2',
       name: 'PROBEST 3kg',
       amount: '50000',
       date: '24.10.03',
     },
     {
-      imgSrc: '/asset/record/samplebob2.png',
+      imgSrc: '/asset/history/samplebob2.png',
       pet_id: '2',
       name: '잘먹잘싸 2kg',
       amount: '50000',
@@ -55,7 +55,7 @@ const DonationReceived = () => {
   const ListDogsButton = () =>
     dogs.map((dog) => (
       <button
-        className="DonationReceived__btn"
+        className="donationReceived__btn"
         key={dog.pet_id}
         onClick={() => setSelectedDog(dog)}
       >
@@ -64,33 +64,42 @@ const DonationReceived = () => {
       </button>
     ));
 
+  function formatPrice(price) {
+    return new Intl.NumberFormat('ko-KR', {
+      style: 'currency',
+      currency: 'KRW',
+    })
+      .format(price)
+      .replace('₩', '');
+  }
+
   const ListDonations = (selectedDonations) =>
     selectedDonations.length > 0 ? (
-      <table className="DonationReceived__table regular">
+      <table className="donationReceived__table regular">
         {selectedDonations.map((donations, index) => (
           <tbody key={index}>
             <tr>
-              <td className="DonationReceived__border DonationReceived__padding">
+              <td className="donationReceived__border donationReceived__padding">
                 날짜
               </td>
               <td
                 rowSpan="2"
-                className="DonationReceived__border DonationReceived__center"
+                className="donationReceived__border donationReceived__center"
               >
                 <img
-                  className="DonationReceived__img"
+                  className="donationReceived__img"
                   src={donations.imgSrc}
                   alt="사료"
                 />
               </td>
-              <td className="bold DonationReceived__prd">{donations.name}</td>
+              <td className="bold donationReceived__prd">{donations.name}</td>
               <td
                 rowSpan="2"
-                className="DonationReceived__border DonationReceived__center"
+                className="donationReceived__border donationReceived__center"
               >
-                <button className="DonationReceived__btn bold">거절</button>
+                <button className="donationReceived__btn bold">거절</button>
                 <button
-                  className="DonationReceived__btn bold"
+                  className="donationReceived__btn bold"
                   onClick={() => handleClick('/delivery')}
                 >
                   받기
@@ -98,8 +107,10 @@ const DonationReceived = () => {
               </td>
             </tr>
             <tr>
-              <td className="DonationReceived__border">{donations.date}</td>
-              <td className="DonationReceived__border">{donations.amount}</td>
+              <td className="donationReceived__border">{donations.date}</td>
+              <td className="donationReceived__border">
+                {formatPrice(donations.amount)}
+              </td>
             </tr>
           </tbody>
         ))}
@@ -112,9 +123,9 @@ const DonationReceived = () => {
     return (
       <>
         <DonationReceivedDiv>
-          <img src={'/asset/record/donation.svg'} alt="받은후원내역" />
+          <img src={'/asset/history/donation.svg'} alt="받은후원내역" />
           <h4 className="regular">
-            <span className="DonationReceived__span">구름이형</span>님이
+            <span className="donationReceived__span">구름이형</span>님이
           </h4>
           <h4 className="regular">받은 후원 내역이에요!</h4>
         </DonationReceivedDiv>
@@ -130,15 +141,15 @@ const DonationReceived = () => {
   return (
     <>
       <DonationReceivedDiv>
-        <img src={'/asset/record/donation.svg'} alt="받은후원내역" />
+        <img src={'/asset/history/donation.svg'} alt="받은후원내역" />
         <h4 className="regular">
-          <span className="DonationReceived__span">구름이형</span>님이
+          <span className="donationReceived__span">구름이형</span>님이
         </h4>
         <h4 className="regular">받은 후원 내역이에요!</h4>
       </DonationReceivedDiv>
       <DonationReceivedSection>{ListDogsButton()}</DonationReceivedSection>
       <DonationReceivedInfo>
-        <p className="DonationReceived__mt">
+        <p className="donationReceived__mt">
           <span className="bold">{selectedDog.name}</span>에게 전달된
           후원물품이에요!
         </p>

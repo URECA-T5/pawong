@@ -1,0 +1,51 @@
+export const dummy_data = [
+  {
+    category: '오산완',
+    id: 1,
+    author: '구름이형',
+    title: '오늘 오전 산책 무사히 끝냄~!',
+    date: '2024-10-25',
+  },
+  {
+    category: '일상',
+    id: 2,
+    author: '털털이',
+    title: '날씨가 너무 좋네요',
+    date: '2024-10-11',
+  },
+  {
+    category: '일상',
+    id: 3,
+    author: '오복이보호자님',
+    title: '강아지숲에서 대형견 모임 했어요',
+    date: '2024-10-10',
+  },
+  {
+    category: '병원',
+    id: 4,
+    author: '두부엄마',
+    title: '심장 사상충 주사 관련해서 공유드려요',
+    date: '2024-10-26',
+  },
+  {
+    category: '먹방',
+    id: 5,
+    author: '사랑이누나',
+    title: '사료를 바꿨더니 몸무게가 1kg나 쪘어요...',
+    date: '2024-10-24',
+  },
+  {
+    category: '미용',
+    id: 6,
+    author: '구름이형',
+    title: '오랜만에 곰돌이 재등장',
+    date: '2024-10-11',
+  },
+  {
+    category: '미용',
+    id: 7,
+    author: '사랑이누나',
+    title: '빡빡 밀었더니 의기소침해져있네요',
+    date: '2024-11-02',
+  },
+];

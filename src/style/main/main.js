@@ -123,6 +123,9 @@ export const MainDiaryDiv = styled.section`
   position: relative;
   display: flex;
   flex-direction: column;
+  span {
+    color: ${colors.pastel_blue};
+  }
   h4 {
     align-self: flex-start;
     margin: 1.5rem 0 1rem 2rem;
@@ -131,6 +134,9 @@ export const MainDiaryDiv = styled.section`
     text-decoration: none;
     color: ${colors.dark_gray};
     cursor: pointer;
+  }
+  a:hover {
+    color: ${colors.pastel_blue};
   }
   button {
     border: 0;
@@ -217,5 +223,8 @@ export const MainNoticeDiv = styled.section`
     right: 1rem;
     bottom: 1rem;
     position: absolute;
+  }
+  .main__noticeTitle {
+    color: ${colors.pastel_blue};
   }
 `;

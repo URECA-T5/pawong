@@ -2,14 +2,14 @@ import React from 'react';
 import {
   DonationSentDiv,
   DonationSentInfo,
-} from '../../style/record/donationSent';
-import DonationRecordNull from './DonationRecordNull';
+} from '../../style/history/donationSent';
+import DonationHistoryNull from './DonationHistoryNull';
 
 const DonationSent = () => {
   const donations = [
     {
       user_id: 'a123',
-      imgSrc: '/asset/record/samplebob.png',
+      imgSrc: '/asset/history/samplebob.png',
       pet_id: '1',
       name: 'PROBEST 5kg',
       amount: '50000',
@@ -17,7 +17,7 @@ const DonationSent = () => {
     },
     {
       user_id: 'a123',
-      imgSrc: '/asset/record/samplebob.png',
+      imgSrc: '/asset/history/samplebob.png',
       pet_id: '2',
       name: 'PROBEST 5kg',
       amount: '50000',
@@ -25,7 +25,7 @@ const DonationSent = () => {
     },
     {
       user_id: 'a123',
-      imgSrc: '/asset/record/samplebob2.png',
+      imgSrc: '/asset/history/samplebob2.png',
       pet_id: '1',
       name: '잘먹잘싸 5kg',
       amount: '20000',
@@ -33,7 +33,7 @@ const DonationSent = () => {
     },
     {
       user_id: 'a333',
-      imgSrc: '/asset/record/samplebob2.png',
+      imgSrc: '/asset/history/samplebob2.png',
       pet_id: '2',
       name: 'PROBEST 3kg',
       amount: '30000',
@@ -68,34 +68,45 @@ const DonationSent = () => {
     return acc;
   }, []);
 
+  function formatPrice(price) {
+    return new Intl.NumberFormat('ko-KR', {
+      style: 'currency',
+      currency: 'KRW',
+    })
+      .format(price)
+      .replace('₩', '');
+  }
+
   const ListDonations = () => (
-    <table className="DonationSent__table regular">
+    <table className="donationSent__table regular">
       {aggregatedData.map((item, index) => (
         <tbody key={index}>
           <>
             <tr>
-              <td className="DonationSent__size">최근 후원</td>
+              <td className="donationSent__size">최근 후원</td>
               <td
                 rowSpan="2"
-                className="DonationSent__border DonationSent__center"
+                className="donationSent__border donationSent__center"
               >
-                <img className="DonationSent__img" src={item.src} alt="사료" />
+                <img className="donationSent__img" src={item.src} alt="사료" />
               </td>
-              <td className="bold DonationSent__prd">{item.name}</td>
+              <td className="bold donationSent__prd">{item.name}</td>
               <td
                 rowSpan="2"
-                className="DonationSent__border DonationSent__center"
+                className="donationSent__border donationSent__center"
               >
-                <button className="DonationSent__btn bold">
+                <button className="donationSent__btn bold">
                   {item.count}회
                 </button>
               </td>
             </tr>
             <tr>
-              <td className="DonationSent__size DonationSent__border">
+              <td className="donationSent__size donationSent__border">
                 {item.latestDate}
               </td>
-              <td className="DonationSent__border">{item.totalAmount}</td>
+              <td className="donationSent__border">
+                {formatPrice(item.totalAmount)}
+              </td>
             </tr>
           </>
         </tbody>
@@ -107,16 +118,16 @@ const DonationSent = () => {
       {aggregatedData.length > 0 ? (
         <>
           <DonationSentDiv>
-            <img src={'/asset/record/donation.svg'} alt="보낸후원내역" />
+            <img src={'/asset/history/donation.svg'} alt="보낸후원내역" />
             <h4 className="regular">
-              <span className="DonationSent__span">구름이형</span>님이
+              <span className="donationSent__span">구름이형</span>님이
             </h4>
             <h4 className="regular">최근 후원해주신 내역이에요!</h4>
           </DonationSentDiv>
           <DonationSentInfo>{ListDonations()}</DonationSentInfo>
         </>
       ) : (
-        <DonationRecordNull />
+        <DonationHistoryNull />
       )}
     </>
   );

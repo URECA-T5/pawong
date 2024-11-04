@@ -12,7 +12,7 @@ const colors = {
   white: '#ffffff',
 };
 
-export const DRHeader = styled.header`
+export const DHHeader = styled.header`
   width: 100%;
   height: 3.25rem;
   align-items: center;
@@ -27,7 +27,7 @@ export const DRHeader = styled.header`
   }
 `;
 
-export const DRTabBtn = styled(motion.button)`
+export const DHTabBtn = styled(motion.button)`
   margin: 2.5rem 0 3rem 0;
   width: 40%;
   position: relative;
@@ -39,7 +39,7 @@ export const DRTabBtn = styled(motion.button)`
   font-size: 1rem;
 `;
 
-export const DRTabIndicator = styled(motion.div)`
+export const DHTabIndicator = styled(motion.div)`
   position: absolute;
   bottom: -0.313rem;
   left: 0;
@@ -48,14 +48,14 @@ export const DRTabIndicator = styled(motion.div)`
   width: 100%;
 `;
 
-export const DRTabList = styled.div`
+export const DHTabList = styled.div`
   display: flex;
   gap: 1.2rem;
   justify-content: center;
   position: relative;
 `;
 
-export const DRBtnDiv = styled.div`
+export const DHBtnDiv = styled.div`
   text-align: center;
   p {
     margin-bottom: 1rem;
@@ -73,7 +73,7 @@ export const DRBtnDiv = styled.div`
   }
 `;
 
-export const DRNullDiv = styled.section`
+export const DHNullDiv = styled.section`
   img {
     width: 100%;
     height: 11.875rem;
