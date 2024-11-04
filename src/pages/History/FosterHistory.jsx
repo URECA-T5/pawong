@@ -65,14 +65,14 @@ const FosterHistory = () => {
           <>
             <FHSection>
               <img src={'/asset/history/foster.svg'} alt="임보기록" />
-              <div className="bold FH__div">
+              <div className="bold fosterHistory__div">
                 <p>소중한 추억을 확인해보세요</p>
               </div>
             </FHSection>
             <FHCardDiv>
-              <section className="FH__CardSection">
+              <section className="fosterHistory__CardSection">
                 {dogs.map((dog) => (
-                  <button className="FH__card" key={dog.pet_id}>
+                  <button className="fosterHistory__card" key={dog.pet_id}>
                     <img src={dog.imgSrc} alt={dog.alt} />
                     <p>{dog.name}</p>
                   </button>

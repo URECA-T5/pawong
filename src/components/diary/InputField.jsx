@@ -8,7 +8,7 @@ export const InputField = ({ label, type, placeholder, maxLength, name }) => {
   };
 
   return (
-    <div>
+    <div className="regular">
       <p className="input__title">
         {label}
         {name === 'title' && formData[name] === '' && (
