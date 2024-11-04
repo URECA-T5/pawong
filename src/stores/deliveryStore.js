@@ -10,5 +10,3 @@ export const AddressStore = create((set) => ({
   setDetailAddress: (detailAddress) => set({ detailAddress }),
   setPhoneNumber: (phoneNumber) => set({ phoneNumber }),
 }));
-
-export default AddressStore;
