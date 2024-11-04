@@ -87,6 +87,7 @@ function ProductList() {
         <TagButton
           key={category.id}
           onClick={() => handleCategoryClick(category)}
+          $selected={selectedCategory === category.type}
         >
           {category.type}
         </TagButton>

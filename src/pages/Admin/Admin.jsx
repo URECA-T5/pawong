@@ -28,20 +28,35 @@ function Admin() {
 
     if (type === 'file') {
       const currentImages = formData.productImg || [];
-      const newImages = Array.from(files);
 
       if (name === 'productImg' && currentImages.length < 3) {
-        setFormData({ productImg: [...currentImages, ...newImages] });
+        const newImages = Array.from(files).map((file) =>
+          URL.createObjectURL(file),
+        );
+        setFormData({
+          ...formData,
+          productImg: [...currentImages, ...newImages],
+        });
       } else if (name === 'productDetailImg') {
-        setFormData({ productDetailImg: files[0] });
+        const file = files[0];
+        const imageUrl = file ? URL.createObjectURL(file) : null;
+        setFormData({ ...formData, productDetailImg: imageUrl });
       }
     } else {
-      setFormData({ [name]: e.target.value });
+      setFormData({ ...formData, [name]: e.target.value });
     }
   };
 
   const handleTagButtonClick = (tagName) => {
     setSelectedTag(tagName);
+  };
+  const handleDeleteImage = (index) => {
+    if (index < 0 || index >= formData.productImg.length) return;
+    const updatedImages = formData.productImg.filter((_, i) => i !== index);
+    setFormData({
+      ...formData,
+      productImg: updatedImages,
+    });
   };
 
   const handleSubmit = (e) => {
@@ -90,6 +105,7 @@ function Admin() {
               handleSubmit={handleSubmit}
               selectedTag={selectedTag}
               handleClick={handleTagButtonClick}
+              onImageClick={handleDeleteImage}
             />
           )}
           {selectedTab.tabName === '2' && <ProductList />}

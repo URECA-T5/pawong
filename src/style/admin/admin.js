@@ -102,16 +102,19 @@ export const FormSection = styled.div`
     display: flex;
     justify-content: center;
     margin: 1.5rem 0;
+    flex-direction: column;
+    align-items: center;
   }
 
   .form__imgtext {
-    border: 1px solid ${colors.placeholder};
     border-radius: 1rem;
     width: 7.8rem;
-    height: 7.8rem;
+    height: 2rem;
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-bottom: 1rem;
+    background-color: ${colors.skyBackground};
   }
 
   .form__img--label {
@@ -123,6 +126,27 @@ export const FormSection = styled.div`
     display: flex;
     justify-content: center;
     margin-top: 1.25rem;
+  }
+
+  .form__imgPerview {
+    display: flex;
+    gap: 0.625rem;
+    justify-content: center;
+    border: 1px solid ${colors.placeholder};
+    padding: 0.625rem;
+    border-radius: 1rem;
+  }
+
+  .preview__image {
+    width: 5rem;
+    height: 5rem;
+    border: 1px solid #ccc;
+    cursor: pointer;
+  }
+  .preview__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 `;
 
@@ -149,8 +173,8 @@ export const InputSection = styled.div`
   }
 
   .input__content button {
-    height: 2.82rem;
-    width: 31.25rem;
+    width: 6rem;
+    height: 6rem;
     padding: 0.5rem;
     border: 1px solid ${colors.placeholder};
     border-radius: 1rem;
@@ -160,6 +184,7 @@ export const InputSection = styled.div`
     text-align: start;
     color: ${colors.darkGray};
     cursor: pointer;
+    text-align: center;
   }
 
   input {

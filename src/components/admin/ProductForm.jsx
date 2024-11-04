@@ -12,6 +12,7 @@ const ProductForm = ({
   handleSubmit,
   selectedTag,
   handleClick,
+  onImageClick,
 }) => {
   const fileInputRef = useRef(null);
 
@@ -36,6 +37,23 @@ const ProductForm = ({
               상품이미지 등록
             </label>
           </div>
+          {formData.productImg.length > 0 && (
+            <div className="form__imgPerview">
+              {formData.productImg.map(
+                (file, index) =>
+                  file && (
+                    <button
+                      key={index}
+                      className="preview__image"
+                      onClick={() => onImageClick(index)}
+                      type="button"
+                    >
+                      <img src={file} alt={`preview ${index + 1}`} />
+                    </button>
+                  ),
+              )}
+            </div>
+          )}
         </div>
 
         <InputSection>
@@ -109,8 +127,20 @@ const ProductForm = ({
               ref={fileInputRef}
               style={{ display: 'none' }}
             />
-            <button type="button" onClick={handleButtonClick}>
-              이미지 업로드
+            <button
+              type="button"
+              onClick={handleButtonClick}
+              className="upload-button"
+            >
+              {formData.productDetailImg ? (
+                <img
+                  src={formData.productDetailImg}
+                  alt="미리보기"
+                  style={{ width: '100%', height: '100%' }}
+                />
+              ) : (
+                '이미지 업로드'
+              )}
             </button>
           </div>
 
