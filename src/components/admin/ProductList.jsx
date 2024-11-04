@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import AdminModal from './AdminModal';
 import {
   TagButton,
   Button,
@@ -47,6 +48,8 @@ function ProductList() {
 
   const [searchdate, setSearchData] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('전체');
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalType, setModalType] = useState('');
 
   const handleCategoryClick = (category) => setSelectedCategory(category.type);
 
@@ -58,6 +61,25 @@ function ProductList() {
       (product.brand.toLowerCase().includes(searchdate.toLowerCase()) ||
         product.name.toLowerCase().includes(searchdate.toLowerCase())),
   );
+
+  const openModal = (type) => {
+    setModalType(type);
+    setIsModalOpen(true);
+  };
+
+  const handleRegister = () => {
+    console.log('상품이 저장되었습니다.');
+    openModal('save');
+  };
+
+  const openDeleteModal = () => {
+    console.log('상품이 삭제되었습니다.');
+    openModal('delete');
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
 
   return (
     <ListSection>
@@ -92,18 +114,23 @@ function ProductList() {
             <h3 className="bold">{product.name}</h3>
             <p>{product.price}</p>
           </div>
-          <div className="button_container">
+          <div className="button__container--edit">
             <EditButton>수정</EditButton>
           </div>
         </div>
       ))}
-      <div className="button__container">
-        <Button className="bold" $cancel>
-          취소
-        </Button>
-        <Button className="bold" type="submit">
-          등록
-        </Button>
+      <div>
+        <div className="button__container">
+          <Button className="bold" $cancel={true} onClick={openDeleteModal}>
+            삭제
+          </Button>
+          <Button className="bold" type="submit" onClick={handleRegister}>
+            저장
+          </Button>
+        </div>
+        {isModalOpen && (
+          <AdminModal modalType={modalType} onClose={closeModal} />
+        )}
       </div>
     </ListSection>
   );

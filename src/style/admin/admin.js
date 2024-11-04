@@ -122,8 +122,7 @@ export const FormSection = styled.div`
   .button__container {
     display: flex;
     justify-content: center;
-    align-items: center;
-    margin-top: 0.625rem;
+    margin-top: 1.25rem;
   }
 `;
 
@@ -207,9 +206,15 @@ export const ListSection = styled.div`
     padding: 0.625rem 0.625rem;
     border: 1px solid;
     border: none;
-    border-top: 1px solid ${colors.darkGray};
-    background-color: ${colors.skyBackground};
+    border-top: 1px solid ${colors.placeholder};
+    background-color: white;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: ${colors.skyBackground};
+    }
   }
+
   .List__container--content {
     display: flex;
     flex-direction: column;
@@ -238,11 +243,17 @@ export const ListSection = styled.div`
     color: ${colors.darkGray};
   }
 
-  .button__container {
+  .button__container--edit {
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+
+  .button__container {
     margin-top: 1.25rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 `;
 
