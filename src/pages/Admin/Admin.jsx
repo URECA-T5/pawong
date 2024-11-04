@@ -4,6 +4,8 @@ import { faHouse } from '@fortawesome/free-solid-svg-icons';
 import { adminStore } from '../../../src/stores/adminStore';
 import { useNavigate } from 'react-router-dom';
 import ProductForm from '../../components/admin/ProductForm';
+import ProductList from '../../components/admin/ProductList';
+
 import {
   AdminHeader,
   ProductSection,
@@ -67,14 +69,13 @@ function Admin() {
           />
         </AdminHeader>
         <ProductSection>
-          <div>
+          <div className="product__tagBtn">
             <DonationUploadTabBtn
               $isSelected={selectedTab.tabName === '1'}
               onClick={() => selectTab('1', 0)}
             >
               후원 상품 등록
             </DonationUploadTabBtn>
-            <span>|</span>
             <DonationUploadTabBtn
               $isSelected={selectedTab.tabName === '2'}
               onClick={() => selectTab('2', 1)}
@@ -91,6 +92,7 @@ function Admin() {
               handleClick={handleTagButtonClick}
             />
           )}
+          {selectedTab.tabName === '2' && <ProductList />}
         </ProductSection>
       </MainContainer>
     </>

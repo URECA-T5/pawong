@@ -42,6 +42,24 @@ export const DonationUploadTabBtn = styled.button`
   background: none;
   color: ${({ $isSelected }) =>
     $isSelected ? `${colors.point}` : `${colors.darkGray}`};
+
+  &:after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 1px;
+    background: ${({ $isSelected }) =>
+      $isSelected ? colors.point : 'transparent'};
+    position: relative;
+    bottom: -4px;
+    left: 0;
+    transition: background-color 0.3s ease;
+  }
+
+  &:hover:after {
+    background: ${({ $isSelected }) =>
+      $isSelected ? colors.point : colors.darkGray};
+  }
 `;
 
 export const ProductSection = styled.section`
@@ -51,6 +69,12 @@ export const ProductSection = styled.section`
   border: 1px white;
   border-radius: 1rem;
   gap: 0.625rem;
+
+  .product__tagBtn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 `;
 
 export const TagButton = styled.button`
@@ -90,10 +114,6 @@ export const FormSection = styled.div`
     justify-content: center;
   }
 
-  .form__img--upload {
-    color: ${colors.darkGray};
-  }
-
   .form__img--label {
     color: ${colors.darkGray};
     cursor: pointer;
@@ -129,9 +149,23 @@ export const InputSection = styled.div`
     padding: 0.5rem;
   }
 
+  .input__content button {
+    height: 2.82rem;
+    width: 31.25rem;
+    padding: 0.5rem;
+    border: 1px solid ${colors.placeholder};
+    border-radius: 1rem;
+    outline-color: ${colors.point};
+    margin-top: 0.625rem;
+    background-color: white;
+    text-align: start;
+    color: ${colors.darkGray};
+    cursor: pointer;
+  }
+
   input {
     height: 2.82rem;
-    width: 500px;
+    width: 31.25rem;
     padding: 0.5rem;
     border: 1px solid ${colors.placeholder};
     border-radius: 1rem;
@@ -152,4 +186,78 @@ export const Button = styled.button`
   color: ${(props) => (props.$cancel ? colors.point : 'white')};
   background-color: ${(props) =>
     props.$cancel ? colors.skyBackground : colors.point};
+`;
+
+export const ListSection = styled.div`
+  margin: 1.25rem 0;
+
+  .list__search {
+    height: 2.82rem;
+    width: 32.25rem;
+    border: 1px solid ${colors.placeholder};
+    border-radius: 1rem;
+    outline-color: ${colors.point};
+    margin: 1rem 0;
+    padding: 0.5rem;
+  }
+  .List__container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0.625rem 0.625rem;
+    border: 1px solid;
+    border: none;
+    border-top: 1px solid ${colors.darkGray};
+    background-color: ${colors.skyBackground};
+  }
+  .List__container--content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 0.4rem 0 0;
+  }
+
+  .List__container--content p {
+    margin: 0.2rem 0.6rem 0 0;
+    color: ${colors.darkGray};
+  }
+
+  .List__container--img {
+    margin-right: 1rem;
+  }
+
+  .List__container--info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .List__container--info p {
+    color: ${colors.darkGray};
+  }
+
+  .button__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1.25rem;
+  }
+`;
+
+export const EditButton = styled.button`
+  font-family: 'Pretendard-Bold', sans-serif;
+  font-weight: 700;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 1rem;
+  width: 4rem;
+  height: 2rem;
+  justify-content: center;
+  align-items: center;
+  color: ${(props) => (props.$selected ? colors.point : colors.darkGray)};
+  background-color: ${(props) =>
+    props.$selected ? colors.skyBackground : colors.defaultBackground};
+  cursor: pointer;
 `;

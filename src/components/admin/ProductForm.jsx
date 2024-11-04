@@ -4,6 +4,7 @@ import {
   TagButton,
   FormSection,
 } from '../../style/admin/admin';
+import { useRef } from 'react';
 
 const ProductForm = ({
   formData,
@@ -12,6 +13,12 @@ const ProductForm = ({
   selectedTag,
   handleClick,
 }) => {
+  const fileInputRef = useRef(null);
+
+  const handleButtonClick = () => {
+    fileInputRef.current.click();
+  };
+
   return (
     <FormSection>
       <form onSubmit={handleSubmit}>
@@ -98,9 +105,13 @@ const ProductForm = ({
               type="file"
               id="detailImgUpload"
               name="productDetailImg"
-              className="form__img--upload"
               onChange={handleChange}
+              ref={fileInputRef}
+              style={{ display: 'none' }}
             />
+            <button type="button" onClick={handleButtonClick}>
+              이미지 업로드
+            </button>
           </div>
 
           <div className="input__content">
