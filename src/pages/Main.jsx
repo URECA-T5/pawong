@@ -88,7 +88,7 @@ const Main = () => {
         <MainSection className="regular">
           <MainBtnDiv>
             <div>
-              <button onClick={() => handleClick('/care-list')}>
+              <button onClick={() => handleClick('/dog')}>
                 <img
                   src={'/asset/main/doglist.svg'}
                   alt="임보동물 목록아이콘"
