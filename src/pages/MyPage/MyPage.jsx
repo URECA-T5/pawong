@@ -9,7 +9,7 @@ import {
 } from '../../style/myPage/mypage';
 import { faHouse, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import UserProfile from '../../components/mypage/UserProfile';
+import UserProfile from '../../components/mypage/Login/UserProfile';
 import DefaultPet from '../../components/mypage/DefaultPet';
 import DefaultFav from '../../components/mypage/DefaultFav';
 import UserHistory from '../../components/mypage/UserHistory';

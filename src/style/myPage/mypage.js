@@ -14,14 +14,14 @@ export const MyPageHeader = styled.header`
 export const MainSection = styled.main`
   padding: 2rem;
   width: 100%;
-  height: 100vh;
+  height: auto;
   border-radius: 1rem;
 `;
 
 export const ProfileSection = styled.section`
   padding: 2rem;
   width: 100%;
-  height: 5rem;
+  height: auto;
   background-color: white;
   border-radius: 1rem;
 `;
