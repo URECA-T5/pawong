@@ -47,7 +47,7 @@ export const FHSection = styled.section`
   img {
     width: 20%;
   }
-  .FH__div {
+  .fosterHistory__div {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -64,13 +64,13 @@ export const FHCardDiv = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 5%;
-  .FH__CardSection {
+  background-color: ${colors.white};
+  .fosterHistory__CardSection {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem;
   }
-  .FH__card {
+  .fosterHistory__card {
     border: 0;
     display: flex;
     flex-direction: column;

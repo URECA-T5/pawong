@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import DonationMenu from '../../components/donation/DonationMenu';
 import DonationList from '../../components/donation/DonationList';
 import GlobalStyle, { MainContainer } from '../../style/global/global';
@@ -7,6 +7,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft, faHouse } from '@fortawesome/free-solid-svg-icons';
 
 const Donation = () => {
+  const [category, setCategory] = useState('all');
+
   return (
     <div>
       <GlobalStyle />
@@ -18,7 +20,7 @@ const Donation = () => {
           </div>
           <FontAwesomeIcon icon={faHouse} className="header__icon" />
         </DonationHeader>
-        <DonationMenu />
+        <DonationMenu category={category} setCategory={setCategory} />
         <DonationList />
       </MainContainer>
     </div>

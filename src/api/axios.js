@@ -2,10 +2,7 @@ import axios from 'axios';
 import { refreshToken } from './auth/auth';
 
 const request = axios.create({
-  baseURL: 'http://18.223.3.22:8080',
-  headers: {
-    'Content-Type': 'application/json',
-  },
+  baseURL: 'http://3.23.104.89:8080',
 });
 
 request.interceptors.request.use((config) => {
