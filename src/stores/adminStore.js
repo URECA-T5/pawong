@@ -13,7 +13,7 @@ export const adminStore = create((set) => ({
     expirationDate: '',
     csInfo: '',
   },
-  selectedTab: { tabName: '1', tabIndex: 0, direction: 1 },
+  selectedTab: { tabName: '1', direction: 1 },
   selectedTag: '',
   setFormData: (newData) =>
     set((state) => ({
@@ -22,14 +22,14 @@ export const adminStore = create((set) => ({
         ...newData,
       },
     })),
-  selectTab: (tabName, tabIndex) =>
+  selectTab: (tabName) => {
     set((state) => ({
       selectedTab: {
         tabName,
-        tabIndex,
-        direction: state.selectedTab.tabIndex < tabIndex ? 1 : -1,
+        direction: state.selectedTab.tabName < tabName ? 1 : -1,
       },
-    })),
+    }));
+  },
   setSelectedTag: (tag) => set({ selectedTag: tag }),
 }));
 

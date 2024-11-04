@@ -87,13 +87,13 @@ function Admin() {
           <div className="product__tagBtn">
             <DonationUploadTabBtn
               $isSelected={selectedTab.tabName === '1'}
-              onClick={() => selectTab('1', 0)}
+              onClick={() => selectTab('1')}
             >
               후원 상품 등록
             </DonationUploadTabBtn>
             <DonationUploadTabBtn
               $isSelected={selectedTab.tabName === '2'}
-              onClick={() => selectTab('2', 1)}
+              onClick={() => selectTab('2')}
             >
               후원 상품 관리
             </DonationUploadTabBtn>
