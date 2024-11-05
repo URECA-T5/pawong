@@ -42,7 +42,6 @@ const CareDiary = () => {
       <MainContainer>
         <Header>
           <p className="extraBold">일지작성</p>
-          <FontAwesomeIcon icon={faBell} className="header__icon" />
           <FontAwesomeIcon
             icon={faHouse}
             className="header__icon"
