@@ -102,7 +102,7 @@ const Main = () => {
                 />
                 <span className="regular">임보동물 목록</span>
               </button>
-              <button onClick={() => handleClick('/diary')}>
+              <button onClick={() => handleClick('/diary-upload')}>
                 <img
                   src={'/asset/main/diaryupload.svg'}
                   alt="임보일지작성아이콘"
