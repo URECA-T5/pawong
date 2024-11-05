@@ -34,7 +34,7 @@ const DiaryImage = () => {
         <SelectedImage
           src={
             formData.profileImage
-              ? formData.profileImage
+              ? URL.createObjectURL(formData.profileImage)
               : '/asset/register/registerImg_icon.svg'
           }
           alt="프로필 이미지를 등록해주세요"
