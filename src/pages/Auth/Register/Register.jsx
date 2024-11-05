@@ -10,14 +10,14 @@ import {
 import { useSignup } from '../../../stores/auth/useSignup';
 
 function Register() {
-  const { signup, setEmail, setPassword, setName } = useSignup();
+  const { signup, setEmail, setPassword, setNickName } = useSignup();
   const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = {
       email: e.target.input__id.value,
       password: e.target.input__password.value,
-      name: e.target.input__name.value,
+      nickName: e.target.input__name.value,
     };
     await signup(formData).then(() => {
       alert('회원가입에 성공했습니다!');
@@ -99,7 +99,7 @@ function Register() {
                 placeholder="닉네임을 입력해주세요"
                 id="input__name"
                 className="regular"
-                onChange={(e) => setName(e.target.value)}
+                onChange={(e) => setNickName(e.target.value)}
               />
             </div>
           </InputSection>
