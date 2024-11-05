@@ -1,5 +1,5 @@
 import { styled } from 'styled-components';
-import { InputContainer } from '../../careDiary/careDiary';
+import { InputContainer } from '../diary/careDiaryUpload';
 import { BottomModalContainer } from '../../donation/itemDetail';
 
 const colors = {

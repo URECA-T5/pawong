@@ -1,5 +1,5 @@
 import React from 'react';
-import { DiaryListContentDiv } from '../../style/careDiary/careDiaryList';
+import { DiaryListContentDiv } from '../../../style/care/diary/careDiaryList';
 
 export const DiaryListCotent = ({ data }) => {
   return (
