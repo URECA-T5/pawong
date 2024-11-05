@@ -14,10 +14,10 @@ const useSignupStore = create((set) => ({
   },
   setEmail: (email) => set({ email }),
   setPassword: (password) => set({ password }),
-  setName: (name) => set({ name }),
+  setNickName: (nickName) => set({ nickName }),
 }));
 
 export const useSignup = () => {
-  const { signup, setEmail, setPassword, setName } = useSignupStore();
-  return { signup, setEmail, setPassword, setName };
+  const { signup, setEmail, setPassword, setNickName } = useSignupStore();
+  return { signup, setEmail, setPassword, setNickName };
 };
