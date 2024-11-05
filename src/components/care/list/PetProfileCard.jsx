@@ -1,11 +1,12 @@
 import React from 'react';
 import { ProfileItem } from '../../../style/care/list/careList';
+import serverBaseUrl from '../../../config/serverConfig';
 
 const PetProfileCard = ({ data }) => {
   return (
     <ProfileItem>
       <img
-        src={data?.pet?.profileImage}
+        src={`${serverBaseUrl}/${data.profileImage}`}
         alt="no images"
         className="item__img"
       />

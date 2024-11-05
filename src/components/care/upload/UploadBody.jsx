@@ -34,24 +34,26 @@ const UploadBody = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const jsonData = {
-      pet: {
-        name: formData['name'],
+    const formDataToSend = new FormData();
+    formDataToSend.append('petProfileImage', formData.profileImage);
+    formDataToSend.append(
+      'pet',
+      JSON.stringify({
+        name: formData.name,
         species: species,
-        age: formData['age'],
-        breed: formData['breed'],
-        rescueLocation: formData['rescueLocation'],
+        age: formData.age,
+        breed: formData.breed,
+        rescueLocation: formData.rescueLocation,
         protectionType: protectionType,
         gender: gender,
         isNeutered: isNeutered === '했어요' ? 1 : 0,
-        weight: formData['weight'],
-        info: formData['info'],
+        weight: formData.weight,
+        info: formData.info,
         vaccination: vaccination,
-      },
-      petProfileImage: formData['profileImage'],
-    };
-    console.log(jsonData);
-    await upload(jsonData).then(() => {
+      }),
+    );
+    console.log(formDataToSend);
+    await upload(formDataToSend).then(() => {
       alert('게시물 등록에 성공했습니다!');
       navigate('/care-list');
     });

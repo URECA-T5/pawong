@@ -11,10 +11,7 @@ const DiaryImage = () => {
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
-    if (file) {
-      const imageUrl = URL.createObjectURL(file);
-      setFormData({ ...formData, profileImage: imageUrl });
-    }
+    if (file) setFormData({ ...formData, profileImage: file });
   };
 
   const handleImgCancel = () => {
