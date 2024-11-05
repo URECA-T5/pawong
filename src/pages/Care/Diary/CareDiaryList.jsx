@@ -12,8 +12,9 @@ import { DiaryListTab } from '../../../components/care/diary/DiaryListTab';
 import { diaryListTabStore } from '../../../stores/diaryListStore';
 import { dummy_data } from '../../../components/care/diary/dummy_data';
 import { useNavigate } from 'react-router-dom';
+import { getDiaryALL } from '../../../api/diary/diary';
 
-const categories = [
+const tags = [
   { id: '1', name: '전체' },
   { id: '2', name: '오산완' },
   { id: '3', name: '일상' },
@@ -27,16 +28,30 @@ const CareDiaryList = () => {
   const handleClick = (path) => {
     navigate(path);
   };
-  const [filteredData, setFilteredData] = useState(dummy_data);
-  const { selectedCategory } = diaryListTabStore();
+  const [filteredData, setFilteredData] = useState([]);
+  const { selectedTag, setSelectedTag } = diaryListTabStore();
+
+  // useEffect(() => {
+  //   const filteredData =
+  //     selectedCategory === '전체'
+  //       ? dummy_data
+  //       : dummy_data.filter((item) => item.category === selectedCategory);
+  //   setFilteredData(filteredData);
+  // }, [selectedCategory]);
 
   useEffect(() => {
-    const filteredData =
-      selectedCategory === '전체'
-        ? dummy_data
-        : dummy_data.filter((item) => item.category === selectedCategory);
-    setFilteredData(filteredData);
-  }, [selectedCategory]);
+    const fetchData = async () => {
+      const result = await getDiaryALL();
+      if (result) {
+        const data =
+          selectedTag === '전체'
+            ? result.data
+            : result.data.filter((item) => item.tag === selectedTag);
+        setFilteredData(data);
+      }
+    };
+    fetchData();
+  }, [selectedTag]);
 
   return (
     <>
@@ -52,7 +67,11 @@ const CareDiaryList = () => {
             onClick={() => handleClick('/')}
           />
         </CareDiaryListHeader>
-        <DiaryListTab categories={categories} />
+        <DiaryListTab
+          tags={tags}
+          selectedTag={selectedTag}
+          onSelectTag={setSelectedTag}
+        />
         <DiaryListLine />
         <DiaryListCotent data={filteredData} />
         <DiaryListImg>

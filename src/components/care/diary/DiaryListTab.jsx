@@ -4,19 +4,23 @@ import {
   DirayListTabDiv,
 } from '../../../style/care/diary/careDiaryList';
 
-export const DiaryListTab = ({ categories }) => {
-  const { selectedCategory, setSelectedCategory } = diaryListTabStore();
+export const DiaryListTab = ({ tags, selectedTag, onSelectTag }) => {
+  const handleTagClick = (tag) => {
+    if (selectedTag !== tag) {
+      onSelectTag(tag);
+    }
+  };
   return (
     <>
       <DirayListTabDiv>
-        {categories.map((category) => (
+        {tags.map((tag) => (
           <DiaryListBtn
             className="regular dirayList__btn"
-            key={category.id}
-            selected={selectedCategory === category.name}
-            onClick={() => setSelectedCategory(category.name)}
+            key={tag.id}
+            selected={selectedTag === tag.name}
+            onClick={() => handleTagClick(tag.name)}
           >
-            {category.name}
+            {tag.name}
           </DiaryListBtn>
         ))}
       </DirayListTabDiv>
