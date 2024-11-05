@@ -78,6 +78,9 @@ export const ListBodySection = styled.div`
   width: 100%;
   gap: 1.4rem;
   grid-template-columns: 1fr 1fr;
+  a {
+    text-decoration-line: none;
+  }
 `;
 
 export const ProfileItem = styled.div`
