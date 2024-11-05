@@ -2,7 +2,7 @@ import axios from 'axios';
 import { refreshToken } from './auth/auth';
 
 const request = axios.create({
-  baseURL: 'http://3.23.104.89:8080',
+  baseURL: 'http://3.144.176.227:8080',
 });
 
 request.interceptors.request.use((config) => {
