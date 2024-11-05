@@ -1,4 +1,3 @@
-import { diaryListTabStore } from '../../../stores/diaryListStore';
 import {
   DiaryListBtn,
   DirayListTabDiv,

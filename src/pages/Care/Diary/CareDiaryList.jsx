@@ -10,9 +10,8 @@ import {
 } from '../../../style/care/diary/careDiaryList';
 import { DiaryListTab } from '../../../components/care/diary/DiaryListTab';
 import { diaryListTabStore } from '../../../stores/diaryListStore';
-import { dummy_data } from '../../../components/care/diary/dummy_data';
 import { useNavigate } from 'react-router-dom';
-import { getDiaryALL } from '../../../api/diary/diary';
+import { getDiaryALL } from '../../../api/diary/listAll';
 
 const tags = [
   { id: '1', name: '전체' },
@@ -30,14 +29,6 @@ const CareDiaryList = () => {
   };
   const [filteredData, setFilteredData] = useState([]);
   const { selectedTag, setSelectedTag } = diaryListTabStore();
-
-  // useEffect(() => {
-  //   const filteredData =
-  //     selectedCategory === '전체'
-  //       ? dummy_data
-  //       : dummy_data.filter((item) => item.category === selectedCategory);
-  //   setFilteredData(filteredData);
-  // }, [selectedCategory]);
 
   useEffect(() => {
     const fetchData = async () => {
