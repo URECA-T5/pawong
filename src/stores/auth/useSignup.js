@@ -14,7 +14,7 @@ const useSignupStore = create((set) => ({
   },
   setEmail: (email) => set({ email }),
   setPassword: (password) => set({ password }),
-  setNickName: (name) => set({ name }),
+  setNickName: (nickName) => set({ nickName }),
 }));
 
 export const useSignup = () => {
