@@ -2,7 +2,7 @@ import { styled } from 'styled-components';
 import { InputContainer } from '../diary/careDiaryUpload';
 import { BottomModalContainer } from '../../donation/itemDetail';
 
-const colors = {
+export const colors = {
   dark_grey: '#6D6E71',
   light_grey: '#B3B3B3',
   pastel_grey: '#F3F3F6',

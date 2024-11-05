@@ -141,6 +141,9 @@ export const BottomModalContainer = styled.dialog`
   height: 18.75rem;
   overflow: hidden;
   caret-color: transparent;
+  a {
+    text-decoration-line: none;
+  }
   inset: 0;
 
   .modal__dialog::backdrop {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { faAngleLeft, faHouse } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import {
   HeaderIconSection,
   HeaderSection,
@@ -21,11 +21,9 @@ const Header = ({ title }) => {
       </HeaderIconSection>
       <p className="extraBold">{title}</p>
       <HeaderIconSection $justify="flex-end">
-        <FontAwesomeIcon
-          icon={faHouse}
-          className="header__icon"
-          onClick={() => navigate('/')}
-        />
+        <Link to="/">
+          <FontAwesomeIcon icon={faHouse} className="header__icon" />
+        </Link>
       </HeaderIconSection>
     </HeaderSection>
   );

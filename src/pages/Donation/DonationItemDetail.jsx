@@ -10,7 +10,7 @@ import ItemDetailBottom from '../../components/donation/ItemDetailBottom';
 import { useNavigate } from 'react-router-dom';
 
 const sample_data = {
-  category: '강아지',
+  species: '강아지',
   id: 1,
   src_list: [
     'https://sitem.ssgcdn.com/15/52/01/item/1000030015215_i2_1200.jpg',
@@ -35,7 +35,11 @@ const DonationItemDetail = () => {
       <GlobalStyle />
       <WhiteContainer>
         <DonationHeader>
-          <FontAwesomeIcon icon={faArrowLeft} className="header__icon" />
+          <FontAwesomeIcon
+            icon={faArrowLeft}
+            onClick={() => navigate(-1)}
+            className="header__icon"
+          />
           <div className="header__title">
             <p className="extraBold">상품 상세</p>
           </div>
