@@ -1,6 +1,9 @@
-import { diaryStore } from '../../stores/diaryStore';
-import { InputField } from './InputField';
-import { InputContainer, TagButton } from '../../style/careDiary/careDiary';
+import { diaryStore } from '../../../stores/diaryStore';
+import { InputField } from './DiaryUploadInputField';
+import {
+  InputContainer,
+  TagButton,
+} from '../../../style/care/diary/careDiaryUpload';
 
 const DiaryInput = () => {
   const { selectedTag, setSelectedTag } = diaryStore();

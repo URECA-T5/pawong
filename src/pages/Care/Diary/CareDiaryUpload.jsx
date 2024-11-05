@@ -1,12 +1,16 @@
-import GlobalStyle, { MainContainer } from '../../style/global/global';
+import GlobalStyle, { MainContainer } from '../../../style/global/global';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHouse } from '@fortawesome/free-solid-svg-icons';
 import { faBell } from '@fortawesome/free-regular-svg-icons';
-import { diaryStore } from '../../stores/diaryStore';
+import { diaryStore } from '../../../stores/diaryStore';
 import { useNavigate } from 'react-router-dom';
-import { Header, Section, Button } from '../../style/careDiary/careDiary';
-import DiaryImage from '../../components/diary/DiaryImage';
-import DiaryInput from '../../components/diary/DiaryInput';
+import {
+  Header,
+  Section,
+  Button,
+} from '../../../style/care/diary/careDiaryUpload';
+import DiaryUploadImage from '../../../components/care/diary/DiaryUploadImage';
+import DiaryUploadInput from '../../../components/care/diary/DiaryUploadInput';
 
 const CareDiary = () => {
   const { selectedTag, setSelectedTag, formData, setFormData } = diaryStore();
@@ -38,7 +42,6 @@ const CareDiary = () => {
       <MainContainer>
         <Header>
           <p className="extraBold">일지작성</p>
-          <FontAwesomeIcon icon={faBell} className="header__icon" />
           <FontAwesomeIcon
             icon={faHouse}
             className="header__icon"
@@ -47,9 +50,9 @@ const CareDiary = () => {
         </Header>
         <Section>
           <form onSubmit={handleSubmit}>
-            <DiaryImage />
+            <DiaryUploadImage />
             <h4 className="bold">임시보호 일지를 작성해주세요</h4>
-            <DiaryInput />
+            <DiaryUploadInput />
             <div className="button__container">
               <Button className="bold" $cancel={true} onClick={onCancelClick}>
                 취소

@@ -3,15 +3,26 @@ import GlobalStyle, { MainContainer } from '../../style/global/global';
 import { NoticeHeader, NoticeBody } from '../../style/notice/notice';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHouse, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Notice = () => {
+  const navigate = useNavigate();
+  const handleClick = () => {
+    navigate(-1);
+  };
   return (
     <>
       <GlobalStyle />
       <MainContainer>
         <NoticeHeader>
-          <FontAwesomeIcon icon={faArrowLeft} className="header__icon" />
-          <FontAwesomeIcon icon={faHouse} className="header__icon" />
+          <FontAwesomeIcon
+            onClick={handleClick}
+            icon={faArrowLeft}
+            className="header__icon"
+          />
+          <Link to="/">
+            <FontAwesomeIcon icon={faHouse} className="header__icon" />
+          </Link>
         </NoticeHeader>
         <NoticeBody>
           <div className="notice__title">

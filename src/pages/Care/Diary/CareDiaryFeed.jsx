@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
-import GlobalStyle, { MainContainer } from '../../style/global/global';
+import GlobalStyle, { MainContainer } from '../../../style/global/global';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHouse } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
-import AuthorBtn from '../../components/diary/AuthorBtn';
+import AuthorBtn from '../../../components/care/diary/DiaryFeedAuthorBtn';
 import {
   CareStoryHeader,
   ProfileSection,
   StorySection,
   ImgSection,
-} from '../../style/careDiary/careDiaryFeed';
-import DefaultBtn from '../../components/diary/DefaultBtn';
+} from '../../../style/care/diary/careDiaryFeed';
+import DefaultBtn from '../../../components/care/diary/DiaryFeedDefaultBtn';
 
 //임보/입양문의 form
 const formUrl =
@@ -20,7 +20,7 @@ function CareStory() {
   const navigate = useNavigate();
 
   const [isStarClicked, setIsStarClicked] = useState(false);
-  const [showAuthorBtn, setShowAuthorBtn] = useState(true);
+  const [showAuthorBtn, setShowAuthorBtn] = useState(false);
 
   const handleBookMarkClick = () => {
     setIsStarClicked(!isStarClicked);

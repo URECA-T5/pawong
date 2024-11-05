@@ -1,7 +1,7 @@
 // import { m } from 'framer-motion';
 import React from 'react';
-import { RequiredStar } from '../../../style/careDiary/careDiary';
-import { petUploadStore } from '../../../stores/care/upload/petUploadStore';
+import { RequiredStar } from '../../../style/care/diary/careDiaryUpload';
+import { petUploadStore } from '../../../stores/petUploadStore';
 
 const UploadInputField = ({
   label,

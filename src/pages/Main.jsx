@@ -22,7 +22,7 @@ import Footer from '../components/main/Footer';
 import MainAccordion from '../components/main/MainAccordion';
 import Nav from '../components/common/Nav';
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
-import { dummy_data } from '../components/diary/dummy_data';
+import { dummy_data } from '../components/care/diary/dummy_data';
 
 const getRecentList = (dummy_data) => {
   return dummy_data.reduce((acc, data) => {
@@ -102,7 +102,7 @@ const Main = () => {
                 />
                 <span className="regular">임보동물 목록</span>
               </button>
-              <button onClick={() => handleClick('/diary')}>
+              <button onClick={() => handleClick('/diary-upload')}>
                 <img
                   src={'/asset/main/diaryupload.svg'}
                   alt="임보일지작성아이콘"

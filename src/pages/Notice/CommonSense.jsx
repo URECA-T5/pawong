@@ -19,7 +19,9 @@ function CommonSense() {
       <GlobalStyle />
       <WhiteBackgroundContainer>
         <NoticeHeader>
-          <FontAwesomeIcon icon={faArrowLeft} className="header__icon" />
+          <Link to="/menu">
+            <FontAwesomeIcon icon={faArrowLeft} className="header__icon" />
+          </Link>
           <Link to="/">
             <FontAwesomeIcon icon={faHouse} className="header__icon home" />
           </Link>
