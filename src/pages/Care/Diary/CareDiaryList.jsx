@@ -9,7 +9,10 @@ import {
   DiaryListLine,
 } from '../../../style/care/diary/careDiaryList';
 import { DiaryListTab } from '../../../components/care/diary/DiaryListTab';
-import { diaryListTabStore } from '../../../stores/diaryListStore';
+import {
+  diaryListALLStore,
+  useDiaryListALL,
+} from '../../../stores/diaryListStore';
 import { useNavigate } from 'react-router-dom';
 import { getDiaryALL } from '../../../api/diary/listAll';
 
@@ -27,22 +30,15 @@ const CareDiaryList = () => {
   const handleClick = (path) => {
     navigate(path);
   };
-  const [filteredData, setFilteredData] = useState([]);
-  const { selectedTag, setSelectedTag } = diaryListTabStore();
+
+  const { data, loadData } = useDiaryListALL();
+  const { selectedTag, setSelectedTag } = diaryListALLStore();
 
   useEffect(() => {
-    const fetchData = async () => {
-      const result = await getDiaryALL();
-      if (result) {
-        const data =
-          selectedTag === '전체'
-            ? result.data
-            : result.data.filter((item) => item.tag === selectedTag);
-        setFilteredData(data);
-      }
-    };
-    fetchData();
-  }, [selectedTag]);
+    loadData();
+  }, [loadData]);
+
+  const filteredData = data;
 
   return (
     <>
