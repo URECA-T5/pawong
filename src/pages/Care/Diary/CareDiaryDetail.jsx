@@ -1,8 +1,8 @@
-import GlobalStyle, { MainContainer } from '../../style/global/global';
+import GlobalStyle, { MainContainer } from '../../../style/global/global';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft, faHouse } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
-import diaryStore from '../../stores/diaryStore';
+import diaryStore from '../../../stores/diaryStore';
 import { useEffect } from 'react';
 import {
   Header,
@@ -10,7 +10,7 @@ import {
   Section,
   Button,
   OtherBoard,
-} from '../../style/careDiary/personalDiary';
+} from '../../../style/care/diary/careDiaryDetail';
 
 const PersonalDiary = () => {
   const navigate = useNavigate();

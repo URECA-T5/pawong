@@ -1,6 +1,6 @@
 import { useRef } from 'react';
-import { diaryStore } from '../../stores/diaryStore';
-import { ImageContainer } from '../../style/careDiary/careDiary';
+import { diaryStore } from '../../../stores/diaryStore';
+import { ImageContainer } from '../../../style/care/diary/careDiaryUpload';
 
 const DiaryImage = () => {
   const { formData, setFormData } = diaryStore();

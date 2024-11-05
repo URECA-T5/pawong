@@ -22,7 +22,7 @@ import Footer from '../components/main/Footer';
 import MainAccordion from '../components/main/MainAccordion';
 import Nav from '../components/common/Nav';
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
-import { dummy_data } from '../components/diary/dummy_data';
+import { dummy_data } from '../components/care/diary/dummy_data';
 
 const getRecentList = (dummy_data) => {
   return dummy_data.reduce((acc, data) => {
