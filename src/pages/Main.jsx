@@ -78,13 +78,17 @@ const Main = () => {
             </div>
             <div>
               <MainSlideImage
-                onClick={() => handleClick('/doglist')}
+                onClick={() => handleClick('/diary-feed')}
                 src={'/asset/main/carousel1.svg'}
                 alt="1"
               />
             </div>
             <div>
-              <MainSlideImage src={'/asset/main/carousel2.svg'} alt="1" />
+              <MainSlideImage
+                onClick={() => handleClick('/care-list')}
+                src={'/asset/main/carousel2.svg'}
+                alt="1"
+              />
             </div>
           </Slider>
         </MainSliderContainer>
@@ -105,7 +109,7 @@ const Main = () => {
                 />
                 <span className="regular">임보일지 작성</span>
               </button>
-              <button onClick={() => handleClick('/favorites')}>
+              <button onClick={() => handleClick('/mypage')}>
                 <img src={'/asset/main/favorites.svg'} alt="즐겨찾기아이콘" />
                 <span className="regular">즐겨찾기</span>
               </button>
