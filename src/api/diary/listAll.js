@@ -1,5 +1,7 @@
 import request from '../axios';
-import { Diary_ALL } from '../constant/api';
+
+const Diary_ALL = '/fosterDiary/getAll';
+
 export const getDiaryALL = async () => {
   try {
     const response = await request.get(Diary_ALL);
