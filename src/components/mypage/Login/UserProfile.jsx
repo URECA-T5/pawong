@@ -1,6 +1,7 @@
 import React from 'react';
 import { ProfileHeader } from '../../../style/myPage/profile';
 import MyPet from '../../../asset/mypage/myPet.svg';
+import { Link } from 'react-router-dom';
 
 function UserProfile() {
   return (
@@ -11,7 +12,9 @@ function UserProfile() {
           <span className="user__name regular">구름이형</span>
         </div>
         <div className="profile__right">
-          <button className="edit__btn">편집</button>
+          <Link>
+            <button className="edit__btn">편집</button>
+          </Link>
         </div>
       </ProfileHeader>
     </>

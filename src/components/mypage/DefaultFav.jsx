@@ -3,6 +3,7 @@ import { PetHeader, PetBody } from '../../style/myPage/default';
 import FavPet from '../../asset/mypage/favPet.svg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
 function DefaultFav() {
   return (
     <>
@@ -17,7 +18,9 @@ function DefaultFav() {
         </div>
         <div className="body__right">
           <p>등록해주세요 </p>
-          <FontAwesomeIcon icon={faPlus} className="right__plus" />
+          <Link to="/care-list">
+            <FontAwesomeIcon icon={faPlus} className="right__plus" />
+          </Link>
         </div>
       </PetBody>
     </>

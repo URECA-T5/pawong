@@ -21,6 +21,7 @@ import CareDiaryFeed from '../pages/CareDiary/CareDiaryFeed';
 import PetUpload from '../pages/Care/Upload/PetUpload';
 import CareDiaryList from '../pages/CareDiary/CareDiaryList';
 import MyPage from '../pages/MyPage/MyPage';
+import AuthSuccess from '../pages/Auth/Login/AuthSuccess';
 
 const routes = [
   {
@@ -30,6 +31,10 @@ const routes = [
   {
     path: '/login',
     element: <Login />,
+  },
+  {
+    path: '/auth/success',
+    element: <AuthSuccess />,
   },
   {
     path: '/menu',

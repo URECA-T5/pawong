@@ -2,6 +2,8 @@ import React from 'react';
 import { PetHeader, HistoryBody } from '../../style/myPage/default';
 import FeedImg from '../../asset/mypage/historyFeed.svg';
 import PetImg from '../../asset/mypage/historyPet.svg';
+import { Link } from 'react-router-dom';
+
 function UserHistory() {
   return (
     <>
@@ -13,11 +15,15 @@ function UserHistory() {
       <HistoryBody>
         <div className="history__list">
           <img src={FeedImg} alt="후원 기록 이미지"></img>
-          <span className="regular">후원 기록</span>
+          <Link to="/donation-history">
+            <span className="regular">후원 기록</span>
+          </Link>
         </div>
         <div className="history__list">
           <img src={PetImg} alt="후원 기록 이미지"></img>
-          <span className="regular">임보 기록</span>
+          <Link to="/foster-history">
+            <span className="regular">임보 기록</span>
+          </Link>
         </div>
       </HistoryBody>
     </>

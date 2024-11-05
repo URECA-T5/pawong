@@ -1,11 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-import FavPet from '../../asset/mypage/favPet.svg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
-import { color } from 'framer-motion';
 import MyPet from '../../asset/mypage/myPet.svg';
 import { PetHeader, PetBody } from '../../style/myPage/default';
+import { Link } from 'react-router-dom';
 
 function DefaultPet() {
   return (
@@ -17,11 +16,14 @@ function DefaultPet() {
       </PetHeader>
       <PetBody>
         <div className="body__left">
-          <img src={MyPet} alt="임보 동물 이미지"></img>
+          <img src={MyPet} alt="임보 동물 이미지" />
         </div>
         <div className="body__right">
           <p>등록해주세요 </p>
-          <FontAwesomeIcon icon={faPlus} className="right__plus" />
+          <Link to="/pet-upload">
+            {' '}
+            <FontAwesomeIcon icon={faPlus} className="right__plus" />
+          </Link>
         </div>
       </PetBody>
     </>
