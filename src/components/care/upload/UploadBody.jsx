@@ -2,6 +2,7 @@ import React from 'react';
 import {
   BodySection,
   ButtonSubmit,
+  colors,
   InputSection,
 } from '../../../style/care/upload/petUpload';
 import LoadImage from './LoadImage';
@@ -11,14 +12,6 @@ import SelectVaccination from './SelectVaccination';
 import { useNavigate } from 'react-router-dom';
 import { body_question_list } from './body_question_list';
 import { petUploadStore } from '../../../stores/care/upload/petUploadStore';
-
-const colors = {
-  dark_grey: '#6D6E71',
-  light_grey: '#B3B3B3',
-  pastel_grey: '#F3F3F6',
-  light_blue: '#E3ECFF',
-  pastel_blue: '#5850FE',
-};
 
 const UploadBody = () => {
   const {

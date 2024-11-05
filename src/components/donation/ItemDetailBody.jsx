@@ -4,7 +4,7 @@ import { BodyContainer } from '../../style/donation/itemDetail';
 const ItemDetailBody = ({ item }) => {
   return (
     <BodyContainer>
-      <div className="item__category bold">{item.category}</div>
+      <div className="item__category bold">{item.species}</div>
       <p className="bold">{item.brand}</p>
       <p className="item__title item__gap">{item.title}</p>
       <div className="item__row item__gap">

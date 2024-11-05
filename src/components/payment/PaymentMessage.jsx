@@ -4,11 +4,9 @@ import {
   BottomBanner,
   MessageBody,
 } from '../../style/payment/paymentFinish';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const PaymentMessage = () => {
-  const navigate = useNavigate();
-
   return (
     <>
       <BodyArea>
@@ -37,11 +35,8 @@ const PaymentMessage = () => {
           </div>
           <div className="message__successImg">
             <img src={'/asset/payment/paymentSuccess.svg'} alt="" />
-            <button
-              onClick={() => navigate('/donation-record')}
-              className="button__navRecord regular"
-            >
-              내 후원 기록 보러가기
+            <button className="button__navRecord regular">
+              <Link to="/donation-history">내 후원 기록 보러가기</Link>
             </button>
           </div>
           <BottomBanner>
