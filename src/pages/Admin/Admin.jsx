@@ -28,6 +28,7 @@ function Admin() {
 
     if (type === 'file') {
       const currentImages = formData.productImg || [];
+      currentImages.forEach((url) => URL.revokeObjectURL(url));
 
       if (name === 'productImg' && currentImages.length < 3) {
         const newImages = Array.from(files).map((file) =>
@@ -46,12 +47,13 @@ function Admin() {
       setFormData({ ...formData, [name]: e.target.value });
     }
   };
-
   const handleTagButtonClick = (tagName) => {
     setSelectedTag(tagName);
   };
+
   const handleDeleteImage = (index) => {
     if (index < 0 || index >= formData.productImg.length) return;
+    URL.revokeObjectURL(formData.productImg[index]);
     const updatedImages = formData.productImg.filter((_, i) => i !== index);
     setFormData({
       ...formData,

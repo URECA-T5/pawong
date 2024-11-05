@@ -8,13 +8,18 @@ const DiaryImage = () => {
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
+    if (formData.image) {
+      URL.revokeObjectURL(formData.image);
+    }
     if (file) {
-      const imageUrl = URL.createObjectURL(file);
-      setFormData({ ...formData, image: imageUrl });
+      setFormData({ ...formData, image: URL.createObjectURL(file) });
     }
   };
 
   const handleImgCancel = () => {
+    if (formData.image) {
+      URL.revokeObjectURL(formData.image);
+    }
     setFormData({ ...formData, image: null });
     if (fileInputRef.current) {
       fileInputRef.current.value = '';
