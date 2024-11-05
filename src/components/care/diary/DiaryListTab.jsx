@@ -1,8 +1,8 @@
-import { diaryListTabStore } from '../../stores/diaryListStore';
+import { diaryListTabStore } from '../../../stores/diaryListStore';
 import {
   DiaryListBtn,
   DirayListTabDiv,
-} from '../../style/careDiary/careDiaryList';
+} from '../../../style/care/diary/careDiaryList';
 
 export const DiaryListTab = ({ categories }) => {
   const { selectedCategory, setSelectedCategory } = diaryListTabStore();

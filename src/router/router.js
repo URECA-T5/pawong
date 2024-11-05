@@ -3,7 +3,7 @@ import DefaultLayout from '../layout/DefaultLayout';
 import Login from '../pages/Auth/Login/Login';
 import Menu from '../pages/Menu';
 import Notice from '../pages/Notice/Notice';
-import CareDiary from '../pages/CareDiary/CareDiary';
+import CareDiaryUpload from '../pages/Care/Diary/CareDiaryUpload';
 import Donation from '../pages/Donation/Donation';
 import DonationItemDetail from '../pages/Donation/DonationItemDetail';
 import CommonSense from '../pages/Notice/CommonSense';
@@ -13,13 +13,14 @@ import Delivery from '../pages/Delivery/Delivery';
 import Payment from '../pages/Payment/Payment';
 import PaymentFinish from '../pages/Payment/PaymentFinish';
 import { path } from 'framer-motion/client';
-import CareList from '../pages/Care/List/CareList';
+import CareDiaryList from '../pages/Care/Diary/CareDiaryList';
 import FosterHistory from '../pages/History/FosterHistory';
 import Main from '../pages/Main';
-import PersonalDiary from '../pages/CareDiary/PersonalDiary';
-import CareDiaryFeed from '../pages/CareDiary/CareDiaryFeed';
+import CareDiaryDetail from '../pages/Care/Diary/CareDiaryDetail';
+import Admin from '../pages/Admin/Admin';
+import CareDiaryFeed from '../pages/Care/Diary/CareDiaryFeed';
 import PetUpload from '../pages/Care/Upload/PetUpload';
-import CareDiaryList from '../pages/CareDiary/CareDiaryList';
+import CareList from '../pages/Care/List/CareList';
 
 const routes = [
   {
@@ -50,7 +51,7 @@ const routes = [
     path: '/common-sense',
     element: <CommonSense />,
   },
-  { path: '/diary', element: <CareDiary /> },
+  { path: '/diary-upload', element: <CareDiaryUpload /> },
   { path: '/diary-list', element: <CareDiaryList /> },
   {
     path: '/register',
@@ -77,10 +78,13 @@ const routes = [
     element: <PaymentFinish />,
   },
   {
-    path: '/personal-diary',
-    element: <PersonalDiary />,
+    path: '/diary-detail',
+    element: <CareDiaryDetail />,
   },
-
+  {
+    path: '/admin',
+    element: <Admin />,
+  },
   { path: '/diary-feed', element: <CareDiaryFeed /> },
   {
     path: '/care-list',

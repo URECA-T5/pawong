@@ -19,11 +19,10 @@ export const Header = styled.header`
   font-size: 1.2rem;
 
   .extraBold {
-    flex: 0.5;
+    flex: 0.55;
   }
 
   .header__icon {
-    margin-left: 0.625rem;
     &:hover,
     &:focus {
       color: ${colors.point};

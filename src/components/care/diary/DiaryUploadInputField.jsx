@@ -1,5 +1,5 @@
-import { diaryStore } from '../../stores/diaryStore';
-import { RequiredStar } from '../../style/careDiary/careDiary';
+import { diaryStore } from '../../../stores/diaryStore';
+import { RequiredStar } from '../../../style/care/diary/careDiaryUpload';
 export const InputField = ({ label, type, placeholder, maxLength, name }) => {
   const { formData, setFormData } = diaryStore();
 

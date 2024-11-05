@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import GlobalStyle, { MainContainer } from '../../style/global/global';
+import GlobalStyle, { MainContainer } from '../../../style/global/global';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHouse } from '@fortawesome/free-solid-svg-icons';
-import { DiaryListCotent } from '../../components/diary/DiaryListContent';
+import { DiaryListCotent } from '../../../components/care/diary/DiaryListContent';
 import {
   CareDiaryListHeader,
   DiaryListImg,
   DiaryListLine,
-} from '../../style/careDiary/careDiaryList';
-import { DiaryListTab } from '../../components/diary/DiaryListTab';
-import { diaryListTabStore } from '../../stores/diaryListStore';
-import { dummy_data } from '../../components/diary/dummy_data';
+} from '../../../style/care/diary/careDiaryList';
+import { DiaryListTab } from '../../../components/care/diary/DiaryListTab';
+import { diaryListTabStore } from '../../../stores/diaryListStore';
+import { dummy_data } from '../../../components/care/diary/dummy_data';
 import { useNavigate } from 'react-router-dom';
 
 const categories = [
