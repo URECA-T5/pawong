@@ -16,8 +16,11 @@ import UserHistory from '../../components/mypage/UserHistory';
 import UserPet from '../../components/mypage/Login/UserPet';
 import UserFavPet from '../../components/mypage/Login/UserFavPet';
 import { Link } from 'react-router-dom';
+import useUserProfile from '../../stores/auth/useUserProfile';
 
 function MyPage() {
+  const { user } = useUserProfile();
+
   return (
     <>
       <MyPageHeader>
@@ -31,15 +34,13 @@ function MyPage() {
       </MyPageHeader>
       <MainSection>
         <ProfileSection>
-          <UserProfile />
+          <UserProfile user={user} />
         </ProfileSection>
         <MyPetSection>
-          <DefaultPet />
-          {/* <UserPet /> */}
+          {user.nickName && user.profileImage ? <UserPet /> : <DefaultPet />}
         </MyPetSection>
         <MyFavorites>
-          <DefaultFav />
-          {/* <UserFavPet /> */}
+          {user.nickName && user.profileImage ? <UserFavPet /> : <DefaultFav />}
         </MyFavorites>
         <MyHistory>
           <UserHistory />

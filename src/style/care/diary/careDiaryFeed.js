@@ -55,6 +55,9 @@ export const ProfileSection = styled.div`
 
   .profile__dog--img {
     margin-right: 1.25rem;
+    width: 10rem;
+    height: 10rem;
+    border-radius: 50%;
   }
 
   .profile__dog--info {
@@ -62,7 +65,11 @@ export const ProfileSection = styled.div`
   }
 
   .profile__dog--info--value {
-    color: ${colors.darkGray};
+    color: ${colors.point};
+  }
+
+  .profile__dog--info__item {
+    margin: 0.3rem 0;
   }
 `;
 
@@ -76,25 +83,44 @@ export const StorySection = styled.div`
 
   .profile__dog--info--story {
     margin: 0.4rem 0 0 0.625rem;
+  }
+
+  .profile__dog--info--value {
+    margin-top: 0.625rem;
+  }
+
+  .profile__dog--info--value span {
+    white-space: pre-wrap;
     color: ${colors.darkGray};
   }
 `;
 
 export const ImgSection = styled.div`
-  margin-top: 1.5rem;
   display: flex;
   flex-wrap: wrap;
+  margin: 0 1.25rem 1.25rem 1.25rem;
+  padding: 1.25rem;
+  background-color: white;
+  border-radius: 1rem;
+  grid-template-columns: repeat(3, 1fr);
 
   .stroy__imgBtn {
+    flex: 1;
     border: none;
     background: none;
     padding: 0;
     margin: 0;
-    height: 210px;
     cursor: pointer;
   }
 
   .stroy__imgBtn--img {
-    width: 200px;
+    width: 10.7rem;
+    height: 10.7rem;
+    object-fit: cover;
   }
+`;
+
+export const FeedIcon = styled.div`
+  padding: 0 1.25rem;
+  margin: 0;
 `;

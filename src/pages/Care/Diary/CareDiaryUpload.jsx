@@ -1,7 +1,6 @@
 import GlobalStyle, { MainContainer } from '../../../style/global/global';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHouse } from '@fortawesome/free-solid-svg-icons';
-import { faBell } from '@fortawesome/free-regular-svg-icons';
 import { diaryStore } from '../../../stores/diaryStore';
 import { useNavigate } from 'react-router-dom';
 import {
@@ -11,6 +10,7 @@ import {
 } from '../../../style/care/diary/careDiaryUpload';
 import DiaryUploadImage from '../../../components/care/diary/DiaryUploadImage';
 import DiaryUploadInput from '../../../components/care/diary/DiaryUploadInput';
+import { diaryUpload } from '../../../api/pet/care/diary/diaryUpload';
 
 const CareDiary = () => {
   const { selectedTag, setSelectedTag, formData, setFormData } = diaryStore();
@@ -20,14 +20,29 @@ const CareDiary = () => {
     navigate(path);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const updatedFormData = {
-      ...formData,
-      tag: selectedTag,
-      image: formData.image,
-    };
-    console.log(updatedFormData);
+
+    const updatedFormData = new FormData();
+
+    updatedFormData.append('fosterDiaryImage', formData.image);
+    updatedFormData.append('petId', 1);
+    updatedFormData.append(
+      'fosterDiary',
+      JSON.stringify({
+        title: formData.title,
+        content: formData.story,
+        tag: selectedTag,
+        place: formData.location,
+      }),
+    );
+    try {
+      const response = await diaryUpload(updatedFormData);
+      console.log('서버 응답:', response);
+    } catch (error) {
+      console.error('일지 등록 실패:', error);
+      alert('일지 등록에 실패했습니다. 다시 시도해주세요.');
+    }
   };
 
   const onCancelClick = (e) => {
