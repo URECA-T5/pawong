@@ -38,7 +38,7 @@ const DiaryImage = () => {
               : '/asset/register/registerImg_icon.svg'
           }
           alt="프로필 이미지를 등록해주세요"
-          $isSelected={formData.profileImage ? true : false}
+          $isSelected={formData.profileImage}
         />
       </div>
       {formData.profileImage ? (

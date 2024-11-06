@@ -1,3 +1,3 @@
-const serverBaseUrl = 'http://3.144.176.227:8080';
+const serverBaseUrl = 'http://18.219.70.152:8080';
 
 export default serverBaseUrl;

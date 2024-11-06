@@ -33,6 +33,16 @@ export const MainHeader = styled.header`
   p {
     cursor: pointer;
   }
+  .user-profile-image-button {
+    width: 50px;
+    height: 50px;
+  }
+
+  .user-profile-image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
 `;
 
 export const MainSection = styled.section`

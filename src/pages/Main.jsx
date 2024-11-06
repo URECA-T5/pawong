@@ -23,6 +23,8 @@ import MainAccordion from '../components/main/MainAccordion';
 import Nav from '../components/common/Nav';
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import { dummy_data } from '../components/care/diary/dummy_data';
+import useUserProfile from '../stores/auth/useUserProfile';
+import serverBaseUrl from '../config/serverConfig';
 
 const getRecentList = (dummy_data) => {
   return dummy_data.reduce((acc, data) => {
@@ -37,10 +39,9 @@ const getRecentList = (dummy_data) => {
 const Main = () => {
   const navigate = useNavigate();
   const [sectionHeight, setSectionHeight] = useState(17.5);
-  const handleClick = (path) => {
-    navigate(path);
-  };
-
+  const handleClick = (path) => navigate(path);
+  const { user } = useUserProfile();
+  console.log(user);
   const settings = {
     dots: false,
     fade: true,
@@ -65,10 +66,28 @@ const Main = () => {
             <a href="/">포옹</a>
           </p>
           <p>
-            <FontAwesomeIcon
-              onClick={() => handleClick('/login')}
-              icon={faCircleUser}
-            />
+            {user.nickName ? (
+              <button
+                type="button"
+                onClick={() => handleClick('/profile')}
+                className="user-profile-image-button"
+                aria-label={`${user.nickName}의 프로필`}
+              >
+                <img
+                  src={`${serverBaseUrl}/${user.profileImage}`}
+                  alt={`${user.nickName}의 프로필`}
+                  className="user-profile-image"
+                />
+              </button>
+            ) : (
+              <button
+                type="button"
+                onClick={() => handleClick('/login')}
+                className="user-profile-image-button"
+              >
+                <FontAwesomeIcon icon={faCircleUser} />
+              </button>
+            )}
           </p>
         </MainHeader>
         <MainSliderContainer>
