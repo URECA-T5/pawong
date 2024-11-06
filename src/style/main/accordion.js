@@ -31,6 +31,7 @@ export const AccordionDiv = styled.div`
   }
   p {
     color: ${colors.dark_gray};
+    word-break: keep-all;
   }
   div {
     width: 31.875rem;
