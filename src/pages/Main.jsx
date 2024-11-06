@@ -80,13 +80,10 @@ const Main = () => {
                 />
               </button>
             ) : (
-              <button
-                type="button"
+              <FontAwesomeIcon
+                icon={faCircleUser}
                 onClick={() => handleClick('/login')}
-                className="user-profile-image-button"
-              >
-                <FontAwesomeIcon icon={faCircleUser} />
-              </button>
+              />
             )}
           </p>
         </MainHeader>

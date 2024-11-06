@@ -34,14 +34,18 @@ export const MainHeader = styled.header`
     cursor: pointer;
   }
   .user-profile-image-button {
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
+    border: 0;
+    background-color: transparent;
+    border-radius: 50%;
   }
 
   .user-profile-image {
     width: 100%;
     height: auto;
     object-fit: cover;
+    border-radius: 50%;
   }
 `;
 
