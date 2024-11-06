@@ -3,8 +3,8 @@ import GlobalStyle, { MainContainer } from '../../style/global/global';
 import { NoticeHeader, NoticeBody } from '../../style/notice/notice';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHouse, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
-import dogImg from '../../asset/notice/dogIcon.png';
 import { Link, useNavigate } from 'react-router-dom';
+import dogImg from '../../asset/notice/dogIcon.png';
 
 const Notice = () => {
   const navigate = useNavigate();

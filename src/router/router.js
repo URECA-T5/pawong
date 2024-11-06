@@ -20,16 +20,26 @@ import CareDiaryDetail from '../pages/Care/Diary/CareDiaryDetail';
 import Admin from '../pages/Admin/Admin';
 import CareDiaryFeed from '../pages/Care/Diary/CareDiaryFeed';
 import PetUpload from '../pages/Care/Upload/PetUpload';
-import MyPage from '../pages/MyPage/MyPage';
 import CareList from '../pages/Care/List/CareList';
+import SocialLoginSuccess from '../pages/Auth/Login/SocialLoginSuccess';
+import MyPage from '../pages/MyPage/MyPage';
+
 const routes = [
   {
     path: '/',
     element: <Main />,
   },
   {
+    path: '/mypage',
+    element: <MyPage />,
+  },
+  {
     path: '/login',
     element: <Login />,
+  },
+  {
+    path: '/socialLogin',
+    element: <SocialLoginSuccess />,
   },
   {
     path: '/menu',
@@ -85,6 +95,7 @@ const routes = [
     path: '/admin',
     element: <Admin />,
   },
+  { path: '/diary-feed', element: <CareDiaryFeed /> },
   {
     path: '/care-list',
     element: <CareList />,
@@ -93,10 +104,6 @@ const routes = [
   {
     path: '/pet-upload',
     element: <PetUpload />,
-  },
-  {
-    path: '/mypage',
-    element: <MyPage />,
   },
 ];
 

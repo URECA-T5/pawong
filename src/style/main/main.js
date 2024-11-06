@@ -33,12 +33,30 @@ export const MainHeader = styled.header`
   p {
     cursor: pointer;
   }
-  .user-profile-image-button {
-    width: 40px;
-    height: 40px;
-    border: 0;
-    background-color: transparent;
+  .header__userProfile {
+    cursor: pointer;
+    width: 3rem;
+    height: 3rem;
     border-radius: 50%;
+    border: 2px solid #fff;
+    background-color: #f0f0f0;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+  }
+
+  .header__userProfile img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .header__userProfile:hover {
+    transform: scale(1);
+    border-color: #007bff;
   }
 
   .user-profile-image {
