@@ -76,7 +76,7 @@ const Main = () => {
             {user.nickName ? (
               <button
                 type="button"
-                onClick={() => handleClick('/profile')}
+                onClick={() => handleClick('/mypage')}
                 className="user-profile-image-button"
                 aria-label={`${user.nickName}의 프로필`}
               >
