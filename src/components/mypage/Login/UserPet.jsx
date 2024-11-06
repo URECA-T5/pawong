@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { PetHeader } from '../../../style/myPage/default';
 import {
@@ -7,21 +7,15 @@ import {
   PetImage,
   PetInfo,
 } from '../../../style/myPage/userpet';
-import { getCareInfo } from '../../../api/pet/care/list/list';
 import serverBaseUrl from '../../../config/serverConfig';
+import userPet from '../../../stores/mypage/userPet';
+
 function UserPet() {
-  const [pets, setPets] = useState([]);
+  const { pets, fetchPets } = userPet();
 
   useEffect(() => {
-    const fetchPets = async () => {
-      const petData = await getCareInfo();
-      if (petData) {
-        setPets(petData);
-      }
-    };
-
     fetchPets();
-  }, []);
+  }, [fetchPets]);
 
   return (
     <>
@@ -32,18 +26,22 @@ function UserPet() {
         </div>
       </PetHeader>
       <UserPetBody>
-        {pets.map((pet, index) => (
-          <PetContainer key={index}>
-            <PetImage
-              src={`${serverBaseUrl}/${pet.profileImage}`}
-              alt={`${pet.name} 프로필`}
-            />
-            <PetInfo>
-              <p className="pet__name regular">{pet.name}</p>
-              <span className="pet__type regular">{pet.species}</span>
-            </PetInfo>
-          </PetContainer>
-        ))}
+        {pets && pets.length > 0 ? (
+          pets.map((pet, index) => (
+            <PetContainer key={index}>
+              <PetImage
+                src={`${serverBaseUrl}/${pet.profileImage}`}
+                alt={`${pet.name} 프로필`}
+              />
+              <PetInfo>
+                <p className="pet__name regular">{pet.name}</p>
+                <span className="pet__type regular">{pet.species}</span>
+              </PetInfo>
+            </PetContainer>
+          ))
+        ) : (
+          <p>현재 임보 중인 동물이 없습니다.</p>
+        )}
       </UserPetBody>
     </>
   );
