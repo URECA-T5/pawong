@@ -23,6 +23,9 @@ export const RegisterBody = styled.form`
   }
   .input__profile img {
     cursor: pointer;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
   }
   .description__profile {
     display: flex;
