@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 const PetProfileCard = ({ data }) => {
   return (
-    <Link to="/diary-feed">
+    <Link to={`/diary-feed/${data.id}`}>
       <ProfileItem>
         <img
           src={`${serverBaseUrl}/${data.profileImage}`}
