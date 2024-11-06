@@ -28,6 +28,7 @@ const ProductForm = ({
             <input
               type="file"
               id="imgUpload"
+              accept=".jpg/*"
               multiple
               name="productImg"
               onChange={handleChange}

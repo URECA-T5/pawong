@@ -26,9 +26,13 @@ import { dummy_data } from '../components/care/diary/dummy_data';
 import useUserProfile from '../stores/auth/useUserProfile';
 import serverBaseUrl from '../config/serverConfig';
 
+const DEFAULT_PROFILE_IMAGE = '/asset/default-profile.png';
 const getProfileImageUrl = (profileImage) => {
+  if (!profileImage) return DEFAULT_PROFILE_IMAGE;
+
   const isFullUrl = profileImage.startsWith('http');
   if (isFullUrl) return profileImage;
+  console.log(profileImage);
 
   return `${serverBaseUrl}/${profileImage}`;
 };
@@ -48,7 +52,7 @@ const Main = () => {
   const [sectionHeight, setSectionHeight] = useState(17.5);
   const handleClick = (path) => navigate(path);
   const { user } = useUserProfile();
-  console.log(user);
+
   const settings = {
     dots: false,
     fade: true,
@@ -73,17 +77,17 @@ const Main = () => {
             <a href="/">포옹</a>
           </p>
           <p>
-            {user.nickName ? (
+            {user?.nickName ? (
               <button
                 type="button"
                 onClick={() => handleClick('/mypage')}
-                className="user-profile-image-button"
+                className="header__userProfile"
                 aria-label={`${user.nickName}의 프로필`}
               >
                 <img
                   src={getProfileImageUrl(user.profileImage)}
                   alt={`${user.nickName}의 프로필`}
-                  className="user-profile-image"
+                  className="header__userProfile"
                 />
               </button>
             ) : (
@@ -198,7 +202,7 @@ const Main = () => {
             <ul>
               <li>
                 <button className="bold">3</button>
-                <span className="regular">포옹 배송 안내</span>
+                <span className="regular">포옹 서비스 배송 안내</span>
               </li>
             </ul>
             <img src={'/asset/main/dogIcon.png'} alt="포옹소식" />

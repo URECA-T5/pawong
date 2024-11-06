@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHouse, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { Link, useNavigate } from 'react-router-dom';
@@ -6,6 +7,8 @@ import {
   RegisterBody,
   RegisterHeader,
   InputSection,
+  ErrorMessage,
+  ProfileErrorMessage,
 } from '../../../style/register/register';
 import useSignup from '../../../stores/auth/useSignup';
 
@@ -20,24 +23,95 @@ function Register() {
   } = useSignup();
   const navigate = useNavigate();
 
+  const [passwordConfirm, setPasswordConfirm] = useState('');
+  const [errors, setErrors] = useState({
+    email: '',
+    password: '',
+    passwordConfirm: '',
+    nickName: '',
+    profileImage: '',
+  });
+
+  const validateEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
+  const validateForm = () => {
+    let isValid = true;
+    const newErrors = {
+      email: '',
+      password: '',
+      passwordConfirm: '',
+      nickName: '',
+      profileImage: '',
+    };
+
+    if (!email) {
+      newErrors.email = '이메일을 입력해주세요';
+      isValid = false;
+    } else if (!validateEmail(email)) {
+      newErrors.email = '올바른 이메일 형식이 아닙니다';
+      isValid = false;
+    }
+
+    if (!password) {
+      newErrors.password = '비밀번호를 입력해주세요';
+      isValid = false;
+    }
+
+    if (!passwordConfirm) {
+      newErrors.passwordConfirm = '비밀번호 확인을 입력해주세요';
+      isValid = false;
+    } else if (password !== passwordConfirm) {
+      newErrors.passwordConfirm = '비밀번호가 일치하지 않습니다';
+      isValid = false;
+    }
+
+    if (!nickName) {
+      newErrors.nickName = '닉네임을 입력해주세요';
+      isValid = false;
+    }
+
+    if (!profileImage) {
+      newErrors.profileImage = '프로필 이미지를 등록해주세요';
+      isValid = false;
+    }
+
+    setErrors(newErrors);
+    return isValid;
+  };
+
   const handleFileChange = (e) => {
     const file = e.target.files[0];
-    console.log(file);
-    setProfileImage(file);
+    if (file) {
+      setProfileImage(file);
+      setErrors((prev) => ({ ...prev, profileImage: '' }));
+    }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const formData = new FormData();
-    formData.append('email', email);
-    formData.append('password', password);
-    formData.append('nickName', nickName);
-    formData.append('userProfileImage', profileImage);
 
-    await signup(formData).then(() => {
-      alert('회원가입에 성공했습니다!');
-      navigate('/login');
-    });
+    if (validateForm()) {
+      const formData = new FormData();
+      formData.append('email', email);
+      formData.append('password', password);
+      formData.append('nickName', nickName);
+      formData.append('userProfileImage', profileImage);
+
+      try {
+        await signup(formData);
+        alert('회원가입에 성공했습니다!');
+        navigate('/login');
+      } catch (error) {
+        alert('회원가입에 실패했습니다. 다시 시도해주세요.');
+      }
+    }
+  };
+
+  const handleCancel = () => {
+    navigate(-1);
   };
 
   return (
@@ -77,6 +151,9 @@ function Register() {
               )}
             </label>
           </div>
+          {errors.profileImage && (
+            <ProfileErrorMessage>{errors.profileImage}</ProfileErrorMessage>
+          )}
           <div className="description__profile">
             <p className="regular">프로필 사진을 등록하세요</p>
           </div>
@@ -94,10 +171,17 @@ function Register() {
                   placeholder="이메일을 입력해주세요"
                   id="input__id"
                   className="regular"
-                  onChange={(e) => setEmail(e.target.value)}
+                  value={email}
+                  onChange={(e) => {
+                    setEmail(e.target.value);
+                    setErrors((prev) => ({ ...prev, email: '' }));
+                  }}
                 />
-                <button className="dupCheck__btn bold">중복 확인</button>
+                <button type="button" className="dupCheck__btn bold">
+                  중복 확인
+                </button>
               </div>
+              {errors.email && <ErrorMessage>{errors.email}</ErrorMessage>}
 
               <label htmlFor="input__password" className="regular">
                 비밀번호
@@ -107,8 +191,16 @@ function Register() {
                 placeholder="비밀번호를 입력해주세요"
                 id="input__password"
                 className="regular"
-                onChange={(e) => setPassword(e.target.value)}
+                value={password}
+                onChange={(e) => {
+                  setPassword(e.target.value);
+                  setErrors((prev) => ({ ...prev, password: '' }));
+                }}
               />
+              {errors.password && (
+                <ErrorMessage>{errors.password}</ErrorMessage>
+              )}
+
               <label htmlFor="input__CheckPwd" className="regular">
                 비밀번호 확인
               </label>
@@ -117,7 +209,16 @@ function Register() {
                 placeholder="비밀번호를 입력해주세요"
                 id="input__CheckPwd"
                 className="regular"
+                value={passwordConfirm}
+                onChange={(e) => {
+                  setPasswordConfirm(e.target.value);
+                  setErrors((prev) => ({ ...prev, passwordConfirm: '' }));
+                }}
               />
+              {errors.passwordConfirm && (
+                <ErrorMessage>{errors.passwordConfirm}</ErrorMessage>
+              )}
+
               <label htmlFor="input__name" className="regular">
                 이름
               </label>
@@ -126,12 +227,23 @@ function Register() {
                 placeholder="닉네임을 입력해주세요"
                 id="input__name"
                 className="regular"
-                onChange={(e) => setNickName(e.target.value)}
+                value={nickName}
+                onChange={(e) => {
+                  setNickName(e.target.value);
+                  setErrors((prev) => ({ ...prev, nickName: '' }));
+                }}
               />
+              {errors.nickName && (
+                <ErrorMessage>{errors.nickName}</ErrorMessage>
+              )}
             </div>
           </InputSection>
           <div className="btn__section">
-            <button className="bold cancle__btn" type="button">
+            <button
+              className="bold cancle__btn"
+              type="button"
+              onClick={handleCancel}
+            >
               취소
             </button>
             <button className="bold regist__btn" type="submit">

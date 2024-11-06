@@ -22,11 +22,20 @@ import CareDiaryFeed from '../pages/Care/Diary/CareDiaryFeed';
 import PetUpload from '../pages/Care/Upload/PetUpload';
 import CareList from '../pages/Care/List/CareList';
 import SocialLoginSuccess from '../pages/Auth/Login/SocialLoginSuccess';
-
+import MyPage from '../pages/MyPage/MyPage';
+import EditProfile from '../pages/User/EditProfile';
 const routes = [
   {
     path: '/',
     element: <Main />,
+  },
+  {
+    path: 'edit-profile',
+    element: <EditProfile />,
+  },
+  {
+    path: '/mypage',
+    element: <MyPage />,
   },
   {
     path: '/login',
@@ -90,11 +99,12 @@ const routes = [
     path: '/admin',
     element: <Admin />,
   },
-  { path: '/diary-feed', element: <CareDiaryFeed /> },
+  { path: '/diary-feed/:pet_id', element: <CareDiaryFeed /> },
   {
     path: '/care-list',
     element: <CareList />,
   },
+  { path: '/diary-feed', element: <CareDiaryFeed /> },
   {
     path: '/pet-upload',
     element: <PetUpload />,
