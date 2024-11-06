@@ -21,6 +21,7 @@ import Admin from '../pages/Admin/Admin';
 import CareDiaryFeed from '../pages/Care/Diary/CareDiaryFeed';
 import PetUpload from '../pages/Care/Upload/PetUpload';
 import CareList from '../pages/Care/List/CareList';
+import SocialLoginSuccess from '../pages/Auth/Login/SocialLoginSuccess';
 
 const routes = [
   {
@@ -30,6 +31,10 @@ const routes = [
   {
     path: '/login',
     element: <Login />,
+  },
+  {
+    path: '/socialLogin',
+    element: <SocialLoginSuccess />,
   },
   {
     path: '/menu',
