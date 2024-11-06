@@ -158,3 +158,17 @@ export const RegisterHeader = styled.header`
     justify-content: flex-end;
   }
 `;
+
+export const ErrorMessage = styled.p`
+  color: #ff4d4f;
+  font-size: 0.8rem;
+  margin-top: -1.5rem;
+  margin-bottom: 1rem;
+`;
+
+export const ProfileErrorMessage = styled.p`
+  color: #ff4d4f;
+  font-size: 0.8rem;
+  text-align: center;
+  margin-top: 0.5rem;
+`;
