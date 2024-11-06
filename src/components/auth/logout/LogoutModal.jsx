@@ -1,6 +1,9 @@
+// LogoutModal.jsx
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
+import useUserProfile from '../../../stores/auth/useUserProfile';
 
 const ModalWrapper = styled.div`
   position: absolute;
@@ -37,16 +40,23 @@ const Icon = styled.span`
 `;
 
 const LogoutModal = ({ onClose }) => {
-  const menuItems = [{ id: 1, text: '로그아웃', icon: '😿' }];
+  const { clearUser } = useUserProfile();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    clearUser();
+    localStorage.removeItem('accessToken');
+    localStorage.removeItem('refreshToken');
+    alert('로그아웃 되었습니다.');
+    navigate('/');
+  };
 
   return (
     <ModalWrapper onMouseLeave={onClose}>
-      {menuItems.map((item) => (
-        <MenuItem key={item.id} onClick={onClose}>
-          <Icon>{item.icon}</Icon>
-          <span>{item.text}</span>
-        </MenuItem>
-      ))}
+      <MenuItem onClick={handleLogout}>
+        <Icon>😿</Icon>
+        <span>로그아웃</span>
+      </MenuItem>
     </ModalWrapper>
   );
 };
