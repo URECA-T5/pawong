@@ -9,6 +9,7 @@ import {
   ProfileSection,
   StorySection,
   ImgSection,
+  FeedIcon,
 } from '../../../style/care/diary/careDiaryFeed';
 import DefaultBtn from '../../../components/care/diary/DiaryFeedDefaultBtn';
 import { diaryFeed } from '../../../stores/diaryFeedStore';
@@ -54,6 +55,44 @@ function CareDiaryFeed() {
     story: '이야기',
   };
 
+  const careImg = [
+    {
+      id: 1,
+      imgSrc: '/asset/diary/story/storyDogImg1.svg',
+      alt: '등록된 이미지가 없습니다.(Image not available)',
+      path: '/personal-diary',
+    },
+    {
+      id: 2,
+      imgSrc: '/asset/diary/story/storyDogImg2.svg',
+      alt: '등록된 이미지가 없습니다.(Image not available)',
+      path: '/personal-diary',
+    },
+    {
+      id: 3,
+      imgSrc: '/asset/diary/story/storyDogImg2.svg',
+      alt: '등록된 이미지가 없습니다.(Image not available)',
+      path: '/personal-diary',
+    },
+    {
+      id: 4,
+      imgSrc: '/asset/diary/story/storyDogImg1.svg',
+      alt: '등록된 이미지가 없습니다.(Image not available)',
+      path: '/personal-diary',
+    },
+    {
+      id: 5,
+      imgSrc: '/asset/diary/story/storyDogImg2.svg',
+      alt: '등록된 이미지가 없습니다.(Image not available)',
+      path: '/personal-diary',
+    },
+    {
+      id: 6,
+      imgSrc: '/asset/diary/story/storyDogImg1.svg',
+      alt: '등록된 이미지가 없습니다.(Image not available)',
+      path: '/personal-diary',
+    },
+  ];
   return (
     <>
       <GlobalStyle />
@@ -122,8 +161,11 @@ function CareDiaryFeed() {
         ) : (
           <AuthorBtn onNavigate={navigate} />
         )}
+        <FeedIcon>
+          <img src="/asset/diary/story/feedIcon.svg" alt="feed_icon"></img>
+        </FeedIcon>
         <ImgSection>
-          {/* {careImg.map(({ id, imgSrc, alt, path }) => (
+          {careImg.map(({ id, imgSrc, alt, path }) => (
             <button
               className="stroy__imgBtn"
               key={id}
@@ -131,7 +173,7 @@ function CareDiaryFeed() {
             >
               <img className="stroy__imgBtn--img" src={imgSrc} alt={alt} />
             </button>
-          ))} */}
+          ))}
         </ImgSection>
       </MainContainer>
     </>
