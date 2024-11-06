@@ -1,5 +1,5 @@
 import React from 'react';
-import { petUploadStore } from '../../../stores/petUploadStore';
+import { petUploadStore } from '../../../stores/care/upload/petUploadStore';
 import { ButtonChoice } from '../../../style/care/upload/petUpload';
 
 const SelectionField = ({ name, title, caseA, caseB, description }) => {

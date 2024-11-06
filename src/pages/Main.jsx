@@ -22,7 +22,9 @@ import Footer from '../components/main/Footer';
 import MainAccordion from '../components/main/MainAccordion';
 import Nav from '../components/common/Nav';
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
-import { dummy_data } from '../components/diary/dummy_data';
+import { dummy_data } from '../components/care/diary/dummy_data';
+import useUserProfile from '../stores/auth/useUserProfile';
+import serverBaseUrl from '../config/serverConfig';
 
 const getRecentList = (dummy_data) => {
   return dummy_data.reduce((acc, data) => {
@@ -37,10 +39,9 @@ const getRecentList = (dummy_data) => {
 const Main = () => {
   const navigate = useNavigate();
   const [sectionHeight, setSectionHeight] = useState(17.5);
-  const handleClick = (path) => {
-    navigate(path);
-  };
-
+  const handleClick = (path) => navigate(path);
+  const { user } = useUserProfile();
+  console.log(user);
   const settings = {
     dots: false,
     fade: true,
@@ -65,10 +66,25 @@ const Main = () => {
             <a href="/">포옹</a>
           </p>
           <p>
-            <FontAwesomeIcon
-              onClick={() => handleClick('/login')}
-              icon={faCircleUser}
-            />
+            {user.nickName ? (
+              <button
+                type="button"
+                onClick={() => handleClick('/profile')}
+                className="user-profile-image-button"
+                aria-label={`${user.nickName}의 프로필`}
+              >
+                <img
+                  src={`${serverBaseUrl}/${user.profileImage}`}
+                  alt={`${user.nickName}의 프로필`}
+                  className="user-profile-image"
+                />
+              </button>
+            ) : (
+              <FontAwesomeIcon
+                icon={faCircleUser}
+                onClick={() => handleClick('/login')}
+              />
+            )}
           </p>
         </MainHeader>
         <MainSliderContainer>
@@ -78,13 +94,17 @@ const Main = () => {
             </div>
             <div>
               <MainSlideImage
-                onClick={() => handleClick('/doglist')}
+                onClick={() => handleClick('/diary-feed')}
                 src={'/asset/main/carousel1.svg'}
                 alt="1"
               />
             </div>
             <div>
-              <MainSlideImage src={'/asset/main/carousel2.svg'} alt="1" />
+              <MainSlideImage
+                onClick={() => handleClick('/care-list')}
+                src={'/asset/main/carousel2.svg'}
+                alt="1"
+              />
             </div>
           </Slider>
         </MainSliderContainer>
@@ -98,14 +118,14 @@ const Main = () => {
                 />
                 <span className="regular">임보동물 목록</span>
               </button>
-              <button onClick={() => handleClick('/diary')}>
+              <button onClick={() => handleClick('/diary-upload')}>
                 <img
                   src={'/asset/main/diaryupload.svg'}
                   alt="임보일지작성아이콘"
                 />
                 <span className="regular">임보일지 작성</span>
               </button>
-              <button onClick={() => handleClick('/favorites')}>
+              <button onClick={() => handleClick('/mypage')}>
                 <img src={'/asset/main/favorites.svg'} alt="즐겨찾기아이콘" />
                 <span className="regular">즐겨찾기</span>
               </button>

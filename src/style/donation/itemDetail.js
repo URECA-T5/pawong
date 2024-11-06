@@ -134,14 +134,16 @@ export const BottomModalContainer = styled.dialog`
   position: fixed;
   border: none;
   padding: 2.2rem;
-  margin-top: calc(100vh - 300px);
-  margin-left: calc(50% - 17.5rem);
+  margin: calc(100vh - 300px) auto 0 auto;
   animation: modal-show 0.5s;
   border-radius: 16px 16px 0 0;
   width: 37.5rem;
   height: 18.75rem;
   overflow: hidden;
   caret-color: transparent;
+  a {
+    text-decoration-line: none;
+  }
   inset: 0;
 
   .modal__dialog::backdrop {

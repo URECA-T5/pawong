@@ -24,6 +24,10 @@ export const MessageBody = styled.div`
   height: 100%;
   background-color: white;
 
+  a {
+    text-decoration-line: none;
+  }
+
   .message__profileArea {
     padding-top: 6.4rem;
   }

@@ -1,8 +1,9 @@
 import axios from 'axios';
 import { refreshToken } from './auth/auth';
+import serverBaseUrl from '../config/serverConfig';
 
 const request = axios.create({
-  baseURL: 'http://3.144.176.227:8080',
+  baseURL: serverBaseUrl,
 });
 
 request.interceptors.request.use((config) => {
@@ -18,7 +19,7 @@ const handle401Error = async (error) => {
   if (!savedRefreshToken) {
     alert('인증 정보가 만료되었습니다. 다시 로그인 해주세요.');
     localStorage.clear();
-    window.location.href = 'http://localhost:3000/login';
+    window.location.href = `${serverBaseUrl}/login`;
     return Promise.reject(error);
   }
 
@@ -31,7 +32,7 @@ const handle401Error = async (error) => {
   } catch {
     localStorage.clear();
     alert('다시 로그인해주세요.');
-    window.location.href = 'http://localhost:3000/login';
+    window.location.href = `${serverBaseUrl}/login`;
     return Promise.reject(error);
   }
 };

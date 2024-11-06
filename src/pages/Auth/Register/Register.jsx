@@ -19,7 +19,7 @@ function Register() {
     signup,
     setEmail,
     setPassword,
-    setName,
+    setNickName,
     setProfileImage,
     profileImage,
   } = useSignup();
@@ -37,7 +37,6 @@ function Register() {
   const handleImageDelete = (e) => {
     e.preventDefault();
     setProfileImage(null);
-    setProfileImage(null);
     document.getElementById('fileInput').value = '';
   };
 
@@ -46,7 +45,7 @@ function Register() {
     const formData = {
       email: e.target.input__id.value,
       password: e.target.input__password.value,
-      name: e.target.input__nickName.value,
+      nickName: e.target.input__nickName.value,
       profileImage,
     };
     try {
@@ -146,7 +145,7 @@ function Register() {
                 placeholder="닉네임을 입력해주세요"
                 id="input__nickName"
                 className="regular"
-                onChange={(e) => setName(e.target.value)}
+                onChange={(e) => setNickName(e.target.value)}
               />
             </div>
           </InputSection>

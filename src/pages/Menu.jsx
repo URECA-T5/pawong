@@ -46,17 +46,19 @@ function Menu() {
       imgSrc: '/asset/menu/dog_icon.svg',
       alt: '등록된 이미지가 없습니다.(Image not available)',
       text: '임보동물 목록',
+      onClick: () => navigate('/care-list'),
     },
     {
       imgSrc: '/asset/menu/record_icon.svg',
       alt: '등록된 이미지가 없습니다.(Image not available)',
       text: '임보일지 작성',
-      onClick: () => navigate('/diary'),
+      onClick: () => navigate('/diary-upload'),
     },
     {
       imgSrc: '/asset/menu/mypage_icon.svg',
       alt: '등록된 이미지가 없습니다.(Image not available)',
       text: '마이페이지',
+      onClick: () => navigate('/mypage'),
     },
     {
       imgSrc: '/asset/menu/badge_icon.svg',
@@ -81,8 +83,8 @@ function Menu() {
 
   const navItems = [
     { path: '/', icon: faHouse, label: '홈' },
-    { path: '/pawong', icon: faPaw, label: '포옹 기록' },
-    { path: '/dog/upload', icon: faPencil, label: '임보동물 등록' },
+    { path: '/mypage', icon: faPaw, label: '포옹 기록' },
+    { path: '/pet-upload', icon: faPencil, label: '임보동물 등록' },
     { path: '/menu', icon: faBars, label: '메뉴' },
   ];
 

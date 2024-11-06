@@ -3,7 +3,7 @@ import {
   ImageContainer,
   SelectedImage,
 } from '../../../style/care/upload/petUpload';
-import { petUploadStore } from '../../../stores/petUploadStore';
+import { petUploadStore } from '../../../stores/care/upload/petUploadStore';
 
 const DiaryImage = () => {
   const { formData, setFormData } = petUploadStore();
@@ -11,10 +11,7 @@ const DiaryImage = () => {
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
-    if (file) {
-      const imageUrl = URL.createObjectURL(file);
-      setFormData({ ...formData, profileImage: imageUrl });
-    }
+    if (file) setFormData({ ...formData, profileImage: file });
   };
 
   const handleImgCancel = () => {
@@ -37,11 +34,11 @@ const DiaryImage = () => {
         <SelectedImage
           src={
             formData.profileImage
-              ? formData.profileImage
+              ? URL.createObjectURL(formData.profileImage)
               : '/asset/register/registerImg_icon.svg'
           }
           alt="프로필 이미지를 등록해주세요"
-          $isSelected={formData.profileImage ? true : false}
+          $isSelected={formData.profileImage}
         />
       </div>
       {formData.profileImage ? (

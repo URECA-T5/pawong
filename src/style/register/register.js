@@ -24,6 +24,9 @@ export const RegisterBody = styled.form`
   }
   .input__profile img {
     cursor: pointer;
+    width: 5.5rem;
+    height: 5.5rem;
+    object-fit: cover;
   }
   .description__profile {
     display: flex;
@@ -59,8 +62,8 @@ export const ProfileImageContainer = styled.div`
   display: inline-block;
 
   .profile__image {
-    width: 5.5rem;
-    height: 5.5rem;
+    width: 5rem;
+    height: 5rem;
     border-radius: 100%;
     border: 1px solid ${deleteGray};
   }

@@ -17,8 +17,8 @@ const Nav = () => {
 
   const navItems = [
     { path: '/', icon: faHouse, label: '홈' },
-    { path: '/pawong', icon: faPaw, label: '포옹 기록' },
-    { path: '/dog/upload', icon: faPencil, label: '임보동물 등록' },
+    { path: '/mypage', icon: faPaw, label: '포옹 기록' },
+    { path: '/pet-upload', icon: faPencil, label: '임보동물 등록' },
     { path: '/menu', icon: faBars, label: '메뉴' },
   ];
 

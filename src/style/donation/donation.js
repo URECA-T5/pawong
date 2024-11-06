@@ -8,7 +8,9 @@ export const ItemContainer = styled.div`
   box-shadow:
     0 10px 20px rgba(0, 0, 0, 0.19),
     0 6px 6px rgba(0, 0, 0, 0.23);
-
+  a {
+    text-decoration-line: none;
+  }
   transition: transform 0.3s ease;
 
   caret-color: transparent;
@@ -70,6 +72,7 @@ export const DonationHeader = styled.header`
   width: 100%;
   height: 52px;
   display: flex;
+  font-size: 1.5rem;
   justify-content: space-between;
   padding: 1rem;
   background-color: white;

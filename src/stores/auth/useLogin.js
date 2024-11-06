@@ -1,5 +1,6 @@
 import { create } from 'zustand';
 import { localLogin } from '../../api/auth/auth';
+import useUserProfile from './useUserProfile';
 
 const useLoginStore = create((set) => ({
   error: null,
@@ -7,8 +8,10 @@ const useLoginStore = create((set) => ({
   login: async (data) => {
     set({ isLoading: true, error: null, message: null });
     try {
-      const response = await localLogin(data);
-      set({ message: response.data.message, isLoading: false });
+      const { message, user } = await localLogin(data);
+      set({ message, isLoading: false });
+      const setUser = useUserProfile.getState().setUser;
+      setUser(user);
     } catch (error) {
       set({ error: error.response.data.message, isLoading: false });
     }

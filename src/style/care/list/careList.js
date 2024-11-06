@@ -78,6 +78,9 @@ export const ListBodySection = styled.div`
   width: 100%;
   gap: 1.4rem;
   grid-template-columns: 1fr 1fr;
+  a {
+    text-decoration-line: none;
+  }
 `;
 
 export const ProfileItem = styled.div`
@@ -121,7 +124,8 @@ export const ProfileItem = styled.div`
     position: absolute;
     top: 2.2rem;
     left: 1rem;
-    width: 6.5rem;
+    padding: 0.6rem;
+    width: auto;
     height: 2.25rem;
     border-radius: 1rem;
     color: ${colors.pastel_blue};
