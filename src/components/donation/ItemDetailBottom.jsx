@@ -3,16 +3,33 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { BottomContainer } from '../../style/donation/itemDetail';
 import { faArrowUpFromBracket } from '@fortawesome/free-solid-svg-icons';
 import ItemBottomModal from './ItemBottomModal';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const ItemDetailBottom = ({ title, price }) => {
+  const location = useLocation();
+  const baseURL = useRef('http://localhost:3000');
+
   const isVisible = useRef();
   const handleShowModal = () => isVisible.current.showModal();
+  const handleCopyClipBoard = async (text) => {
+    try {
+      await navigator.clipboard.writeText(text);
+      alert('클립보드에 링크가 복사되었어요.');
+    } catch (e) {
+      console.log(e);
+    }
+  };
 
   return (
     <BottomContainer>
-      <div className="btn__share">
+      <button
+        className="btn__share"
+        onClick={() =>
+          handleCopyClipBoard(`${baseURL.current}${location.pathname}`)
+        }
+      >
         <FontAwesomeIcon icon={faArrowUpFromBracket} />
-      </div>
+      </button>
       <button className="btn__buy bold" onClick={handleShowModal}>
         구매하기
       </button>
