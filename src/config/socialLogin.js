@@ -10,19 +10,19 @@ export const SOCIAL_LOGIN_PROVIDER = {
     url: `${serverBaseUrl}/auth/google`,
     css: 'google',
   },
-  KAKAO: {
-    img: kakaoLogo,
-    url: 'http://localhost:8080/auth/kakao',
-    css: 'kakao',
-  },
-  NAVER: {
-    img: naverLogo,
-    url: 'http://localhost:8080/auth/naver',
-    css: 'naver',
-  },
-  APPLE: {
-    img: appleLogo,
-    url: 'http://localhost:8080/auth/apple',
-    css: 'apple',
-  },
+  // KAKAO: {
+  //   img: kakaoLogo,
+  //   url: 'http://localhost:8080/auth/kakao',
+  //   css: 'kakao',
+  // },
+  // NAVER: {
+  //   img: naverLogo,
+  //   url: 'http://localhost:8080/auth/naver',
+  //   css: 'naver',
+  // },
+  // APPLE: {
+  //   img: appleLogo,
+  //   url: 'http://localhost:8080/auth/apple',
+  //   css: 'apple',
+  // },
 };
