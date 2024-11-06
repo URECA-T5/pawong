@@ -1,11 +1,11 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useLogin } from '../../../stores/auth/useLogin';
 import {
+  CloseButton,
   ModalBackDrop,
   ModalContent,
-  CloseButton,
-} from '../../style/login/modal';
-import { useLogin } from '../../stores/auth/useLogin';
-import { useNavigate } from 'react-router-dom';
+} from '../../../style/login/modal';
 const LoginModal = ({ onClose }) => {
   const navigate = useNavigate();
   const { error, message, login, setEmail, setPassword } = useLogin();

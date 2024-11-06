@@ -1,5 +1,6 @@
 import request from '../axios';
 import { LOCAL_LOGIN, REFRESH_TOKEN, SIGNUP } from '../constant/api';
+import useUserProfile from '../../stores/auth/useUserProfile';
 
 export const signup = async (data) => {
   try {
@@ -13,12 +14,13 @@ export const signup = async (data) => {
 export const localLogin = async (data) => {
   try {
     const response = await request.post(LOCAL_LOGIN, data);
-    const { accessToken, refreshToken } = response.data;
+    const { accessToken, refreshToken, user } = response.data;
     localStorage.setItem('accessToken', accessToken);
     localStorage.setItem('refreshToken', refreshToken);
-    return response;
+    return { message: response.data.message, user };
   } catch (error) {
     console.error('로그인 오류:', error.response?.data?.message);
+    throw error;
   }
 };
 

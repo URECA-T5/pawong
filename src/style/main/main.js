@@ -33,6 +33,20 @@ export const MainHeader = styled.header`
   p {
     cursor: pointer;
   }
+  .user-profile-image-button {
+    width: 40px;
+    height: 40px;
+    border: 0;
+    background-color: transparent;
+    border-radius: 50%;
+  }
+
+  .user-profile-image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 50%;
+  }
 `;
 
 export const MainSection = styled.section`

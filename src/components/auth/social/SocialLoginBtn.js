@@ -1,6 +1,6 @@
 import React from 'react';
-import SocialBtn from '../../style/login/socialBtn';
-import { SOCIAL_LOGIN_PROVIDER } from '../../config/socialLogin';
+import { SOCIAL_LOGIN_PROVIDER } from '../../../config/socialLogin';
+import SocialBtn from '../../../style/login/socialBtn';
 
 const SocialLoginBtn = ({ provider }) => {
   const { img, url, css } = SOCIAL_LOGIN_PROVIDER[provider];

@@ -7,18 +7,33 @@ import {
   RegisterHeader,
   InputSection,
 } from '../../../style/register/register';
-import { useSignup } from '../../../stores/auth/useSignup';
+import useSignup from '../../../stores/auth/useSignup';
 
 function Register() {
-  const { signup, setEmail, setPassword, setNickName } = useSignup();
+  const {
+    signup,
+    setEmail,
+    setPassword,
+    setNickName,
+    setProfileImage,
+    user: { email, password, nickName, profileImage },
+  } = useSignup();
   const navigate = useNavigate();
+
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    console.log(file);
+    setProfileImage(file);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const formData = {
-      email: e.target.input__id.value,
-      password: e.target.input__password.value,
-      nickName: e.target.input__name.value,
-    };
+    const formData = new FormData();
+    formData.append('email', email);
+    formData.append('password', password);
+    formData.append('nickName', nickName);
+    formData.append('userProfileImage', profileImage);
+
     await signup(formData).then(() => {
       alert('회원가입에 성공했습니다!');
       navigate('/login');
@@ -45,9 +60,21 @@ function Register() {
       <RegisterBody onSubmit={handleSubmit}>
         <section className="profile__section">
           <div className="input__profile">
-            <input id="fileInput" type="file"></input>
+            <input
+              id="fileInput"
+              type="file"
+              accept="image/*"
+              onChange={handleFileChange}
+            />
             <label htmlFor="fileInput">
-              <img src="/asset/register/profile.svg" alt="프로필 등록" />
+              {profileImage ? (
+                <img
+                  src={URL.createObjectURL(profileImage)}
+                  alt="프로필 이미지"
+                />
+              ) : (
+                <img src="/asset/register/profile.svg" alt="프로필 등록" />
+              )}
             </label>
           </div>
           <div className="description__profile">
