@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { ItemPriceArea, ItemTotalPriceArea } from '../../style/payment/payment';
 import { Link } from 'react-router-dom';
+import { Toss } from './Toss';
 
 const ItemPrice = ({ item }) => {
+  const isVisible = useRef();
+  const handleShowModal = () => isVisible.current.showModal();
+
   return (
     <>
       <ItemPriceArea>
@@ -23,9 +27,12 @@ const ItemPrice = ({ item }) => {
             {(item.cnt * item.price).toLocaleString('ko-KR')}원
           </p>
         </div>
-        <Link to="/payment-finish">
-          <button className="payment__start bold">결제하기</button>
-        </Link>
+        <div>
+          <button className="payment__start bold" onClick={handleShowModal}>
+            결제하기
+          </button>
+          <Toss modalRef={isVisible} title={item.title} price={item.price} />
+        </div>
       </ItemTotalPriceArea>
     </>
   );
