@@ -27,6 +27,7 @@ export const RegisterBody = styled.form`
     width: 5.5rem;
     height: 5.5rem;
     object-fit: cover;
+    border-radius: 50%;
   }
   .description__profile {
     display: flex;
@@ -66,29 +67,6 @@ export const ProfileImageContainer = styled.div`
     height: 5rem;
     border-radius: 100%;
     border: 1px solid ${deleteGray};
-  }
-
-  .delete-button {
-    position: absolute;
-    top: 0rem;
-    right: 0rem;
-    width: 1.5rem;
-    height: 1.5rem;
-    border-radius: 50%;
-    background-color: ${deleteGray};
-    color: white;
-    border: none;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0;
-    font-size: 0.8rem;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-
-    &:hover {
-      background-color: #4740e6;
-    }
   }
 `;
 
