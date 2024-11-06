@@ -2,11 +2,12 @@ import googleLogo from '../asset/login/googleLogo.svg';
 import kakaoLogo from '../asset/login/kakaoLogo.svg';
 import naverLogo from '../asset/login/naverLogo.svg';
 import appleLogo from '../asset/login/appleLogo.svg';
+import serverBaseUrl from './serverConfig';
 
 export const SOCIAL_LOGIN_PROVIDER = {
   GOOGLE: {
     img: googleLogo,
-    url: 'http://localhost:8080/auth/google',
+    url: `${serverBaseUrl}/auth/google`,
     css: 'google',
   },
   KAKAO: {
