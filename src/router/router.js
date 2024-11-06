@@ -95,7 +95,7 @@ const routes = [
     path: '/admin',
     element: <Admin />,
   },
-  { path: '/diary-feed', element: <CareDiaryFeed /> },
+  { path: '/diary-feed/:pet_id', element: <CareDiaryFeed /> },
   {
     path: '/care-list',
     element: <CareList />,

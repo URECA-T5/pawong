@@ -55,6 +55,9 @@ export const ProfileSection = styled.div`
 
   .profile__dog--img {
     margin-right: 1.25rem;
+    width: 10rem;
+    height: 10rem;
+    border-radius: 50%;
   }
 
   .profile__dog--info {
@@ -62,7 +65,11 @@ export const ProfileSection = styled.div`
   }
 
   .profile__dog--info--value {
-    color: ${colors.darkGray};
+    color: ${colors.point};
+  }
+
+  .profile__dog--info__item {
+    margin: 0.3rem 0;
   }
 `;
 
@@ -76,6 +83,14 @@ export const StorySection = styled.div`
 
   .profile__dog--info--story {
     margin: 0.4rem 0 0 0.625rem;
+  }
+
+  .profile__dog--info--value {
+    margin-top: 0.625rem;
+  }
+
+  .profile__dog--info--value span {
+    white-space: pre-wrap;
     color: ${colors.darkGray};
   }
 `;
@@ -90,11 +105,11 @@ export const ImgSection = styled.div`
     background: none;
     padding: 0;
     margin: 0;
-    height: 210px;
+    height: 13.2rem;
     cursor: pointer;
   }
 
   .stroy__imgBtn--img {
-    width: 200px;
+    width: 12.5rem;
   }
 `;

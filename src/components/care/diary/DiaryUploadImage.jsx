@@ -12,7 +12,7 @@ const DiaryImage = () => {
       URL.revokeObjectURL(formData.image);
     }
     if (file) {
-      setFormData({ ...formData, image: URL.createObjectURL(file) });
+      setFormData({ ...formData, image: file });
     }
   };
 
@@ -39,7 +39,7 @@ const DiaryImage = () => {
         <img
           src={
             formData.image
-              ? formData.image
+              ? URL.createObjectURL(formData.image)
               : '/asset/register/registerImg_icon.svg'
           }
           alt="프로필 이미지를 등록해주세요"
