@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { PetHeader } from '../../../style/myPage/default';
 import {
@@ -7,26 +7,22 @@ import {
   PetImage,
   PetInfo,
 } from '../../../style/myPage/userpet';
-
-const samplePets = [
-  {
-    image: 'https://via.placeholder.com/100',
-    name: '사랑',
-    type: '말티즈',
-  },
-  {
-    image: 'https://via.placeholder.com/100',
-    name: '행복',
-    type: '푸들',
-  },
-  {
-    image: 'https://via.placeholder.com/100',
-    name: '희망',
-    type: '코카스파니엘',
-  },
-];
-
+import { getCareInfo } from '../../../api/pet/care/list/list';
+import serverBaseUrl from '../../../config/serverConfig';
 function UserPet() {
+  const [pets, setPets] = useState([]);
+
+  useEffect(() => {
+    const fetchPets = async () => {
+      const petData = await getCareInfo();
+      if (petData) {
+        setPets(petData);
+      }
+    };
+
+    fetchPets();
+  }, []);
+
   return (
     <>
       <PetHeader>
@@ -36,12 +32,15 @@ function UserPet() {
         </div>
       </PetHeader>
       <UserPetBody>
-        {samplePets.map((pet, index) => (
+        {pets.map((pet, index) => (
           <PetContainer key={index}>
-            <PetImage src={pet.image} alt={`${pet.name} 프로필`} />
+            <PetImage
+              src={`${serverBaseUrl}/${pet.profileImage}`}
+              alt={`${pet.name} 프로필`}
+            />
             <PetInfo>
               <p className="pet__name regular">{pet.name}</p>
-              <span className="pet__type regular">{pet.type}</span>
+              <span className="pet__type regular">{pet.species}</span>
             </PetInfo>
           </PetContainer>
         ))}
