@@ -26,6 +26,13 @@ import { dummy_data } from '../components/care/diary/dummy_data';
 import useUserProfile from '../stores/auth/useUserProfile';
 import serverBaseUrl from '../config/serverConfig';
 
+const getProfileImageUrl = (profileImage) => {
+  const isFullUrl = profileImage.startsWith('http');
+  if (isFullUrl) return profileImage;
+
+  return `${serverBaseUrl}/${profileImage}`;
+};
+
 const getRecentList = (dummy_data) => {
   return dummy_data.reduce((acc, data) => {
     const { category, date } = data;
@@ -74,7 +81,7 @@ const Main = () => {
                 aria-label={`${user.nickName}의 프로필`}
               >
                 <img
-                  src={`${serverBaseUrl}/${user.profileImage}`}
+                  src={getProfileImageUrl(user.profileImage)}
                   alt={`${user.nickName}의 프로필`}
                   className="user-profile-image"
                 />
