@@ -110,6 +110,10 @@ function Register() {
     }
   };
 
+  const handleCancel = () => {
+    navigate(-1);
+  };
+
   return (
     <>
       <RegisterHeader>
@@ -235,7 +239,11 @@ function Register() {
             </div>
           </InputSection>
           <div className="btn__section">
-            <button className="bold cancle__btn" type="button">
+            <button
+              className="bold cancle__btn"
+              type="button"
+              onClick={handleCancel}
+            >
               취소
             </button>
             <button className="bold regist__btn" type="submit">
