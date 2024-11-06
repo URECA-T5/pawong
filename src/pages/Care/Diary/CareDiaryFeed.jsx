@@ -46,7 +46,7 @@ function CareDiaryFeed() {
     rescueLocation: '구조지역',
     protectionType: '임보상태',
     gender: '성별',
-    isNeutered: '중성화수술 여부',
+    isNeutered: '중성화수술',
     vaccinations: '백신',
     age: '나이',
     weight: '몸무게',
