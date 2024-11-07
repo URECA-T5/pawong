@@ -1,3 +1,5 @@
+import { useEffect } from 'react';
+
 import { diaryStore } from '../../../stores/diaryStore';
 import { RequiredStar } from '../../../style/care/diary/careDiaryUpload';
 
@@ -15,6 +17,7 @@ export const InputField = ({
     setFormData({ ...formData, [name]: e.target.value });
   };
 
+  useEffect(() => {}, [formData]);
   return (
     <div className="regular">
       <p className="input__title">
