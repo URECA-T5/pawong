@@ -13,7 +13,7 @@ const button_list = [
 
 const SelectVaccination = () => {
   const [customList, setCustomList] = useState([]);
-  const { vaccination, setVaccination } = petUploadStore();
+  const { vaccinations, setVaccinations } = petUploadStore();
   const isVisible = useRef();
   const handleShowModal = () => isVisible.current.showModal();
 
@@ -28,12 +28,12 @@ const SelectVaccination = () => {
           return (
             <TagButton
               key={index}
-              $isClicked={vaccination.includes(data) ? true : false}
+              $isClicked={vaccinations.includes(data)}
               onClick={() =>
-                setVaccination(
-                  vaccination.includes(data)
-                    ? vaccination.filter((val) => val !== data)
-                    : [...vaccination, data],
+                setVaccinations(
+                  vaccinations.includes(data)
+                    ? vaccinations.filter((val) => val !== data)
+                    : [...vaccinations, data],
                 )
               }
               className="bold"
@@ -49,12 +49,12 @@ const SelectVaccination = () => {
             return (
               <TagButton
                 key={index}
-                $isClicked={vaccination.includes(data) ? true : false}
+                $isClicked={vaccinations.includes(data) ? true : false}
                 onClick={() =>
-                  setVaccination(
-                    vaccination.includes(data)
-                      ? vaccination.filter((val) => val !== data)
-                      : [...vaccination, data],
+                  setVaccinations(
+                    vaccinations.includes(data)
+                      ? vaccinations.filter((val) => val !== data)
+                      : [...vaccinations, data],
                   )
                 }
                 className="bold"
