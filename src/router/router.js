@@ -92,14 +92,14 @@ const routes = [
     element: <PaymentFinish />,
   },
   {
-    path: '/diary-detail',
+    path: '/diary-detail/:fosterDiaryId',
     element: <CareDiaryDetail />,
   },
   {
     path: '/admin',
     element: <Admin />,
   },
-  { path: '/diary-feed', element: <CareDiaryFeed /> },
+  { path: '/diary-feed/:pet_id', element: <CareDiaryFeed /> },
   {
     path: '/care-list',
     element: <CareList />,
