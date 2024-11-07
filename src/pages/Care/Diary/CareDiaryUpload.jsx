@@ -11,10 +11,18 @@ import {
 } from '../../../style/care/diary/careDiaryUpload';
 import DiaryUploadImage from '../../../components/care/diary/DiaryUploadImage';
 import DiaryUploadInput from '../../../components/care/diary/DiaryUploadInput';
+import userPet from '../../../stores/mypage/userPet';
+import { useEffect } from 'react';
+import { ErrorMessage } from '../../../style/register/register';
 
 const CareDiary = () => {
+  const { pets, fetchPets } = userPet();
   const { selectedTag, setSelectedTag, formData, setFormData } = diaryStore();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    fetchPets();
+  }, [fetchPets]);
 
   const handleClick = (path) => {
     navigate(path);
@@ -22,6 +30,11 @@ const CareDiary = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (pets.length === 0) {
+      alert('현재 등록된 임보 동물이 없습니다!');
+      return;
+    }
+
     const updatedFormData = {
       ...formData,
       tag: selectedTag,
