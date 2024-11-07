@@ -113,11 +113,6 @@ function Menu() {
           <p className="extraBold">
             <a href="/">포옹</a>
           </p>
-          <FontAwesomeIcon
-            style={{ cursor: 'pointer' }}
-            onClick={() => handleClick('/login')}
-            icon={faCircleUser}
-          />
         </Header>
 
         <Login_Box>
