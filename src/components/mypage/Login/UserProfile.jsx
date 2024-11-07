@@ -3,6 +3,7 @@ import { ProfileHeader } from '../../../style/myPage/profile';
 import MyPet from '../../../asset/mypage/myPet.svg';
 import { Link } from 'react-router-dom';
 import serverBaseUrl from '../../../config/serverConfig';
+
 function UserProfile({ user }) {
   return (
     <ProfileHeader>
@@ -17,7 +18,7 @@ function UserProfile({ user }) {
         </span>
       </div>
       <div className="profile__right">
-        <Link>
+        <Link to="/edit-profile">
           <button className="edit__btn">편집</button>
         </Link>
       </div>
