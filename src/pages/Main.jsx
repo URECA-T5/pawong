@@ -17,14 +17,14 @@ import { faCircleUser } from '@fortawesome/free-regular-svg-icons';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import Slider from 'react-slick';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Footer from '../components/main/Footer';
 import MainAccordion from '../components/main/MainAccordion';
 import Nav from '../components/common/Nav';
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
-import { dummy_data } from '../components/care/diary/dummy_data';
 import useUserProfile from '../stores/auth/useUserProfile';
 import serverBaseUrl from '../config/serverConfig';
+import { getDiaryALL } from '../api/diary/listAll';
 
 const DEFAULT_PROFILE_IMAGE = '/asset/default-profile.png';
 const getProfileImageUrl = (profileImage) => {
@@ -37,11 +37,11 @@ const getProfileImageUrl = (profileImage) => {
   return `${serverBaseUrl}/${profileImage}`;
 };
 
-const getRecentList = (dummy_data) => {
-  return dummy_data.reduce((acc, data) => {
-    const { category, date } = data;
-    if (!acc[category] || new Date(date) > new Date(acc[category].date)) {
-      acc[category] = data;
+export const getRecentList = (data) => {
+  return data.reduce((acc, item) => {
+    const { tag, date } = item;
+    if (!acc[tag] || new Date(date) > new Date(acc[tag].date)) {
+      acc[tag] = item;
     }
     return acc;
   }, {});
@@ -66,7 +66,23 @@ const Main = () => {
     arrows: false,
   };
 
-  const recentList = getRecentList(dummy_data);
+  const [diaryData, setDiaryData] = useState([]);
+  const [recentList, setRecentList] = useState({});
+
+  const fetchDiaryData = async () => {
+    try {
+      const response = await getDiaryALL();
+      const data = response.data;
+      setDiaryData(data);
+      setRecentList(getRecentList(data));
+    } catch (error) {
+      console.error('Failed to fetch diary data:', error);
+    }
+  };
+
+  useEffect(() => {
+    fetchDiaryData();
+  }, []);
 
   return (
     <>
@@ -163,8 +179,8 @@ const Main = () => {
             {Object.values(recentList).map((data) => (
               <ul key={data.id}>
                 <li>
-                  <button className="regular">{data.category}</button>
-                  <a className="regular" href="/">
+                  <button className="regular">{data.tag}</button>
+                  <a className="regular" href={`/diary-detail/${data.id}`}>
                     {data.title}
                   </a>
                 </li>
