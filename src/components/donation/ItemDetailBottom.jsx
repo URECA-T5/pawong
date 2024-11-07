@@ -12,7 +12,7 @@ const ItemDetailBottom = ({ title, price }) => {
 
   const isVisible = useRef();
   const handleShowModal = () =>
-    isLogined('chkSuccss') && isVisible.current.showModal();
+    isLogined('chkSuccess') && isVisible.current.showModal();
   const handleCopyClipBoard = async (text) => {
     try {
       await navigator.clipboard.writeText(text);
