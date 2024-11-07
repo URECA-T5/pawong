@@ -121,7 +121,7 @@ const Main = () => {
             </div>
             <div>
               <MainSlideImage
-                onClick={() => handleClick('/diary-feed')}
+                onClick={() => handleClick('/diary-list')}
                 src={'/asset/main/carousel1.svg'}
                 alt="1"
               />
