@@ -99,9 +99,17 @@ export const InputContainer = styled.div`
     border-radius: 1rem;
     outline-color: ${colors.point};
   }
+  select {
+    height: 2.82rem;
+    padding: 0.5rem;
+    border: 1px solid ${colors.placeholder};
+    border-radius: 1rem;
+    outline-color: ${colors.point};
+  }
 
   input::placeholder,
-  textarea::placeholder {
+  textarea::placeholder,
+  select::placeholder {
     font-family: 'Pretendard-Regular', sans-serif;
     font-weight: 400;
     color: ${colors.darkGray};

@@ -1,12 +1,20 @@
+import React, { useEffect } from 'react';
 import { diaryStore } from '../../../stores/diaryStore';
 import { InputField } from './DiaryUploadInputField';
 import {
   InputContainer,
   TagButton,
 } from '../../../style/care/diary/careDiaryUpload';
+import serverBaseUrl from '../../../config/serverConfig';
+import userPet from '../../../stores/mypage/userPet';
 
 const DiaryInput = () => {
   const { selectedTag, setSelectedTag } = diaryStore();
+  const { pets, fetchPets } = userPet();
+
+  useEffect(() => {
+    fetchPets();
+  }, [fetchPets]);
 
   const tags = [
     { id: 1, name: '오산완' },
@@ -43,6 +51,19 @@ const DiaryInput = () => {
         name={'title'}
         required={true}
         maxLength={20}
+      />
+      <InputField
+        className="input__title"
+        type={'select'}
+        label={'임보 동물 선택'}
+        placeholder={'일지를 작성할 반려동물을 선택해주세요 (필수입력)'}
+        name={'selectPet'}
+        required={true}
+        options={pets.map((pet) => ({
+          value: pet.id,
+          label: `${pet.name} (${pet.breed})`,
+          image: `${serverBaseUrl}/${pet.profileImage}`,
+        }))}
       />
       <InputField
         className="input__title"
