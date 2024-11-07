@@ -4,7 +4,7 @@ import { getAllInfo, getDetailInfo } from '../../api/donation/item';
 const Donation = create((set) => ({
   data: [],
   detailData: '',
-  itemCnt: '',
+  itemCnt: null,
   error: null,
   message: null,
   loadAllData: async () => {
@@ -12,7 +12,6 @@ const Donation = create((set) => ({
     try {
       const response = await getAllInfo();
       set({ data: response, isLoading: false });
-      console.log(`** loadDataAll >> ${response.length}`);
     } catch (e) {
       set({ error: e.response.message, isLoading: false });
     }
@@ -23,7 +22,6 @@ const Donation = create((set) => ({
     try {
       const response = await getDetailInfo(item_id);
       set({ detailData: response, isLoading: false });
-      console.log(`** loadDetailData >> ${response}`);
     } catch (e) {
       set({ error: e.response.message, isLoading: false });
     }
@@ -33,7 +31,7 @@ const Donation = create((set) => ({
 }));
 
 export const useDonation = () => {
-  const { data, detailData, itemcnt, setItemCnt, loadAllData, loadDetailData } =
+  const { data, detailData, itemCnt, setItemCnt, loadAllData, loadDetailData } =
     Donation();
-  return { data, detailData, itemcnt, setItemCnt, loadAllData, loadDetailData };
+  return { data, detailData, itemCnt, setItemCnt, loadAllData, loadDetailData };
 };

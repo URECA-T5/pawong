@@ -84,7 +84,7 @@ const routes = [
     element: <Delivery />,
   },
   {
-    path: '/payment',
+    path: '/payment/:item_id',
     element: <Payment />,
   },
   {
