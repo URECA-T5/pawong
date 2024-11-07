@@ -1,9 +1,9 @@
 import GlobalStyle, { MainContainer } from '../../../style/global/global';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft, faHouse } from '@fortawesome/free-solid-svg-icons';
-import { useNavigate } from 'react-router-dom';
-import diaryStore from '../../../stores/diaryStore';
-import { useEffect } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import { useEffect, useRef } from 'react';
+import { diaryDetail } from '../../../stores/diaryDetailStore';
 import {
   Header,
   TagButton,
@@ -11,32 +11,34 @@ import {
   Button,
   OtherBoard,
 } from '../../../style/care/diary/careDiaryDetail';
+import serverBaseUrl from '../../../config/serverConfig';
 
-const PersonalDiary = () => {
+const CareDiaryDetail = () => {
   const navigate = useNavigate();
-  const { setFormData, formData } = diaryStore();
-
-  const format = (num) => String(num).padStart(2, '0');
-  function getCurrentTime() {
-    const now = new Date();
-    return `${String(now.getFullYear()).slice(-2)}.${format(now.getMonth() + 1)}.${format(now.getDate())} ${format(now.getHours())}:${format(now.getMinutes())}:${format(now.getSeconds())}`;
-  }
+  const { data, loadData } = diaryDetail();
+  const isLoadData = useRef(true);
+  const params = useParams();
+  const fosterDiaryId = useRef(params.fosterDiaryId);
 
   useEffect(() => {
-    if (!formData.title && !formData.location && !formData.story) {
-      const dummyData = {
-        tag: '일상',
-        title: '근처 공원에 산책 다녀왔어요',
-        location: '올림픽공원',
-        story:
-          '생각없이 걷기 좋더라구요. 공원이 커서 넉넉히 시간잡아야해요. 댕댕이 아가들이 많아서 그런가 평소보다 포동이가 신나했어요. 꼬리가 쉬지 않아서ㅋㅋㅋㅋ 날아가는 줄 알았네요. 반려견 동반으로 오기 너무 좋았고, 산책하기도 너무 좋더라구요.',
-        image: '/asset/diary/dogImg.svg',
-      };
-
-      setFormData(dummyData);
+    if (isLoadData.current) {
+      isLoadData.current = false;
+      loadData(fosterDiaryId.current);
     }
-  }, [formData]);
+  }, [data]);
 
+  const formatDate = (date) => {
+    const options = {
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+      hour12: false,
+    };
+    return new Date(date).toLocaleString('ko-KR', options);
+  };
   return (
     <>
       <GlobalStyle />
@@ -52,8 +54,8 @@ const PersonalDiary = () => {
         </Header>
         <Section>
           <div className="board__title">
-            <TagButton>{formData.tag}</TagButton>
-            <h3 className="bold">{formData.title}</h3>
+            <TagButton>{data.tag}</TagButton>
+            <h3 className="bold">{data.title}</h3>
           </div>
           <div className="board__profile">
             <img
@@ -69,17 +71,17 @@ const PersonalDiary = () => {
                   alt="certification_badge"
                 ></img>
               </div>
-              <p>{formData.location}</p>
+              <p>{data.place}</p>
             </div>
           </div>
           <img
             className="board__img"
-            src="/asset/diary/dogImg.svg"
+            src={`${serverBaseUrl}/${data.image}`}
             alt="dog_img"
           ></img>
           <div className="board_text">
-            <p>{formData.story}</p>
-            {getCurrentTime()}
+            <p>{data.content}</p>
+            {formatDate(data.createdAt)}
             <div className="board_button">
               <Button>편집</Button>
               <Button>삭제</Button>
@@ -120,4 +122,4 @@ const PersonalDiary = () => {
   );
 };
 
-export default PersonalDiary;
+export default CareDiaryDetail;

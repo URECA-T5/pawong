@@ -88,7 +88,7 @@ const routes = [
     element: <PaymentFinish />,
   },
   {
-    path: '/diary-detail',
+    path: '/diary-detail/:fosterDiaryId',
     element: <CareDiaryDetail />,
   },
   {
