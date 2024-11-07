@@ -1,7 +1,10 @@
 import { create } from 'zustand';
-import { getDiaryDetailAll } from '../api/pet/care/diary/diaryDetail';
+import {
+  getDiaryDetailAll,
+  diaryDelete,
+} from '../api/pet/care/diary/diaryDetail';
 
-const diaryDetailStroe = create((set) => ({
+const diaryDetailStore = create((set) => ({
   data: [],
   error: null,
   message: null,
@@ -14,9 +17,25 @@ const diaryDetailStroe = create((set) => ({
       set({ error: e.response.message, isLoading: false });
     }
   },
+  deleteData: async (fosterDiaryId) => {
+    set({ isLoading: true, error: null, message: null });
+    try {
+      const message = await diaryDelete(fosterDiaryId);
+      set({ message: message || '삭제 성공', isLoading: false });
+
+      set((state) => ({
+        data: state.data.filter((item) => item.id !== fosterDiaryId),
+      }));
+    } catch (e) {
+      set({
+        error: e.response?.message || '삭제 실패',
+        isLoading: false,
+      });
+    }
+  },
 }));
 
 export const diaryDetail = () => {
-  const { data, loadData } = diaryDetailStroe();
-  return { data, loadData };
+  const { data, loadData, deleteData } = diaryDetailStore();
+  return { data, loadData, deleteData };
 };

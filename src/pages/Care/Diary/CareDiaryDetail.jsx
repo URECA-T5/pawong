@@ -15,7 +15,7 @@ import serverBaseUrl from '../../../config/serverConfig';
 
 const CareDiaryDetail = () => {
   const navigate = useNavigate();
-  const { data, loadData } = diaryDetail();
+  const { data, loadData, deleteData } = diaryDetail();
   const isLoadData = useRef(true);
   const params = useParams();
   const fosterDiaryId = useRef(params.fosterDiaryId);
@@ -26,6 +26,16 @@ const CareDiaryDetail = () => {
       loadData(fosterDiaryId.current);
     }
   }, [data]);
+
+  const handleDeleteClick = async () => {
+    try {
+      await deleteData(fosterDiaryId.current);
+      alert('게시물이 삭제되었어요!');
+      navigate(`/diary-feed/${fosterDiaryId.current}`);
+    } catch (error) {
+      console.error('삭제 실패:', error);
+    }
+  };
 
   const formatDate = (date) => {
     const options = {
@@ -44,7 +54,11 @@ const CareDiaryDetail = () => {
       <GlobalStyle />
       <MainContainer>
         <Header>
-          <FontAwesomeIcon icon={faChevronLeft} className="header__icon" />
+          <FontAwesomeIcon
+            icon={faChevronLeft}
+            className="header__icon"
+            onClick={() => navigate(-1)}
+          />
           <p className="extraBold">임보일지</p>
           <FontAwesomeIcon
             icon={faHouse}
@@ -60,12 +74,20 @@ const CareDiaryDetail = () => {
           <div className="board__profile">
             <img
               className="board__profile--user--img"
-              src="/asset/diary/profileImg.svg"
+              src={
+                data.user && data.user.profileImage
+                  ? `${serverBaseUrl}/${data.user.profileImage}`
+                  : 'asset/menu/empty_profile.svg'
+              }
               alt="profile"
             />
             <div>
               <div className="board__profile--user">
-                <p style={{ fontSize: '1.1rem' }}>구름이형</p>
+                <p style={{ fontSize: '1.1rem' }}>
+                  {data.user && data.user.nickname
+                    ? data.user.nickname
+                    : 'user'}
+                </p>
                 <img
                   src="/asset/diary/certificationBadge.svg"
                   alt="certification_badge"
@@ -84,7 +106,7 @@ const CareDiaryDetail = () => {
             {formatDate(data.createdAt)}
             <div className="board_button">
               <Button>편집</Button>
-              <Button>삭제</Button>
+              <Button onClick={handleDeleteClick}>삭제</Button>
             </div>
           </div>
         </Section>
