@@ -70,7 +70,13 @@ export const ItemImageArea = styled.img`
 
 export const DonationHeader = styled.header`
   width: 100%;
-  height: 52px;
+  height: 3.25rem;
+  position: sticky;
+  align-items: center;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
   display: flex;
   font-size: 1.5rem;
   justify-content: space-between;

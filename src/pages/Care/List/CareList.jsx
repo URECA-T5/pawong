@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import GlobalStyle, { MainContainer } from '../../../style/global/global';
 import DonationMenu from '../../../components/donation/DonationMenu';
 import CareListHeader from '../../../components/care/list/CareListHeader';
 import HeaderMessage from '../../../components/care/list/HeaderMessage';

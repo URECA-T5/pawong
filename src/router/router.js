@@ -58,7 +58,7 @@ const routes = [
     element: <Donation />,
   },
   {
-    path: '/donation-item',
+    path: '/donation-item/:item_id',
     element: <DonationItemDetail />,
   },
   {
@@ -84,7 +84,7 @@ const routes = [
     element: <Delivery />,
   },
   {
-    path: '/payment',
+    path: '/payment/:item_id',
     element: <Payment />,
   },
   {

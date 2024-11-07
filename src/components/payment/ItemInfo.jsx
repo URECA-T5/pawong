@@ -1,15 +1,23 @@
 import React from 'react';
 import { ItemInfoArea } from '../../style/payment/payment';
+import serverBaseUrl from '../../config/serverConfig';
+import { useDonation } from '../../stores/donation/useDonation';
 
-const ItemInfo = ({ item }) => {
+const ItemInfo = () => {
+  const { detailData } = useDonation();
+
   return (
     <ItemInfoArea>
-      <img src={item.src} alt="no images" className="item__img" />
+      <img
+        src={`${serverBaseUrl}/${detailData.donationItemImages[0]}`}
+        alt="no images"
+        className="item__img"
+      />
       <div className="item__detailArea">
-        <div className="item__category bold">{item.category}</div>
-        <p className="item__title bold">{item.title}</p>
+        <div className="item__category bold">{detailData.tag}</div>
+        <p className="item__title bold">{detailData.name}</p>
         <p className="item__price bold">
-          {(item.price * item.cnt).toLocaleString('ko-KR')}원
+          {detailData.price.toLocaleString('ko-KR')}원
         </p>
       </div>
     </ItemInfoArea>

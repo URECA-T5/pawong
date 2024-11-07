@@ -1,9 +1,13 @@
 import React, { useRef, useState } from 'react';
 import { BottomModalContainer } from '../../style/donation/itemDetail';
 import ItemCount from './ItemCount';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
+import { useDonation } from '../../stores/donation/useDonation';
 
 const ItemBottomModal = ({ modalRef, title, price }) => {
+  const { setItemCnt } = useDonation();
+  const params = useParams();
+  const item_id = params.item_id;
   const cnt = useRef(1);
   const [totalPrice, setTotalPrice] = useState(cnt.current * price);
 
@@ -28,8 +32,13 @@ const ItemBottomModal = ({ modalRef, title, price }) => {
             {totalPrice.toLocaleString('ko-KR')}원
           </p>
         </div>
-        <Link to="/payment">
-          <button className="modal__buyBtn bold">구매하기</button>
+        <Link to={`/payment/${item_id}`}>
+          <button
+            className="modal__buyBtn bold"
+            onClick={() => setItemCnt(cnt.current)}
+          >
+            구매하기
+          </button>
         </Link>
       </div>
     </BottomModalContainer>

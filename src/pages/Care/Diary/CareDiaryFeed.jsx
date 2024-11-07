@@ -153,7 +153,15 @@ function CareDiaryFeed() {
                         {registeredInfo[key]} :
                       </span>
                       <span className="profile__dog--info--value">
-                        {data[key]}
+                        {key === 'isNeutered'
+                          ? data[key]
+                            ? '했어요'
+                            : '안 했어요'
+                          : key === 'vaccinations'
+                            ? data[key] && data[key].length > 0
+                              ? data[key].join(', ')
+                              : '등록된 백신이 없습니다.'
+                            : data[key]}
                       </span>
                     </div>
                   ))}
