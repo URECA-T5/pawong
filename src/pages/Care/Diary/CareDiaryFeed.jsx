@@ -131,7 +131,10 @@ function CareDiaryFeed() {
               <h1>{data.name}</h1>
               <div className="profile__dog--info">
                 {Object.keys(registeredInfo)
-                  .filter((key) => key !== 'info' && key !== 'stroy')
+                  .filter(
+                    (key) =>
+                      key !== 'name' && key !== 'info' && key !== 'story',
+                  )
                   .map((key) => (
                     <div key={key} className="profile__dog--info__item">
                       <span className="profile__dog--info--key">
