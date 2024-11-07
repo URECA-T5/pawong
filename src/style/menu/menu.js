@@ -67,6 +67,7 @@ export const Profile_Img = styled.img`
   display: flex;
   align-items: center;
   cursor: pointer;
+  border-radius: 50%;
 `;
 
 export const Menu_list_row = styled.div`

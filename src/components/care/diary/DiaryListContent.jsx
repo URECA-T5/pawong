@@ -17,7 +17,7 @@ export const DiaryListCotent = ({ data }) => {
         {data.map((item) => (
           <li key={item.id}>
             <button className="diaryList__contentTag">{item.tag}</button>
-            <a href="/diary-detail" className="bold">
+            <a href={`/diary-detail/${item.id}`} className="bold">
               {item.title}
             </a>
             <div>
