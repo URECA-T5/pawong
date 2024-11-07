@@ -103,14 +103,17 @@ export const ImgSection = styled.div`
   padding: 1.25rem;
   background-color: white;
   border-radius: 1rem;
-  grid-template-columns: repeat(3, 1fr);
+  justify-content: flex-start;
 
   .story__imgBtn {
-    flex: 1;
+    flex: 0 0 10.7rem;
+    width: 10.7rem;
+    height: 10.7rem;
     border: none;
     background: none;
     padding: 0;
     margin: 0;
+    margin: 0.04rem;
     cursor: pointer;
   }
 

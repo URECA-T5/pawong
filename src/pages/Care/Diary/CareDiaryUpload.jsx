@@ -37,7 +37,7 @@ const CareDiary = () => {
 
     const updatedFormData = new FormData();
     updatedFormData.append('fosterDiaryImage', formData.image);
-    updatedFormData.append('petId', 1);
+    // updatedFormData.append('petId', 1);
     updatedFormData.append(
       'fosterDiary',
       JSON.stringify({
