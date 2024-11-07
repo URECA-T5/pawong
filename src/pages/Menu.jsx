@@ -36,6 +36,10 @@ const getProfileImageUrl = (profileImage) => {
 //임보/입양문의 form
 const formUrl =
   'https://docs.google.com/forms/d/e/1FAIpQLSfyWoEmCvVTLELwjCP5BTM_r5VX9Qcc7ZngjeVKACnQ2SJRRw/viewform';
+//인증배지 form
+const badgeFormUrl = 'https://forms.gle/rnLB3LLgHt41QRJQ6';
+//고객센터 form
+const csFormUrl = 'https://forms.gle/tG28SvhQuTDNuu6y5';
 
 function Menu() {
   const navigate = useNavigate();
@@ -81,6 +85,9 @@ function Menu() {
       imgSrc: '/asset/menu/badge_icon.svg',
       alt: '등록된 이미지가 없습니다.(Image not available)',
       text: '인증배지 신청',
+      onClick: () => {
+        window.open(badgeFormUrl, '_blank');
+      },
     },
   ];
 
@@ -89,6 +96,9 @@ function Menu() {
       imgSrc: '/asset/menu/cs_icon.svg',
       alt: '등록된 이미지가 없습니다.(Image not available)',
       text: '고객센터',
+      onClick: () => {
+        window.open(csFormUrl, '_blank');
+      },
     },
     {
       imgSrc: '/asset/menu/notice_icon.svg',
