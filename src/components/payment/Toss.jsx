@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 const clientKey = 'test_ck_D5GePWvyJnrK0W0k6q8gLzN97Eoq';
 const customerKey = generateRandomString();
 
-export function Toss({ modalRef, title, price }) {
+export function Toss({ modalRef, name, price, detailData }) {
   const [payment, setPayment] = useState(null);
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState('CARD');
   const amount = {
@@ -38,9 +38,9 @@ export function Toss({ modalRef, title, price }) {
     const commonPaymentData = {
       amount,
       orderId,
-      orderName: title,
+      orderName: name,
       successUrl: window.location.origin + '/payment-finish',
-      failUrl: window.location.origin + '/fail',
+      failUrl: window.location.origin + '/',
       customerEmail: 'customer123@gmail.com',
       customerName: '김토스',
       customerMobilePhone: '01012341234',
