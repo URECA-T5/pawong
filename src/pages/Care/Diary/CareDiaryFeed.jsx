@@ -15,7 +15,6 @@ import DefaultBtn from '../../../components/care/diary/DiaryFeedDefaultBtn';
 import { diaryFeed } from '../../../stores/diaryFeedStore';
 import serverBaseUrl from '../../../config/serverConfig';
 import { toggleFavorite } from '../../../api/pet/care/favorites/petFavorite';
-//임보/입양문의 form
 const formUrl =
   'https://docs.google.com/forms/d/e/1FAIpQLSfyWoEmCvVTLELwjCP5BTM_r5VX9Qcc7ZngjeVKACnQ2SJRRw/viewform';
 

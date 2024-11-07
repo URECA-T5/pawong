@@ -16,7 +16,6 @@ function UserFavPet() {
   useEffect(() => {
     fetchFavPets();
   }, [fetchFavPets]);
-  console.log(favPets);
 
   return (
     <>
@@ -41,7 +40,7 @@ function UserFavPet() {
             </PetContainer>
           ))
         ) : (
-          <p>즐겨찾기한 반려동물이 없습니다.</p> // 즐겨찾기 데이터가 없을 경우 메시지 표시
+          <p>즐겨찾기한 반려동물이 없습니다.</p>
         )}
       </UserPetBody>
     </>
