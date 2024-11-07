@@ -1,22 +1,29 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import DonationItem from './DonationItem';
-import { dummy_data } from './dummy_data';
 import { ListContainer } from '../../style/donation/donation';
-import { useNavigate } from 'react-router-dom';
+import { useDonation } from '../../stores/donation/useDonation';
 
 const DonationList = ({ selected }) => {
+  const { data, loadAllData } = useDonation();
+  const isLoadData = useRef(true);
+
+  useEffect(() => {
+    if (isLoadData.current) {
+      isLoadData.current = false;
+      loadAllData();
+      console.log(data);
+    }
+  }, [data]);
+
   return (
     <ListContainer>
-      {(selected === '전체'
-        ? dummy_data
-        : dummy_data.filter((data) => data.species === selected)
-      ).map((data, index) => {
-        return (
-          <div key={data.title + index}>
-            <DonationItem {...data} />
-          </div>
-        );
-      })}
+      {data &&
+        (selected === '전체'
+          ? data
+          : data.filter((data) => data?.tag === selected)
+        ).map((data, index) => {
+          return <DonationItem {...data} key={data?.name + index} />;
+        })}
     </ListContainer>
   );
 };

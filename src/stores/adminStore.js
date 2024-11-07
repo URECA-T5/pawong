@@ -1,4 +1,5 @@
 import { create } from 'zustand';
+import { addDonationItem } from '../api/donation/admin/manage';
 
 export const adminStore = create((set) => ({
   formData: {
@@ -8,20 +9,32 @@ export const adminStore = create((set) => ({
     price: '',
     brand: '',
     productDetailImg: null,
-    material: '',
-    size: '',
-    expirationDate: '',
-    csInfo: '',
+    // material: '',
+    // size: '',
+    // expirationDate: '',
+    // csInfo: '',
   },
   selectedTab: { tabName: '1', direction: 1 },
   selectedTag: '',
-  setFormData: (newData) =>
+  setFormData: (newData) => {
     set((state) => ({
       formData: {
         ...state.formData,
         ...newData,
       },
-    })),
+    }));
+  },
+
+  addData: async (data) => {
+    try {
+      const response = await addDonationItem(data);
+      console.log(`[ response ] >>> ${response}`);
+      return response;
+    } catch (e) {
+      console.error('== adminStore.js == 오류발생');
+    }
+  },
+
   selectTab: (tabName) => {
     set((state) => ({
       selectedTab: {

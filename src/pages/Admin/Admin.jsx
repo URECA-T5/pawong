@@ -21,6 +21,7 @@ function Admin() {
     selectTab,
     selectedTag,
     setSelectedTag,
+    addData,
   } = adminStore();
 
   const handleChange = (e) => {
@@ -69,7 +70,16 @@ function Admin() {
       productDetailImg: formData.productDetailImg,
       tag: selectedTag,
     };
-    setFormData(updatedFormData);
+    const formDataToSend = new FormData();
+    formDataToSend.append('donationItemImages', updatedFormData.productImg);
+    formDataToSend.append('donationItemDetailImage', [
+      updatedFormData.productDetailImg,
+    ]);
+    formDataToSend.append('name', updatedFormData.name);
+    formDataToSend.append('price', updatedFormData.price);
+    formDataToSend.append('brand', updatedFormData.brand);
+    formDataToSend.append('tag', updatedFormData.tag);
+    addData(formDataToSend);
     console.log(updatedFormData);
   };
 
