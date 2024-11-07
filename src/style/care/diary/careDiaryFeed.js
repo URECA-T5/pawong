@@ -123,4 +123,6 @@ export const ImgSection = styled.div`
 export const FeedIcon = styled.div`
   padding: 0 1.25rem;
   margin: 0;
+  position: relative;
+  top: 0.9rem;
 `;
