@@ -19,8 +19,8 @@ const CareListBody = ({ selected }) => {
       {(selected === '전체'
         ? data
         : data.filter((data) => data.species === selected)
-      ).map((data, index) => {
-        return <PetProfileCard data={data} key={index} />;
+      ).map((data) => {
+        return <PetProfileCard data={data} key={data.id} />;
       })}
     </ListBodySection>
   );

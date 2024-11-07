@@ -28,15 +28,14 @@ function CareDiaryFeed() {
   const { data, loadData } = diaryFeed();
   const isLoadData = useRef(true);
   const params = useParams();
-  const pet_id = useRef(params.pet_id);
+  const petId = useRef(params.pet_id);
 
   useEffect(() => {
     fetchFavPets();
   }, [fetchFavPets]);
 
   useEffect(() => {
-    // Check if pet_id is in favPets and update isStarClicked accordingly
-    if (favPets.some((favPet) => favPet.id === pet_id.current)) {
+    if (favPets.some((favPet) => favPet.id === petId.current)) {
       setIsStarClicked(true);
     }
   }, [favPets]);
@@ -45,8 +44,7 @@ function CareDiaryFeed() {
     setIsStarClicked(!isStarClicked);
 
     try {
-      const response = await toggleFavorite(pet_id.current);
-      console.log('북마크 성공:', pet_id.current);
+      const response = await toggleFavorite(petId.current);
     } catch (error) {
       console.error(
         '북마크 추가/삭제 오류:',
@@ -58,10 +56,7 @@ function CareDiaryFeed() {
   useEffect(() => {
     if (isLoadData.current) {
       isLoadData.current = false;
-      console.log(pet_id.current);
-
-      loadData(pet_id.current);
-      console.log(data);
+      loadData(petId.current);
     }
   }, [data]);
 
