@@ -9,13 +9,19 @@ import {
 } from '../../../style/myPage/userpet';
 import serverBaseUrl from '../../../config/serverConfig';
 import userPet from '../../../stores/mypage/userPet';
+import { useNavigate } from 'react-router-dom';
 
 function UserPet() {
   const { pets, fetchPets } = userPet();
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchPets();
   }, [fetchPets]);
+
+  const handleNameClick = (petId) => {
+    navigate(`/diary-feed/${petId}`);
+  };
 
   return (
     <>
@@ -32,6 +38,7 @@ function UserPet() {
               <PetImage
                 src={`${serverBaseUrl}/${pet.profileImage}`}
                 alt={`${pet.name} 프로필`}
+                onClick={() => handleNameClick(pet.id)}
               />
               <PetInfo>
                 <p className="pet__name regular">{pet.name}</p>
