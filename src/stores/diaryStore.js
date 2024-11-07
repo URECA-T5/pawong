@@ -1,21 +1,16 @@
 import { create } from 'zustand';
 
 export const diaryStore = create((set) => ({
+  selectedTag: '',
+  setSelectedTag: (tag) => set({ selectedTag: tag }),
   formData: {
-    tag: '',
     title: '',
-    location: '',
     story: '',
+    location: '',
+    petId: '',
     image: null,
   },
-  selectedTag: '',
-
-  setFormData: (newFormData) =>
-    set(() => ({
-      formData: {
-        ...newFormData,
-      },
-    })),
-  setSelectedTag: (tag) => set({ selectedTag: tag }),
+  setFormData: (newData) =>
+    set((state) => ({ formData: { ...state.formData, ...newData } })),
 }));
 export default diaryStore;
