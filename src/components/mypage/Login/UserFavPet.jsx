@@ -9,13 +9,19 @@ import {
 } from '../../../style/myPage/userpet';
 import userFavorite from '../../../stores/mypage/userFavorite';
 import serverBaseUrl from '../../../config/serverConfig';
+import { useNavigate } from 'react-router-dom';
 
 function UserFavPet() {
   const { favPets, fetchFavPets } = userFavorite();
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchFavPets();
   }, [fetchFavPets]);
+
+  const handleNameClick = (petId) => {
+    navigate(`/diary-feed/${petId}`);
+  };
 
   return (
     <>
@@ -32,6 +38,7 @@ function UserFavPet() {
               <PetImage
                 src={`${serverBaseUrl}/${pet.profileImage}`}
                 alt={`${pet.name} 프로필`}
+                onClick={() => handleNameClick(pet.id)}
               />
               <PetInfo>
                 <p className="pet__name regular">{pet.name}</p>
