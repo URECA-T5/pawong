@@ -14,6 +14,7 @@ const CareListBody = ({ selected }) => {
       console.log(data);
     }
   }, [data]);
+  console.log(data);
 
   return (
     <ListBodySection>
