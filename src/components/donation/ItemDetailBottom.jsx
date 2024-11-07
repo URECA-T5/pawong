@@ -4,13 +4,15 @@ import { BottomContainer } from '../../style/donation/itemDetail';
 import { faArrowUpFromBracket } from '@fortawesome/free-solid-svg-icons';
 import ItemBottomModal from './ItemBottomModal';
 import { useLocation } from 'react-router-dom';
+import { isLogined } from '../../pages/Main';
 
 const ItemDetailBottom = ({ title, price }) => {
   const location = useLocation();
   const baseURL = useRef('http://localhost:3000');
 
   const isVisible = useRef();
-  const handleShowModal = () => isVisible.current.showModal();
+  const handleShowModal = () =>
+    isLogined('chkSuccss') && isVisible.current.showModal();
   const handleCopyClipBoard = async (text) => {
     try {
       await navigator.clipboard.writeText(text);

@@ -61,6 +61,9 @@ export const Section = styled.section`
 
   .board__profile--user--img {
     margin-right: 0.625rem;
+    width: 2.625rem;
+    height: 2.625rem;
+    border-radius: 50%;
   }
 
   .board__img {

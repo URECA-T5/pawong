@@ -15,11 +15,13 @@ import DefaultBtn from '../../../components/care/diary/DiaryFeedDefaultBtn';
 import { diaryFeed } from '../../../stores/diaryFeedStore';
 import serverBaseUrl from '../../../config/serverConfig';
 import { toggleFavorite } from '../../../api/pet/care/favorites/petFavorite';
+import userFavorite from '../../../stores/mypage/userFavorite';
 const formUrl =
   'https://docs.google.com/forms/d/e/1FAIpQLSfyWoEmCvVTLELwjCP5BTM_r5VX9Qcc7ZngjeVKACnQ2SJRRw/viewform';
 
 function CareDiaryFeed() {
   const navigate = useNavigate();
+  const { favPets, fetchFavPets } = userFavorite();
 
   const [isStarClicked, setIsStarClicked] = useState(false);
   const [showAuthorBtn, setShowAuthorBtn] = useState(false);
@@ -28,12 +30,23 @@ function CareDiaryFeed() {
   const params = useParams();
   const pet_id = useRef(params.pet_id);
 
+  useEffect(() => {
+    fetchFavPets();
+  }, [fetchFavPets]);
+
+  useEffect(() => {
+    // Check if pet_id is in favPets and update isStarClicked accordingly
+    if (favPets.some((favPet) => favPet.id === pet_id.current)) {
+      setIsStarClicked(true);
+    }
+  }, [favPets]);
+
   const handleBookMarkClick = async () => {
     setIsStarClicked(!isStarClicked);
 
     try {
       const response = await toggleFavorite(pet_id.current);
-      console.log('북마크 성공:', pet_id);
+      console.log('북마크 성공:', pet_id.current);
     } catch (error) {
       console.error(
         '북마크 추가/삭제 오류:',
@@ -65,44 +78,6 @@ function CareDiaryFeed() {
     story: '이야기',
   };
 
-  const careImg = [
-    {
-      id: 1,
-      imgSrc: '/asset/diary/story/storyDogImg1.svg',
-      alt: '등록된 이미지가 없습니다.(Image not available)',
-      path: '/personal-diary',
-    },
-    {
-      id: 2,
-      imgSrc: '/asset/diary/story/storyDogImg2.svg',
-      alt: '등록된 이미지가 없습니다.(Image not available)',
-      path: '/personal-diary',
-    },
-    {
-      id: 3,
-      imgSrc: '/asset/diary/story/storyDogImg2.svg',
-      alt: '등록된 이미지가 없습니다.(Image not available)',
-      path: '/personal-diary',
-    },
-    {
-      id: 4,
-      imgSrc: '/asset/diary/story/storyDogImg1.svg',
-      alt: '등록된 이미지가 없습니다.(Image not available)',
-      path: '/personal-diary',
-    },
-    {
-      id: 5,
-      imgSrc: '/asset/diary/story/storyDogImg2.svg',
-      alt: '등록된 이미지가 없습니다.(Image not available)',
-      path: '/personal-diary',
-    },
-    {
-      id: 6,
-      imgSrc: '/asset/diary/story/storyDogImg1.svg',
-      alt: '등록된 이미지가 없습니다.(Image not available)',
-      path: '/personal-diary',
-    },
-  ];
   return (
     <>
       <GlobalStyle />
@@ -186,15 +161,30 @@ function CareDiaryFeed() {
           <img src="/asset/diary/story/feedIcon.svg" alt="feed_icon"></img>
         </FeedIcon>
         <ImgSection>
-          {careImg.map(({ id, imgSrc, alt, path }) => (
-            <button
-              className="stroy__imgBtn"
-              key={id}
-              onClick={() => navigate(path)}
-            >
-              <img className="stroy__imgBtn--img" src={imgSrc} alt={alt} />
-            </button>
-          ))}
+          {data.fosterDiaries && data.fosterDiaries.length > 0 ? (
+            data.fosterDiaries.map(
+              (diary) =>
+                diary.image && (
+                  <button
+                    className="story__imgBtn"
+                    key={diary.id}
+                    onClick={() => navigate(`/diary-detail/${diary.id}`)}
+                  >
+                    <img
+                      className="story__imgBtn--img"
+                      src={`${serverBaseUrl}/${diary.image}`}
+                      alt={diary.title}
+                    />
+                  </button>
+                ),
+            )
+          ) : (
+            <img
+              className="story__imgBtn--img"
+              src="/asset/diary/story/storyDogImg2.svg"
+              alt="임시보호 목록 이미지"
+            />
+          )}
         </ImgSection>
       </MainContainer>
     </>

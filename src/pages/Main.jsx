@@ -38,6 +38,21 @@ export const getRecentList = (data) => {
   }, {});
 };
 
+export const isLogined = (successPath) => {
+  if (localStorage.getItem('accessToken') === null) {
+    console.log(`[localStroage] : ${localStorage.getItem('accessToken')}`);
+    alert('로그인 후 이용가능한 서비스 입니다!');
+    window.location.href = '/login';
+  } else {
+    console.log(`[localStroage] : ${localStorage.getItem('accessToken')}`);
+    if (successPath !== 'chkSuccess') {
+      window.location.href = successPath;
+    } else {
+      return true;
+    }
+  }
+};
+
 const Main = () => {
   const navigate = useNavigate();
   const [sectionHeight, setSectionHeight] = useState(17.5);
@@ -144,7 +159,7 @@ const Main = () => {
                 />
                 <span className="regular">임보동물 목록</span>
               </button>
-              <button onClick={() => handleClick('/diary-upload')}>
+              <button onClick={() => isLogined('/diary-upload')}>
                 <img
                   src={'/asset/main/diaryupload.svg'}
                   alt="임보일지작성아이콘"

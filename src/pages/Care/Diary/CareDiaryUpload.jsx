@@ -36,7 +36,6 @@ const CareDiary = () => {
     }
 
     const updatedFormData = new FormData();
-
     updatedFormData.append('fosterDiaryImage', formData.image);
     updatedFormData.append('petId', 1);
     updatedFormData.append(
@@ -89,7 +88,7 @@ const CareDiary = () => {
                 $cancel={false}
                 type="submit"
                 disabled={!formData.title}
-                onClick={() => handleClick('/diary-feed')}
+                // onClick={() => handleClick(`/diary-feed/${pet_id}`)}
               >
                 등록
               </Button>
