@@ -77,6 +77,7 @@ const CareDiary = () => {
                 $cancel={false}
                 type="submit"
                 disabled={!formData.title}
+                onClick={() => handleClick('/diary-feed')}
               >
                 등록
               </Button>

@@ -3,6 +3,8 @@ import { Navbar } from '../style/main/navbar';
 import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleUser } from '@fortawesome/free-regular-svg-icons';
+import useUserProfile from '../stores/auth/useUserProfile';
+import serverBaseUrl from '../config/serverConfig';
 import {
   faAngleRight,
   faBars,
@@ -21,11 +23,23 @@ import {
   Menu_Img,
 } from '../style/menu/menu';
 
+const DEFAULT_PROFILE_IMAGE = '/asset/default-profile.png';
+const getProfileImageUrl = (profileImage) => {
+  if (!profileImage) return DEFAULT_PROFILE_IMAGE;
+
+  const isFullUrl = profileImage.startsWith('http');
+  if (isFullUrl) return profileImage;
+  console.log(profileImage);
+
+  return `${serverBaseUrl}/${profileImage}`;
+};
+//임보/입양문의 form
+const formUrl =
+  'https://docs.google.com/forms/d/e/1FAIpQLSfyWoEmCvVTLELwjCP5BTM_r5VX9Qcc7ZngjeVKACnQ2SJRRw/viewform';
+
 function Menu() {
   const navigate = useNavigate();
-  const handleLoginClick = () => {
-    navigate('/login');
-  };
+  const { user } = useUserProfile();
 
   const handleClick = (path) => {
     navigate(path);
@@ -41,6 +55,9 @@ function Menu() {
       imgSrc: '/asset/menu/love_icon.svg',
       alt: '등록된 이미지가 없습니다.(Image not available)',
       text: '임보/입양문의',
+      onClick: () => {
+        window.open(formUrl, '_blank');
+      },
     },
     {
       imgSrc: '/asset/menu/dog_icon.svg',
@@ -96,24 +113,38 @@ function Menu() {
           <p className="extraBold">
             <a href="/">포옹</a>
           </p>
-          <FontAwesomeIcon
-            style={{ cursor: 'pointer' }}
-            onClick={() => handleClick('/login')}
-            icon={faCircleUser}
-          />
         </Header>
 
         <Login_Box>
-          <div>
-            <Profile_Img
-              src="/asset/menu/empty_profile.svg"
-              alt="Empty Profile"
-            ></Profile_Img>
-          </div>
-          <Profile_User onClick={handleLoginClick} title="login">
-            포옹에<span className="text_color"> 로그인 </span>해주세요
-          </Profile_User>
-          <FontAwesomeIcon icon={faAngleRight} />
+          {!user ? (
+            <>
+              <div>
+                <Profile_Img
+                  src="/asset/menu/empty_profile.svg"
+                  alt="Empty Profile"
+                />
+              </div>
+              <Profile_User onClick={() => handleClick('/login')} title="login">
+                포옹에<span className="text_color"> 로그인 </span>해주세요
+              </Profile_User>
+              <FontAwesomeIcon icon={faAngleRight} />
+            </>
+          ) : (
+            <>
+              <div>
+                <Profile_Img
+                  src={getProfileImageUrl(user.profileImage)}
+                  alt={`${user.nickName}의 프로필`}
+                  className="login__userProfile"
+                />
+              </div>
+              <Profile_User title="user" onClick={() => handleClick('/mypage')}>
+                <span className="text_color">{user.nickName}</span>님, 포옹에
+                오신 것을 환영합니다!
+              </Profile_User>
+              <FontAwesomeIcon icon={faAngleRight} />
+            </>
+          )}
         </Login_Box>
 
         <Section>
