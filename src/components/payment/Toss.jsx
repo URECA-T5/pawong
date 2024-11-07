@@ -1,11 +1,17 @@
 import { loadTossPayments } from '@tosspayments/tosspayments-sdk';
 import { BottomModalContainer } from '../../style/donation/itemDetail';
 import { useEffect, useState } from 'react';
+import { useDonation } from '../../stores/donation/useDonation';
+import { registerDonation } from '../../api/donation/donation';
+import { diaryFeed } from '../../stores/diaryFeedStore';
 
 const clientKey = 'test_ck_D5GePWvyJnrK0W0k6q8gLzN97Eoq';
 const customerKey = generateRandomString();
 
 export function Toss({ modalRef, name, price, detailData }) {
+  const { data } = diaryFeed();
+  const { itemCnt } = useDonation();
+
   const [payment, setPayment] = useState(null);
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState('CARD');
   const amount = {
@@ -33,13 +39,16 @@ export function Toss({ modalRef, name, price, detailData }) {
 
   async function requestPayment() {
     if (!payment) return;
-
+    console.log('requestPayment 호출됨');
+    console.log('payment 객체:', payment);
     const orderId = generateRandomString();
     const commonPaymentData = {
       amount,
       orderId,
       orderName: name,
-      successUrl: window.location.origin + '/payment-finish',
+      successUrl:
+        window.location.origin +
+        `/payment-finish?petId=${data.id}&donationItemId=${detailData.id}&quantity=${itemCnt}`,
       failUrl: window.location.origin + '/',
       customerEmail: 'customer123@gmail.com',
       customerName: '김토스',
