@@ -21,7 +21,7 @@ const UploadBody = () => {
     species,
     gender,
     isNeutered,
-    vaccination,
+    vaccinations,
   } = petUploadStore();
   const navigate = useNavigate();
 
@@ -42,10 +42,10 @@ const UploadBody = () => {
         isNeutered: isNeutered === '했어요' ? 1 : 0,
         weight: formData.weight,
         info: formData.info,
-        vaccination: vaccination,
+        vaccinations: vaccinations,
       }),
     );
-    console.log(formDataToSend);
+
     await upload(formDataToSend).then(() => {
       alert('게시물 등록에 성공했습니다!');
       navigate('/care-list');
