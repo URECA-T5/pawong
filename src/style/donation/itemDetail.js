@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 import { MainContainer } from '../global/global';
 
 const colors = {
@@ -102,7 +102,8 @@ export const BottomContainer = styled.div`
     width: 3.1rem;
     height: 2.8rem;
     font-size: 1.2rem;
-    border-radius: 8px;
+    border: none;
+    border-radius: 0.5rem;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -117,7 +118,7 @@ export const BottomContainer = styled.div`
     width: 30rem;
     height: 2.8rem;
     border: none;
-    border-radius: 8px;
+    border-radius: 0.5rem;
     background-color: ${colors.pastel_blue};
     color: ${colors.light_blue};
 

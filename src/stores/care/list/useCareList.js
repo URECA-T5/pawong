@@ -1,6 +1,5 @@
 import { create } from 'zustand';
 import { getCareInfo } from '../../../api/pet/care/list/list';
-import { sample_data } from '../../../components/care/list/care_list_sample_data';
 
 const careListStroe = create((set) => ({
   data: [],

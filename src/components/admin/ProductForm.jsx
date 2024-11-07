@@ -145,7 +145,7 @@ const ProductForm = ({
             </button>
           </div>
 
-          <div className="input__content">
+          {/* <div className="input__content">
             <label htmlFor="productMaterial">재질</label>
             <input
               type="text"
@@ -189,7 +189,7 @@ const ProductForm = ({
               placeholder="C/S 정보 입력"
               onChange={handleChange}
             />
-          </div>
+          </div> */}
         </InputSection>
         <div className="button__container">
           <Button className="bold" $cancel={true}>

@@ -3,6 +3,7 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { ImageContainer } from '../../style/donation/itemDetail';
+import serverBaseUrl from '../../config/serverConfig';
 
 const ImageSlide = ({ src_list }) => {
   var settings = {
@@ -20,8 +21,8 @@ const ImageSlide = ({ src_list }) => {
         {src_list.map((src, index) => {
           return (
             <img
-              key={index + src}
-              src={src}
+              key={src + index}
+              src={`${serverBaseUrl}/${src}`}
               alt="no images"
               className="image__item"
             />

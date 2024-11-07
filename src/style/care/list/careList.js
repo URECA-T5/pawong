@@ -10,12 +10,17 @@ const colors = {
 
 export const HeaderSection = styled.header`
   width: 100%;
-  height: 3.3rem;
+  height: 3.25rem;
+  position: sticky;
+  align-items: center;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
   padding: 1rem;
   font-size: 1.4rem;
   display: flex;
   justify-content: space-between;
-  align-items: center;
   background-color: white;
 
   caret-color: transparent;

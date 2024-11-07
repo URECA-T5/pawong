@@ -58,7 +58,7 @@ const routes = [
     element: <Donation />,
   },
   {
-    path: '/donation-item',
+    path: '/donation-item/:item_id',
     element: <DonationItemDetail />,
   },
   {
