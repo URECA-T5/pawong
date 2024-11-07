@@ -1,16 +1,14 @@
-import React from 'react';
-import GlobalStyle from '../../style/global/global';
+import React, { useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft, faHouse } from '@fortawesome/free-solid-svg-icons';
 import { DonationHeader } from '../../style/donation/donation';
-import ImageSlide from '../../components/donation/ImageSlide';
 import { WhiteContainer } from '../../style/donation/itemDetail';
-import ItemDetailBody from '../../components/donation/ItemDetailBody';
-import ItemDetailBottom from '../../components/donation/ItemDetailBottom';
 import { useNavigate } from 'react-router-dom';
+import { useDonation } from '../../stores/donation/useDonation';
+import DonationItemBody from '../../components/donation/item/DonationItemBody';
 
-const sample_data = {
-  species: '강아지',
+const data = {
+  category: '강아지',
   id: 1,
   src_list: [
     'https://sitem.ssgcdn.com/15/52/01/item/1000030015215_i2_1200.jpg',
@@ -32,7 +30,6 @@ const DonationItemDetail = () => {
 
   return (
     <>
-      <GlobalStyle />
       <WhiteContainer>
         <DonationHeader>
           <FontAwesomeIcon
@@ -49,9 +46,7 @@ const DonationItemDetail = () => {
             onClick={() => navigate('/')}
           />
         </DonationHeader>
-        <ImageSlide src_list={sample_data.src_list} />
-        <ItemDetailBody item={sample_data} />
-        <ItemDetailBottom title={sample_data.title} price={sample_data.price} />
+        <DonationItemBody />
       </WhiteContainer>
     </>
   );

@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { BottomContainer } from '../../style/donation/itemDetail';
 import { faArrowUpFromBracket } from '@fortawesome/free-solid-svg-icons';
 import ItemBottomModal from './ItemBottomModal';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 const ItemDetailBottom = ({ title, price }) => {
   const location = useLocation();
