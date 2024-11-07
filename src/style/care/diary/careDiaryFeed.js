@@ -58,6 +58,7 @@ export const ProfileSection = styled.div`
     width: 10rem;
     height: 10rem;
     border-radius: 50%;
+    object-fit: cover;
   }
 
   .profile__dog--info {
