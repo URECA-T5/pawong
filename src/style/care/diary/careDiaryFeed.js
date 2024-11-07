@@ -105,7 +105,7 @@ export const ImgSection = styled.div`
   border-radius: 1rem;
   grid-template-columns: repeat(3, 1fr);
 
-  .stroy__imgBtn {
+  .story__imgBtn {
     flex: 1;
     border: none;
     background: none;
@@ -114,7 +114,7 @@ export const ImgSection = styled.div`
     cursor: pointer;
   }
 
-  .stroy__imgBtn--img {
+  .story__imgBtn--img {
     width: 10.7rem;
     height: 10.7rem;
     object-fit: cover;
@@ -124,4 +124,6 @@ export const ImgSection = styled.div`
 export const FeedIcon = styled.div`
   padding: 0 1.25rem;
   margin: 0;
+  position: relative;
+  top: 0.9rem;
 `;

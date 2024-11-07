@@ -15,6 +15,7 @@ import DefaultBtn from '../../../components/care/diary/DiaryFeedDefaultBtn';
 import { diaryFeed } from '../../../stores/diaryFeedStore';
 import serverBaseUrl from '../../../config/serverConfig';
 import { toggleFavorite } from '../../../api/pet/care/favorites/petFavorite';
+
 //임보/입양문의 form
 const formUrl =
   'https://docs.google.com/forms/d/e/1FAIpQLSfyWoEmCvVTLELwjCP5BTM_r5VX9Qcc7ZngjeVKACnQ2SJRRw/viewform';
@@ -187,15 +188,30 @@ function CareDiaryFeed() {
           <img src="/asset/diary/story/feedIcon.svg" alt="feed_icon"></img>
         </FeedIcon>
         <ImgSection>
-          {careImg.map(({ id, imgSrc, alt, path }) => (
-            <button
-              className="stroy__imgBtn"
-              key={id}
-              onClick={() => navigate(path)}
-            >
-              <img className="stroy__imgBtn--img" src={imgSrc} alt={alt} />
-            </button>
-          ))}
+          {data.fosterDiaries && data.fosterDiaries.length > 0 ? (
+            data.fosterDiaries.map(
+              (diary) =>
+                diary.image && (
+                  <button
+                    className="story__imgBtn"
+                    key={diary.id}
+                    onClick={() => navigate(`/diary-detail/${diary.id}`)}
+                  >
+                    <img
+                      className="story__imgBtn--img"
+                      src={`${serverBaseUrl}/${diary.image}`}
+                      alt={diary.title}
+                    />
+                  </button>
+                ),
+            )
+          ) : (
+            <img
+              className="story__imgBtn--img"
+              src="/asset/diary/story/storyDogImg2.svg"
+              alt="임시보호 목록 이미지"
+            />
+          )}
         </ImgSection>
       </MainContainer>
     </>
