@@ -1,3 +1,4 @@
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleLeft, faHouse } from '@fortawesome/free-solid-svg-icons';
@@ -8,39 +9,40 @@ import {
   FHHeader,
   FHSection,
 } from '../../style/history/fosterHistory';
+import userPet from '../../stores/mypage/userPet';
+import serverBaseUrl from '../../config/serverConfig';
 
 const FosterHistory = () => {
   const navigate = useNavigate();
+  const { pets, fetchPets } = userPet();
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        await fetchPets();
+      } catch (error) {
+        setError('임보 기록을 불러오는 데 실패했습니다.');
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchData();
+  }, [fetchPets]);
+
   const handleClick = (path) => {
     navigate(path);
   };
 
-  const dogs = [
-    {
-      imgSrc: '/asset/history/sample.png',
-      alt: '이미지를 사용할 수 없습니다',
-      pet_id: '1',
-      name: '포동이',
-    },
-    {
-      imgSrc: '/asset/history/sample2.png',
-      alt: '이미지를 사용할 수 없습니다',
-      pet_id: '2',
-      name: '포옹이',
-    },
-    {
-      imgSrc: '/asset/history/sample.png',
-      alt: '이미지를 사용할 수 없습니다',
-      pet_id: '3',
-      name: '사랑이',
-    },
-    {
-      imgSrc: '/asset/history/sample2.png',
-      alt: '이미지를 사용할 수 없습니다',
-      pet_id: '4',
-      name: '하늘이',
-    },
-  ];
+  const handleCardClick = (petId) => {
+    // petId를 사용하여 동적으로 경로를 생성
+    navigate(`/diary-feed/${petId}`);
+  };
+
+  if (loading) {
+    return <p>로딩 중...</p>;
+  }
 
   return (
     <>
@@ -61,7 +63,9 @@ const FosterHistory = () => {
             icon={faHouse}
           />
         </FHHeader>
-        {dogs.length > 0 ? (
+        {error ? (
+          <p>{error}</p>
+        ) : pets.length > 0 ? (
           <>
             <FHSection>
               <img src={'/asset/history/foster.svg'} alt="임보기록" />
@@ -71,10 +75,18 @@ const FosterHistory = () => {
             </FHSection>
             <FHCardDiv>
               <section className="fosterHistory__CardSection">
-                {dogs.map((dog) => (
-                  <button className="fosterHistory__card" key={dog.pet_id}>
-                    <img src={dog.imgSrc} alt={dog.alt} />
-                    <p>{dog.name}</p>
+                {pets.map((pet) => (
+                  <button
+                    className="fosterHistory__card"
+                    key={pet.id}
+                    onClick={() => handleCardClick(pet.id)}
+                  >
+                    <img
+                      src={`${serverBaseUrl}/${pet.profileImage}`}
+                      alt={pet.name}
+                    />
+                    <p>{pet.name}</p>
+                    <p>{pet.breed}</p>
                   </button>
                 ))}
               </section>
