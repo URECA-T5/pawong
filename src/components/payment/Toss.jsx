@@ -87,21 +87,21 @@ export function Toss({ modalRef, title, price }) {
         <div id="payment-method" style={{ display: 'flex' }}>
           <button
             id="CARD"
-            className={`button2 ${selectedPaymentMethod === 'CARD' ? 'active' : ''}`}
+            className={`modal_paymentMethodBtn bold ${selectedPaymentMethod === 'CARD' ? 'active' : ''}`}
             onClick={() => selectPaymentMethod('CARD')}
           >
             카드
           </button>
           <button
             id="TRANSFER"
-            className={`button2 ${selectedPaymentMethod === 'TRANSFER' ? 'active' : ''}`}
+            className={`modal_paymentMethodBtn bold ${selectedPaymentMethod === 'TRANSFER' ? 'active' : ''}`}
             onClick={() => selectPaymentMethod('TRANSFER')}
           >
             계좌이체
           </button>
         </div>
         <button
-          className="button"
+          className="modal_paymentBtn bold"
           onClick={() => {
             modalRef.current.close();
             requestPayment();

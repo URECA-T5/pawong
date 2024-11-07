@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import GlobalStyle, { MainContainer } from '../../../style/global/global';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHouse } from '@fortawesome/free-solid-svg-icons';
@@ -14,7 +14,6 @@ import {
   useDiaryListALL,
 } from '../../../stores/diaryListStore';
 import { useNavigate } from 'react-router-dom';
-import { getDiaryALL } from '../../../api/diary/listAll';
 
 const tags = [
   { id: '1', name: '전체' },

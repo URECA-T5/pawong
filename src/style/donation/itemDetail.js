@@ -229,6 +229,30 @@ export const BottomModalContainer = styled.dialog`
     align-items: center;
     cursor: pointer;
   }
+  .modal_paymentMethodBtn {
+    margin: 1rem 0 0 0.5rem;
+    width: 15.5rem;
+    height: 6.25rem;
+    text-align: center;
+    cursor: pointer;
+    border: 0;
+    border-radius: 1rem;
+    background-color: ${colors.light_blue};
+    color: ${colors.pastel_blue};
+    font-size: 1.5rem;
+  }
+  .modal_paymentBtn {
+    margin-top: 1rem;
+    width: 32rem;
+    height: 3.75rem;
+    text-align: center;
+    cursor: pointer;
+    border: 0;
+    border-radius: 1rem;
+    background-color: ${colors.pastel_blue};
+    color: white;
+    font-size: 1.2rem;
+  }
 
   @keyframes modal-show {
     from {
