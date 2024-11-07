@@ -15,7 +15,7 @@ export const petUploadStore = create((set) => ({
   species: null,
   gender: null,
   isNeutered: null,
-  vaccination: [],
+  vaccinations: [],
 
   setFormData: (newFormData) =>
     set(() => ({
@@ -27,7 +27,7 @@ export const petUploadStore = create((set) => ({
   setSpecies: (val) => set({ species: val }),
   setGender: (val) => set({ gender: val }),
   setIsNeutered: (val) => set({ isNeutered: val }),
-  setVaccination: (val) => set({ vaccination: val }),
+  setVaccinations: (val) => set({ vaccinations: val }),
 
   error: null,
   // message: null,
