@@ -14,7 +14,7 @@ import {
 import DefaultBtn from '../../../components/care/diary/DiaryFeedDefaultBtn';
 import { diaryFeed } from '../../../stores/diaryFeedStore';
 import serverBaseUrl from '../../../config/serverConfig';
-
+import { toggleFavorite } from '../../../api/pet/care/favorites/petFavorite';
 //임보/입양문의 form
 const formUrl =
   'https://docs.google.com/forms/d/e/1FAIpQLSfyWoEmCvVTLELwjCP5BTM_r5VX9Qcc7ZngjeVKACnQ2SJRRw/viewform';
@@ -29,14 +29,25 @@ function CareDiaryFeed() {
   const params = useParams();
   const pet_id = useRef(params.pet_id);
 
-  const handleBookMarkClick = () => {
+  const handleBookMarkClick = async () => {
     setIsStarClicked(!isStarClicked);
+
+    try {
+      const response = await toggleFavorite(pet_id.current);
+      console.log('북마크 성공:', pet_id);
+    } catch (error) {
+      console.error(
+        '북마크 추가/삭제 오류:',
+        error.response ? error.response.data : error.message,
+      );
+    }
   };
 
   useEffect(() => {
     if (isLoadData.current) {
       isLoadData.current = false;
       console.log(pet_id.current);
+
       loadData(pet_id.current);
       console.log(data);
     }

@@ -25,17 +25,8 @@ import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import useUserProfile from '../stores/auth/useUserProfile';
 import serverBaseUrl from '../config/serverConfig';
 import { getDiaryALL } from '../api/diary/listAll';
-
-const DEFAULT_PROFILE_IMAGE = '/asset/default-profile.png';
-const getProfileImageUrl = (profileImage) => {
-  if (!profileImage) return DEFAULT_PROFILE_IMAGE;
-
-  const isFullUrl = profileImage.startsWith('http');
-  if (isFullUrl) return profileImage;
-  console.log(profileImage);
-
-  return `${serverBaseUrl}/${profileImage}`;
-};
+import LogoutModal from '../components/auth/logout/LogoutModal';
+import useModalStore from '../stores/main/useModalStore';
 
 export const getRecentList = (data) => {
   return data.reduce((acc, item) => {
@@ -52,6 +43,12 @@ const Main = () => {
   const [sectionHeight, setSectionHeight] = useState(17.5);
   const handleClick = (path) => navigate(path);
   const { user } = useUserProfile();
+  const {
+    isLogoutModalVisible,
+    showLogoutModal,
+    hideLogoutModal,
+    handleMouseLeave,
+  } = useModalStore();
 
   const settings = {
     dots: false,
@@ -96,12 +93,13 @@ const Main = () => {
             {user?.nickName ? (
               <button
                 type="button"
+                onMouseEnter={showLogoutModal}
                 onClick={() => handleClick('/mypage')}
                 className="header__userProfile"
                 aria-label={`${user.nickName}의 프로필`}
               >
                 <img
-                  src={getProfileImageUrl(user.profileImage)}
+                  src={`${serverBaseUrl}/${user.profileImage}`}
                   alt={`${user.nickName}의 프로필`}
                   className="header__userProfile"
                 />
@@ -113,6 +111,7 @@ const Main = () => {
               />
             )}
           </p>
+          {isLogoutModalVisible && <LogoutModal onClose={handleMouseLeave} />}
         </MainHeader>
         <MainSliderContainer>
           <Slider {...settings}>
