@@ -138,7 +138,11 @@ function CareDiaryFeed() {
                             ? data.pet[key] && data.pet[key].length > 0
                               ? data.pet[key].join(', ')
                               : '등록된 백신이 없습니다.'
-                            : data.pet[key]}{' '}
+                            : key === 'weight'
+                              ? ` ${data.pet[key]}kg`
+                              : key === 'age'
+                                ? ` ${data.pet[key]}살`
+                                : data.pet[key]}{' '}
                       </span>
                     </div>
                   ))}
