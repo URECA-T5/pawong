@@ -1,12 +1,20 @@
+import React, { useEffect } from 'react';
 import { diaryStore } from '../../../stores/diaryStore';
 import { InputField } from './DiaryUploadInputField';
 import {
   InputContainer,
   TagButton,
 } from '../../../style/care/diary/careDiaryUpload';
+import serverBaseUrl from '../../../config/serverConfig';
+import userPet from '../../../stores/mypage/userPet';
 
 const DiaryInput = () => {
-  const { selectedTag, setSelectedTag } = diaryStore();
+  const { selectedTag, setSelectedTag, setFormData, formData } = diaryStore(); // setFormData와 formData 가져오기
+  const { pets, fetchPets } = userPet();
+
+  useEffect(() => {
+    fetchPets();
+  }, [fetchPets]);
 
   const tags = [
     { id: 1, name: '오산완' },
@@ -18,6 +26,19 @@ const DiaryInput = () => {
 
   const handleTagButtonClick = (tag) => {
     setSelectedTag(tag === selectedTag ? '' : tag);
+    setFormData({ ...formData, tag });
+  };
+
+  const handlePetSelect = (selectedPetId) => {
+    setFormData({ ...formData, petId: selectedPetId });
+  };
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
   };
 
   return (
@@ -35,6 +56,7 @@ const DiaryInput = () => {
           </TagButton>
         ))}
       </div>
+
       <InputField
         className="input__title"
         type={'input'}
@@ -43,7 +65,27 @@ const DiaryInput = () => {
         name={'title'}
         required={true}
         maxLength={20}
+        value={formData.title}
+        onChange={handleInputChange}
       />
+
+      <InputField
+        className="input__title"
+        type={'select'}
+        label={'임보 동물 선택'}
+        placeholder={'일지를 작성할 반려동물을 선택해주세요 (필수입력)'}
+        name={'petId'}
+        required={true}
+        options={pets.map((pet) => ({
+          value: pet.id,
+          label: `${pet.name} (${pet.breed})`,
+          image: `${serverBaseUrl}/${pet.profileImage}`,
+        }))}
+        onChange={(e) => {
+          handlePetSelect(e.target.value);
+        }}
+      />
+
       <InputField
         className="input__title"
         type={'input'}
@@ -51,7 +93,10 @@ const DiaryInput = () => {
         placeholder={'사진 장소를 입력할 수 있어요'}
         name={'location'}
         maxLength={20}
+        value={formData.location}
+        onChange={handleInputChange}
       />
+
       <InputField
         className="input__title"
         type={'textarea'}
@@ -61,6 +106,8 @@ const DiaryInput = () => {
         }
         name={'story'}
         maxLength={300}
+        value={formData.story}
+        onChange={handleInputChange}
       />
     </InputContainer>
   );

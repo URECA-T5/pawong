@@ -30,6 +30,7 @@ const CareDiary = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     if (pets.length === 0) {
       alert('현재 등록된 임보 동물이 없습니다!');
       return;
@@ -37,7 +38,7 @@ const CareDiary = () => {
 
     const updatedFormData = new FormData();
     updatedFormData.append('fosterDiaryImage', formData.image);
-    // updatedFormData.append('petId', 1);
+    updatedFormData.append('petId', formData.petId);
     updatedFormData.append(
       'fosterDiary',
       JSON.stringify({
@@ -47,9 +48,12 @@ const CareDiary = () => {
         place: formData.location,
       }),
     );
+
     try {
       const response = await diaryUpload(updatedFormData);
       console.log('서버 응답:', response);
+
+      navigate(`/diary-feed/${formData.petId}`);
     } catch (error) {
       console.error('일지 등록 실패:', error);
       alert('일지 등록에 실패했습니다. 다시 시도해주세요.');
@@ -88,7 +92,6 @@ const CareDiary = () => {
                 $cancel={false}
                 type="submit"
                 disabled={!formData.title}
-                // onClick={() => handleClick(`/diary-feed/${pet_id}`)}
               >
                 등록
               </Button>

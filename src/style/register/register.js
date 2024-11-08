@@ -29,6 +29,7 @@ export const RegisterBody = styled.form`
     object-fit: cover;
     border-radius: 50%;
   }
+
   .description__profile {
     display: flex;
     justify-content: center;

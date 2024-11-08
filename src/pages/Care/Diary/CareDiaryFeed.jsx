@@ -15,27 +15,36 @@ import DefaultBtn from '../../../components/care/diary/DiaryFeedDefaultBtn';
 import { diaryFeed } from '../../../stores/diaryFeedStore';
 import serverBaseUrl from '../../../config/serverConfig';
 import { toggleFavorite } from '../../../api/pet/care/favorites/petFavorite';
-
-//임보/입양문의 form
+import userFavorite from '../../../stores/mypage/userFavorite';
 const formUrl =
   'https://docs.google.com/forms/d/e/1FAIpQLSfyWoEmCvVTLELwjCP5BTM_r5VX9Qcc7ZngjeVKACnQ2SJRRw/viewform';
 
 function CareDiaryFeed() {
   const navigate = useNavigate();
+  const { favPets, fetchFavPets } = userFavorite();
 
   const [isStarClicked, setIsStarClicked] = useState(false);
   const [showAuthorBtn, setShowAuthorBtn] = useState(false);
   const { data, loadData } = diaryFeed();
   const isLoadData = useRef(true);
   const params = useParams();
-  const pet_id = useRef(params.pet_id);
+  const petId = useRef(params.pet_id);
+
+  useEffect(() => {
+    fetchFavPets();
+  }, [fetchFavPets]);
+
+  useEffect(() => {
+    if (favPets.some((favPet) => favPet.id === petId.current)) {
+      setIsStarClicked(true);
+    }
+  }, [favPets]);
 
   const handleBookMarkClick = async () => {
     setIsStarClicked(!isStarClicked);
 
     try {
-      const response = await toggleFavorite(pet_id.current);
-      console.log('북마크 성공:', pet_id);
+      const response = await toggleFavorite(petId.current);
     } catch (error) {
       console.error(
         '북마크 추가/삭제 오류:',
@@ -47,10 +56,7 @@ function CareDiaryFeed() {
   useEffect(() => {
     if (isLoadData.current) {
       isLoadData.current = false;
-      console.log(pet_id.current);
-
-      loadData(pet_id.current);
-      console.log(data);
+      loadData(petId.current);
     }
   }, [data]);
 
@@ -67,44 +73,6 @@ function CareDiaryFeed() {
     story: '이야기',
   };
 
-  const careImg = [
-    {
-      id: 1,
-      imgSrc: '/asset/diary/story/storyDogImg1.svg',
-      alt: '등록된 이미지가 없습니다.(Image not available)',
-      path: '/personal-diary',
-    },
-    {
-      id: 2,
-      imgSrc: '/asset/diary/story/storyDogImg2.svg',
-      alt: '등록된 이미지가 없습니다.(Image not available)',
-      path: '/personal-diary',
-    },
-    {
-      id: 3,
-      imgSrc: '/asset/diary/story/storyDogImg2.svg',
-      alt: '등록된 이미지가 없습니다.(Image not available)',
-      path: '/personal-diary',
-    },
-    {
-      id: 4,
-      imgSrc: '/asset/diary/story/storyDogImg1.svg',
-      alt: '등록된 이미지가 없습니다.(Image not available)',
-      path: '/personal-diary',
-    },
-    {
-      id: 5,
-      imgSrc: '/asset/diary/story/storyDogImg2.svg',
-      alt: '등록된 이미지가 없습니다.(Image not available)',
-      path: '/personal-diary',
-    },
-    {
-      id: 6,
-      imgSrc: '/asset/diary/story/storyDogImg1.svg',
-      alt: '등록된 이미지가 없습니다.(Image not available)',
-      path: '/personal-diary',
-    },
-  ];
   return (
     <>
       <GlobalStyle />

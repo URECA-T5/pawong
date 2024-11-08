@@ -11,10 +11,8 @@ const CareListBody = ({ selected }) => {
     if (isLoadData.current) {
       isLoadData.current = false;
       loadData();
-      console.log(data);
     }
   }, [data]);
-  console.log(data);
 
   return (
     <ListBodySection>

@@ -25,9 +25,7 @@ export const PetImage = styled.img`
 export const PetInfo = styled.div`
   display: flex;
   flex-direction: column;
-  .pet__name {
-    cursor: pointer;
-  }
+
   .pet__type {
     font-size: 0.8rem;
     color: #b3b3b3;

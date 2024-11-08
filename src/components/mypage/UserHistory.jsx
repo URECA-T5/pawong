@@ -1,10 +1,22 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { PetHeader, HistoryBody } from '../../style/myPage/default';
 import FeedImg from '../../asset/mypage/historyFeed.svg';
 import PetImg from '../../asset/mypage/historyPet.svg';
-import { Link } from 'react-router-dom';
 
 function UserHistory() {
+  const navigate = useNavigate();
+
+  const handleNavigation = (path) => {
+    navigate(path);
+  };
+
+  const handleKeyDown = (e, path) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      navigate(path);
+    }
+  };
+
   return (
     <>
       <PetHeader>
@@ -13,17 +25,25 @@ function UserHistory() {
         </div>
       </PetHeader>
       <HistoryBody>
-        <div className="history__list">
-          <img src={FeedImg} alt="후원 기록 이미지"></img>
-          <Link to="/donation-history">
-            <span className="regular">후원 기록</span>
-          </Link>
+        <div
+          role="button"
+          tabIndex="0"
+          onClick={() => handleNavigation('/donation-history')}
+          onKeyDown={(e) => handleKeyDown(e, '/donation-history')}
+          className="history__list"
+        >
+          <img src={FeedImg} alt="후원 기록 이미지" />
+          <span className="regular">후원 기록</span>
         </div>
-        <div className="history__list">
-          <img src={PetImg} alt="후원 기록 이미지"></img>
-          <Link to="/foster-history">
-            <span className="regular">임보 기록</span>
-          </Link>
+        <div
+          role="button"
+          tabIndex="0"
+          onClick={() => handleNavigation('/foster-history')}
+          onKeyDown={(e) => handleKeyDown(e, '/foster-history')}
+          className="history__list"
+        >
+          <img src={PetImg} alt="후원 기록 이미지" />
+          <span className="regular">임보 기록</span>
         </div>
       </HistoryBody>
     </>
