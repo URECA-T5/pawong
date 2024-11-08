@@ -27,6 +27,7 @@ export const DonationReceivedStore = create((set) => ({
   setSelectedPet: (pet) => set({ selectedPet: pet }),
 
   fetchDonationHistory: async (petId) => {
+    console.log(`[fetchDonationHistory : petId] >> ${petId}`);
     try {
       const history = await getDonationHistory(petId);
       set({ donationHistory: history });
@@ -46,19 +47,14 @@ export const DonationSentHistory = create((set) => ({
 
 export const DonationAcceptStore = create((set) => ({
   DonationAccept: [],
-  fetchDonationAccept: async (donationId) => {
+  fetchIsAccepted: async (flag, donationId) => {
+    console.log(`[donationId] >> ${donationId}`);
     try {
-      const accept = await patchAcceptDonation(donationId);
-      set({ DonationAccept: accept });
+      flag === '거절'
+        ? await patchRefuseDonation(donationId)
+        : await patchAcceptDonation(donationId);
     } catch (error) {
-      console.error('받기 실패했습니다:', error);
-    }
-  },
-  fetchDonationRefuse: async (donationId) => {
-    try {
-      const accept = await patchRefuseDonation(donationId);
-    } catch (error) {
-      console.error('거절 실패했습니다:', error);
+      console.error('[fetchIsAccpeted]:', error);
     }
   },
 }));

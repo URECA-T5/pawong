@@ -39,10 +39,10 @@ export const patchAcceptDonation = async (donationId) => {
 export const patchRefuseDonation = async (donationId) => {
   try {
     const response = await request.patch(
-      DonationHistory_ACCEPT + `${donationId}`,
+      DonationHistory_REFUSE + `${donationId}`,
     );
-    console.log(response.data);
-    return response.data;
+    console.log(`[patcthRefuseDonation] >> ${response.data.message}`);
+    return response.data.message;
   } catch (error) {
     console.error('후원 내역 조회 오류:', error);
   }

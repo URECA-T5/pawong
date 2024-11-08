@@ -18,13 +18,9 @@ const DonationReceived = () => {
   const { pets, fetchPets } = userPet();
   const { selectedPet, donationHistory, fetchDonationHistory, setSelectedPet } =
     DonationReceivedStore();
-  const { DonationAccept, fetchDonationAccept, fetchDonationRefuse } =
-    DonationAcceptStore();
+  const { fetchIsAccepted } = DonationAcceptStore();
 
   const navigate = useNavigate();
-  const handleClick = (path) => {
-    navigate(path);
-  };
 
   const formatDate = (date) => {
     return new Date(date)
@@ -34,6 +30,12 @@ const DonationReceived = () => {
         day: '2-digit',
       })
       .replace(/\./g, '.');
+  };
+
+  const handleFetchAccpet = async (flag, donationId, petId) => {
+    await fetchIsAccepted(flag, donationId);
+    await fetchDonationHistory(petId);
+    flag === '받기' && navigate('/delivery');
   };
 
   const isLoadData = useRef(true);
@@ -74,7 +76,7 @@ const DonationReceived = () => {
   const ListDonations = (donationHistory) =>
     donationHistory && (
       <table className="donationReceived__table regular">
-        {donationHistory.map((data, index) => (
+        {donationHistory.map((data) => (
           <tbody key={data.donationId}>
             <tr>
               <td className="donationReceived__border donationReceived__padding">
@@ -97,21 +99,44 @@ const DonationReceived = () => {
                 rowSpan="2"
                 className="donationReceived__border donationReceived__center"
               >
-                <button
-                  className="donationReceived__btn bold"
-                  onClick={() => fetchDonationRefuse(data.donationId)}
-                >
-                  거절
-                </button>
-                <button
-                  className="donationReceived__btn bold"
-                  onClick={() => {
-                    fetchDonationAccept(data.donationId);
-                    handleClick('/delivery');
-                  }}
-                >
-                  받기
-                </button>
+                {data.isDelivery === '' ? (
+                  <>
+                    <button
+                      className="donationReceived__btn bold"
+                      onClick={() =>
+                        handleFetchAccpet(
+                          '거절',
+                          data.donationId,
+                          selectedPet.id,
+                        )
+                      }
+                    >
+                      거절
+                    </button>
+                    <button
+                      className="donationReceived__btn bold"
+                      onClick={() => {
+                        handleFetchAccpet(
+                          '받기',
+                          data.donationId,
+                          selectedPet.id,
+                        );
+                      }}
+                    >
+                      받기
+                    </button>
+                  </>
+                ) : (
+                  <button
+                    className="donationReceived__btn bold"
+                    disabled={data.isDelivery === '거절' && true}
+                    onClick={() =>
+                      data.isDelivery === '받기' && navigate('/delivery')
+                    }
+                  >
+                    {data.isDelivery}
+                  </button>
+                )}
               </td>
             </tr>
             <tr>
