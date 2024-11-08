@@ -48,7 +48,7 @@ export function Toss({ modalRef, name, price, detailData }) {
       orderName: name,
       successUrl:
         window.location.origin +
-        `/payment-finish?petId=${data.id}&donationItemId=${detailData.id}&quantity=${itemCnt}`,
+        `/payment-finish?petId=${data.pet.id}&donationItemId=${detailData.id}&quantity=${itemCnt}`,
       failUrl: window.location.origin + '/',
       customerEmail: 'customer123@gmail.com',
       customerName: '김토스',
