@@ -35,7 +35,7 @@ function CareDiaryFeed() {
   }, [fetchFavPets]);
 
   useEffect(() => {
-    if (favPets.some((favPet) => favPet.id === pet_id.current)) {
+    if (favPets.some((favPet) => favPet.id === petId.current)) {
       setIsStarClicked(true);
     }
   }, [favPets]);
