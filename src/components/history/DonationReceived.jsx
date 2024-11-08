@@ -1,66 +1,66 @@
-import React from 'react';
-import { DonationReceivedStore } from '../../stores/historyStore';
+import React, { useEffect, useRef } from 'react';
+import {
+  DonationAcceptStore,
+  DonationReceivedStore,
+} from '../../stores/historyStore';
 import { useNavigate } from 'react-router-dom';
 import {
   DonationReceivedDiv,
   DonationReceivedInfo,
   DonationReceivedSection,
 } from '../../style/history/donationReceived';
+import serverBaseUrl from '../../config/serverConfig';
+import useUserProfile from '../../stores/auth/useUserProfile';
+import userPet from '../../stores/mypage/userPet';
 
 const DonationReceived = () => {
+  const { user } = useUserProfile();
+  const { pets, fetchPets } = userPet();
+  const { selectedPet, donationHistory, fetchDonationHistory, setSelectedPet } =
+    DonationReceivedStore();
+  const { fetchIsAccepted } = DonationAcceptStore();
+
   const navigate = useNavigate();
-  const handleClick = (path) => {
-    navigate(path);
+
+  const formatDate = (date) => {
+    return new Date(date)
+      .toLocaleDateString('ko-KR', {
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+      })
+      .replace(/\./g, '.');
   };
-  const { selectedDog, setSelectedDog } = DonationReceivedStore();
-  const dogs = [
-    {
-      imgSrc: '/asset/history/sample.png',
-      alt: '이미지를 사용할 수 없습니다',
-      pet_id: '1',
-      name: '포동이',
-    },
-    {
-      imgSrc: '/asset/history/sample2.png',
-      alt: '이미지를 사용할 수 없습니다',
-      pet_id: '2',
-      name: '포옹이',
-    },
-  ];
 
-  const donations = [
-    {
-      imgSrc: '/asset/history/samplebob.png',
-      pet_id: '1',
-      name: 'PROBEST 5kg',
-      amount: '20000',
-      date: '24.10.28',
-    },
-    {
-      imgSrc: '/asset/history/samplebob.png',
-      pet_id: '2',
-      name: 'PROBEST 3kg',
-      amount: '50000',
-      date: '24.10.03',
-    },
-    {
-      imgSrc: '/asset/history/samplebob2.png',
-      pet_id: '2',
-      name: '잘먹잘싸 2kg',
-      amount: '50000',
-      date: '24.10.24',
-    },
-  ];
+  const handleFetchAccpet = async (flag, donationId, petId) => {
+    await fetchIsAccepted(flag, donationId);
+    await fetchDonationHistory(petId);
+  };
 
-  const ListDogsButton = () =>
-    dogs.map((dog) => (
+  const isLoadData = useRef(true);
+  useEffect(() => {
+    if (isLoadData.current) {
+      isLoadData.current = false;
+      fetchPets();
+      fetchDonationHistory(selectedPet.petId);
+    }
+  }, [selectedPet, donationHistory]);
+
+  const ListPetButton = () =>
+    pets.map((pet) => (
       <button
         className="donationReceived__btn"
-        key={dog.pet_id}
-        onClick={() => setSelectedDog(dog)}
+        key={pet.id}
+        onClick={() => {
+          setSelectedPet(pet);
+          fetchDonationHistory(pet.id);
+        }}
       >
-        <img src={dog.imgSrc} alt={dog.alt} />
-        <p>{dog.name}</p>
+        <img
+          src={`${serverBaseUrl}/${pet.profileImage}`}
+          alt={`${serverBaseUrl}/${pet.profileImage} 프로필`}
+        />
+        <p>{pet.name}</p>
       </button>
     ));
 
@@ -73,11 +73,11 @@ const DonationReceived = () => {
       .replace('₩', '');
   }
 
-  const ListDonations = (selectedDonations) =>
-    selectedDonations.length > 0 ? (
+  const ListDonations = (donationHistory) =>
+    donationHistory && (
       <table className="donationReceived__table regular">
-        {selectedDonations.map((donations, index) => (
-          <tbody key={index}>
+        {donationHistory.map((data) => (
+          <tbody key={data.donationId}>
             <tr>
               <td className="donationReceived__border donationReceived__padding">
                 날짜
@@ -88,72 +88,98 @@ const DonationReceived = () => {
               >
                 <img
                   className="donationReceived__img"
-                  src={donations.imgSrc}
+                  src={`${serverBaseUrl}/${data.donationItemImages}`}
                   alt="사료"
                 />
               </td>
-              <td className="bold donationReceived__prd">{donations.name}</td>
+              <td className="bold donationReceived__prd">
+                {data.donationItemName}
+              </td>
               <td
                 rowSpan="2"
                 className="donationReceived__border donationReceived__center"
               >
-                <button className="donationReceived__btn bold">거절</button>
-                <button
-                  className="donationReceived__btn bold"
-                  onClick={() => handleClick('/delivery')}
-                >
-                  받기
-                </button>
+                {data.isDelivery === '' ? (
+                  <>
+                    <button
+                      className="donationReceived__btn bold"
+                      onClick={() =>
+                        handleFetchAccpet(
+                          '거절',
+                          data.donationId,
+                          selectedPet.id,
+                        )
+                      }
+                    >
+                      거절
+                    </button>
+                    <button
+                      className="donationReceived__btn bold"
+                      onClick={() => {
+                        navigate(`/delivery/${data.donationId}`);
+                      }}
+                    >
+                      받기
+                    </button>
+                  </>
+                ) : (
+                  <button
+                    className="donationReceived__btn bold"
+                    disabled={data.isDelivery === '거절' && true}
+                    onClick={() =>
+                      data.isDelivery === '받기' &&
+                      navigate(`/delivery/${data.donationId}`)
+                    }
+                  >
+                    {data.isDelivery}
+                  </button>
+                )}
               </td>
             </tr>
             <tr>
-              <td className="donationReceived__border">{donations.date}</td>
               <td className="donationReceived__border">
-                {formatPrice(donations.amount)}
+                {formatDate(data.createdAt)}
+              </td>
+              <td className="donationReceived__border">
+                {formatPrice(data.donationItemPrice)}
               </td>
             </tr>
           </tbody>
         ))}
       </table>
-    ) : (
-      <p>내역이 없어요</p>
     );
 
-  if (!selectedDog) {
+  if (!selectedPet) {
     return (
       <>
         <DonationReceivedDiv>
           <img src={'/asset/history/donation.svg'} alt="받은후원내역" />
           <h4 className="regular">
-            <span className="donationReceived__span">구름이형</span>님이
+            <span className="donationReceived__span">{user.nickName}</span>님이
           </h4>
           <h4 className="regular">받은 후원 내역이에요!</h4>
         </DonationReceivedDiv>
-        <DonationReceivedSection>{ListDogsButton()}</DonationReceivedSection>
+        <DonationReceivedSection>{ListPetButton()}</DonationReceivedSection>
       </>
     );
   }
-
-  const selectedDonations = donations.filter(
-    (donations) => donations.pet_id === selectedDog.pet_id,
-  );
 
   return (
     <>
       <DonationReceivedDiv>
         <img src={'/asset/history/donation.svg'} alt="받은후원내역" />
         <h4 className="regular">
-          <span className="donationReceived__span">구름이형</span>님이
+          <span className="donationReceived__span">{user.nickName}</span>님이
         </h4>
         <h4 className="regular">받은 후원 내역이에요!</h4>
       </DonationReceivedDiv>
-      <DonationReceivedSection>{ListDogsButton()}</DonationReceivedSection>
+      <DonationReceivedSection>{ListPetButton()}</DonationReceivedSection>
       <DonationReceivedInfo>
         <p className="donationReceived__mt">
-          <span className="bold">{selectedDog.name}</span>에게 전달된
+          <span className="bold">{selectedPet.name}</span>에게 전달된
           후원물품이에요!
         </p>
-        {ListDonations(selectedDonations)}
+        {ListDonations(donationHistory)}
       </DonationReceivedInfo>
     </>
   );

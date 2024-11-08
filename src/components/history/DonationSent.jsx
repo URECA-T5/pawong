@@ -1,72 +1,34 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import {
   DonationSentDiv,
   DonationSentInfo,
 } from '../../style/history/donationSent';
 import DonationHistoryNull from './DonationHistoryNull';
+import useUserProfile from '../../stores/auth/useUserProfile';
+import { DonationSentHistory } from '../../stores/historyStore';
+import serverBaseUrl from '../../config/serverConfig';
 
 const DonationSent = () => {
-  const donations = [
-    {
-      user_id: 'a123',
-      imgSrc: '/asset/history/samplebob.png',
-      pet_id: '1',
-      name: 'PROBEST 5kg',
-      amount: '50000',
-      date: '2024-10-29',
-    },
-    {
-      user_id: 'a123',
-      imgSrc: '/asset/history/samplebob.png',
-      pet_id: '2',
-      name: 'PROBEST 5kg',
-      amount: '50000',
-      date: '20224-10-22',
-    },
-    {
-      user_id: 'a123',
-      imgSrc: '/asset/history/samplebob2.png',
-      pet_id: '1',
-      name: '잘먹잘싸 5kg',
-      amount: '20000',
-      date: '2024-10-20',
-    },
-    {
-      user_id: 'a333',
-      imgSrc: '/asset/history/samplebob2.png',
-      pet_id: '2',
-      name: 'PROBEST 3kg',
-      amount: '30000',
-      date: '2024-10-17',
-    },
-  ];
+  const { user } = useUserProfile();
+  const { donations, fetchDonations } = DonationSentHistory();
 
-  const aggregatedData = donations.reduce((acc, donation) => {
-    if (donation.user_id === 'a123') {
-      const existing = acc.find((item) => item.name === donation.name);
-      const date = new Date(donation.date);
-      const amount = Number(donation.amount);
-
-      if (existing) {
-        existing.count += 1;
-        existing.totalAmount += amount;
-
-        if (date > new Date(existing.latestDate)) {
-          existing.latestDate = donation.date;
-        }
-      } else {
-        acc.push({
-          name: donation.name,
-          count: 1,
-          src: donation.imgSrc,
-          totalAmount: amount,
-          latestDate: donation.date,
-        });
-      }
+  const isLoadData = useRef(true);
+  useEffect(() => {
+    if (isLoadData.current) {
+      isLoadData.current = false;
+      fetchDonations();
     }
+  }, [donations]);
 
-    return acc;
-  }, []);
+  const formatDate = (date) => {
+    return new Date(date)
+      .toLocaleDateString('ko-KR', {
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+      })
+      .replace(/\./g, '.');
+  };
 
   function formatPrice(price) {
     return new Intl.NumberFormat('ko-KR', {
@@ -79,33 +41,39 @@ const DonationSent = () => {
 
   const ListDonations = () => (
     <table className="donationSent__table regular">
-      {aggregatedData.map((item, index) => (
+      {donations.map((item, index) => (
         <tbody key={index}>
           <>
             <tr>
-              <td className="donationSent__size">최근 후원</td>
+              <td className="donationSent__size">보낸 날짜</td>
               <td
                 rowSpan="2"
                 className="donationSent__border donationSent__center"
               >
-                <img className="donationSent__img" src={item.src} alt="사료" />
+                <img
+                  className="donationSent__img"
+                  src={`${serverBaseUrl}/${item.donationItemImages}`}
+                  alt="사료"
+                />
               </td>
-              <td className="bold donationSent__prd">{item.name}</td>
+              <td className="bold donationSent__prd">
+                {item.donationItemName}
+              </td>
               <td
                 rowSpan="2"
                 className="donationSent__border donationSent__center"
               >
                 <button className="donationSent__btn bold">
-                  {item.count}회
+                  {item.quantity}개
                 </button>
               </td>
             </tr>
             <tr>
               <td className="donationSent__size donationSent__border">
-                {item.latestDate}
+                {formatDate(item.createdAt)}
               </td>
               <td className="donationSent__border">
-                {formatPrice(item.totalAmount)}
+                {formatPrice(item.donationItemPrice * item.quantity)}
               </td>
             </tr>
           </>
@@ -115,12 +83,12 @@ const DonationSent = () => {
   );
   return (
     <>
-      {aggregatedData.length > 0 ? (
+      {donations && donations.length > 0 ? (
         <>
           <DonationSentDiv>
             <img src={'/asset/history/donation.svg'} alt="보낸후원내역" />
             <h4 className="regular">
-              <span className="donationSent__span">구름이형</span>님이
+              <span className="donationSent__span">{user.nickName}</span>님이
             </h4>
             <h4 className="regular">최근 후원해주신 내역이에요!</h4>
           </DonationSentDiv>
