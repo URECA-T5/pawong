@@ -35,9 +35,11 @@ export const DonationReceivedSection = styled.section`
     width: 8.75rem;
     height: 8.75rem;
     border-radius: 1rem;
+    object-fit: cover;
   }
   img:hover {
     border: 0.156rem solid ${colors.pastel_blue};
+    object-fit: cover;
   }
   .donationReceived__btn {
     width: 8.75rem;
