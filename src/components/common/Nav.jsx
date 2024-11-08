@@ -10,6 +10,7 @@ import { useNavigate } from 'react-router-dom';
 import { Navbar } from '../../style/main/navbar';
 import { isLogined } from '../../pages/Main';
 import useUserProfile from '../../stores/auth/useUserProfile';
+import { Pencil } from 'lucide-react';
 
 const Nav = () => {
   const { user } = useUserProfile();
