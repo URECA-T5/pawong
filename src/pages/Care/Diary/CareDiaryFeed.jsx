@@ -132,12 +132,12 @@ function CareDiaryFeed() {
                       <span className="profile__dog--info--value">
                         {key === 'isNeutered'
                           ? data.pet[key]
-                            ? '했어요'
-                            : '안 했어요'
+                            ? ' 했어요'
+                            : ' 안 했어요'
                           : key === 'vaccinations'
                             ? data.pet[key] && data.pet[key].length > 0
                               ? data.pet[key].join(', ')
-                              : '등록된 백신이 없습니다.'
+                              : ' 등록된 백신이 없습니다.'
                             : key === 'weight'
                               ? ` ${data.pet[key]}kg`
                               : key === 'age'
