@@ -16,23 +16,34 @@ import { diaryFeed } from '../../../stores/diaryFeedStore';
 import serverBaseUrl from '../../../config/serverConfig';
 import { toggleFavorite } from '../../../api/pet/care/favorites/petFavorite';
 import userFavorite from '../../../stores/mypage/userFavorite';
+import Loading from '../../../components/common/Loading';
+
 const formUrl =
   'https://docs.google.com/forms/d/e/1FAIpQLSfyWoEmCvVTLELwjCP5BTM_r5VX9Qcc7ZngjeVKACnQ2SJRRw/viewform';
 
 function CareDiaryFeed() {
   const navigate = useNavigate();
   const { favPets, fetchFavPets } = userFavorite();
-
   const [isStarClicked, setIsStarClicked] = useState(false);
-  const [showAuthorBtn, setShowAuthorBtn] = useState(false);
   const { data, loadData } = diaryFeed();
-  const isLoadData = useRef(true);
   const params = useParams();
   const petId = useRef(params.pet_id);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    fetchFavPets();
-  }, [fetchFavPets]);
+    const loadInitialData = async () => {
+      try {
+        setIsLoading(true);
+        await Promise.all([fetchFavPets(), loadData(petId.current)]);
+      } catch (error) {
+        console.error('데이터 로딩 중 오류 발생:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    loadInitialData();
+  }, [fetchFavPets, loadData]);
 
   useEffect(() => {
     if (favPets.some((favPet) => favPet.id === petId.current)) {
@@ -41,24 +52,17 @@ function CareDiaryFeed() {
   }, [favPets]);
 
   const handleBookMarkClick = async () => {
-    setIsStarClicked(!isStarClicked);
-
     try {
-      const response = await toggleFavorite(petId.current);
+      setIsStarClicked(!isStarClicked);
+      await toggleFavorite(petId.current);
     } catch (error) {
       console.error(
         '북마크 추가/삭제 오류:',
         error.response ? error.response.data : error.message,
       );
+      setIsStarClicked(isStarClicked);
     }
   };
-
-  useEffect(() => {
-    if (isLoadData.current) {
-      isLoadData.current = false;
-      loadData(petId.current);
-    }
-  }, [data]);
 
   const registeredInfo = {
     breed: '품종',
@@ -73,16 +77,20 @@ function CareDiaryFeed() {
     story: '이야기',
   };
 
-  console.log(data);
+  if (isLoading || !data || !data.pet) {
+    return (
+      <MainContainer>
+        <Loading />
+      </MainContainer>
+    );
+  }
 
   return (
     <>
       <GlobalStyle />
       <MainContainer>
         <CareStoryHeader>
-          {showAuthorBtn ? (
-            <div></div>
-          ) : (
+          {!data.isUserPet && (
             <button className="header__starBtn" onClick={handleBookMarkClick}>
               <img
                 src={
@@ -105,12 +113,11 @@ function CareDiaryFeed() {
           <div className="profile__dog">
             <img
               className="profile__dog--img"
-              src={`${serverBaseUrl}/${data.profileImage}`}
+              src={`${serverBaseUrl}/${data.pet.profileImage}`}
               alt="dog_profile_img"
-            ></img>
-
+            />
             <div>
-              <h1>{data.name}</h1>
+              <h1>{data.pet.name}</h1>
               <div className="profile__dog--info">
                 {Object.keys(registeredInfo)
                   .filter(
@@ -124,14 +131,14 @@ function CareDiaryFeed() {
                       </span>
                       <span className="profile__dog--info--value">
                         {key === 'isNeutered'
-                          ? data[key]
+                          ? data.pet[key]
                             ? '했어요'
                             : '안 했어요'
                           : key === 'vaccinations'
-                            ? data[key] && data[key].length > 0
-                              ? data[key].join(', ')
+                            ? data.pet[key] && data.pet[key].length > 0
+                              ? data.pet[key].join(', ')
                               : '등록된 백신이 없습니다.'
-                            : data[key]}
+                            : data.pet[key]}{' '}
                       </span>
                     </div>
                   ))}
@@ -144,22 +151,22 @@ function CareDiaryFeed() {
             <div className="profile__dog--info--story">
               <p>{registeredInfo.story}</p>
               <div className="profile__dog--info--value">
-                <span>- {data.info}</span>
+                <span>- {data.pet.info}</span>
               </div>
             </div>
           </div>
         </StorySection>
-        {!showAuthorBtn ? (
-          <DefaultBtn formUrl={formUrl} onNavigate={navigate} />
-        ) : (
+        {data.isUserPet ? (
           <AuthorBtn onNavigate={navigate} />
+        ) : (
+          <DefaultBtn formUrl={formUrl} onNavigate={navigate} />
         )}
         <FeedIcon>
           <img src="/asset/diary/story/feedIcon.svg" alt="feed_icon"></img>
         </FeedIcon>
         <ImgSection>
-          {data.fosterDiaries && data.fosterDiaries.length > 0 ? (
-            data.fosterDiaries.map(
+          {data.pet.fosterDiaries && data.pet.fosterDiaries.length > 0 ? (
+            data.pet.fosterDiaries.map(
               (diary) =>
                 diary.image && (
                   <button
