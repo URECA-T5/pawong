@@ -19,7 +19,7 @@ export const AuthorView = styled.div`
     border: none;
     border-radius: 1rem;
     height: 3.5rem;
-    width: 16.8rem;
+    width: 100%;
     cursor: pointer;
     font-size: 1.25rem;
     display: flex;
@@ -33,17 +33,10 @@ function AuthorBtn({ onNavigate }) {
     <AuthorView>
       <button
         className="story__button"
-        onClick={() => onNavigate('/pet-upload')}
+        onClick={() => onNavigate('/diary-upload')}
       >
         <img src="/asset/diary/story/dogBowl.svg" alt="dog_bowl_img"></img>
         작성하기
-      </button>
-      <button
-        className="story__button"
-        onClick={() => onNavigate('/pet-upload')}
-      >
-        <img src="/asset/diary/story/listImg.svg" alt="list_img"></img>
-        편집하기
       </button>
     </AuthorView>
   );
