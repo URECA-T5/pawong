@@ -11,6 +11,7 @@ import {
 } from '../../style/history/fosterHistory';
 import userPet from '../../stores/mypage/userPet';
 import serverBaseUrl from '../../config/serverConfig';
+import Loading from '../../components/common/Loading';
 
 const FosterHistory = () => {
   const navigate = useNavigate();
@@ -36,12 +37,11 @@ const FosterHistory = () => {
   };
 
   const handleCardClick = (petId) => {
-    // petId를 사용하여 동적으로 경로를 생성
     navigate(`/diary-feed/${petId}`);
   };
 
   if (loading) {
-    return <p>로딩 중...</p>;
+    return <Loading />;
   }
 
   return (
