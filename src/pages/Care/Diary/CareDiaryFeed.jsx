@@ -35,7 +35,6 @@ function CareDiaryFeed() {
   }, [fetchFavPets]);
 
   useEffect(() => {
-    // Check if pet_id is in favPets and update isStarClicked accordingly
     if (favPets.some((favPet) => favPet.id === pet_id.current)) {
       setIsStarClicked(true);
     }
@@ -77,6 +76,8 @@ function CareDiaryFeed() {
     info: '정보',
     story: '이야기',
   };
+
+  console.log(data);
 
   return (
     <>
