@@ -73,6 +73,8 @@ function CareDiaryFeed() {
     story: '이야기',
   };
 
+  console.log(data);
+
   return (
     <>
       <GlobalStyle />
