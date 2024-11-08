@@ -97,10 +97,11 @@ export const StorySection = styled.div`
 `;
 
 export const ImgSection = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  margin: 0 1.25rem 1.25rem 1.25rem;
-  padding: 1.25rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 1줄에 3개의 이미지 */
+  gap: 0.5rem;
+  margin: 1rem;
+  padding: 2rem;
   background-color: white;
   border-radius: 1rem;
   justify-content: flex-start;
@@ -115,12 +116,25 @@ export const ImgSection = styled.div`
     margin: 0;
     margin: 0.04rem;
     cursor: pointer;
+    overflow: hidden;
+    border-radius: 0.5rem;
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.05);
+    }
   }
 
   .story__imgBtn--img {
-    width: 10.7rem;
-    height: 10.7rem;
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 1 / 1;
     object-fit: cover;
+    transition: opacity 0.3s ease;
+
+    &:hover {
+      opacity: 0.8;
+    }
   }
 `;
 
@@ -128,5 +142,5 @@ export const FeedIcon = styled.div`
   padding: 0 1.25rem;
   margin: 0;
   position: relative;
-  top: 0.9rem;
+  top: 1.5rem;
 `;

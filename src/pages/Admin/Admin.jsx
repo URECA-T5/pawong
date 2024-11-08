@@ -11,6 +11,7 @@ import {
   ProductSection,
   DonationUploadTabBtn,
 } from '../../style/admin/admin';
+import { useState } from 'react';
 
 function Admin() {
   const navigate = useNavigate();
@@ -24,33 +25,47 @@ function Admin() {
     addData,
   } = adminStore();
 
+  const [donationList, setDonationList] = useState([]);
+
+  const updateDonationList = (newDonationItem) => {
+    setDonationList((prevList) => [...prevList, newDonationItem]);
+  };
   const handleChange = (e) => {
     const { name, type, files } = e.target;
 
     if (type === 'file') {
-      const currentImages = formData.productImg || [];
-      currentImages.forEach((url) => URL.revokeObjectURL(url));
-
-      if (name === 'productImg' && currentImages.length < 3) {
-        const newImages = Array.from(files).map((file) =>
-          URL.createObjectURL(file),
-        );
+      if (name === 'productImg' && formData.productImg.length < 3) {
+        const newImages = Array.from(files);
         setFormData({
           ...formData,
-          productImg: [...currentImages, ...newImages],
+          productImg: [...formData.productImg, ...newImages],
         });
-      } else if (name === 'productDetailImg') {
-        const file = files[0];
-        const imageUrl = file ? URL.createObjectURL(file) : null;
-        setFormData({ ...formData, productDetailImg: imageUrl });
+      } else if (
+        name === 'productDetailImg' &&
+        formData.productDetailImg.length < 3
+      ) {
+        const newDetailImages = Array.from(files);
+        setFormData({
+          ...formData,
+          productDetailImg: [...formData.productDetailImg, ...newDetailImages],
+        });
       }
     } else {
-      setFormData({ ...formData, [name]: e.target.value });
+      if (name === 'price') {
+        setFormData({
+          ...formData,
+          [name]: e.target.value ? parseInt(e.target.value) : '',
+        });
+      } else {
+        setFormData({
+          ...formData,
+          [name]: e.target.value,
+        });
+      }
     }
   };
-  const handleTagButtonClick = (tagName) => {
-    setSelectedTag(tagName);
-  };
+
+  const handleTagButtonClick = (tagName) => setSelectedTag(tagName);
 
   const handleDeleteImage = (index) => {
     if (index < 0 || index >= formData.productImg.length) return;
@@ -71,16 +86,32 @@ function Admin() {
       tag: selectedTag,
     };
     const formDataToSend = new FormData();
-    formDataToSend.append('donationItemImages', updatedFormData.productImg);
-    formDataToSend.append('donationItemDetailImage', [
-      updatedFormData.productDetailImg,
-    ]);
+    updatedFormData.productImg.forEach((file) => {
+      formDataToSend.append('donationItemImages', file);
+    });
+    updatedFormData.productDetailImg.forEach((file) => {
+      formDataToSend.append('donationItemDetailImages', file);
+    });
     formDataToSend.append('name', updatedFormData.name);
     formDataToSend.append('price', updatedFormData.price);
     formDataToSend.append('brand', updatedFormData.brand);
     formDataToSend.append('tag', updatedFormData.tag);
-    addData(formDataToSend);
-    console.log(updatedFormData);
+    addData(formDataToSend)
+      .then((response) => {
+        updateDonationList(response);
+        setFormData({
+          name: '',
+          price: '',
+          brand: '',
+          productImg: [],
+          productDetailImg: [],
+          tag: '',
+        });
+        navigate('/donation');
+      })
+      .catch((error) => {
+        console.error('등록 실패', error);
+      });
   };
 
   return (

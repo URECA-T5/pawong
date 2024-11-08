@@ -7,9 +7,11 @@ const useUserProfile = create(
       user: {
         nickName: '',
         profileImage: '',
+        isAdmin: false,
       },
-      setUser: (userData) => set({ user: userData }),
-      clearUser: () => set({ user: { nickName: '', profileImage: '' } }),
+      setUser: (userData) => set({ user: { ...userData } }),
+      clearUser: () =>
+        set({ user: { nickName: '', profileImage: '', isAdmin: false } }),
     }),
     { name: 'useUserProfile', partialize: (state) => ({ user: state.user }) },
   ),

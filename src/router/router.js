@@ -65,6 +65,7 @@ const routes = [
     path: '/common-sense',
     element: <CommonSense />,
   },
+  { path: '/diary-upload/:fosterDiaryId', element: <CareDiaryUpload /> },
   { path: '/diary-upload', element: <CareDiaryUpload /> },
   { path: '/diary-list', element: <CareDiaryList /> },
   {

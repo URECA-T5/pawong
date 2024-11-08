@@ -2,7 +2,7 @@ import GlobalStyle, { MainContainer } from '../../../style/global/global';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHouse } from '@fortawesome/free-solid-svg-icons';
 import { diaryStore } from '../../../stores/diaryStore';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import {
   Header,
   Section,
@@ -13,12 +13,16 @@ import DiaryUploadInput from '../../../components/care/diary/DiaryUploadInput';
 import userPet from '../../../stores/mypage/userPet';
 import { useEffect } from 'react';
 import { ErrorMessage } from '../../../style/register/register';
-import { diaryUpload } from '../../../api/pet/care/diary/diaryUpload';
+import {
+  diaryUpdate,
+  diaryUpload,
+} from '../../../api/pet/care/diary/diaryUpload';
 
 const CareDiary = () => {
   const { pets, fetchPets } = userPet();
   const { selectedTag, setSelectedTag, formData, setFormData } = diaryStore();
   const navigate = useNavigate();
+  const { fosterDiaryId } = useParams();
 
   useEffect(() => {
     fetchPets();
@@ -50,13 +54,21 @@ const CareDiary = () => {
     );
 
     try {
-      const response = await diaryUpload(updatedFormData);
-      console.log('서버 응답:', response);
-
-      navigate(`/diary-feed/${formData.petId}`);
+      let response;
+      if (fosterDiaryId) {
+        response = await diaryUpdate(fosterDiaryId, updatedFormData);
+        console.log('수정완료:', response);
+        alert('일지가 수정되었습니다.');
+        navigate(`/diary-feed/${fosterDiaryId}`);
+      } else {
+        response = await diaryUpload(updatedFormData);
+        console.log('등록 완료:', response);
+        alert('일지가 등록되었습니다.');
+        // navigate(`/diary-feed/${petId}`);
+      }
     } catch (error) {
-      console.error('일지 등록 실패:', error);
-      alert('일지 등록에 실패했습니다. 다시 시도해주세요.');
+      console.error('일지 등록/수정 실패:', error);
+      alert('일지 등록/수정에 실패했습니다. 다시 시도해주세요.');
     }
   };
 
@@ -64,6 +76,8 @@ const CareDiary = () => {
     e.preventDefault();
     setFormData({ tag: '', title: '', location: '', story: '', image: '' });
     setSelectedTag('');
+    alert('작성이 취소되었어요');
+    navigate(-1);
   };
 
   return (
@@ -71,7 +85,7 @@ const CareDiary = () => {
       <GlobalStyle />
       <MainContainer>
         <Header>
-          <p className="extraBold">일지작성</p>
+          <p className="extraBold">{fosterDiaryId ? '일지수정' : '일지등록'}</p>
           <FontAwesomeIcon
             icon={faHouse}
             className="header__icon"
@@ -93,7 +107,7 @@ const CareDiary = () => {
                 type="submit"
                 disabled={!formData.title}
               >
-                등록
+                {fosterDiaryId ? '수정완료' : '등록'}
               </Button>
             </div>
           </form>

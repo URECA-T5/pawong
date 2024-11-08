@@ -16,10 +16,6 @@ const ProductForm = ({
 }) => {
   const fileInputRef = useRef(null);
 
-  const handleButtonClick = () => {
-    fileInputRef.current.click();
-  };
-
   return (
     <FormSection>
       <form onSubmit={handleSubmit}>
@@ -28,7 +24,7 @@ const ProductForm = ({
             <input
               type="file"
               id="imgUpload"
-              accept=".jpg/*"
+              accept="image/*"
               multiple
               name="productImg"
               onChange={handleChange}
@@ -49,7 +45,10 @@ const ProductForm = ({
                       onClick={() => onImageClick(index)}
                       type="button"
                     >
-                      <img src={file} alt={`preview ${index + 1}`} />
+                      <img
+                        src={URL.createObjectURL(file)}
+                        alt={`preview ${index + 1}`}
+                      />
                     </button>
                   ),
               )}
@@ -65,13 +64,19 @@ const ProductForm = ({
           <div className="input__tagBtn">
             <TagButton
               $selected={selectedTag === '강아지'}
-              onClick={() => handleClick('강아지')}
+              onClick={(e) => {
+                e.preventDefault();
+                handleClick('강아지');
+              }}
             >
               강아지
             </TagButton>
             <TagButton
               $selected={selectedTag === '고양이'}
-              onClick={() => handleClick('고양이')}
+              onClick={(e) => {
+                e.preventDefault();
+                handleClick('고양이');
+              }}
             >
               고양이
             </TagButton>
@@ -92,7 +97,7 @@ const ProductForm = ({
           <div className="input__content">
             <label htmlFor="productPrice">상품금액</label>
             <input
-              type="number"
+              type="text"
               id="productPrice"
               name="price"
               value={formData.price || ''}
@@ -118,78 +123,42 @@ const ProductForm = ({
             <p className="bold">상품 상세정보</p>
           </div>
 
-          <div className="input__content">
-            <label htmlFor="detailImgUpload">상세페이지(이미지)</label>
-            <input
-              type="file"
-              id="detailImgUpload"
-              name="productDetailImg"
-              onChange={handleChange}
-              ref={fileInputRef}
-              style={{ display: 'none' }}
-            />
-            <button
-              type="button"
-              onClick={handleButtonClick}
-              className="upload-button"
-            >
-              {formData.productDetailImg ? (
-                <img
-                  src={formData.productDetailImg}
-                  alt="미리보기"
-                  style={{ width: '100%', height: '100%' }}
-                />
-              ) : (
-                '이미지 업로드'
-              )}
-            </button>
+          <div className="form__imgContainer">
+            <div className="form__imgtext">
+              <input
+                type="file"
+                id="detailImgUpload"
+                accept="image/*"
+                multiple
+                name="productDetailImg"
+                onChange={handleChange}
+                style={{ display: 'none' }}
+              />
+              <label htmlFor="detailImgUpload" className="form__img--label">
+                상세이미지 등록
+              </label>
+            </div>
+            {formData.productDetailImg.length > 0 && (
+              <div className="form__imgPreview">
+                {formData.productDetailImg.map(
+                  (file, index) =>
+                    file && (
+                      <button
+                        key={index}
+                        className="preview__image"
+                        onClick={handleChange}
+                        type="button"
+                      >
+                        <img
+                          src={URL.createObjectURL(file)}
+                          alt={`preview ${index + 1}`}
+                        />
+                      </button>
+                    ),
+                )}
+              </div>
+            )}
           </div>
-
-          {/* <div className="input__content">
-            <label htmlFor="productMaterial">재질</label>
-            <input
-              type="text"
-              id="productMaterial"
-              name="material"
-              value={formData.material || ''}
-              placeholder="재질 및 재료 입력"
-              onChange={handleChange}
-            />
-          </div>
-
-          <div className="input__content">
-            <label htmlFor="productSize">규격</label>
-            <input
-              type="text"
-              id="productSize"
-              name="size"
-              value={formData.size || ''}
-              placeholder="예) 52*53"
-              onChange={handleChange}
-            />
-          </div>
-
-          <div className="input__content">
-            <label htmlFor="productExpirationDate">유통기한</label>
-            <input
-              type="date"
-              id="productExpirationDate"
-              name="expirationDate"
-              onChange={handleChange}
-            />
-          </div>
-
-          <div className="input__content">
-            <label htmlFor="productCsInfo">C/S 정보</label>
-            <input
-              type="text"
-              id="productCsInfo"
-              name="csInfo"
-              value={formData.csInfo || ''}
-              placeholder="C/S 정보 입력"
-              onChange={handleChange}
-            />
-          </div> */}
         </InputSection>
         <div className="button__container">
           <Button className="bold" $cancel={true}>

@@ -4,6 +4,7 @@ import { faChevronLeft, faHouse } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useEffect, useRef } from 'react';
 import { diaryDetail } from '../../../stores/diaryDetailStore';
+import { diaryStore } from '../../../stores/diaryStore';
 import {
   Header,
   TagButton,
@@ -27,6 +28,22 @@ const CareDiaryDetail = () => {
     }
   }, [data]);
 
+  const handleEditClick = () => {
+    const image =
+      data.image instanceof File || data.image instanceof Blob
+        ? URL.createObjectURL(data.image)
+        : data.image;
+
+    diaryStore.getState().setFormData({
+      tag: data.tag,
+      title: data.title,
+      location: data.place,
+      story: data.content,
+      image: image,
+    });
+    console.log(fosterDiaryId);
+    navigate(`/diary-upload/${fosterDiaryId.current}`);
+  };
   const handleDeleteClick = async () => {
     try {
       await deleteData(fosterDiaryId.current);
@@ -105,7 +122,7 @@ const CareDiaryDetail = () => {
             <p>{data.content}</p>
             {formatDate(data.createdAt)}
             <div className="board_button">
-              <Button>편집</Button>
+              <Button onClick={handleEditClick}>편집</Button>
               <Button onClick={handleDeleteClick}>삭제</Button>
             </div>
           </div>
