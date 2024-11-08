@@ -5,16 +5,17 @@ import serverBaseUrl from '../../config/serverConfig';
 
 const PaymentProfile = () => {
   const { data } = diaryFeed();
+  console.log(data);
 
   return (
     <ProfileContainer>
       <img
-        src={`${serverBaseUrl}/${data.profileImage}`}
+        src={`${serverBaseUrl}/${data.pet.profileImage}`}
         alt="no profile"
         className="profile__img"
       />
       <div className="profile__message bold">
-        <span className="message__highlight bold">{data.name}</span>
+        <span className="message__highlight bold">{data.pet.name}</span>
         <span className="bold">에게</span>
         <p className="bold">후원할 상품을 결제할게요</p>
       </div>
