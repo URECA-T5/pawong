@@ -83,7 +83,7 @@ const DonationSent = () => {
   );
   return (
     <>
-      {donations.length > 0 ? (
+      {donations && donations.length > 0 ? (
         <>
           <DonationSentDiv>
             <img src={'/asset/history/donation.svg'} alt="보낸후원내역" />

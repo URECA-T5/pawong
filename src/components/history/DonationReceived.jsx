@@ -35,7 +35,6 @@ const DonationReceived = () => {
   const handleFetchAccpet = async (flag, donationId, petId) => {
     await fetchIsAccepted(flag, donationId);
     await fetchDonationHistory(petId);
-    flag === '받기' && navigate('/delivery');
   };
 
   const isLoadData = useRef(true);
@@ -43,6 +42,7 @@ const DonationReceived = () => {
     if (isLoadData.current) {
       isLoadData.current = false;
       fetchPets();
+      fetchDonationHistory(selectedPet.petId);
     }
   }, [selectedPet, donationHistory]);
 
@@ -116,11 +116,7 @@ const DonationReceived = () => {
                     <button
                       className="donationReceived__btn bold"
                       onClick={() => {
-                        handleFetchAccpet(
-                          '받기',
-                          data.donationId,
-                          selectedPet.id,
-                        );
+                        navigate(`/delivery/${data.donationId}`);
                       }}
                     >
                       받기
@@ -131,7 +127,8 @@ const DonationReceived = () => {
                     className="donationReceived__btn bold"
                     disabled={data.isDelivery === '거절' && true}
                     onClick={() =>
-                      data.isDelivery === '받기' && navigate('/delivery')
+                      data.isDelivery === '받기' &&
+                      navigate(`/delivery/${data.donationId}`)
                     }
                   >
                     {data.isDelivery}

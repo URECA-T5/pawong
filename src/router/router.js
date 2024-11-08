@@ -12,7 +12,6 @@ import DonationHistory from '../pages/History/DonationHistory';
 import Delivery from '../pages/Delivery/Delivery';
 import Payment from '../pages/Payment/Payment';
 import PaymentFinish from '../pages/Payment/PaymentFinish';
-import { path } from 'framer-motion/client';
 import CareDiaryList from '../pages/Care/Diary/CareDiaryList';
 import FosterHistory from '../pages/History/FosterHistory';
 import Main from '../pages/Main';
@@ -80,7 +79,7 @@ const routes = [
     element: <FosterHistory />,
   },
   {
-    path: '/delivery',
+    path: '/delivery/:donationId',
     element: <Delivery />,
   },
   {

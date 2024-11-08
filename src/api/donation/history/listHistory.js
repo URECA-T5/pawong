@@ -24,6 +24,19 @@ export const getDonationSentHistory = async () => {
   }
 };
 
+export const patchMyAddress = async (donationId, data) => {
+  try {
+    const response = await request.patch(
+      DonationHistory_ACCEPT + `${donationId}`,
+      data,
+    );
+    console.log(response.data);
+    return response.data;
+  } catch (error) {
+    console.error('후원 내역 조회 오류:', error);
+  }
+};
+
 export const patchAcceptDonation = async (donationId) => {
   try {
     const response = await request.patch(

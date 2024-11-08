@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import GlobalStyle, { MainContainer } from '../../style/global/global';
 import {
   DeliveryHeader,
@@ -9,8 +9,10 @@ import {
 } from '../../style/delivery/delivery';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleLeft, faHouse } from '@fortawesome/free-solid-svg-icons';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { AddressStore } from '../../stores/deliveryStore';
+import { DonationReceivedStore } from '../../stores/historyStore';
+import serverBaseUrl from '../../config/serverConfig';
 
 const DAUM_POSTCODE_SCRIPT_SRC =
   'https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js';
@@ -36,6 +38,9 @@ const Delivery = () => {
     }
   }, []);
 
+  const params = useParams();
+  const donationId = useRef(params.donationId);
+
   const {
     postcode,
     address,
@@ -45,7 +50,11 @@ const Delivery = () => {
     setAddress,
     setDetailAddress,
     setPhoneNumber,
+    acceptDontaion,
   } = AddressStore();
+
+  const { selectedPet, fetchDonationHistory, donationHistory } =
+    DonationReceivedStore();
 
   const handleAddressSearch = () => {
     new window.daum.Postcode({
@@ -66,7 +75,7 @@ const Delivery = () => {
     setError('');
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (phoneNumber.length !== 11 || isNaN(phoneNumber)) {
@@ -81,13 +90,13 @@ const Delivery = () => {
 
     setError('');
     const formData = {
-      postcode,
-      address,
-      detailAddress,
-      phoneNumber,
+      receivedPhoneNumber: phoneNumber,
+      receivedAddress: `${address} ${detailAddress}`,
     };
 
-    console.log('Form Data:', formData);
+    console.log(`[donationId] >> ${donations[0].donationId}`);
+    const response = await acceptDontaion(donations[0].donationId, formData);
+    console.log(`[response message] >> ${response}`);
   };
 
   const dogs = {
@@ -97,14 +106,19 @@ const Delivery = () => {
     name: '포동이',
   };
 
-  const donations = {
-    url: '/asset/history/samplebob.png',
-    category: '강아지',
-    company: '펫생각',
-    name: 'PROBEST 5kg',
-    price: 20000,
-    cnt: 1,
-  };
+  // const donations = {
+  //   url: '/asset/history/samplebob.png',
+  //   category: '강아지',
+  //   company: '펫생각',
+  //   name: 'PROBEST 5kg',
+  //   price: 20000,
+  //   cnt: 1,
+  // };
+  const donations = donationHistory.filter(
+    (data) => data.donationId === donationId.current,
+  );
+  console.log(`[donations] >>`);
+  console.log(donations[0].donationId);
 
   function formatPrice(price) {
     return new Intl.NumberFormat('ko-KR', {
@@ -114,6 +128,8 @@ const Delivery = () => {
       .format(price)
       .replace('₩', '');
   }
+
+  console.log(`[selectedPet] >> ${selectedPet}`);
 
   return (
     <>
@@ -135,10 +151,15 @@ const Delivery = () => {
           />
         </DeliveryHeader>
         <DeliveryMsgDiv className="regular">
-          <img src={dogs.url} alt="no profile img" />
+          <img
+            src={`${serverBaseUrl}/${selectedPet.profileImage}`}
+            alt="no profile img"
+          />
           <div>
             <p>
-              <span className="delivery__pointColor bold">{dogs.name}</span>
+              <span className="delivery__pointColor bold">
+                {selectedPet.name}
+              </span>
               <span>에게 온</span>
             </p>
             <p>선물을 받고 싶어요</p>
@@ -147,13 +168,19 @@ const Delivery = () => {
         <DeliveryItemSection>
           <p className="delivery__Title bold">후원 상품</p>
           <DeliveryItemInfo>
-            <img src={donations.url} alt="no item img" />
+            <img
+              src={`${serverBaseUrl}/${donations[0].donationItemImages}`}
+              alt="no item img"
+            />
             <div>
-              <button className="bold">{donations.company}</button>
-              <p className="delivery__colorSize bold">{donations.name}</p>
-              <p className="delivery__pointColor">수량 : {donations.cnt}개</p>
               <p className="delivery__colorSize bold">
-                {formatPrice(donations.price)}원
+                {donations[0].donationItemName}
+              </p>
+              <p className="delivery__pointColor">
+                수량 : {donations[0].quantity}개
+              </p>
+              <p className="delivery__colorSize bold">
+                {formatPrice(donations[0].donationItemPrice)}원
               </p>
             </div>
           </DeliveryItemInfo>
